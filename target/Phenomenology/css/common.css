@@ -31,6 +31,7 @@ a:hover {
     display: inline-block;
     vertical-align: top;
     padding-top: 20px;
+    float: left;
 }
 
 .nav_bar {
@@ -61,7 +62,7 @@ a:hover {
     margin-left: 15px;
     display: inline-block;
     vertical-align: top;
-    float: right;
+    /*float: right;*/
 }
 
 .roll_pic {
