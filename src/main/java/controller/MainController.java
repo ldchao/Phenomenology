@@ -12,8 +12,30 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class MainController {
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index() {
+    @RequestMapping(value = "/HomePage", method = RequestMethod.GET)
+    public String homePages() {
         return "HomePage";
+    }
+
+    @RequestMapping(value = "/AcademicCommunicate", method = RequestMethod.GET)
+    public String academicCommunicate() {
+        return "AcademicCommunicate";
+    }
+
+    @RequestMapping(value = "/AcademicSource", method = RequestMethod.GET)
+    public String academicSource() {
+        return "AcademicSource";
+    }
+    @RequestMapping(value = "/Achievement", method = RequestMethod.GET)
+    public String achievement() {
+        return "Achievement";
+    }
+    @RequestMapping(value = "/Organization", method = RequestMethod.GET)
+    public String organization() {
+        return "Organization";
+    }
+    @RequestMapping(value = "/Situation", method = RequestMethod.GET)
+    public String situation() {
+        return "Situation";
     }
 }

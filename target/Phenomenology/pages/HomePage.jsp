@@ -24,32 +24,32 @@
     <%--左侧导航栏--%>
     <div class="left_nav">
 
-        <div class="nav_bar active" onclick="window.location.href='HomePage.jsp'">
+        <div class="nav_bar active" onclick="window.location.href='HomePage'">
             <i class="fa fa-angle-right"></i>
             &nbsp;&nbsp;首&nbsp;页
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='Situation.jsp'">
+        <div class="nav_bar" onclick="window.location.href='Situation'">
             <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
             本所概况
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='Organization.jsp'">
+        <div class="nav_bar" onclick="window.location.href='Organization'">
             <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
             机构人员
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='AcademicCommunicate.jsp'">
+        <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
             <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
             学术交流
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='AcademicSource.jsp'">
+        <div class="nav_bar" onclick="window.location.href='AcademicSource'">
             <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
             学术资源
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='Achievement.jsp'">
+        <div class="nav_bar" onclick="window.location.href='Achievement'">
             <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
             科研成果
         </div>
