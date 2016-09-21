@@ -21,3 +21,7 @@
 *.xml
 
 *.class
+
+target/classes/controller/MainController.class
+
+*.MF
