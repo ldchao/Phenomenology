@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="cn.edu.nju.neo" />
+        <module name="Phenomenology" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cn.edu.nju.neo" target="1.5" />
+      <module name="Phenomenology" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
