@@ -58,9 +58,10 @@ a:hover {
     width: 890px;
     height: 525px;
     background-color: #fff;
-    margin-left: 16px;
+    margin-left: 15px;
     display: inline-block;
     vertical-align: top;
+    float: right;
 }
 
 .roll_pic {

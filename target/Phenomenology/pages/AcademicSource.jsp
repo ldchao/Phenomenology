@@ -26,31 +26,31 @@
 
         <div class="nav_bar" onclick="window.location.href='HomePage'">
             <i class="fa fa-angle-right"></i>
-            &nbsp;&nbsp;首&nbsp;页
+            &nbsp;首&nbsp;页
         </div>
 
         <div class="nav_bar" onclick="window.location.href='Situation'">
-            <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            <i class="fa fa-angle-right"></i>&nbsp;
             本所概况
         </div>
 
         <div class="nav_bar" onclick="window.location.href='Organization'">
-            <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            <i class="fa fa-angle-right"></i>&nbsp;
             机构人员
         </div>
 
         <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
-            <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            <i class="fa fa-angle-right"></i>&nbsp;
             学术交流
         </div>
 
         <div class="nav_bar active" onclick="window.location.href='AcademicSource'">
-            <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            <i class="fa fa-angle-right"></i>&nbsp;
             学术资源
         </div>
 
         <div class="nav_bar" onclick="window.location.href='Achievement'">
-            <i class="fa fa-angle-right"></i>&nbsp;&nbsp;
+            <i class="fa fa-angle-right"></i>&nbsp;
             科研成果
         </div>
 
