@@ -22,6 +22,6 @@
 
 *.class
 
-target/classes/controller/MainController.class
+target/
 
 *.MF
