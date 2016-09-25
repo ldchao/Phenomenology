@@ -28,3 +28,5 @@ target/
 *.xml
 
 target/Phenomenology/META-INF/MANIFEST.MF
+
+.idea/workspace.xml
