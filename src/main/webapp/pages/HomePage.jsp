@@ -12,6 +12,7 @@
 
     <link href="../css/common.css" rel="stylesheet">
     <link href="../css/cssreset.css" rel="stylesheet">
+    <link href="../css/homepage.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -59,6 +60,61 @@
 
     <%--右侧内容块--%>
     <div class="right_content">
+
+        <div class="sub_field">
+
+            <div class="sub_title_div">
+                <div class="div_decorate"></div>
+
+                <div class="article_index sub_title">动态新闻</div>
+
+                <div class="article_index more">
+                    更多&nbsp;<i class="fa fa-angle-right"></i>
+                </div>
+            </div>
+
+            <%-- 动态新闻的父块 --%>
+            <div id="dynamic_news" style="margin-top: 5px;">
+
+                <%-- 每个标题 --%>
+                <div id="title_copy" class="each_title" style="display: none;">
+
+                    <div class="each_img"></div>
+
+                    <div class="right_title">
+                        <div class="big_div article_list_title">
+                            现象学研究所新接见了世界级现象学大师
+                        </div>
+
+                        <div class="small_div article_preview">
+                            2016年12月，现象学大师来到南京大学现象......
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr class="sub_hr">
+
+        <div class="sub_field">
+
+            <div class="sub_title_div">
+                <div class="div_decorate"></div>
+
+                <div class="article_index sub_title">源头活水</div>
+
+                <div class="article_index more">
+                    更多&nbsp;<i class="fa fa-angle-right"></i>
+                </div>
+            </div>
+
+            <%-- 源头活水的父块 --%>
+            <div id="source_water" style="margin-top: 5px;"></div>
+
+        </div>
 
 
     </div>
@@ -109,5 +165,7 @@
 
 </div>
 
+
+<script src="../js/homepage.js"></script>
 </body>
 </html>

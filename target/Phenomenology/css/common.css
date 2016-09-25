@@ -62,7 +62,6 @@ a:hover {
     margin-left: 15px;
     display: inline-block;
     vertical-align: top;
-    /*float: right;*/
 }
 
 .roll_pic {
@@ -116,4 +115,32 @@ a:hover {
     border: 1px solid #979797;
     margin: 0 22px;
     display: inline-block;
+}
+
+/* 标题、索引 */
+.article_index {
+    font-size: 22px;
+    color: #4a4a4b;
+    font-family: "PingFang SC", serif;
+}
+
+/* 文章列表标题 */
+.article_list_title {
+    font-size: 18px;
+    color: #60676d;
+    font-family: "PingFang SC", serif;
+}
+
+/* 文章内容预览 */
+.article_preview {
+    font-size: 13px;
+    color: #afafaf;
+    font-family: "PingFang SC", serif;
+}
+
+/* 文章正文 */
+.article_text {
+    font-size: 14px;
+    color: #5a5a5b;
+    font-family: "PingFang SC", serif;
 }

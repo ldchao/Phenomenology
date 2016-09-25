@@ -25,3 +25,6 @@
 target/
 
 *.MF
+*.xml
+
+target/Phenomenology/META-INF/MANIFEST.MF

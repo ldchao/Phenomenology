@@ -1,0 +1,39 @@
+.tab_achieve {
+    width: 88px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin-left: 28px;
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.tab_achieve:hover {
+    border-bottom: 3px solid #1a799f;
+}
+
+.achieves_div {
+    width: 810px;
+    height: 380px;
+    margin-left: 28px;
+    margin-top: 18px;
+    overflow: auto;
+}
+
+.each_book_div {
+    width: 100px;
+    height: 151px;
+    margin-right: 40px;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.book_pic {
+    width: 100px;
+    height: 125px;
+    background-color: #d8d8d8;
+    border: 1px solid #979797;
+    margin-bottom: 6px;
+}
