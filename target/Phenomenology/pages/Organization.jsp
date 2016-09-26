@@ -10,6 +10,7 @@
 <head>
     <title>南京大学现象学研究所</title>
 
+    <link href="../css/achievement.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
     <link href="../css/cssreset.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -60,6 +61,22 @@
     <%--右侧内容块--%>
     <div class="right_content">
 
+        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
+            在职人员
+        </div>
+        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">访问学者</div>
+        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(2)">本所学生</div>
+
+        <div id="office" class="achieves_div">
+            <div id="office_copy" class="each_book_div" style="display: none;">
+                <div class="book_pic"></div>
+                <div class="article_text">某某某</div>
+            </div>
+        </div>
+
+        <div id="visiting" class="achieves_div"></div>
+
+        <div id="student" class="achieves_div"></div>
 
     </div>
 
@@ -109,5 +126,7 @@
 
 </div>
 
+<script src="../js/organization.js"></script>
+<script src="../js/jquery.js"></script>
 </body>
 </html>

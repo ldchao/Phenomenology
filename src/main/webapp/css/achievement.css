@@ -37,3 +37,20 @@
     border: 1px solid #979797;
     margin-bottom: 6px;
 }
+
+
+/* AcademicCommunicate.jsp */
+.each_lecture {
+    width: 810px;
+    height: 22px;
+    color: #60676d;
+    margin-bottom: 4px;
+}
+
+.lecture_title {
+    cursor: pointer;
+}
+
+.lecture_title:hover {
+    color: #1a799f;
+}

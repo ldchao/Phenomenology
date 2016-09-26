@@ -10,6 +10,7 @@
 <head>
     <title>南京大学现象学研究所</title>
 
+    <link href="../css/achievement.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
     <link href="../css/cssreset.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -60,6 +61,24 @@
     <%--右侧内容块--%>
     <div class="right_content">
 
+        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
+            学术讲座
+        </div>
+        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">学术交流</div>
+        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(2)">师生出访</div>
+
+        <div id="lecture" class="achieves_div">
+
+            <div id="lecture_copy" class="each_lecture" style="display: none;">
+                <span class="lecture_title article_list_title">2016年南京大学超级现象学大会召开并且标题非常非常非常非常的长</span>
+                <span class="article_list_title" style="float: right; margin-right: 17px; color: #b8b9b9;">2016/9/30</span>
+            </div>
+
+        </div>
+
+        <div id="meeting" class="achieves_div"></div>
+
+        <div id="visiting" class="achieves_div"></div>
 
     </div>
 
@@ -109,5 +128,7 @@
 
 </div>
 
+<script src="../js/jquery.js"></script>
+<script src="../js/communicate.js"></script>
 </body>
 </html>
