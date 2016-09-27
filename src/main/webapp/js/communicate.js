@@ -2,6 +2,8 @@
  * Created by L.H.S on 2016/9/26.
  */
 
+var Tab_Selected = 0;   // 记录当前在哪个tab标签下
+
 window.onload = function () {
     getLectures();
     getMeetings();
@@ -16,6 +18,11 @@ function getLectures() {
         var div = document.createElement("div");
         div.innerHTML = copy.innerHTML;
         div.setAttribute("class", "each_lecture");
+        
+        var title = div.getElementsByClassName("lecture_title")[0];
+        title.onclick = function() {
+            showArticle(this);
+        };
 
         lecture.appendChild(div);
     }
@@ -30,6 +37,11 @@ function getMeetings() {
         var div = document.createElement("div");
         div.innerHTML = copy.innerHTML;
         div.setAttribute("class", "each_lecture");
+
+        var title = div.getElementsByClassName("lecture_title")[0];
+        title.onclick = function() {
+            showArticle(this);
+        };
 
         meeting.appendChild(div);
     }
@@ -46,6 +58,11 @@ function getVisitings() {
         div.innerHTML = copy.innerHTML;
         div.setAttribute("class", "each_lecture");
 
+        var title = div.getElementsByClassName("lecture_title")[0];
+        title.onclick = function() {
+            showArticle(this);
+        };
+
         visiting.appendChild(div);
     }
 
@@ -53,6 +70,8 @@ function getVisitings() {
 }
 
 function changeTab(index) {
+
+    Tab_Selected = index;
 
     var Ids = ["lecture", "meeting", "visiting"];
     var tabs = document.getElementsByClassName("tab_achieve");
@@ -65,4 +84,23 @@ function changeTab(index) {
     $(document.getElementById(Ids[(index + 1) % 3])).hide();
     $(document.getElementById(Ids[(index + 2) % 3])).hide();
 
+}
+
+function showArticle(link) {
+
+    var tabs = ["学术讲座", "学术交流", "师生出访"];
+
+    var title = link.innerHTML.trim();
+    var content = document.getElementById("news_content");
+    
+    var backbtn = content.getElementsByClassName("back_lbl")[0];
+    backbtn .getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
+    backbtn.onclick = function () {
+        $("#news_content").hide();
+        $("#news_list").show();
+    };
+
+
+    $("#news_list").hide();
+    $("#news_content").show();
 }

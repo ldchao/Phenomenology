@@ -144,3 +144,10 @@ a:hover {
     color: #5a5a5b;
     font-family: "PingFang SC", serif;
 }
+
+/* 文章正文 */
+.article_title {
+    font-size: 34px;
+    color: #4a4a4b;
+    font-family: "PingFang SC", serif;
+}

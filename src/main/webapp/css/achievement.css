@@ -54,3 +54,72 @@
 .lecture_title:hover {
     color: #1a799f;
 }
+
+
+/* Organization.jsp */
+.back_lbl {
+    margin-top: 30px;
+    margin-left: 40px;
+    width: 104px;
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.back_lbl:hover {
+    color: #1a799f;
+}
+
+.name {
+    margin-left: 8px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.introduction {
+    width: 639px;
+    height: 350px;
+    margin-left: 12px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.photo {
+    width: 127px;
+    height: 142px;
+    border: 1px solid #979797;
+    background-color: #d8d8d8;
+    vertical-align: top;
+    display: inline-block;
+    float: right;
+}
+
+.name_link {
+    cursor: pointer;
+}
+
+.name_link:hover {
+    color: #1a799f;
+}
+
+.news_title {
+    width: 890px;
+    height: 48px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.info {
+    width: 890px;
+    height: 22px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.text_content {
+    width: 770px;
+    height: 726px;
+    margin-top: 28px;
+    margin-left: 60px;
+    overflow: auto;
+}

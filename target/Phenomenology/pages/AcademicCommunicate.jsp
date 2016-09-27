@@ -59,7 +59,7 @@
     </div>
 
     <%--右侧内容块--%>
-    <div class="right_content">
+    <div id="news_list" class="right_content">
 
         <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
             学术讲座
@@ -71,7 +71,8 @@
 
             <div id="lecture_copy" class="each_lecture" style="display: none;">
                 <span class="lecture_title article_list_title">2016年南京大学超级现象学大会召开并且标题非常非常非常非常的长</span>
-                <span class="article_list_title" style="float: right; margin-right: 17px; color: #b8b9b9;">2016/9/30</span>
+                <span class="article_list_title"
+                      style="float: right; margin-right: 17px; color: #b8b9b9;">2016/9/30</span>
             </div>
 
         </div>
@@ -79,6 +80,42 @@
         <div id="meeting" class="achieves_div"></div>
 
         <div id="visiting" class="achieves_div"></div>
+
+    </div>
+
+    <%-- 文章 --%>
+    <div id="news_content" class="right_content" style="height: 956px; display: none;">
+
+        <div class="article_index back_lbl">
+            <span>学术讲座</span> <i class="fa fa-angle-right"></i>
+        </div>
+
+        <div class="news_title article_title">2016年南京大学超级现象学大会召开</div>
+
+        <div class="info article_list_title" style="color: #9d9d9d;">
+            <div style="display: inline-block">发布人: <span id="writer">张三</span></div>
+            <div style="margin-left: 20px; display: inline-block">发布时间: <span id="time">2016/6/30</span></div>
+            <div style="margin-left: 20px; display: inline-block">浏览量: <span id="viewer">10000</span></div>
+        </div>
+
+        <div class="text_content article_text">
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，
+        </div>
 
     </div>
 
