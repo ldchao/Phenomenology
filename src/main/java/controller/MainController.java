@@ -14,33 +14,41 @@ public class MainController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
-        return "HomePage";
+        return "pages/HomePage";
     }
 
     @RequestMapping(value = "/HomePage", method = RequestMethod.GET)
     public String homePages() {
-        return "HomePage";
+        return "pages/HomePage";
     }
 
     @RequestMapping(value = "/AcademicCommunicate", method = RequestMethod.GET)
     public String academicCommunicate() {
-        return "AcademicCommunicate";
+        return "pages/AcademicCommunicate";
     }
 
     @RequestMapping(value = "/AcademicSource", method = RequestMethod.GET)
     public String academicSource() {
-        return "AcademicSource";
+        return "pages/AcademicSource";
     }
+
     @RequestMapping(value = "/Achievement", method = RequestMethod.GET)
     public String achievement() {
-        return "Achievement";
+        return "pages/Achievement";
     }
+
     @RequestMapping(value = "/Organization", method = RequestMethod.GET)
     public String organization() {
-        return "Organization";
+        return "pages/Organization";
     }
+
     @RequestMapping(value = "/Situation", method = RequestMethod.GET)
     public String situation() {
-        return "Situation";
+        return "pages/Situation";
+    }
+
+    @RequestMapping(value = "/Back_DynamicNews", method = RequestMethod.GET)
+    public String backDynamicNews() {
+        return "backend/Back_DynamicNews";
     }
 }
