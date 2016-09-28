@@ -12,6 +12,7 @@
 
     <link href="../css/common.css" rel="stylesheet">
     <link href="../css/cssreset.css" rel="stylesheet">
+    <link href="../css/achievement.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -60,6 +61,25 @@
     <%--右侧内容块--%>
     <div class="right_content">
 
+        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
+            书籍出版
+        </div>
+        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">文章发表</div>
+
+
+        <div id="books" class="achieves_div">
+
+            <div id="book_copy" class="each_book_div" style="display: none;">
+                <div class="book_pic"></div>
+                <div class="article_text">《现象屠龙》</div>
+            </div>
+
+        </div>
+
+        <div id="articles" class="achieves_div">
+
+
+        </div>
 
     </div>
 
@@ -109,5 +129,8 @@
 
 </div>
 
+
+<script src="../js/achievement.js"></script>
+<script src="../js/jquery.js"></script>
 </body>
 </html>

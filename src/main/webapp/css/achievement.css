@@ -1,0 +1,125 @@
+.tab_achieve {
+    width: 88px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    margin-left: 28px;
+    margin-top: 30px;
+    display: inline-block;
+}
+
+.tab_achieve:hover {
+    border-bottom: 3px solid #1a799f;
+}
+
+.achieves_div {
+    width: 810px;
+    height: 380px;
+    margin-left: 28px;
+    margin-top: 18px;
+    overflow: auto;
+}
+
+.each_book_div {
+    width: 100px;
+    height: 151px;
+    margin-right: 40px;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.book_pic {
+    width: 100px;
+    height: 125px;
+    background-color: #d8d8d8;
+    border: 1px solid #979797;
+    margin-bottom: 6px;
+}
+
+
+/* AcademicCommunicate.jsp */
+.each_lecture {
+    width: 810px;
+    height: 22px;
+    color: #60676d;
+    margin-bottom: 4px;
+}
+
+.lecture_title {
+    cursor: pointer;
+}
+
+.lecture_title:hover {
+    color: #1a799f;
+}
+
+
+/* Organization.jsp */
+.back_lbl {
+    margin-top: 30px;
+    margin-left: 40px;
+    width: 110px;
+    height: 30px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.back_lbl:hover {
+    color: #1a799f;
+}
+
+.name {
+    margin-left: 8px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+.introduction {
+    width: 639px;
+    height: 350px;
+    margin-left: 12px;
+    vertical-align: top;
+    display: inline-block;
+}
+
+.photo {
+    width: 127px;
+    height: 142px;
+    border: 1px solid #979797;
+    background-color: #d8d8d8;
+    vertical-align: top;
+    display: inline-block;
+    float: right;
+}
+
+.name_link {
+    cursor: pointer;
+}
+
+.name_link:hover {
+    color: #1a799f;
+}
+
+.news_title {
+    width: 890px;
+    height: 48px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.info {
+    width: 890px;
+    height: 22px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.text_content {
+    width: 770px;
+    height: 726px;
+    margin-top: 28px;
+    margin-left: 60px;
+    overflow: auto;
+}

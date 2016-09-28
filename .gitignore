@@ -22,6 +22,11 @@
 
 *.class
 
-target/classes/controller/MainController.class
+target/
 
 *.MF
+*.xml
+
+target/Phenomenology/META-INF/MANIFEST.MF
+
+.idea/workspace.xml
