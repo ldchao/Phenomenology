@@ -21,6 +21,9 @@ import java.util.Map;
 @Controller
 public class UploadController {
 
+    /**
+     *前端代码参见CRC头像上传
+     */
     @RequestMapping(value = "/uploadImgUrl")
     @ResponseBody
     public String uploadImgUrl(HttpServletRequest request, HttpServletResponse response)
