@@ -14,7 +14,7 @@ public interface ScholarBLService {
     public String addItem(OrganizationVO organizationVO);
 
     //删除一条访问学者记录
-    public UniversalState deleteItem(String id);
+    public UniversalState deleteItem(int id);
 
     //更新一条访问学者记录
     public UniversalState updateItem(OrganizationVO organizationVO);

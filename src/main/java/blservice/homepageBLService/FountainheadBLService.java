@@ -18,7 +18,7 @@ public interface FountainheadBLService {
     public String addAccessory(AccessoryVO accessoryVO);
 
     //删除一条源头活水记录
-    public UniversalState deleteNews(String id);
+    public UniversalState deleteNews(int id);
 
     //按日期排序取前五条源头活水记录
     public ArrayList<NewsVO> getFiveNews(String language);

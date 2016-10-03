@@ -18,7 +18,7 @@ public interface NewsBLService {
     public String addAccessory(AccessoryVO accessoryVO);
 
     //删除一条新闻记录
-    public UniversalState deleteNews(String id);
+    public UniversalState deleteNews(int id);
 
     //按日期排序取前五条新闻
     public ArrayList<NewsVO> getFiveNews(String language);

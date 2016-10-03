@@ -17,7 +17,7 @@ public interface CarouselFigureBLService {
     public ArrayList<String> getAllPicture();
 
     //根据id删除一条轮播图存储记录
-    public UniversalState deleteAPicture(String id);
+    public UniversalState deleteAPicture(int id);
 
 
 }

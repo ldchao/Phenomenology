@@ -1,13 +1,14 @@
 package DaoImpl;
 
-import Dao.Scientificachievement;
+import Dao.ScientificachievementDao;
+import POJO.Scientificachievement;
 
 import java.util.List;
 
 /**
  * Created by mm on 2016/10/3.
  */
-public class ScientificachievementDaoImpl implements Scientificachievement {
+public class ScientificachievementDaoImpl implements ScientificachievementDao {
     public int pesist(Scientificachievement scientificachievement) {
         return 0;
     }

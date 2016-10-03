@@ -17,7 +17,7 @@ public interface ArticleBLService {
     public String addAccessory(AchievementVO achievementVO);
 
     //删除一条文章发表的记录
-    public UniversalState deleteItem(String id);
+    public UniversalState deleteItem(int id);
 
     //更新一条文章发表的记录
     public UniversalState updateItem(AchievementVO achievementVO);

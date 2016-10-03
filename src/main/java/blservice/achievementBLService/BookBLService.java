@@ -19,7 +19,7 @@ public interface BookBLService {
     public String addAccessory(AchievementVO achievementVO);
 
     //删除一条书籍出版的记录
-    public UniversalState deleteItem(String id);
+    public UniversalState deleteItem(int id);
 
     //更新一条书籍出版的记录
     public UniversalState updateItem(AchievementVO achievementVO);

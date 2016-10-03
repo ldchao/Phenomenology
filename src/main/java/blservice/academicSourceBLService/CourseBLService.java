@@ -18,7 +18,7 @@ public interface CourseBLService {
     public String addAccessory(AccessoryVO accessoryVO);
 
     //删除一条课程资源的记录
-    public UniversalState deleteItem(String id);
+    public UniversalState deleteItem(int id);
 
     //更新一条课程资源的记录
     public UniversalState updateItem(AcademicVO academicVO);
