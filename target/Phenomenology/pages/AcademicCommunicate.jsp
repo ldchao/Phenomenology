@@ -122,13 +122,19 @@
     <%--滚动图片--%>
     <div class="roll_pic">
 
-        <div class="next_pic"><i class="fa fa-arrow-circle-o-right"></i></div>
+        <div id="rollpic" style="width: 2133px; position: absolute;">
 
-        <div class="each_pic"></div>
-        <div class="each_pic"></div>
-        <div class="each_pic"></div>
-        <div class="each_pic"></div>
-        <div class="each_pic"></div>
+            <div class="each_pic"></div>
+            <div class="each_pic"></div>
+            <div class="each_pic"></div>
+            <div class="each_pic"></div>
+            <div class="each_pic"></div>
+            <div class="each_pic"></div>
+
+        </div>
+
+        <div class="next_pic" style="left: 20px;"><i class="fa fa-arrow-circle-o-left"></i></div>
+        <div class="next_pic"><i class="fa fa-arrow-circle-o-right"></i></div>
 
     </div>
 
@@ -167,5 +173,6 @@
 
 <script src="../js/jquery.js"></script>
 <script src="../js/communicate.js"></script>
+<script src="../js/roll_pic.js"></script>
 </body>
 </html>
