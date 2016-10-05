@@ -1,6 +1,5 @@
 package controller;
 
-import com.sun.xml.internal.bind.v2.runtime.output.SAXOutput;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,8 +46,80 @@ public class MainController {
         return "pages/Situation";
     }
 
-    @RequestMapping(value = "/Back_DynamicNews", method = RequestMethod.GET)
-    public String backDynamicNews() {
-        return "backend/Back_DynamicNews";
+    //后台部分
+    @RequestMapping(value = "/Introduce", method = RequestMethod.GET)
+    public String introduce() {
+        return "backend/Introduce";
     }
+
+    @RequestMapping(value = "/DynamicNews", method = RequestMethod.GET)
+    public String dynamicNews() {
+        return "backend/DynamicNews";
+    }
+
+    @RequestMapping(value = "/WaterSource", method = RequestMethod.GET)
+    public String waterSource() {
+        return "backend/WaterSource";
+    }
+
+    @RequestMapping(value = "/RollImage", method = RequestMethod.GET)
+    public String rollImage() {
+        return "backend/RollImage";
+    }
+
+    @RequestMapping(value = "/Worker", method = RequestMethod.GET)
+    public String worker() {
+        return "backend/Worker";
+    }
+
+    @RequestMapping(value = "/Visitor", method = RequestMethod.GET)
+    public String visitor() {
+        return "backend/Visitor";
+    }
+
+    @RequestMapping(value = "/Student", method = RequestMethod.GET)
+    public String student() {
+        return "backend/Student";
+    }
+
+    @RequestMapping(value = "/Lecture", method = RequestMethod.GET)
+    public String lecture() {
+        return "backend/Lecture";
+    }
+
+    @RequestMapping(value = "/Meeting", method = RequestMethod.GET)
+    public String meeting() {
+        return "backend/Meeting";
+    }
+
+    @RequestMapping(value = "/Visiting", method = RequestMethod.GET)
+    public String visiting() {
+        return "backend/Visiting";
+    }
+
+    @RequestMapping(value = "/LectureRecord", method = RequestMethod.GET)
+    public String lectureRecord() {
+        return "backend/LectureRecord";
+    }
+
+    @RequestMapping(value = "/Course", method = RequestMethod.GET)
+    public String course() {
+        return "backend/Course";
+    }
+
+    @RequestMapping(value = "/AcademicNews", method = RequestMethod.GET)
+    public String academicNews() {
+        return "backend/AcademicNews";
+    }
+
+    @RequestMapping(value = "/Book", method = RequestMethod.GET)
+    public String book() {
+        return "backend/Book";
+    }
+
+    @RequestMapping(value = "/Article", method = RequestMethod.GET)
+    public String article() {
+        return "backend/Article";
+    }
+
 }
