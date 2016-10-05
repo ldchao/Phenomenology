@@ -15,9 +15,6 @@ public interface BookBLService {
     //增加一条书籍出版记录
     public String addItem(AchievementVO achievementVO);
 
-    //增加一条书籍出版附件添加记录
-    public String addAccessory(AchievementVO achievementVO);
-
     //删除一条书籍出版的记录
     public UniversalState deleteItem(int id);
 

@@ -14,9 +14,6 @@ public interface VisiteBLService {
     //增加一条师生出访记录
     public String addItem(AcademicVO academicVO);
 
-    //增加一条师生出访附件添加记录
-    public String addAccessory(AccessoryVO accessoryVO);
-
     //删除一条师生出访的记录
     public UniversalState deleteItem(int id);
 

@@ -7,6 +7,7 @@ public class AccessoryVO {
 
     private Integer accessoryId;
     private Integer textId;
+    private String name;
     private String location;
 
     public AccessoryVO() {
@@ -26,6 +27,14 @@ public class AccessoryVO {
 
     public void setTextId(Integer textId) {
         this.textId = textId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLocation() {

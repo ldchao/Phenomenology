@@ -14,9 +14,6 @@ public interface CircleNewsBLService {
     //增加一条学界动态记录
     public String addItem(AcademicVO academicVO);
 
-    //增加一条学界动态附件添加记录
-    public String addAccessory(AccessoryVO accessoryVO);
-
     //删除一条学界动态的记录
     public UniversalState deleteItem(int id);
 

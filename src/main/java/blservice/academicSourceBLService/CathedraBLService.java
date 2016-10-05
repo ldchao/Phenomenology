@@ -14,9 +14,6 @@ public interface CathedraBLService {
     //增加一条讲座实录记录
     public String addItem(AcademicVO academicVO);
 
-    //增加一条讲座实录附件添加记录
-    public String addAccessory(AccessoryVO accessoryVO);
-
     //删除一条讲座实录的记录
     public UniversalState deleteItem(int id);
 

@@ -10,6 +10,9 @@ import java.util.ArrayList;
  */
 public interface OfficeBearerBLService {
 
+    //得到一个新的存储id
+    public int getID();
+
     //增加一条在职人员记录
     public String addItem(OrganizationVO organizationVO);
 
@@ -20,7 +23,7 @@ public interface OfficeBearerBLService {
     public UniversalState updateItem(OrganizationVO organizationVO);
 
     //将在职人员进行排序【ArrayList里面id的顺序即为最终顺序】
-    public UniversalState sort(ArrayList<String> idList);
+    public UniversalState sort(ArrayList<Integer> idList);
 
     //按排序获得所有在职人员的名单
     public ArrayList<OrganizationVO> getAllItem(String language);

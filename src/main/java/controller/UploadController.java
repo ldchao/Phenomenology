@@ -1,12 +1,16 @@
 package controller;
 
 import ENUM.UniversalState;
+import bl.accessoryBL.AccessoryBL;
+import bl.helper.FileManager;
+import blservice.accessoryBLService.AccessoryBLService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import vo.AccessoryVO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by lvdechao on 2016/9/26.
@@ -48,7 +53,7 @@ public class UploadController {
 
                 try {
                     file.transferTo(targetFile);
-                    return  "http://localhost:8082/upload/" + file.getOriginalFilename();
+                    return  "../upload/" + file.getOriginalFilename();
                 } catch (IllegalStateException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -63,45 +68,86 @@ public class UploadController {
 
     @RequestMapping("/uploadCover")
     @ResponseBody
-    public String uploadCover(@RequestParam("coverImg") MultipartFile coverImg, @RequestParam("articleId") String articleId, HttpServletRequest request){
+    public String uploadCover(@RequestParam("coverImg") MultipartFile coverImg,HttpServletRequest request){
 
         String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "coverImg/";
-        String originalName = coverImg.getOriginalFilename();
-        String nameSplit[]=originalName.split("\\.");
-        int index=nameSplit.length-1;
-        String filename =articleId;
-        if(index>0)
-            filename+="."+nameSplit[index];
+        String originalFilename = coverImg.getOriginalFilename();
+        String filename = UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
 
-        File dir = new File(uploadUrl);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-
-        System.out.println("文件上传到: " + uploadUrl + filename);
+        FileManager.ensureFileExists(uploadUrl,filename);
 
         File targetFile = new File(uploadUrl + filename);
-        if (!targetFile.exists()) {
-            try {
-                targetFile.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-                return UniversalState.FAIL.toString();
-            }
-        }
-
         try {
             coverImg.transferTo(targetFile);
         } catch (IllegalStateException e) {
             e.printStackTrace();
-            return UniversalState.FAIL.toString();
         } catch (IOException e) {
             e.printStackTrace();
-            return UniversalState.FAIL.toString();
         }
 
         String coverImgPath="../coverImg/"+filename;
 
         return  coverImgPath;
+    }
+
+    @RequestMapping("/uploadEssayAccessory")
+    @ResponseBody
+    public String uploadEssayAccessory(@RequestParam("accessory") MultipartFile accessory,int id,HttpServletRequest request){
+
+        String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "accessory/";
+        String originalFilename = accessory.getOriginalFilename();
+        String filename = UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
+
+        FileManager.ensureFileExists(uploadUrl,filename);
+
+        File targetFile = new File(uploadUrl + filename);
+        try {
+            accessory.transferTo(targetFile);
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        String accessoryPath="accessory/"+filename;
+        AccessoryBLService accessoryBLService=new AccessoryBL();
+        AccessoryVO accessoryVO=new AccessoryVO();
+        accessoryVO.setTextId(id);
+        accessoryVO.setName(originalFilename);
+        accessoryVO.setLocation(accessoryPath);
+        accessoryBLService.addEssayAccessory(accessoryVO);
+
+        return  accessoryPath;
+    }
+
+    @RequestMapping("/uploadSaAccessory")
+    @ResponseBody
+    public String uploadSaAccessory(@RequestParam("accessory") MultipartFile accessory,int id,HttpServletRequest request){
+
+        String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "accessory/";
+        String originalFilename = accessory.getOriginalFilename();
+        String filename = UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
+
+        FileManager.ensureFileExists(uploadUrl,filename);
+
+        File targetFile = new File(uploadUrl + filename);
+        try {
+            accessory.transferTo(targetFile);
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String accessoryPath="accessory/"+filename;
+        AccessoryBLService accessoryBLService=new AccessoryBL();
+        AccessoryVO accessoryVO=new AccessoryVO();
+        accessoryVO.setTextId(id);
+        accessoryVO.setName(originalFilename);
+        accessoryVO.setLocation(accessoryPath);
+        accessoryBLService.addSaAccessory(accessoryVO);
+
+        return  accessoryPath;
     }
 }

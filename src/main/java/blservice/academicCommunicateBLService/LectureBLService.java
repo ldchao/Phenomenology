@@ -14,9 +14,6 @@ public interface LectureBLService {
     //增加一条学术讲座记录
     public String addItem(AcademicVO academicVO);
 
-    //增加一条学术讲座附件添加记录
-    public String addAccessory(AccessoryVO accessoryVO);
-
     //删除一条学术讲座的记录
     public UniversalState deleteItem(int id);
 

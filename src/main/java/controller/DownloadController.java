@@ -23,7 +23,7 @@ public class DownloadController {
 	 var input1=$("<input>");
 	 input1.attr("type","hidden");
 	 input1.attr("name","fileName");
-	 input1.attr("value","55.txt");//路径名
+	 input1.attr("value","upload/55.txt");//路径名
 	 $("body").append(form);//将表单放置在web中
 	 form.append(input1);
 
@@ -46,7 +46,7 @@ public class DownloadController {
 		java.io.BufferedOutputStream bos = null;
 
 		// TODO: 2016/9/29 文件下载路径
-		String ctxPath = request.getSession().getServletContext().getRealPath("/") + "upload/";
+		String ctxPath = request.getSession().getServletContext().getRealPath("/");
 		String downLoadPath = ctxPath + fileName;
 		System.out.println(downLoadPath);
 		try {
@@ -68,14 +68,12 @@ public class DownloadController {
 				try {
 					bis.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			if (bos != null)
 				try {
 					bos.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		}

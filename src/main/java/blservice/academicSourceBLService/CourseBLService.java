@@ -12,10 +12,7 @@ import java.util.ArrayList;
 public interface CourseBLService {
 
     //增加一条课程资源记录
-    public String addItem(AcademicVO academicVO);
-
-    //增加一条课程资源附件添加记录
-    public String addAccessory(AccessoryVO accessoryVO);
+    public String addItem(AcademicVO academicVO);;
 
     //删除一条课程资源的记录
     public UniversalState deleteItem(int id);

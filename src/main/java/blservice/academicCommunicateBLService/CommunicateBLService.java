@@ -14,9 +14,6 @@ public interface CommunicateBLService {
     //增加一条学术交流记录
     public String addItem(AcademicVO academicVO);
 
-    //增加一条源头学术交流添加记录
-    public String addAccessory(AccessoryVO accessoryVO);
-
     //删除一条学术交流的记录
     public UniversalState deleteItem(int id);
 
