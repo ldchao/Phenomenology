@@ -2,7 +2,11 @@ package controller;
 
 import ENUM.UniversalState;
 import bl.organizationBL.OfficeBearerBL;
+import bl.organizationBL.ScholarBL;
+import bl.organizationBL.StudentBL;
 import blservice.organizationBLService.OfficeBearerBLService;
+import blservice.organizationBLService.ScholarBLService;
+import blservice.organizationBLService.StudentBLService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,8 +78,8 @@ public class OrganizationController {
     @RequestMapping(value = "/scholar/getID", method = RequestMethod.POST)
     @ResponseBody
     public int getScholarID() {
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        return officeBearerBLService.getID();
+        ScholarBLService scholarBLService=new ScholarBL();
+        return scholarBLService.getID();
     }
 
     @RequestMapping(value = "/scholar/update", method = RequestMethod.POST)
@@ -88,36 +92,36 @@ public class OrganizationController {
         organizationVO.setDescriptionLocation(descriptionLocation);
         organizationVO.setImageLocation(imageLocation);
         organizationVO.setLanguage(language);
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        UniversalState universalState=officeBearerBLService.updateItem(organizationVO);
+        ScholarBLService scholarBLService=new ScholarBL();
+        UniversalState universalState=scholarBLService.updateItem(organizationVO);
         return universalState.toString();
     }
     @RequestMapping(value = "/scholar/delete", method = RequestMethod.POST)
     @ResponseBody
     public String deleteScholar(int id) {
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        UniversalState universalState=officeBearerBLService.deleteItem(id);
+        ScholarBLService scholarBLService=new ScholarBL();
+        UniversalState universalState=scholarBLService.deleteItem(id);
         return universalState.toString();
     }
     @RequestMapping(value = "/scholar/sort", method = RequestMethod.POST)
     @ResponseBody
     public String sortScholar(@RequestParam("list[]")ArrayList<Integer> list) {
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        UniversalState universalState=officeBearerBLService.sort(list);
+        ScholarBLService scholarBLService=new ScholarBL();
+        UniversalState universalState=scholarBLService.sort(list);
         return universalState.toString();
     }
     @RequestMapping(value = "/scholar/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<OrganizationVO> getScholar(String language) {
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        return officeBearerBLService.getAllItem(language);
+        ScholarBLService scholarBLService=new ScholarBL();
+        return scholarBLService.getAllItem(language);
     }
 
     @RequestMapping(value = "/student/getID", method = RequestMethod.POST)
     @ResponseBody
     public int getStudentID() {
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        return officeBearerBLService.getID();
+        StudentBLService studentBLService=new StudentBL();
+        return studentBLService.getID();
     }
 
     @RequestMapping(value = "/student/update", method = RequestMethod.POST)
@@ -130,29 +134,29 @@ public class OrganizationController {
         organizationVO.setDescriptionLocation(descriptionLocation);
         organizationVO.setImageLocation(imageLocation);
         organizationVO.setLanguage(language);
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        UniversalState universalState=officeBearerBLService.updateItem(organizationVO);
+        StudentBLService studentBLService=new StudentBL();
+        UniversalState universalState=studentBLService.updateItem(organizationVO);
         return universalState.toString();
     }
     @RequestMapping(value = "/student/delete", method = RequestMethod.POST)
     @ResponseBody
     public String deleteStudent(int id) {
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        UniversalState universalState=officeBearerBLService.deleteItem(id);
+        StudentBLService studentBLService=new StudentBL();
+        UniversalState universalState=studentBLService.deleteItem(id);
         return universalState.toString();
     }
     @RequestMapping(value = "/student/sort", method = RequestMethod.POST)
     @ResponseBody
     public String sortStudent(@RequestParam("list[]")ArrayList<Integer> list) {
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        UniversalState universalState=officeBearerBLService.sort(list);
+        StudentBLService studentBLService=new StudentBL();
+        UniversalState universalState=studentBLService.sort(list);
         return universalState.toString();
     }
     @RequestMapping(value = "/student/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<OrganizationVO> getStudent(String language) {
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        return officeBearerBLService.getAllItem(language);
+        StudentBLService studentBLService=new StudentBL();
+        return studentBLService.getAllItem(language);
     }
 
 }

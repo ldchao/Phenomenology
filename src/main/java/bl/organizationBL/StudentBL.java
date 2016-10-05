@@ -1,7 +1,7 @@
 package bl.organizationBL;
 
 import ENUM.UniversalState;
-import blservice.organizationBLService.OfficeBearerBLService;
+import blservice.organizationBLService.StudentBLService;
 import vo.OrganizationVO;
 
 import java.util.ArrayList;
@@ -9,10 +9,8 @@ import java.util.ArrayList;
 /**
  * Created by lvdechao on 2016/10/5.
  */
-public class OfficeBearerBL implements OfficeBearerBLService{
+public class StudentBL implements StudentBLService{
     public int getID() {
-
-
         return 0;
     }
 

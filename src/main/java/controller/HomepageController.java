@@ -26,7 +26,7 @@ public class HomepageController {
 
     @RequestMapping("/CarouselFigure/upload")
     @ResponseBody
-    public int uploadCarouselFigure(@RequestParam("carouselFigure") MultipartFile carouselFigure, HttpServletRequest request){
+    public int uploadCarouselFigure(@RequestParam("carouselFigure") MultipartFile carouselFigure,String url, HttpServletRequest request){
 
         String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "carouselFigure/";
 
@@ -60,7 +60,7 @@ public class HomepageController {
 
     @RequestMapping("/CarouselFigure/getAll")
     @ResponseBody
-    public ArrayList<PictureVO> getAllCarouselFigure(@RequestParam("carouselFigure") MultipartFile carouselFigure, HttpServletRequest request){
+    public ArrayList<PictureVO> getAllCarouselFigure(){
         CarouselFigureBLService carouselFigureBLService=new CarouselFigureBL();
         return carouselFigureBLService.getAllPicture();
     }
