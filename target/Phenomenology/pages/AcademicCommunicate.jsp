@@ -73,6 +73,7 @@
                 <span class="lecture_title article_list_title">2016年南京大学超级现象学大会召开并且标题非常非常非常非常的长</span>
                 <span class="article_list_title"
                       style="float: right; margin-right: 17px; color: #b8b9b9;">2016/9/30</span>
+                <a style="display: none;">1</a>
             </div>
 
         </div>

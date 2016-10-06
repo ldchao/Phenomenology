@@ -10,10 +10,30 @@ window.onload = function () {
     getVisitings();
 };
 
+// 学术讲座
 function getLectures() {
+
     var copy = document.getElementById("lecture_copy");
     var lecture = document.getElementById("lecture");
 
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "../academicCommunicate/lecture/get",
+        data: {
+            "language": "ch"
+        },
+        dataType: "json",
+        success: function (result) {
+
+        // 讲座
+
+        },
+        error: function () {
+            alert("讲座数据获取失败");
+        }
+    });
+    
     for (var i = 0; i < 15; i++) {
         var div = document.createElement("div");
         div.innerHTML = copy.innerHTML;
@@ -29,9 +49,28 @@ function getLectures() {
 
 }
 
+// 学术交流
 function getMeetings() {
     var copy = document.getElementById("lecture_copy");
     var meeting = document.getElementById("meeting");
+
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "../academicCommunicate/communicate/get",
+        data: {
+            "language": "ch"
+        },
+        dataType: "json",
+        success: function (result) {
+
+            // 交流
+
+        },
+        error: function () {
+            alert("交流数据获取失败");
+        }
+    });
 
     for (var i = 0; i < 10; i++) {
         var div = document.createElement("div");
@@ -49,9 +88,28 @@ function getMeetings() {
     $(meeting).hide();
 }
 
+// 师生出访
 function getVisitings() {
     var copy = document.getElementById("lecture_copy");
     var visiting = document.getElementById("visiting");
+
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "../academicCommunicate/visit/get",
+        data: {
+            "language": "ch"
+        },
+        dataType: "json",
+        success: function (result) {
+
+            // 出访
+
+        },
+        error: function () {
+            alert("出访数据获取失败");
+        }
+    });
 
     for (var i = 0; i < 5; i++) {
         var div = document.createElement("div");
@@ -89,10 +147,30 @@ function changeTab(index) {
 function showArticle(link) {
 
     var tabs = ["学术讲座", "学术交流", "师生出访"];
+    var Ids = ["lecture", "communicate", "visit"];
 
-    var title = link.innerHTML.trim();
     var content = document.getElementById("news_content");
-    
+
+    var id = link.parentNode.getElementsByTagName("a")[0].innerHTML.trim();
+
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "../academicCommunicate/" + Ids[Tab_Selected] + "/getOne",
+        data: {
+            "id": id
+        },
+        dataType: "json",
+        success: function (result) {
+
+            // 出访
+
+        },
+        error: function () {
+            alert("出访数据获取失败");
+        }
+    });
+
     var backbtn = content.getElementsByClassName("back_lbl")[0];
     backbtn .getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
     backbtn.onclick = function () {

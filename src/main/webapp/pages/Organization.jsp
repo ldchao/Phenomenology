@@ -71,6 +71,7 @@
             <div id="office_copy" class="each_book_div" style="display: none;">
                 <div class="book_pic"></div>
                 <div class="article_text name_link">某某某</div>
+                <a style="display: none;">1</a>
             </div>
         </div>
 
