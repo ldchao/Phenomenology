@@ -28,4 +28,8 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
     public List<Scientificachievement> find(String type, String language) {
         return null;
     }
+
+    public Scientificachievement getById(int id) {
+        return null;
+    }
 }

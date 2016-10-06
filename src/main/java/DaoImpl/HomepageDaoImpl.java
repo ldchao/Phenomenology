@@ -33,4 +33,9 @@ public class HomepageDaoImpl implements HomepageDao {
     public List<Essay> find(String type, String language) {
         return null;
     }
+
+    public Homepage getById(int id) {
+
+        return null;
+    }
 }

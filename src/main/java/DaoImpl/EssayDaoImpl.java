@@ -32,4 +32,8 @@ public class EssayDaoImpl implements EssayDao {
     public List<Essay> find(String type, String language) {
         return null;
     }
+
+    public Essay getById(int id) {
+        return null;
+    }
 }

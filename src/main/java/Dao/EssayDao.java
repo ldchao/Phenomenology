@@ -19,4 +19,6 @@ public interface EssayDao {
     public List<Essay> findTop5(String type,String Language);
 
     public List<Essay> find(String type,String language);
+
+    public Essay getById(int id);
 }

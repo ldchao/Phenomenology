@@ -15,4 +15,6 @@ public interface PersonDao {
     public void update(Person person);
 
     public List<Person> findAll();
+
+    public Person getById(int id);
 }

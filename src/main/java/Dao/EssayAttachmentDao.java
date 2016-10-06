@@ -16,4 +16,6 @@ public interface EssayAttachmentDao {
     public void update(EssayAttachment essayAttachment);
 
     public List<EssayAttachment> findAll();
+
+    public EssayAttachment getById(int id);
 }

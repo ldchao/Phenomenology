@@ -15,4 +15,6 @@ public interface HomepageEssayDao {
     public void update(HomepageEssay homepageEssay);
 
     public List<HomepageEssay> findAll();
+
+    public HomepageEssay getById(int id);
 }

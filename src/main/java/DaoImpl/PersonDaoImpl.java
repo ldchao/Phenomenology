@@ -24,4 +24,8 @@ public class PersonDaoImpl implements PersonDao{
     public List<Person> findAll() {
         return null;
     }
+
+    public Person getById(int id) {
+        return null;
+    }
 }

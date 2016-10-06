@@ -24,4 +24,8 @@ public class SaAttachmentDaoImpl implements SaAttachmentDao {
     public List<SaAttachment> findAll() {
         return null;
     }
+
+    public SaAttachment getById(int id) {
+        return null;
+    }
 }

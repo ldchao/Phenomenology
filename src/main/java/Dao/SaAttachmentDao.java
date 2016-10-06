@@ -15,4 +15,6 @@ public interface SaAttachmentDao {
     public void update(SaAttachment saAttachment);
 
     public List<SaAttachment> findAll();
+
+    public SaAttachment getById(int id);
 }

@@ -21,6 +21,10 @@ public class EssayAttachmentDaoImpl implements EssayAttachmentDao {
 
     }
 
+    public EssayAttachment getById(int id){
+        return  null;
+    };
+
     public List<EssayAttachment> findAll() {
         return null;
     }

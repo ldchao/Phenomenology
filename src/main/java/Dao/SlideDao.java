@@ -13,4 +13,6 @@ public interface SlideDao {
     public void delete(int id);
 
     public List<Slide> findAll();
+
+    public Slide getById(int id);
 }

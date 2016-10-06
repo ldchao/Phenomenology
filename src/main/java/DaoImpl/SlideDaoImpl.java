@@ -20,4 +20,8 @@ public class SlideDaoImpl implements SlideDao {
     public List<Slide> findAll() {
         return null;
     }
+
+    public Slide getById(int id) {
+        return null;
+    }
 }
