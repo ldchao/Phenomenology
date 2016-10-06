@@ -43,65 +43,118 @@
     <div class="right_intent">
         <table class="list">
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    <%--<a><i class="fa fa-arrow-up" aria-hidden="true"></i></a>--%>
-                    <%--<a><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>--%>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目xxx项目xxx项目xxx项目xxx项目xxx项目xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
         </table>
 
         <button class="new blueButton" onclick="showForm()">新建
         </button>
     </div>
+    ®
 </div>
 
 <div class="editBody">
-    <div class="editForm">
-        <a class="closeButton" href="javascript:closeForm
+    <form id="form1" action="/uploadCover.action" class="editForm" method="post" enctype="multipart/form-data">
+        <a class="closeButton" onclick="closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
-            <input type="text" class="textfield" placeholder="文章链接">
-            <button class="formButton blueButton">选取缩略图</button>
+            <input id="name" type="text" class="textfield" placeholder="文章链接">
+
+            <div class="buttons">
+                <a class="chooseFile">
+                    <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传文件
+                </a>
+                <%--<button id="chooseImage" class="formButton blueButton">选取缩略图</button>--%>
+                <button class="submitButton">提交</button>
+
+                <div class="none">
+                    <input type="submit" name="submitFile" value="提交"/>
+                </div>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
 
-
+<script src="../js/backend.js"></script>
 <script src="../js/jquery.js"></script>
 <script>
-    function showForm() {
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
+    if ($(".innerForm").find("#editDiv").length != 0) {
+        $(".editForm").css({height: (h - 100)});
+    }
+    $("#editDiv").css({height: (h - 250)});
+
+
+    function editItem(ele) {
+        var id = ele.parentNode.firstChild.innerHTML;
+        $("input[id='name']").val("hhh");
+//        $("#coverImg").val() = null;
+        $(".submitButton").html("提交修改");
         $(".editBody").fadeIn(300);
     }
 
-    function closeForm() {
-        $(".editBody").fadeOut(300);
+    function deleteItem(ele) {
+        var id = ele.parentNode.firstChild;
     }
+
+    jQuery(function () {
+        $(".submitButton").click(function () {
+            alert("hhhhhhhhhhhhhhh");
+            $('#form1').on('submit', function () {
+                alert("zhixing");
+                var file = $("#coverImg").val();
+                var name = $("#name").val();
+                $(this).ajaxSubmit({
+                    type: 'post', // 提交方式 get/post
+                    url: '/coverImg.action', // 需要提交的 url
+                    data: {
+                        'coverImg': file,
+                    },
+                    success: function (data) { // data 保存提交后返回的数据，一般为 json 数据
+                        alert('提交成功！');
+
+                    },
+
+                });
+                $(this).resetForm(); // 提交后重置表单
+//             $("#submitFile").click();
+//            alert("hhh")
+            });
+        });
+    });
 
 
 </script>

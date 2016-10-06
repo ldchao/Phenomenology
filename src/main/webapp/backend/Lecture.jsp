@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/backend.css">
     <link href="../css/cssreset.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../dist/css/wangEditor.min.css">
 </head>
 <body>
 <div class="log">登出</div>
@@ -43,36 +44,40 @@
     <div class="right_intent">
         <table class="list">
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    <%--<a><i class="fa fa-arrow-up" aria-hidden="true"></i></a>--%>
-                    <%--<a><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>--%>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
-                <td class="td1">xxx项目xxx项目xxx项目xxx项目xxx项目xxx项目xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <td class="td1">1</td>
+                <td class="td2">xxx项目</td>
+                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
         </table>
 
@@ -86,22 +91,62 @@
         <a class="closeButton" href="javascript:closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
-            <input type="text" class="textfield" placeholder="文章链接">
-            <button class="formButton blueButton">选取缩略图</button>
+
+            <div class="firstline">
+                <input id="name" type="text" class="textfield" placeholder="标题">
+                <input id="publisher" type="text" class="textfield" placeholder="发布人">
+
+            </div>
+
+            <div id="editDiv">
+                <p>在此输入文章正文......</p>
+            </div>
+
+
+            <div class="buttons">
+                <a class="chooseFile">
+                    <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传附件(可选)
+                </a>
+
+                <%--<button id="chooseImage" class="formButton blueButton">选取缩略图</button>--%>
+                <button class="submitButton">提交</button>
+
+                <div class="none">
+                    <input type="submit" name="submitFile" value="提交"/>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
-
-<script src="../js/jquery.js"></script>
+<script src="../js/backend.js"></script>
+<script type="text/javascript" src="../dist/js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>
 <script>
-    function showForm() {
-        $(".editBody").fadeIn(300);
-    }
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
 
-    function closeForm() {
-        $(".editBody").fadeOut(300);
+    var editor = new wangEditor('editDiv');
+    editor.config.menuFixed = false;
+
+    // 上传图片（举例）
+    //    editor.config.uploadImgUrl = '../uploadImgUrl';
+
+    if ($(".innerForm").find("#editDiv").length != 0) {
+        $(".editForm").css({height: (h - 100)});
     }
+    $("#editDiv").css({height: (h - 286)});
+
+    editor.config.menus = $.map(wangEditor.config.menus, function (item, key) {
+        if (item === 'fullscreen') {
+            return null;
+        }
+        return item;
+    });
+
+
+    editor.create();
+
 </script>
 </body>
 </html>
