@@ -11,8 +11,9 @@ window.onload = function () {
         data: {
             "language": "ch"
         },
-        dataType: "json",
+        dataType: "html",
         success: function (result) {
+
             if(result != null) {
                 document.getElementById("introduce").innerHTML = result;
             }
