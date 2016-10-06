@@ -68,8 +68,8 @@
         <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(2)">本所学生</div>
 
         <div id="office" class="achieves_div">
-            <div id="office_copy" class="each_book_div" style="display: none;">
-                <div class="book_pic"></div>
+            <div id="office_copy" class="each_photo_div" style="display: none;width: 130px; height: 140px;">
+                <div class="book_pic" style="width: 130px; height: 140px;"></div>
                 <div class="article_text name_link">某某某</div>
                 <a style="display: none;">1</a>
             </div>

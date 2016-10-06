@@ -35,27 +35,37 @@ function showBooks() {
         },
         dataType: "json",
         success: function (result) {
+           
+            for (var i = 0; i < result.length; i++) {
 
-            // 书籍列表
+                var div = document.createElement("div");
+                div.innerHTML = copy.innerHTML;
+                div.setAttribute("class", "each_book_div");
+
+                var link = div.getElementsByClassName("name_link")[0]; 
+                link.innerHTML = result[i].title;
+                link.onclick = function () {
+                    showBookDetail(this);
+                };
+                
+                div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+
+                // 图片地址
+                var img = document.createElement("img");
+                img.style.width = "100px";
+                img.style.height = "125px";
+                img.src = result[i].thumbnailLocation;
+                div.getElementsByClassName("book_pic")[0].innerHTML = "";
+                div.getElementsByClassName("book_pic")[0].appendChild(img);
+
+                books.appendChild(div);
+            }
 
         },
         error: function () {
             alert("书籍列表获取失败");
         }
     });
-    
-    for (var i = 0; i < 7; i++) {
-        var div = document.createElement("div");
-        div.innerHTML = copy.innerHTML;
-        div.setAttribute("class", "each_book_div");
-
-        var link = div.getElementsByClassName("name_link")[0];
-        link.onclick = function () {
-            showBookDetail(this);
-        };
-
-        books.appendChild(div);
-    }
 }
 
 function showBookDetail(link) {
@@ -75,7 +85,32 @@ function showBookDetail(link) {
         dataType: "json",
         success: function (result) {
 
-            // 书籍内容
+            var img = document.createElement("img");
+            img.style.width = "100px";
+            img.style.height = "125px";
+            img.src = result.thumbnailLocation;
+            var photo = detail.getElementsByClassName("photo")[0];
+            photo.style.width = "100px";
+            photo.style.height = "125px";
+            photo.innerHTML = "";
+            photo.appendChild(img);
+
+            // 简介
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "../getHtml",
+                data: {
+                    "filename": result.descriptionLocation,
+                },
+                dataType: "html",
+                success: function (text) {
+                    detail.getElementsByClassName("introduction")[0].innerHTML = text;
+                },
+                error: function () {
+                    alert("html数据获取失败");
+                }
+            });
 
         },
         error: function () {
@@ -112,7 +147,23 @@ function showArticles() {
         dataType: "json",
         success: function (result) {
 
-            // 文章列表
+            for (var i = 0; i < result.length; i++) {
+
+                var div = document.createElement("div");
+                div.innerHTML = copy.innerHTML;
+                div.setAttribute("class", "each_lecture");
+
+                var title = div.getElementsByClassName("lecture_title")[0];
+                title.innerHTML = result[i].title;
+                title.onclick = function () {
+                    showArticleDetail(this);
+                };
+
+                div.getElementsByTagName("span")[1].innerHTML = result[i].time;
+                div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+
+                articles.appendChild(div);
+            }
 
         },
         error: function () {
@@ -120,19 +171,6 @@ function showArticles() {
         }
     });
     
-    for (var i = 0; i < 7; i++) {
-        var div = document.createElement("div");
-        div.innerHTML = copy.innerHTML;
-        div.setAttribute("class", "each_lecture");
-       
-        var title = div.getElementsByClassName("lecture_title")[0];
-        title.onclick = function() {
-            showArticleDetail(this);
-        };
-        
-        articles.appendChild(div);
-    }
-
     $(articles).hide();
 }
 
@@ -152,7 +190,24 @@ function showArticleDetail(link) {
         dataType: "json",
         success: function (result) {
 
-            // 文章内容
+            content.getElementsByClassName("article_title")[0].innerHTML = result.title;
+
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "../getHtml",
+                data: {
+                    "filename": result.descriptionLocation,
+                },
+                dataType: "html",
+                success: function (text) {
+                    content.getElementsByClassName("text_content")[0].innerHTML = text;
+                },
+                error: function () {
+                    alert("html数据获取失败");
+                }
+            });
+
 
         },
         error: function () {

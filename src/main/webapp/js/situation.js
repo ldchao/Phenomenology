@@ -13,7 +13,6 @@ window.onload = function () {
         },
         dataType: "html",
         success: function (result) {
-
             if(result != null) {
                 document.getElementById("introduce").innerHTML = result;
             }

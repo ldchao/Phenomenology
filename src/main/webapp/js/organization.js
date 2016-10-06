@@ -12,7 +12,6 @@ window.onload = function () {
 
 // 在职人员
 function getOffice() {
-    var copy = document.getElementById("office_copy");
     var lecture = document.getElementById("office");
 
     $.ajax({
@@ -24,33 +23,17 @@ function getOffice() {
         },
         dataType: "json",
         success: function (result) {
-
             // 在职人员
-
+            setId(result, lecture);
         },
         error: function () {
             alert("在职人员数据获取失败");
         }
     });
-
-    for (var i = 0; i < 15; i++) {
-        var div = document.createElement("div");
-        div.innerHTML = copy.innerHTML;
-        div.setAttribute("class", "each_book_div");
-
-        var link = div.getElementsByClassName("name_link")[0];
-        link.onclick = function () {
-            showDetail(this);
-        };
-
-        lecture.appendChild(div);
-    }
-
 }
 
 // 访问学者
 function getVisiting() {
-    var copy = document.getElementById("office_copy");
     var meeting = document.getElementById("visiting");
 
     $.ajax({
@@ -64,6 +47,7 @@ function getVisiting() {
         success: function (result) {
 
             // 访问学者
+            setId(result, meeting);
 
         },
         error: function () {
@@ -71,25 +55,11 @@ function getVisiting() {
         }
     });
 
-    for (var i = 0; i < 10; i++) {
-        var div = document.createElement("div");
-        div.innerHTML = copy.innerHTML;
-        div.setAttribute("class", "each_book_div");
-
-        var link = div.getElementsByClassName("name_link")[0];
-        link.onclick = function () {
-            showDetail(this);
-        };
-
-        meeting.appendChild(div);
-    }
-
     $(meeting).hide();
 }
 
 // 本所学生
 function getStudent() {
-    var copy = document.getElementById("office_copy");
     var visiting = document.getElementById("student");
 
     $.ajax({
@@ -103,25 +73,13 @@ function getStudent() {
         success: function (result) {
 
             // 访问学者
+            setId(result, visiting);
 
         },
         error: function () {
             alert("访问学者数据获取失败");
         }
     });
-
-    for (var i = 0; i < 5; i++) {
-        var div = document.createElement("div");
-        div.innerHTML = copy.innerHTML;
-        div.setAttribute("class", "each_book_div");
-
-        var link = div.getElementsByClassName("name_link")[0];
-        link.onclick = function () {
-            showDetail(this);
-        };
-
-        visiting.appendChild(div);
-    }
 
     $(visiting).hide();
 }
@@ -153,6 +111,15 @@ function showDetail(link) {
 
     var detail = document.getElementById("staff_detail");
 
+    var backbtn = detail.getElementsByClassName("back_lbl")[0];
+    backbtn.getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
+    backbtn.onclick = function () {
+        $("#staff_detail").hide();
+        $("#staff_list").show();
+    };
+
+    detail.getElementsByClassName("name")[0].innerHTML = name;
+
     $.ajax({
         type: "get",
         async: false,
@@ -163,24 +130,66 @@ function showDetail(link) {
         dataType: "json",
         success: function (result) {
 
-            // 出访
+            var img = document.createElement("img");
+            img.style.width = "130px";
+            img.style.height = "140px";
+            img.src = result.imageLocation;
+            detail.getElementsByClassName("photo")[0].innerHTML = "";
+            detail.getElementsByClassName("photo")[0].appendChild(img);
 
+            // 简介
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "../getHtml",
+                data: {
+                    "filename": result.descriptionLocation,
+                },
+                dataType: "html",
+                success: function (text) {
+                    detail.getElementsByClassName("introduction")[0].innerHTML = text;
+                },
+                error: function () {
+                    alert("html数据获取失败");
+                }
+            });
+            
         },
         error: function () {
             alert("人员数据获取失败");
         }
     });
 
-    var backbtn = detail.getElementsByClassName("back_lbl")[0];
-    backbtn.getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
-    backbtn.onclick = function () {
-        $("#staff_detail").hide();
-        $("#staff_list").show();
-    };
-
-    detail.getElementsByClassName("name")[0].innerHTML = name;
-
     $("#staff_list").hide();
     $("#staff_detail").show();
 
+}
+
+function setId(result, parent) {
+    var copy = document.getElementById("office_copy");
+
+    for (var i = 0; i < result.length; i++) {
+
+        var div = document.createElement("div");
+        div.innerHTML = copy.innerHTML;
+        div.setAttribute("class", "each_photo_div");
+
+        var link = div.getElementsByClassName("name_link")[0];
+        link.innerHTML = result[i].name;
+        link.onclick = function () {
+            showDetail(this);
+        };
+        
+        div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+
+        // 图片地址
+        var img = document.createElement("img");
+        img.style.width = "130px";
+        img.style.height = "140px";
+        img.src = result[i].imageLocation;
+        div.getElementsByClassName("book_pic")[0].innerHTML = "";
+        div.getElementsByClassName("book_pic")[0].appendChild(img);
+        
+        parent.appendChild(div);
+    }
 }

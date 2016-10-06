@@ -13,7 +13,6 @@ window.onload = function () {
 // 讲座实录
 function getLectures() {
 
-    var copy = document.getElementById("lecture_copy");
     var lecture = document.getElementById("lecture");
 
     $.ajax({
@@ -25,33 +24,17 @@ function getLectures() {
         },
         dataType: "json",
         success: function (result) {
-
             // 讲座实录
-
+            setTitle(result, lecture);
         },
         error: function () {
             alert("讲座数据获取失败");
         }
     });
-
-    for (var i = 0; i < 15; i++) {
-        var div = document.createElement("div");
-        div.innerHTML = copy.innerHTML;
-        div.setAttribute("class", "each_lecture");
-
-        var title = div.getElementsByClassName("lecture_title")[0];
-        title.onclick = function() {
-            showArticle(this);
-        };
-
-        lecture.appendChild(div);
-    }
-
 }
 
 // 课程资源
 function getMeetings() {
-    var copy = document.getElementById("lecture_copy");
     var meeting = document.getElementById("meeting");
 
     $.ajax({
@@ -63,34 +46,19 @@ function getMeetings() {
         },
         dataType: "json",
         success: function (result) {
-
             // 课程资源
-
+            setTitle(result, meeting);
         },
         error: function () {
             alert("课程资源数据获取失败");
         }
     });
 
-    for (var i = 0; i < 10; i++) {
-        var div = document.createElement("div");
-        div.innerHTML = copy.innerHTML;
-        div.setAttribute("class", "each_lecture");
-
-        var title = div.getElementsByClassName("lecture_title")[0];
-        title.onclick = function() {
-            showArticle(this);
-        };
-
-        meeting.appendChild(div);
-    }
-
     $(meeting).hide();
 }
 
 // 学界动态
 function getVisitings() {
-    var copy = document.getElementById("lecture_copy");
     var visiting = document.getElementById("visiting");
 
     $.ajax({
@@ -102,27 +70,13 @@ function getVisitings() {
         },
         dataType: "json",
         success: function (result) {
-
             // 学界动态
-
+            setTitle(result, visiting);
         },
         error: function () {
             alert("学界动态数据获取失败");
         }
     });
-
-    for (var i = 0; i < 5; i++) {
-        var div = document.createElement("div");
-        div.innerHTML = copy.innerHTML;
-        div.setAttribute("class", "each_lecture");
-
-        var title = div.getElementsByClassName("lecture_title")[0];
-        title.onclick = function() {
-            showArticle(this);
-        };
-
-        visiting.appendChild(div);
-    }
 
     $(visiting).hide();
 }
@@ -162,9 +116,27 @@ function showArticle(link) {
         },
         dataType: "json",
         success: function (result) {
+           
+            content.getElementsByClassName("article_title")[0].innerHTML = result.title;
+            document.getElementById("writer").innerHTML = result.author;
+            document.getElementById("time").innerHTML = result.time;
+            document.getElementById("viewer").innerHTML = result.pageView;
 
-            // 出访
-
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "../getHtml",
+                data: {
+                    "filename": result.location
+                },
+                dataType: "html",
+                success: function (text) {
+                    content.getElementsByClassName("text_content")[0].innerHTML = text;
+                },
+                error: function () {
+                    alert("html数据获取失败");
+                }
+            });
         },
         error: function () {
             alert("出访数据获取失败");
@@ -181,4 +153,26 @@ function showArticle(link) {
 
     $("#news_list").hide();
     $("#news_content").show();
+}
+
+function setTitle(result, parent) {
+    var copy = document.getElementById("lecture_copy");
+
+    for (var i = 0; i < result.length; i++) {
+
+        var div = document.createElement("div");
+        div.innerHTML = copy.innerHTML;
+        div.setAttribute("class", "each_lecture");
+
+        var title = div.getElementsByClassName("lecture_title")[0];
+        title.innerHTML = result[i].title;
+        title.onclick = function () {
+            showArticle(this);
+        };
+
+        div.getElementsByTagName("span")[1].innerHTML = result[i].time;
+        div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+
+        parent.appendChild(div);
+    }
 }

@@ -36,3 +36,5 @@ target/Phenomenology/META-INF/MANIFEST.MF
 target/Phenomenology/META-INF/MANIFEST.MF
 
 Phenomenology.iml
+
+*.MF

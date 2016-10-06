@@ -30,6 +30,15 @@
     margin-bottom: 20px;
 }
 
+.each_photo_div {
+    width: 130px;
+    height: 149px;
+    margin-right: 40px;
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
 .book_pic {
     width: 100px;
     height: 125px;
@@ -85,8 +94,8 @@
 }
 
 .photo {
-    width: 127px;
-    height: 142px;
+    width: 130px;
+    height: 140px;
     border: 1px solid #979797;
     background-color: #d8d8d8;
     vertical-align: top;
