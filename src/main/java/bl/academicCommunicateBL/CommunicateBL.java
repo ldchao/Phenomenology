@@ -2,6 +2,7 @@ package bl.academicCommunicateBL;
 
 import Dao.EssayDao;
 import DaoImpl.EssayDaoImpl;
+import ENUM.Language;
 import ENUM.Type;
 import ENUM.UniversalState;
 import POJO.Essay;
@@ -39,10 +40,9 @@ public class CommunicateBL implements CommunicateBLService{
         essay.setTime(new Date());
         essay.setAuthor(academicVO.getAuthor());
         essay.setLocation(academicVO.getLocation());
-        essay.setLanguage(academicVO.getLanguage());
+        essay.setLanguage(Language.valueOf(academicVO.getLanguage()));
 //        essay.set
-        essay.setType(Type.Communicate.toString());
-
+        essay.setType(Type.Communicate);
         return null;
     }
 
