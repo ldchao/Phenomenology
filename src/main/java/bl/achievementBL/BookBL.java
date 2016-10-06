@@ -27,10 +27,32 @@ public class BookBL implements BookBLService{
     }
 
     public AchievementVO getItem(int id) {
-        return null;
+        AchievementVO achievementVO=new AchievementVO();
+        achievementVO.setId(0);
+        achievementVO.setTitle("ceshi");
+        achievementVO.setThumbnailLocation("/test/test.jpg");
+        achievementVO.setDescriptionLocation("/test/a.html");
+        achievementVO.setTime("2001-1-1");
+        return achievementVO;
     }
 
     public ArrayList<AchievementVO> getAllItems(String language) {
-        return null;
+        ArrayList<AchievementVO> result=new ArrayList<AchievementVO>();
+        AchievementVO achievementVO=new AchievementVO();
+        achievementVO.setId(0);
+        achievementVO.setTitle("ceshi");
+        achievementVO.setThumbnailLocation("/test/test.jpg");
+        achievementVO.setDescriptionLocation("/test/a.html");
+        achievementVO.setTime("2001-1-1");
+        result.add(achievementVO);
+
+        AchievementVO achievementVO2=new AchievementVO();
+        achievementVO2.setId(1);
+        achievementVO2.setTitle("ceshi");
+        achievementVO2.setThumbnailLocation("/test/test.jpg");
+        achievementVO2.setDescriptionLocation("/test/a.html");
+        achievementVO2.setTime("2001-1-1");
+        result.add(achievementVO2);
+        return result;
     }
 }

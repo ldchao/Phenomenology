@@ -1,5 +1,6 @@
 package controller;
 
+import ENUM.UniversalState;
 import bl.accessoryBL.AccessoryBL;
 import bl.helper.FileManager;
 import blservice.accessoryBLService.AccessoryBLService;
@@ -89,7 +90,7 @@ public class AccessoryManagerController {
 
     @RequestMapping("/getEssayAccessory")
     @ResponseBody
-    public ArrayList<AccessoryVO> uploadEssayAccessory(int id){
+    public ArrayList<AccessoryVO> getEssayAccessory(int id){
 
         AccessoryBLService accessoryBLService=new AccessoryBL();
         return accessoryBLService.getEssayAccessory(id);
@@ -100,6 +101,23 @@ public class AccessoryManagerController {
     public ArrayList<AccessoryVO> getSaAccessory(int id){
         AccessoryBLService accessoryBLService=new AccessoryBL();
         return accessoryBLService.getSaAccessory(id);
+    }
+
+    @RequestMapping("/deleteEssayAccessory")
+    @ResponseBody
+    public String deleteEssayAccessory(int accessoryId){
+
+        AccessoryBLService accessoryBLService=new AccessoryBL();
+        UniversalState result=accessoryBLService.deleteEssayAccessory(accessoryId);
+        return result.toString();
+    }
+
+    @RequestMapping("/getSaAccessory")
+    @ResponseBody
+    public String deleteSaAccessory(int accessoryId){
+        AccessoryBLService accessoryBLService=new AccessoryBL();
+        UniversalState result=accessoryBLService.deleteSaAccessory(accessoryId);
+        return result.toString();
     }
 
 }

@@ -10,7 +10,7 @@ public class AcademicVO {
 
     private Integer id;
     private String title;
-    private Date time;
+    private String time;
     private String author;
     private String location;
     private String language;
@@ -36,11 +36,11 @@ public class AcademicVO {
         this.title = title;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

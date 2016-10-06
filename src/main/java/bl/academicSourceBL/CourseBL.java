@@ -27,10 +27,34 @@ public class CourseBL implements CourseBLService{
     }
 
     public AcademicVO getItem(int id) {
-        return null;
+        AcademicVO academicVO=new AcademicVO();
+        academicVO.setId(0);
+        academicVO.setAuthor("zhangsan");
+        academicVO.setLocation("/test/a.html");
+        academicVO.setTitle("ceshiceshi");
+        academicVO.setPageView(0);
+        academicVO.setTime("2010-1-1");
+        return academicVO;
     }
 
     public ArrayList<AcademicVO> getAllItems(String language) {
-        return null;
+        ArrayList<AcademicVO> result=new ArrayList<AcademicVO>();
+        AcademicVO academicVO=new AcademicVO();
+        academicVO.setId(0);
+        academicVO.setAuthor("zhangsan");
+        academicVO.setLocation("/test/a.html");
+        academicVO.setTitle("ceshiceshi");
+        academicVO.setPageView(0);
+        academicVO.setTime("2010-1-1");
+        result.add(academicVO);
+        AcademicVO academicVO2=new AcademicVO();
+        academicVO2.setId(1);
+        academicVO2.setAuthor("zhangsan");
+        academicVO2.setLocation("/test/a.html");
+        academicVO2.setTitle("ceshiceshi");
+        academicVO2.setPageView(0);
+        academicVO2.setTime("2010-1-1");
+        result.add(academicVO2);
+        return result;
     }
 }

@@ -31,10 +31,33 @@ public class ScholarBL implements ScholarBLService{
     }
 
     public OrganizationVO getItem(int id) {
-        return null;
+        OrganizationVO organizationVO=new OrganizationVO();
+        organizationVO.setId(0);
+        organizationVO.setName("zhangsan");
+        organizationVO.setDescriptionLocation("/test/a.html");
+        organizationVO.setImageLocation("/test/test.jpg");
+        organizationVO.setSequenceNumber(0);
+
+        return organizationVO;
     }
 
     public ArrayList<OrganizationVO> getAllItem(String language) {
-        return null;
+        ArrayList<OrganizationVO> result=new ArrayList<OrganizationVO>();
+        OrganizationVO organizationVO=new OrganizationVO();
+        organizationVO.setId(0);
+        organizationVO.setName("zhangsan");
+        organizationVO.setDescriptionLocation("/test/a.html");
+        organizationVO.setImageLocation("/test/test.jpg");
+        organizationVO.setSequenceNumber(0);
+        result.add(organizationVO);
+        OrganizationVO organizationVO2=new OrganizationVO();
+        organizationVO2.setId(1);
+        organizationVO2.setName("zhangsan");
+        organizationVO2.setDescriptionLocation("/test/a.html");
+        organizationVO2.setImageLocation("/test/test.jpg");
+        organizationVO2.setSequenceNumber(1);
+        result.add(organizationVO2);
+        return result;
     }
+
 }
