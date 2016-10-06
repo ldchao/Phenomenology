@@ -1,5 +1,6 @@
 package DaoImpl;
 
+import Dao.BaseDao;
 import Dao.PersonDao;
 import POJO.Person;
 
@@ -9,23 +10,32 @@ import java.util.List;
  * Created by mm on 2016/10/3.
  */
 public class PersonDaoImpl implements PersonDao{
+    BaseDao baseDao;
     public int pesist(Person person) {
-        return 0;
+        baseDao=new BaseDaoImpl();
+        Person po= (Person) baseDao.persist(person);
+        return po.getId();
     }
 
     public void delete(int id) {
-
+        baseDao=new BaseDaoImpl();
+        Person person=new Person();
+        person.setId(id);
+        baseDao.delete(person);
     }
 
     public void update(Person person) {
-
+        baseDao=new BaseDaoImpl();
+        baseDao.update(person);
     }
 
     public List<Person> findAll() {
-        return null;
+        baseDao=new BaseDaoImpl();
+        return (List<Person>) baseDao.findAll("Person");
     }
 
     public Person getById(int id) {
-        return null;
+        baseDao=new BaseDaoImpl();
+        return (Person) baseDao.findById(id,Person.class);
     }
 }

@@ -3,6 +3,8 @@ package DaoImpl;
 import Connection.DBconnection;
 import Dao.BaseDao;
 import Dao.EssayDao;
+import ENUM.Language;
+import ENUM.Type;
 import POJO.Essay;
 import org.hibernate.Session;
 
@@ -45,14 +47,14 @@ public class EssayDaoImpl implements EssayDao {
         return (List<Essay>)baseDao.findAll("Essay");
     }
 
-    public List<Essay> findTop5(String type, String language) {
+    public List<Essay> findTop5(Type type, Language language) {
         baseDao=new BaseDaoImpl();
         String[] properties={TYPE,LANGUAGE};
         Object[] values={type,language};
         return (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
     }
 
-    public List<Essay> find(String type, String language) {
+    public List<Essay> find(Type type, Language language) {
         baseDao=new BaseDaoImpl();
         String[] properties={TYPE,LANGUAGE};
         Object[] values={type,language};

@@ -57,7 +57,8 @@ public void testPesist() throws Exception {
 */ 
 @Test
 public void testDelete() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    essayDao.delete(3);
 } 
 
 /** 
@@ -67,7 +68,10 @@ public void testDelete() throws Exception {
 */ 
 @Test
 public void testUpdate() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    Essay po=essayDao.getById(4);
+    po.setTime(Calendar.getInstance().getTime());
+    essayDao.update(po);
 } 
 
 /** 
@@ -77,7 +81,8 @@ public void testUpdate() throws Exception {
 */ 
 @Test
 public void testFindAll() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    System.out.println(essayDao.findAll().size());
 } 
 
 /** 
@@ -87,7 +92,8 @@ public void testFindAll() throws Exception {
 */ 
 @Test
 public void testFindTop5() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    System.out.println(essayDao.findTop5(Type.UNKNOWN,Language.eng).size());
 } 
 
 /** 

@@ -1,5 +1,7 @@
 package Dao;
 
+import ENUM.Language;
+import ENUM.Type;
 import POJO.Essay;
 
 import java.util.List;
@@ -16,9 +18,9 @@ public interface EssayDao {
 
     public List<Essay> findAll();
 
-    public List<Essay> findTop5(String type,String language);
+    public List<Essay> findTop5(Type type, Language language);
 
-    public List<Essay> find(String type,String language);
+    public List<Essay> find(Type type,Language language);
 
     public Essay getById(int id);
 }

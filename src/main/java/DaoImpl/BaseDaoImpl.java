@@ -98,7 +98,7 @@ public class BaseDaoImpl implements BaseDao {
     }
 
     public List findByProperties(String tableName, String[] name, Object[] values) {
-        String hql="from "+tableName+"t where";
+        String hql="from "+tableName+" t where";
         for (int i=0;i<name.length;i++){
             hql=hql+" t."+name[i]+"=?";
             if (i!=(name.length-1)){
@@ -137,7 +137,7 @@ public class BaseDaoImpl implements BaseDao {
     }
 
     public List findByPropertiesAndPages(String tableName, String[] name, Object[] values, int page, int pageSize) {
-        String hql="from "+tableName+"t where";
+        String hql="from "+tableName+" t where";
         for (int i=0;i<name.length;i++){
             hql=hql+" t."+name[i]+"=?";
             if (i!=(name.length-1)){
@@ -150,7 +150,7 @@ public class BaseDaoImpl implements BaseDao {
         try {
             Query query=session.createQuery(hql);
             for (int i=0;i<values.length;i++){
-                query.setParameter(i+1,values[i]);
+                query.setParameter(i,values[i]);
             }
             result=query.setFirstResult(page).setMaxResults(pageSize).list();
         }catch (Exception e){
