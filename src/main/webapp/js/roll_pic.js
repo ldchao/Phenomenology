@@ -84,3 +84,47 @@ previous.onclick = function () {
     }
 };
 
+// 更换中英文版本
+function changeVersion(index) {
+
+    var btns = document.getElementsByClassName("ch_eng");
+
+    var version = ["ch", "eng"];
+
+    if (btns[index].getAttribute("class") != "ch_eng") {
+
+        btns[index].setAttribute("class", "ch_eng");
+        btns[(index + 1) % 2].setAttribute("class", "ch_eng ch_eng_not");
+
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "../setVersion",
+            data: {
+                "version": version[index],
+            },
+            dataType: "json",
+            success: function () {
+                window.location.reload();
+            },
+            error: function () {
+                alert("语言切换失败");
+            }
+        });
+    }
+}
+
+function changeVersion_title() {
+    var titles = document.getElementsByClassName("left_nav")[0].getElementsByTagName("span");
+    var divs = document.getElementsByClassName("left_nav")[0].getElementsByClassName("nav_bar");
+    var Engs = ["&nbsp;HomePage", "OurSituation", "AgencyPersonnel",
+        "AcademicExchange", "AcademicResources", "ScientificAchievements"];
+
+    for (var i = 0; i < titles.length; i++) {
+        titles[i].innerHTML = Engs[i];
+
+        divs[i].style.paddingLeft = "20px";
+        divs[i].style.width = "210px";
+        titles[i].style.fontSize = "16px";
+    }
+}

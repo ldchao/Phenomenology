@@ -20,6 +20,39 @@ a:hover {
     background-color: #19769c;
 }
 
+.ch_eng {
+    width: 45px;
+    height: 22px;
+    background-color: #83d1f0;
+    color: #fff;
+    line-height: 22px;
+    text-align: center;
+    font-family: "PingFang SC", serif;
+    font-size: 13px;
+    position: absolute;
+    top: 25px;
+    right: 85px;
+    cursor: default;
+    z-index: 100;
+}
+
+.ch_eng_not {
+    background-color: #fff;
+    color: #19789e;
+    cursor: pointer;
+    -webkit-transition:  0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    z-index: 100;
+}
+
+.ch_eng_not:hover {
+    color: #4C6E7C;
+    background-color: #CEF0FA;
+}
+
 .main_body {
     width: 1140px;
     margin: 30px auto;

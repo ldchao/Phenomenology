@@ -22,4 +22,23 @@ window.onload = function () {
         }
     });
 
+    //  切换语言
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "../getVersion",
+        dataType: "json",
+        success: function (result) {
+            if(result == "eng") {
+                var btns = document.getElementsByClassName("ch_eng");
+                btns[0].setAttribute("class", "ch_eng ch_eng_not");
+                btns[1].setAttribute("class", "ch_eng");
+
+                changeVersion_title();
+            }
+        },
+        error: function () {
+            alert("语言版本获取失败");
+        }
+    });
 };

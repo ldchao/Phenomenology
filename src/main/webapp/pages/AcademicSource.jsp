@@ -18,7 +18,12 @@
 
 <body>
 
-<div class="top_title"></div>
+<div class="top_title">
+
+    <div class="ch_eng" onclick="changeVersion(0)">中文</div>
+    <div class="ch_eng ch_eng_not" style="width: 60px;right: 25px;" onclick="changeVersion(1)">English</div>
+
+</div>
 
 <div class="main_body">
 
@@ -27,32 +32,32 @@
 
         <div class="nav_bar" onclick="window.location.href='HomePage'">
             <i class="fa fa-angle-right"></i>
-            &nbsp;首&nbsp;页
+            <span>&nbsp;首&nbsp;页</span>
         </div>
 
         <div class="nav_bar" onclick="window.location.href='Situation'">
             <i class="fa fa-angle-right"></i>&nbsp;
-            本所概况
+            <span>本所概况</span>
         </div>
 
         <div class="nav_bar" onclick="window.location.href='Organization'">
             <i class="fa fa-angle-right"></i>&nbsp;
-            机构人员
+            <span>机构人员</span>
         </div>
 
         <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
             <i class="fa fa-angle-right"></i>&nbsp;
-            学术交流
+            <span>学术交流</span>
         </div>
 
         <div class="nav_bar active" onclick="window.location.href='AcademicSource'">
             <i class="fa fa-angle-right"></i>&nbsp;
-            学术资源
+            <span>学术资源</span>
         </div>
 
         <div class="nav_bar" onclick="window.location.href='Achievement'">
             <i class="fa fa-angle-right"></i>&nbsp;
-            科研成果
+            <span>科研成果</span>
         </div>
 
 
