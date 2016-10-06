@@ -30,6 +30,10 @@ public class StudentBL implements StudentBLService{
         return null;
     }
 
+    public OrganizationVO getItem(int id) {
+        return null;
+    }
+
     public ArrayList<OrganizationVO> getAllItem(String language) {
         return null;
     }

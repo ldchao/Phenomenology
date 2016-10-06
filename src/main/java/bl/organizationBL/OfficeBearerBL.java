@@ -32,6 +32,10 @@ public class OfficeBearerBL implements OfficeBearerBLService{
         return null;
     }
 
+    public OrganizationVO getItem(int id) {
+        return null;
+    }
+
     public ArrayList<OrganizationVO> getAllItem(String language) {
         return null;
     }

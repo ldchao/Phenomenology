@@ -30,6 +30,10 @@ public class ScholarBL implements ScholarBLService{
         return null;
     }
 
+    public OrganizationVO getItem(int id) {
+        return null;
+    }
+
     public ArrayList<OrganizationVO> getAllItem(String language) {
         return null;
     }
