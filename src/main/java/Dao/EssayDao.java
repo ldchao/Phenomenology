@@ -16,7 +16,7 @@ public interface EssayDao {
 
     public List<Essay> findAll();
 
-    public List<Essay> findTop5(String type,String Language);
+    public List<Essay> findTop5(String type,String language);
 
     public List<Essay> find(String type,String language);
 

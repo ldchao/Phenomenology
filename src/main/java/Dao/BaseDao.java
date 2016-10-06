@@ -19,4 +19,8 @@ public interface BaseDao {
     public List findAll(String tableName);
 
     public List findByProperties(String tableName,String[] name,Object[] values );
+
+    public List findByPage(String tableName,int page,int pageSize);
+
+    public List findByPropertiesAndPages(String tableName,String[] name,Object[] values,int page,int pageSize);
 }

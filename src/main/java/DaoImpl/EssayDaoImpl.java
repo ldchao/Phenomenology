@@ -13,6 +13,15 @@ import java.util.List;
  */
 public class EssayDaoImpl implements EssayDao {
     BaseDao baseDao;
+    public static final String ID="id";
+    public static final String TITLE="title";
+    public static final String TIME="time";
+    public static final String AUTHOR="author";
+    public static final String LOCATION="location";
+    public static final String LANGUAGE="language";
+    public static final String  PAGEVIEW="pageView";
+    public static final String TYPE="type";
+
     public int pesist(Essay essay) {
         baseDao=new BaseDaoImpl();
         Essay po= (Essay) baseDao.persist(essay);
@@ -36,14 +45,18 @@ public class EssayDaoImpl implements EssayDao {
         return (List<Essay>)baseDao.findAll("Essay");
     }
 
-    public List<Essay> findTop5(String type, String Language) {
+    public List<Essay> findTop5(String type, String language) {
         baseDao=new BaseDaoImpl();
-        return null;
+        String[] properties={TYPE,LANGUAGE};
+        Object[] values={type,language};
+        return (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
     }
 
     public List<Essay> find(String type, String language) {
         baseDao=new BaseDaoImpl();
-        return null;
+        String[] properties={TYPE,LANGUAGE};
+        Object[] values={type,language};
+        return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
     }
 
     public Essay getById(int id) {

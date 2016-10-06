@@ -14,7 +14,7 @@ public class TestController {
     public void test(){
         Homepage homepage=new Homepage();
         homepage.setId(3);
-        homepage.setLanguage("English");
+//        homepage.setLanguage("English");
         homepage.setType("none");
         HomepageDaoImpl homepageDao=new HomepageDaoImpl();
         homepageDao.pesist(homepage);

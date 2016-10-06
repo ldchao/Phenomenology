@@ -34,7 +34,7 @@ public class Essay implements java.io.Serializable {
 		time= Calendar.getInstance().getTime();
 		author="unknown";
 		location="unknown";
-		language=Language.CHINESE;
+		language=Language.ch;
 		pageView=0;
 		type=Type.UNKNOWN;
 	}

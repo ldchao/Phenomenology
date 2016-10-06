@@ -31,7 +31,7 @@ public class Scientificachievement implements java.io.Serializable {
 	public Scientificachievement() {
 		title="unknown";
 		type=Type.UNKNOWN;
-		language=Language.CHINESE;
+		language=Language.ch;
 		thumbnailLocation="unknown";
 		descriptionLocation="unknown";
 		time= Calendar.getInstance().getTime();

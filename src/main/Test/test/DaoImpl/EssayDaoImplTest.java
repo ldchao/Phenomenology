@@ -26,12 +26,12 @@ public class EssayDaoImplTest {
 public void before() throws Exception {
     essayDao=new EssayDaoImpl();
     essay=new Essay();
-    essay.setAuthor("shabichao");
-    essay.setLanguage(Language.CHINESE);
-    essay.setTime(Calendar.getInstance().getTime());
-    essay.setTitle("");
-    essay.setType(Type.Article);
-    essay.setLocation("");
+//    essay.setAuthor("shabichao");
+//    essay.setLanguage(Language.CHINESE);
+//    essay.setTime(Calendar.getInstance().getTime());
+//    essay.setTitle("");
+//    essay.setType(Type.Article);
+//    essay.setLocation("");
 }
 
 @After

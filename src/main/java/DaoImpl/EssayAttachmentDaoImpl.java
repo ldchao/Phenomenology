@@ -18,18 +18,24 @@ public class EssayAttachmentDaoImpl implements EssayAttachmentDao {
     }
 
     public void delete(int id) {
-
+        baseDao=new BaseDaoImpl();
+        EssayAttachment essayAttachment=new EssayAttachment();
+        essayAttachment.setId(id);
+        baseDao.delete(essayAttachment);
     }
 
     public void update(EssayAttachment essayAttachment) {
-
+        baseDao=new BaseDaoImpl();
+        baseDao.update(essayAttachment);
     }
 
     public EssayAttachment getById(int id){
-        return  null;
+        baseDao=new BaseDaoImpl();
+        return (EssayAttachment) baseDao.findById(id,EssayAttachmentDao.class);
     };
 
     public List<EssayAttachment> findAll() {
-        return null;
+        baseDao=new BaseDaoImpl();
+        return (List<EssayAttachment>)baseDao.findAll("EssayAttachment");
     }
 }
