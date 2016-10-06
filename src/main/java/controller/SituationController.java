@@ -32,6 +32,7 @@ public class SituationController {
     @ResponseBody
     public String get(String language,HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=utf-8");
+        response.setHeader("Cache-Control", "no-cache");
         String path = request.getSession().getServletContext().getRealPath("/") + "html/situation/"+language+".html";
         SituationBLService situationBLService=new SituationBL();
         String result=situationBLService.getSituation(path);
