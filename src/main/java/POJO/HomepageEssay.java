@@ -1,5 +1,5 @@
 package POJO;// default package
-// Generated 2016-10-3 17:54:38 by Hibernate Tools 4.0.0
+// Generated 2016-10-6 16:39:59 by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,22 +19,19 @@ import javax.persistence.Table;
 public class HomepageEssay implements java.io.Serializable {
 
 	private Integer id;
-	private Essay essay;
 	private Homepage homepage;
-	private String tableName;
 	private int sequenceNumber;
 	private String thumbnailLocation;
+	private String url;
 
 	public HomepageEssay() {
 	}
 
-	public HomepageEssay(Essay essay, Homepage homepage, String tableName, int sequenceNumber,
-			String thumbnailLocation) {
-		this.essay = essay;
+	public HomepageEssay(Homepage homepage, int sequenceNumber, String thumbnailLocation, String url) {
 		this.homepage = homepage;
-		this.tableName = tableName;
 		this.sequenceNumber = sequenceNumber;
 		this.thumbnailLocation = thumbnailLocation;
+		this.url = url;
 	}
 
 	@Id
@@ -50,16 +47,6 @@ public class HomepageEssay implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "essayId", nullable = false)
-	public Essay getEssay() {
-		return this.essay;
-	}
-
-	public void setEssay(Essay essay) {
-		this.essay = essay;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "homepageId", nullable = false)
 	public Homepage getHomepage() {
 		return this.homepage;
@@ -67,15 +54,6 @@ public class HomepageEssay implements java.io.Serializable {
 
 	public void setHomepage(Homepage homepage) {
 		this.homepage = homepage;
-	}
-
-	@Column(name = "tableName", nullable = false)
-	public String getTableName() {
-		return this.tableName;
-	}
-
-	public void setTableName(String tableName) {
-		this.tableName = tableName;
 	}
 
 	@Column(name = "sequenceNumber", nullable = false)
@@ -94,6 +72,15 @@ public class HomepageEssay implements java.io.Serializable {
 
 	public void setThumbnailLocation(String thumbnailLocation) {
 		this.thumbnailLocation = thumbnailLocation;
+	}
+
+	@Column(name = "url", nullable = false)
+	public String getUrl() {
+		return this.url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 }

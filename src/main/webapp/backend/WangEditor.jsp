@@ -39,7 +39,7 @@
 //*********************************************************************************
     $('#btn1').click(function () {
         // 获取编辑器区域完整html代码
-        var html = editor.$txt.html();
+//        var html = editor.$txt.html();
 //
 //        // 获取编辑器纯文本内容
 //        var text = editor.$txt.text();
@@ -50,10 +50,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "../uploadHtml",
-            data: {
-                "html": html,
-            }
+            url: "../test",
         });
     });
 

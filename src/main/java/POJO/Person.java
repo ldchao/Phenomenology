@@ -1,5 +1,5 @@
 package POJO;// default package
-// Generated 2016-10-3 17:54:38 by Hibernate Tools 4.0.0
+// Generated 2016-10-6 16:39:59 by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,15 +20,20 @@ public class Person implements java.io.Serializable {
 	private String imageLocation;
 	private String descriptionLocation;
 	private String language;
+	private String type;
+	private int sequence;
 
 	public Person() {
 	}
 
-	public Person(String name, String imageLocation, String descriptionLocation, String language) {
+	public Person(String name, String imageLocation, String descriptionLocation, String language, String type,
+			int sequence) {
 		this.name = name;
 		this.imageLocation = imageLocation;
 		this.descriptionLocation = descriptionLocation;
 		this.language = language;
+		this.type = type;
+		this.sequence = sequence;
 	}
 
 	@Id
@@ -77,6 +82,24 @@ public class Person implements java.io.Serializable {
 
 	public void setLanguage(String language) {
 		this.language = language;
+	}
+
+	@Column(name = "type", nullable = false)
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	@Column(name = "sequence", nullable = false)
+	public int getSequence() {
+		return this.sequence;
+	}
+
+	public void setSequence(int sequence) {
+		this.sequence = sequence;
 	}
 
 }
