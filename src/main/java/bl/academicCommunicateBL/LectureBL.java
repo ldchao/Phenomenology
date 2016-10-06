@@ -12,7 +12,8 @@ import java.util.ArrayList;
 public class LectureBL implements LectureBLService{
 
     public int getID() {
-        return 0;
+
+        return 1;
     }
 
     public String addItem(AcademicVO academicVO) {
@@ -20,11 +21,18 @@ public class LectureBL implements LectureBLService{
     }
 
     public UniversalState deleteItem(int id) {
-        return null;
+        System.out.println("删除"+id);
+        return UniversalState.SUCCEED;
     }
 
     public UniversalState updateItem(AcademicVO academicVO) {
-        return null;
+
+        System.out.println(academicVO.getId());
+        System.out.println(academicVO.getTitle());
+        System.out.println(academicVO.getAuthor());
+        System.out.println(academicVO.getLocation());
+        System.out.println(academicVO.getLanguage());
+        return UniversalState.SUCCEED;
     }
     public AcademicVO getItem(int id) {
         AcademicVO academicVO=new AcademicVO();
