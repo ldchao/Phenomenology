@@ -11,6 +11,9 @@ import java.util.ArrayList;
  */
 public interface CathedraBLService {
 
+    //得到一个新的id
+    public int getID();
+
     //增加一条讲座实录记录
     public String addItem(AcademicVO academicVO);
 
@@ -19,6 +22,9 @@ public interface CathedraBLService {
 
     //更新一条讲座实录的记录
     public UniversalState updateItem(AcademicVO academicVO);
+
+    //获取一条讲座实录的记录
+    public AcademicVO getItem(int id);
 
     //获取全部讲座实录的记录
     public ArrayList<AcademicVO> getAllItems(String language);

@@ -68,6 +68,12 @@ public class OrganizationController {
         UniversalState universalState=officeBearerBLService.sort(list);
         return universalState.toString();
     }
+    @RequestMapping(value = "/officeBearer/getOne", method = RequestMethod.GET)
+    @ResponseBody
+    public OrganizationVO getOneOfficeBearer(int id) {
+        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
+        return officeBearerBLService.getItem(id);
+    }
     @RequestMapping(value = "/officeBearer/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<OrganizationVO> getOfficeBearer(String language) {
@@ -110,6 +116,12 @@ public class OrganizationController {
         UniversalState universalState=scholarBLService.sort(list);
         return universalState.toString();
     }
+    @RequestMapping(value = "/scholar/getOne", method = RequestMethod.GET)
+    @ResponseBody
+    public OrganizationVO getOneScholar(int id) {
+        ScholarBLService scholarBLService=new ScholarBL();
+        return scholarBLService.getItem(id);
+    }
     @RequestMapping(value = "/scholar/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<OrganizationVO> getScholar(String language) {
@@ -151,6 +163,12 @@ public class OrganizationController {
         StudentBLService studentBLService=new StudentBL();
         UniversalState universalState=studentBLService.sort(list);
         return universalState.toString();
+    }
+    @RequestMapping(value = "/student/getOne", method = RequestMethod.GET)
+    @ResponseBody
+    public OrganizationVO getOneStudent(int id) {
+        StudentBLService studentBLService=new StudentBL();
+        return studentBLService.getItem(id);
     }
     @RequestMapping(value = "/student/get", method = RequestMethod.GET)
     @ResponseBody

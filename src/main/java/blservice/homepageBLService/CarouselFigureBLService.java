@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public interface CarouselFigureBLService {
 
     //增加一条轮播图存储记录，返回存储的id
-    public int addAPicture(String location);
+    public int addAPicture(PictureVO pictureVO);
 
     //得到所有轮播图的地址列表
     public ArrayList<PictureVO> getAllPicture();

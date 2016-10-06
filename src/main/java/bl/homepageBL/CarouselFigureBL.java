@@ -15,10 +15,11 @@ import java.util.List;
  */
 public class CarouselFigureBL implements CarouselFigureBLService{
 
-    public int addAPicture(String location) {
+    public int addAPicture(PictureVO pictureVO) {
         SlideDao slideDao=new SlideDaoImpl();
         Slide slide=new Slide();
-        slide.setLocation(location);
+        slide.setLocation(pictureVO.getLocation());
+        // TODO: 2016/10/6
         return slideDao.pesist(slide);
     }
 

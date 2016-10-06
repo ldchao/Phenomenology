@@ -25,6 +25,9 @@ public interface StudentBLService {
     //将本所学生进行排序【ArrayList里面id的顺序即为最终顺序】
     public UniversalState sort(ArrayList<Integer> idList);
 
+    //得到某位本所学生的详细信息
+    public OrganizationVO getItem(int id);
+
     //按排序获得所有本所学生的名单
     public ArrayList<OrganizationVO> getAllItem(String language);
 

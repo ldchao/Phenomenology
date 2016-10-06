@@ -12,6 +12,9 @@ import java.util.ArrayList;
  */
 public interface BookBLService {
 
+    //得到一个新的id
+    public int getID();
+
     //增加一条书籍出版记录
     public String addItem(AchievementVO achievementVO);
 
@@ -20,6 +23,9 @@ public interface BookBLService {
 
     //更新一条书籍出版的记录
     public UniversalState updateItem(AchievementVO achievementVO);
+
+    //获取一条书籍出版的记录
+    public AchievementVO getItem(int id);
 
     //获取全部书籍出版的记录
     public ArrayList<AchievementVO> getAllItems(String language);

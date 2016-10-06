@@ -46,8 +46,12 @@ public class HomepageController {
 
         String carouselFigurePath="../carouselFigure/"+filename;
 
+        PictureVO pictureVO=new PictureVO();
+        pictureVO.setLocation(carouselFigurePath);
+        pictureVO.setUrl(url);
+
         CarouselFigureBLService carouselFigureBLService=new CarouselFigureBL();
-        return carouselFigureBLService.addAPicture(carouselFigurePath);
+        return carouselFigureBLService.addAPicture(pictureVO);
     }
 
     @RequestMapping("/CarouselFigure/delete")
@@ -64,5 +68,7 @@ public class HomepageController {
         CarouselFigureBLService carouselFigureBLService=new CarouselFigureBL();
         return carouselFigureBLService.getAllPicture();
     }
+
+
 
 }

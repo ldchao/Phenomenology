@@ -10,6 +10,9 @@ import java.util.ArrayList;
  */
 public interface ArticleBLService {
 
+    //得到一个新的id
+    public int getID();
+
     //增加一条文章发表记录
     public String addItem(AchievementVO achievementVO);
 
@@ -18,6 +21,9 @@ public interface ArticleBLService {
 
     //更新一条文章发表的记录
     public UniversalState updateItem(AchievementVO achievementVO);
+
+    //获取一条文章发表的记录
+    public AchievementVO getItem(int id);
 
     //获取全部文章发表的记录
     public ArrayList<AchievementVO> getAllItems(String language);
