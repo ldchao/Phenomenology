@@ -112,7 +112,7 @@ public class AccessoryManagerController {
         return result.toString();
     }
 
-    @RequestMapping("/getSaAccessory")
+    @RequestMapping("/deleteSaAccessory")
     @ResponseBody
     public String deleteSaAccessory(int accessoryId){
         AccessoryBLService accessoryBLService=new AccessoryBL();
