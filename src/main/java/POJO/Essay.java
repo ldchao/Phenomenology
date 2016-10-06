@@ -1,6 +1,10 @@
 package POJO;// default package
 // Generated 2016-10-3 17:54:38 by Hibernate Tools 4.0.0
 
+import ENUM.Language;
+import ENUM.Type;
+
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,16 +24,22 @@ public class Essay implements java.io.Serializable {
 	private Date time;
 	private String author;
 	private String location;
-	private String language;
+	private Language language;
 	private int pageView;
-	private String type;
+	private Type type;
 	private Set<EssayAttachment> essayAttachments = new HashSet<EssayAttachment>(0);
-	private Set<HomepageEssay> homepageEssays = new HashSet<HomepageEssay>(0);
 
 	public Essay() {
+		title="unknown";
+		time= Calendar.getInstance().getTime();
+		author="unknown";
+		location="unknown";
+		language=Language.CHINESE;
+		pageView=0;
+		type=Type.UNKNOWN;
 	}
 
-	public Essay(String title, Date time, String author, String location, String language, int pageView, String type) {
+	public Essay(String title, Date time, String author, String location, Language language, int pageView, Type type) {
 		this.title = title;
 		this.time = time;
 		this.author = author;
@@ -39,8 +49,8 @@ public class Essay implements java.io.Serializable {
 		this.type = type;
 	}
 
-	public Essay(String title, Date time, String author, String location, String language, int pageView, String type,
-			Set<EssayAttachment> essayAttachments, Set<HomepageEssay> homepageEssays) {
+	public Essay(String title, Date time, String author, String location, Language language, int pageView, Type type,
+			Set<EssayAttachment> essayAttachments) {
 		this.title = title;
 		this.time = time;
 		this.author = author;
@@ -49,7 +59,6 @@ public class Essay implements java.io.Serializable {
 		this.pageView = pageView;
 		this.type = type;
 		this.essayAttachments = essayAttachments;
-		this.homepageEssays = homepageEssays;
 	}
 
 	@Id
@@ -100,12 +109,13 @@ public class Essay implements java.io.Serializable {
 		this.location = location;
 	}
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "language", nullable = false)
-	public String getLanguage() {
+	public Language getLanguage() {
 		return this.language;
 	}
 
-	public void setLanguage(String language) {
+	public void setLanguage(Language language) {
 		this.language = language;
 	}
 
@@ -118,12 +128,13 @@ public class Essay implements java.io.Serializable {
 		this.pageView = pageView;
 	}
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "type", nullable = false)
-	public String getType() {
+	public Type getType() {
 		return this.type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
@@ -136,13 +147,5 @@ public class Essay implements java.io.Serializable {
 		this.essayAttachments = essayAttachments;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "essay")
-	public Set<HomepageEssay> getHomepageEssays() {
-		return this.homepageEssays;
-	}
-
-	public void setHomepageEssays(Set<HomepageEssay> homepageEssays) {
-		this.homepageEssays = homepageEssays;
-	}
 
 }

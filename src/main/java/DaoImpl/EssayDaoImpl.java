@@ -1,8 +1,10 @@
 package DaoImpl;
 
+import Connection.DBconnection;
 import Dao.BaseDao;
 import Dao.EssayDao;
 import POJO.Essay;
+import org.hibernate.Session;
 
 import java.util.List;
 
@@ -46,6 +48,6 @@ public class EssayDaoImpl implements EssayDao {
 
     public Essay getById(int id) {
         baseDao=new BaseDaoImpl();
-        return null;
+        return (Essay) baseDao.findById(id,Essay.class);
     }
 }

@@ -1,21 +1,38 @@
 package test.DaoImpl; 
 
-import org.junit.Test; 
+import Dao.EssayDao;
+import DaoImpl.EssayDaoImpl;
+import ENUM.Language;
+import ENUM.Type;
+import POJO.Essay;
+import org.hibernate.hql.internal.ast.tree.SearchedCaseNode;
+import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import java.util.Calendar;
 
 /** 
 * EssayDaoImpl Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>Ê®ÔÂ 6, 2016</pre> 
+* @since <pre>Ê®ï¿½ï¿½ 6, 2016</pre> 
 * @version 1.0 
 */ 
-public class EssayDaoImplTest { 
-
+public class EssayDaoImplTest {
+    Essay essay;
+    EssayDao essayDao;
 @Before
-public void before() throws Exception { 
-} 
+public void before() throws Exception {
+    essayDao=new EssayDaoImpl();
+    essay=new Essay();
+    essay.setAuthor("shabichao");
+    essay.setLanguage(Language.CHINESE);
+    essay.setTime(Calendar.getInstance().getTime());
+    essay.setTitle("");
+    essay.setType(Type.Article);
+    essay.setLocation("");
+}
 
 @After
 public void after() throws Exception { 
@@ -28,8 +45,10 @@ public void after() throws Exception {
 */ 
 @Test
 public void testPesist() throws Exception { 
-//TODO: Test goes here... 
-} 
+//TODO: Test goes here...
+    essayDao.pesist(essay);
+    System.out.println();
+}
 
 /** 
 * 
@@ -88,7 +107,9 @@ public void testFind() throws Exception {
 */ 
 @Test
 public void testGetById() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    Essay po=essayDao.getById(3);
+    System.out.println(po.getLanguage());
 } 
 
 
