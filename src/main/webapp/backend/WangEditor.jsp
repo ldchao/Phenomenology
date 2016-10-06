@@ -67,7 +67,8 @@
         $.ajax({
             type: "get",
             async: false,
-            url: "../getHtml",
+            url: "../situation/getHtml",
+            data:{"language":"ch"},
             dataType:'html',
             success: function (result) {
                 var text=result;
