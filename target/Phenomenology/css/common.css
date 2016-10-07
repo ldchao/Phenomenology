@@ -31,7 +31,7 @@ a:hover {
     font-size: 13px;
     position: absolute;
     top: 25px;
-    right: 85px;
+    right: 60px;
     cursor: default;
     z-index: 100;
 }
@@ -40,7 +40,7 @@ a:hover {
     background-color: #fff;
     color: #19789e;
     cursor: pointer;
-    -webkit-transition:  0.3s;
+    -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
@@ -51,6 +51,54 @@ a:hover {
 .ch_eng_not:hover {
     color: #4C6E7C;
     background-color: #CEF0FA;
+}
+
+.search {
+    width: 242px;
+    height: 37px;
+    border: none;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    padding-left: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    z-index: 100;
+}
+
+.search::-webkit-input-placeholder {
+    color: #b9ccd4;
+}
+
+.search:focus,
+.search:hover {
+    border-color: #536e9e;
+    outline: 0;
+    -webkit-box-shadow: 0 0 6px #82ddea;
+    box-shadow: 0 0 8px #82ddea;
+}
+
+.search_btn {
+    position: absolute;
+    right: 10px;
+    top: 87px;
+    z-index: 110;
+    cursor: pointer;
+    color: #4f4f4f;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.search_btn:hover {
+    color: #121212;
 }
 
 .main_body {
