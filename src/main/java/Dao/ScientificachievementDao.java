@@ -20,4 +20,6 @@ public interface ScientificachievementDao {
     public List<Scientificachievement> find(String type, String language);
 
     public Scientificachievement getById(int id);
+
+    public List<Scientificachievement> getBySaTitle(String title);
 }

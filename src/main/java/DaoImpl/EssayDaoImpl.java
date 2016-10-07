@@ -65,4 +65,11 @@ public class EssayDaoImpl implements EssayDao {
         baseDao=new BaseDaoImpl();
         return (Essay) baseDao.findById(id,Essay.class);
     }
+
+    public List<Essay> getByEssayTitle(String title) {
+        baseDao=new BaseDaoImpl();
+        String[] properties={TITLE};
+        Object[] values={title};
+        return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
+    }
 }

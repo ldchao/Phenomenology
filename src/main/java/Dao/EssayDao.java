@@ -23,4 +23,7 @@ public interface EssayDao {
     public List<Essay> find(Type type,Language language);
 
     public Essay getById(int id);
+
+
+    public List<Essay> getByEssayTitle(String title);
 }

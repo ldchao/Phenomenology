@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class PersonDaoImpl implements PersonDao{
     BaseDao baseDao;
+    public static final String NAME="name";
     public int pesist(Person person) {
         baseDao=new BaseDaoImpl();
         Person po= (Person) baseDao.persist(person);
@@ -37,5 +38,12 @@ public class PersonDaoImpl implements PersonDao{
     public Person getById(int id) {
         baseDao=new BaseDaoImpl();
         return (Person) baseDao.findById(id,Person.class);
+    }
+
+    public List<Person> getByPersonName(String name) {
+        baseDao=new BaseDaoImpl();
+        String[] properties={NAME};
+        Object[] values={name};
+        return (List<Person>) baseDao.findByProperties("Person",properties,values);
     }
 }

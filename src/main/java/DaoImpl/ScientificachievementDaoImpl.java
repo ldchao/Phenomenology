@@ -52,4 +52,11 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
         baseDao=new BaseDaoImpl();
         return (Scientificachievement) baseDao.findById(id,Scientificachievement.class);
     }
+
+    public List<Scientificachievement> getBySaTitle(String title) {
+        baseDao=new BaseDaoImpl();
+        String[] properties={TITLE};
+        Object[] values={title};
+        return (List<Scientificachievement>) baseDao.findByProperties("Scientificachievement",properties,values);
+    }
 }
