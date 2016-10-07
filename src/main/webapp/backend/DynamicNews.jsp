@@ -42,39 +42,9 @@
 <div class="right_block">
     <div class="right_intent">
         <table class="list">
-            <tr>
+            <tr class="none" id="listRow">
                 <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
+                <td class="td2"></td>
                 <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
@@ -86,29 +56,38 @@
 </div>
 
 <div class="editBody">
-    <form id="form1" action="/uploadCover.action" class="editForm" method="post" enctype="multipart/form-data">
+    <div class="editForm">
         <a class="closeButton" onclick="closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
-            <input id="name" type="text" class="textfield" placeholder="文章链接">
-
             <div class="buttons">
-                <a class="chooseFile">
-                    <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传文件
-                </a>
-                <%--<button id="chooseImage" class="formButton blueButton">选取缩略图</button>--%>
-                <button class="submitButton">提交</button>
-
-                <div class="none">
-                    <input type="submit" name="submitFile" value="提交"/>
+                <input id="name" type="text" class="textfield left div-7" placeholder="引用链接">
+                <div class="textfield right div-3">
+                    <select id="language" class="mycombox div-10">
+                        <option>ch</option>
+                        <option>eng</option>
+                    </select>
                 </div>
             </div>
+
+            <div class="buttons">
+                <form action="/uploadCover.action" method="post" enctype="multipart/form-data"
+                      onsubmit="return false;">
+                    <a class="chooseFile left div-5">
+                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传缩略图
+                    </a>
+                    <button class="submitButton right div-5" onclick="publish()">提交</button>
+
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
 
 <script src="../js/backend.js"></script>
-<script src="../js/jquery.js"></script>
+<script type="text/javascript" src="../dist/js/lib/jquery-1.10.2.min.js"></script>
+<script src="http://malsup.github.io/jquery.form.js"></script>
+
 <script>
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
     if ($(".innerForm").find("#editDiv").length != 0) {
@@ -154,6 +133,203 @@
         });
     });
 
+
+</script>
+
+
+<script>
+    var id;
+    var isEdit = 0;
+
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
+    var language = document.getElementById("language").value;
+
+    //输入框高度设置
+    if ($(".innerForm").find("#editDiv").length != 0) {
+        $(".editForm").css({height: (h - 100)});
+    }
+    $("#editDiv").css({height: (h - 250)});
+
+    //初始化数据
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "/academicCommunicate/lecture/get",
+        data: {
+            "language": language
+        },
+        success: function (result) {
+            for (var i = 0; i < result.length; i++) {
+                var tr = document.createElement("tr");
+                tr.innerHTML = document.getElementById("listRow").innerHTML;
+                tr.getElementsByClassName("td1")[0].innerHTML = result[i].id;
+                tr.getElementsByClassName("td2")[0].innerHTML = result[i].title;
+                document.getElementsByClassName("list")[0].appendChild(tr);
+            }
+        },
+        error: function () {
+            alert("出故障了请稍候再试2");
+        }
+    });
+
+    function editItem(ele) {
+        isEdit = 1;
+        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/academicCommunicate/lecture/getOne",
+            data: {
+                "id": id
+            },
+            success: function (result) {
+                $("input[id='name']").val(result.title);
+                $("input[id='publisher']").val(result.author);
+                $("#language").val(result.language);
+
+                //填充editor
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/getHtml",
+                    data: {
+                        "filename": result.location,
+                    },
+                    success: function (html) {
+                        editor.$txt.html(html);
+                    },
+                    error: function () {
+                        alert("获取正文失败");
+                    }
+                });
+
+                //填充附件地址
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/uploadEssayAccessory/getEssayAccessory",
+                    data: {
+                        "id": id
+                    },
+                    success: function (loc) {
+                        alert(loc.location);
+                        $("#accessory").val(loc.location);
+                    },
+                    error: function () {
+                        alert("获取文件失败");
+                    }
+                });
+
+
+                $(".submitButton").html("提交修改");
+                $(".editBody").fadeIn(300);
+            },
+            error: function () {
+                alert("出故障了请稍候再试2");
+            }
+        });
+    }
+
+    function deleteItem(ele) {
+        var id = ele.parentNode.firstChild;
+    }
+
+    function publish() {
+        var html = editor.$txt.html();
+        var coverImg = $("#coverImg").val();
+        var title = $("input[id='name']").val();
+        var author = $("input[id='publisher']").val();
+        var htmlPath;
+
+        //提交editor内容
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/uploadHtml",
+            data: {
+                "html": html
+            },
+            success: function (result) {
+                htmlPath = result;
+            },
+            error: function () {
+                alert("出故障了请稍候再试2");
+            }
+        });
+
+        //提交表单其余内容
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/academicCommunicate/lecture/update",
+            data: {
+                "id": id,
+                "title": title,
+                "author": author,
+                "location": htmlPath,
+                "language": language
+            },
+            success: function (result) {
+                if (result == "SUCCEED") {
+                } else {
+                    alert("抱歉提交失败啦");
+                }
+            },
+            error: function () {
+                alert("出故障了请稍候再试3");
+            }
+        });
+
+        //提交附件
+        if (coverImg != "") {
+            $('form').ajaxSubmit({
+                type: "post",
+                async: false,
+                data: {
+                    "coverImg": coverImg,
+                    "id": id
+                },
+                url: "/uploadCover",
+                success: function (result) {
+                    window.location.reload();
+                },
+                error: function () {
+                    alert("出故障了请稍候再试1");
+                }
+            });
+        }
+    }
+
+
+    function showForm() {
+        $(".submitButton").html("提交");
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/academicCommunicate/lecture/getID",
+            success: function (result) {
+                id = result;
+            },
+            error: function () {
+                alert("出故障了请稍候再试4");
+            }
+        });
+        $(".editBody").fadeIn(300);
+    }
+
+    function closeForm() {
+        if (isEdit == 1) {
+            $("input[id='name']").val("");
+            $("input[id='publisher']").val("");
+            $("#language").val("ch");
+            editor.$txt.html("");
+            $("#accessory").val("");
+            isEdit = 0;
+        }
+        $(".editBody").fadeOut(300);
+    }
 
 </script>
 </body>

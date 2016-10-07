@@ -165,6 +165,7 @@
                 $("input[id='publisher']").val(result.author);
                 $("#language").val(result.language);
 
+                //填充editor
                 $.ajax({
                     type: "get",
                     async: false,
@@ -180,6 +181,7 @@
                     }
                 });
 
+                //填充附件地址
                 $.ajax({
                     type: "get",
                     async: false,
@@ -211,17 +213,13 @@
     }
 
     function publish() {
-
         var html = editor.$txt.html();
-
         var accessory = $("#accessory").val();
-
         var title = $("input[id='name']").val();
-
         var author = $("input[id='publisher']").val();
-
         var htmlPath;
 
+        //提交editor内容
         $.ajax({
             type: "post",
             async: false,
@@ -237,6 +235,7 @@
             }
         });
 
+        //提交表单其余内容
         $.ajax({
             type: "post",
             async: false,
@@ -259,6 +258,7 @@
             }
         });
 
+        //提交附件
         if (accessory != "") {
             $('form').ajaxSubmit({
                 type: "post",
