@@ -107,6 +107,11 @@ function changeTab(index) {
 function showDetail(link) {
 
     var tabs = ["在职人员", "访问学者", "本所学生"];
+
+    if (language == "eng") {
+        tabs = ["OfficeBearer", "VisitingScholar", "OurStudent"];
+    }
+
     var Ids = ["officeBearer", "scholar", "student"];
 
     var name = link.innerHTML.trim();
@@ -116,6 +121,12 @@ function showDetail(link) {
 
     var backbtn = detail.getElementsByClassName("back_lbl")[0];
     backbtn.getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
+
+    if (language == "eng") {
+        var back_width = ["160px", "175px", "140px"];
+        backbtn.style.width = back_width[Tab_Selected];
+    }
+
     backbtn.onclick = function () {
         $("#staff_detail").hide();
         $("#staff_list").show();
@@ -156,7 +167,7 @@ function showDetail(link) {
                     alert("html数据获取失败");
                 }
             });
-            
+
         },
         error: function () {
             alert("人员数据获取失败");
@@ -182,7 +193,7 @@ function setId(result, parent) {
         link.onclick = function () {
             showDetail(this);
         };
-        
+
         div.getElementsByTagName("a")[0].innerHTML = result[i].id;
 
         // 图片地址
@@ -192,7 +203,7 @@ function setId(result, parent) {
         img.src = result[i].imageLocation;
         div.getElementsByClassName("book_pic")[0].innerHTML = "";
         div.getElementsByClassName("book_pic")[0].appendChild(img);
-        
+
         parent.appendChild(div);
     }
 }
@@ -201,7 +212,7 @@ function setId(result, parent) {
 function changeVersion_content() {
     var tabs = document.getElementsByClassName("tab_achieve");
     var eng_title = ["OfficeBearer", "VisitingScholar", "OurStudent"];
-    for (var i=0; i<3; i++) {
+    for (var i = 0; i < 3; i++) {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "18px";
     }

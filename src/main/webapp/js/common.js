@@ -133,7 +133,6 @@ function judgeVersion() {
 
                 changeVersion_title();
                 changeVersion_content();
-                changeVersion_bottom();
             }
         },
         error: function () {
@@ -157,9 +156,7 @@ function changeVersion_title() {
         divs[i].style.width = "210px";
         titles[i].style.fontSize = "16px";
     }
-}
-
-function changeVersion_bottom() {
+    
     var bottom = document.getElementsByClassName("bottom_nav")[0];
     var spans = bottom.getElementsByTagName("span");
     var links = bottom.getElementsByTagName("a");
@@ -176,4 +173,6 @@ function changeVersion_bottom() {
     for (var j = 0; j < eng_a.length; j++) {
         links[j].innerHTML = eng_a[j];
     }
+
+    document.getElementById("search_key").placeholder = "Search what you want…";
 }

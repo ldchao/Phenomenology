@@ -39,19 +39,19 @@ function showBooks() {
         },
         dataType: "json",
         success: function (result) {
-           
+
             for (var i = 0; i < result.length; i++) {
 
                 var div = document.createElement("div");
                 div.innerHTML = copy.innerHTML;
                 div.setAttribute("class", "each_book_div");
 
-                var link = div.getElementsByClassName("name_link")[0]; 
+                var link = div.getElementsByClassName("name_link")[0];
                 link.innerHTML = result[i].title;
                 link.onclick = function () {
                     showBookDetail(this);
                 };
-                
+
                 div.getElementsByTagName("a")[0].innerHTML = result[i].id;
 
                 // 图片地址
@@ -73,7 +73,7 @@ function showBooks() {
 }
 
 function showBookDetail(link) {
-    
+
     var name = link.innerHTML.trim();
     var id = link.parentNode.getElementsByTagName("a")[0].innerHTML.trim();
 
@@ -123,7 +123,14 @@ function showBookDetail(link) {
     });
 
     var backbtn = detail.getElementsByClassName("back_lbl")[0];
-    backbtn.getElementsByTagName("span")[0].innerHTML = "书籍出版";
+
+    if (language == "ch") {
+        backbtn.getElementsByTagName("span")[0].innerHTML = "书籍出版";
+    } else {
+        backbtn.getElementsByTagName("span")[0].innerHTML = "BookPublishing";
+        backbtn.style.width = "180px";
+    }
+
     backbtn.onclick = function () {
         $("#book_detail").hide();
         $("#achieve_list").show();
@@ -174,7 +181,7 @@ function showArticles() {
             alert("书籍内容数据获取失败");
         }
     });
-    
+
     $(articles).hide();
 }
 
@@ -220,7 +227,14 @@ function showArticleDetail(link) {
     });
 
     var backbtn = content.getElementsByClassName("back_lbl")[0];
-    backbtn .getElementsByTagName("span")[0].innerHTML = "文章发表";
+
+    if (language == "ch") {
+        backbtn.getElementsByTagName("span")[0].innerHTML = "文章发表";
+    } else {
+        backbtn.getElementsByTagName("span")[0].innerHTML = "ArticlePublishing";
+        backbtn.style.width = "205px";
+    }
+
     backbtn.onclick = function () {
         $("#article_content").hide();
         $("#achieve_list").show();
@@ -229,14 +243,14 @@ function showArticleDetail(link) {
 
     $("#achieve_list").hide();
     $("#article_content").show();
-    
+
 }
 
 // 标题汉译英
 function changeVersion_content() {
     var tabs = document.getElementsByClassName("tab_achieve");
     var eng_title = ["BookPublishing", "ArticlePublishing"];
-    for (var i=0; i<2; i++) {
+    for (var i = 0; i < 2; i++) {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "16px";
     }

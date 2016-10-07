@@ -31,7 +31,7 @@ public class AccessoryManagerController {
     @ResponseBody
     public String uploadEssayAccessory(@RequestParam("accessory") MultipartFile accessory,Integer id,HttpServletRequest request){
 
-        System.out.println("吃吃吃吃吃吃吃吃吃吃吃吃吃吃吃吃");
+        System.out.println("吃吃吃吃吃吃吃吃吃吃吃吃吃吃吃吃"+id);
         String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "accessory/";
         String originalFilename = accessory.getOriginalFilename();
         String filename = UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));

@@ -81,7 +81,7 @@ public class AcademicCommunicateController {
 
     @RequestMapping(value = "/communicate/update", method = RequestMethod.POST)
     @ResponseBody
-    public String updateCommunicate(int id,String title,String author,
+    public String updateCommunicate(Integer id,String title,String author,
                                 String location,String language) {
 
         AcademicVO academicVO=new AcademicVO();
@@ -96,7 +96,7 @@ public class AcademicCommunicateController {
     }
     @RequestMapping(value = "/communicate/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteCommunicate(int id) {
+    public String deleteCommunicate(Integer id) {
         CommunicateBLService communicateBLService=new CommunicateBL();
         UniversalState universalState=communicateBLService.deleteItem(id);
         return universalState.toString();
@@ -104,7 +104,7 @@ public class AcademicCommunicateController {
 
     @RequestMapping(value = "/communicate/getOne", method = RequestMethod.GET)
     @ResponseBody
-    public AcademicVO getOneCommunicate(int id) {
+    public AcademicVO getOneCommunicate(Integer id) {
         CommunicateBLService communicateBLService=new CommunicateBL();
         return communicateBLService.getItem(id);
     }
@@ -125,7 +125,7 @@ public class AcademicCommunicateController {
 
     @RequestMapping(value = "/visit/update", method = RequestMethod.POST)
     @ResponseBody
-    public String updateVisit(int id,String title,String author,
+    public String updateVisit(Integer id,String title,String author,
                                 String location,String language) {
 
         AcademicVO academicVO=new AcademicVO();
@@ -140,7 +140,7 @@ public class AcademicCommunicateController {
     }
     @RequestMapping(value = "/visit/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteVisit(int id) {
+    public String deleteVisit(Integer id) {
         VisitBLService visitBLService=new VisitBL();
         UniversalState universalState=visitBLService.deleteItem(id);
         return universalState.toString();
@@ -148,7 +148,7 @@ public class AcademicCommunicateController {
 
     @RequestMapping(value = "/visit/getOne", method = RequestMethod.GET)
     @ResponseBody
-    public AcademicVO getOneVisit(int id) {
+    public AcademicVO getOneVisit(Integer id) {
         VisitBLService visitBLService=new VisitBL();
         return visitBLService.getItem(id);
     }

@@ -20,8 +20,16 @@
 
 <div class="top_title">
 
-    <div class="ch_eng" onclick="changeVersion(0)">中文</div>
-    <div class="ch_eng ch_eng_not" style="width: 60px;right: 25px;" onclick="changeVersion(1)">English</div>
+    <div style="width: 1135px; margin: 0 auto; position: relative">
+        <div class="ch_eng" onclick="changeVersion(0)">中文</div>
+        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
+
+        <div>
+            <input id="search_key" class="search" type="text" placeholder="搜索您想要的…">
+            <i class="fa fa-search search_btn" style="font-size: 22px;"></i>
+        </div>
+
+    </div>
 
 </div>
 
@@ -161,6 +169,6 @@
 
 <script src="../js/organization.js"></script>
 <script src="../js/jquery.js"></script>
-<script src="../js/roll_pic.js"></script>
+<script src="../js/common.js"></script>
 </body>
 </html>

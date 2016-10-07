@@ -43,11 +43,11 @@
 <div class="right_block">
     <div class="right_intent">
         <table class="list">
-            <tr>
+            <tr class="none" id="listRow">
                 <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                <td class="td2"></td>
+                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
         </table>
 
@@ -58,7 +58,7 @@
 
 <div class="editBody">
     <div class="editForm">
-        <a class="closeButton" href="javascript:closeForm
+        <a class="closeButton" onclick="closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
             <div class="firstline">
@@ -66,7 +66,7 @@
                 <div class="buttons">
                     <input id="publisher" type="text" class="textfield left div-7" placeholder="发布人">
                     <div class="textfield right div-3">
-                        <select id="language div-3" class="mycombox">
+                        <select id="language" class="mycombox div-10">
                             <option>ch</option>
                             <option>eng</option>
                         </select>
@@ -81,15 +81,13 @@
 
             <div class="buttons">
                 <%--<button id="chooseImage" class="formButton blueButton">选取缩略图</button>--%>
-                <form action="/uploadEssayAccessory.action" method="post" enctype="multipart/form-data">
+                <form action="/uploadEssayAccessory.action" method="post" enctype="multipart/form-data"
+                      onsubmit="return false;">
                     <a class="chooseFile left div-5">
                         <input style="opacity: 0;" type="file" name="accessory" id="accessory"/>点击这里上传附件(可选)
                     </a>
                     <button class="submitButton right div-5" onclick="publish()">提交</button>
 
-                    <div class="none">
-                        <input type="submit" name="submitFile" value="提交"/>
-                    </div>
                 </form>
             </div>
         </div>
@@ -99,21 +97,20 @@
 <script src="../js/backend.js"></script>
 <script type="text/javascript" src="../dist/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>
+<script src="http://malsup.github.io/jquery.form.js"></script>
 <script>
     var id;
+    var isEdit = 0;
 
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
+    var language = document.getElementById("language").value;
 
+    //wangeditor声明
     var editor = new wangEditor('editDiv');
     editor.config.menuFixed = false;
 
     // 上传图片（举例）
     //    editor.config.uploadImgUrl = '../uploadImgUrl';
-
-    if ($(".innerForm").find("#editDiv").length != 0) {
-        $(".editForm").css({height: (h - 100)});
-    }
-    $("#editDiv").css({height: (h - 286)});
 
     editor.config.menus = $.map(wangEditor.config.menus, function (item, key) {
         if (item === 'fullscreen') {
@@ -122,6 +119,96 @@
         return item;
     });
 
+    editor.create();
+
+    //输入框高度设置
+    if ($(".innerForm").find("#editDiv").length != 0) {
+        $(".editForm").css({height: (h - 100)});
+    }
+    $("#editDiv").css({height: (h - 286)});
+
+    //初始化数据
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "/academicCommunicate/lecture/get",
+        data: {
+            "language": language
+        },
+        success: function (result) {
+            for (var i = 0; i < result.length; i++) {
+                var tr = document.createElement("tr");
+                tr.innerHTML = document.getElementById("listRow").innerHTML;
+                tr.getElementsByClassName("td1")[0].innerHTML = result[i].id;
+                tr.getElementsByClassName("td2")[0].innerHTML = result[i].title;
+                document.getElementsByClassName("list")[0].appendChild(tr);
+            }
+        },
+        error: function () {
+            alert("出故障了请稍候再试2");
+        }
+    });
+
+    function editItem(ele) {
+        isEdit = 1;
+        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/academicCommunicate/lecture/getOne",
+            data: {
+                "id": id
+            },
+            success: function (result) {
+                $("input[id='name']").val(result.title);
+                $("input[id='publisher']").val(result.author);
+                $("#language").val(result.language);
+
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/getHtml",
+                    data: {
+                        "filename": result.location,
+                    },
+                    success: function (html) {
+                        editor.$txt.html(html);
+                    },
+                    error: function () {
+                        alert("获取正文失败");
+                    }
+                });
+
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "/uploadEssayAccessory/getEssayAccessory",
+                    data: {
+                        "id": id
+                    },
+                    success: function (loc) {
+                        alert(loc.location);
+                        $("#accessory").val(loc.location);
+                    },
+                    error: function () {
+                        alert("获取文件失败");
+                    }
+                });
+
+
+                $(".submitButton").html("提交修改");
+                $(".editBody").fadeIn(300);
+            },
+            error: function () {
+                alert("出故障了请稍候再试2");
+            }
+        });
+    }
+
+    function deleteItem(ele) {
+        var id = ele.parentNode.firstChild;
+    }
 
     function publish() {
 
@@ -133,9 +220,44 @@
 
         var author = $("input[id='publisher']").val();
 
-        var filePath;
+        var htmlPath;
 
-        var language = document.getElementById("language").value;
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/uploadHtml",
+            data: {
+                "html": html
+            },
+            success: function (result) {
+                htmlPath = result;
+            },
+            error: function () {
+                alert("出故障了请稍候再试2");
+            }
+        });
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/academicCommunicate/lecture/update",
+            data: {
+                "id": id,
+                "title": title,
+                "author": author,
+                "location": htmlPath,
+                "language": language
+            },
+            success: function (result) {
+                if (result == "SUCCEED") {
+                } else {
+                    alert("抱歉提交失败啦");
+                }
+            },
+            error: function () {
+                alert("出故障了请稍候再试3");
+            }
+        });
 
         if (accessory != "") {
             $('form').ajaxSubmit({
@@ -147,55 +269,13 @@
                 },
                 url: "/uploadEssayAccessory",
                 success: function (result) {
-                    filePath = result;
-
+                    window.location.reload();
                 },
                 error: function () {
                     alert("出故障了请稍候再试1");
                 }
             });
         }
-
-
-        $.ajax({
-            type: "post",
-            async: false,
-            url: "/uploadHtml",
-            data: {
-                "html": html,
-            },
-            success: function (result) {
-                filePath = result;
-
-            },
-            error: function () {
-                alert("出故障了请稍候再试2");
-            }
-        });
-
-
-        $.ajax({
-            type: "post",
-            async: false,
-            url: "/academicCommunicate/lecture/update",
-            data: {
-                "id": id,
-                "title": title,
-                "author": author,
-                "location": filePath,
-                "language": "ch",
-            },
-            success: function (result) {
-                if (result == "SUCCEED") {
-                    window.location.reload();
-                } else {
-                    alert("抱歉提交失败啦");
-                }
-            },
-            error: function () {
-                alert("出故障了请稍候再试3");
-            }
-        });
     }
 
 
@@ -217,11 +297,16 @@
     }
 
     function closeForm() {
+        if(isEdit == 1){
+            $("input[id='name']").val("");
+            $("input[id='publisher']").val("");
+            $("#language").val("ch");
+            editor.$txt.html("");
+            $("#accessory").val("");
+            isEdit = 0;
+        }
         $(".editBody").fadeOut(300);
     }
-
-
-    editor.create();
 
 </script>
 </body>
