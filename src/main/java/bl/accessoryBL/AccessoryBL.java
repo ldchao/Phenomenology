@@ -16,10 +16,10 @@ public class AccessoryBL implements AccessoryBLService{
 
 
     public int addEssayAccessory(AccessoryVO accessoryVO) {
-        EssayAttachment essayAttachment=new EssayAttachment();
-        //// TODO: 2016/10/6
-        EssayAttachmentDao essayAttachmentDao=new EssayAttachmentDaoImpl();
-        essayAttachmentDao.pesist(essayAttachment);
+//        EssayAttachment essayAttachment=new EssayAttachment();
+//        //// TODO: 2016/10/6
+//        EssayAttachmentDao essayAttachmentDao=new EssayAttachmentDaoImpl();
+//        essayAttachmentDao.pesist(essayAttachment);
         return 0;
     }
     public ArrayList<AccessoryVO> getEssayAccessory(int id) {

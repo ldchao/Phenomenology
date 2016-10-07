@@ -29,8 +29,9 @@ public class AccessoryManagerController {
 
     @RequestMapping("/uploadEssayAccessory")
     @ResponseBody
-    public String uploadEssayAccessory(@RequestParam("accessory") MultipartFile accessory,int id,HttpServletRequest request){
+    public String uploadEssayAccessory(@RequestParam("accessory") MultipartFile accessory,Integer id,HttpServletRequest request){
 
+        System.out.println("吃吃吃吃吃吃吃吃吃吃吃吃吃吃吃吃");
         String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "accessory/";
         String originalFilename = accessory.getOriginalFilename();
         String filename = UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -47,6 +48,7 @@ public class AccessoryManagerController {
         }
 
 
+        System.out.println("文件"+originalFilename+"上传到"+ uploadUrl+filename);
         String accessoryPath="accessory/"+filename;
         AccessoryBLService accessoryBLService=new AccessoryBL();
         AccessoryVO accessoryVO=new AccessoryVO();
@@ -60,7 +62,7 @@ public class AccessoryManagerController {
 
     @RequestMapping("/uploadSaAccessory")
     @ResponseBody
-    public String uploadSaAccessory(@RequestParam("accessory") MultipartFile accessory,int id,HttpServletRequest request){
+    public String uploadSaAccessory(@RequestParam("accessory") MultipartFile accessory,Integer id,HttpServletRequest request){
 
         String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "accessory/";
         String originalFilename = accessory.getOriginalFilename();
@@ -90,7 +92,7 @@ public class AccessoryManagerController {
 
     @RequestMapping("/getEssayAccessory")
     @ResponseBody
-    public ArrayList<AccessoryVO> getEssayAccessory(int id){
+    public ArrayList<AccessoryVO> getEssayAccessory(Integer id){
 
         AccessoryBLService accessoryBLService=new AccessoryBL();
         return accessoryBLService.getEssayAccessory(id);
@@ -98,14 +100,14 @@ public class AccessoryManagerController {
 
     @RequestMapping("/getSaAccessory")
     @ResponseBody
-    public ArrayList<AccessoryVO> getSaAccessory(int id){
+    public ArrayList<AccessoryVO> getSaAccessory(Integer id){
         AccessoryBLService accessoryBLService=new AccessoryBL();
         return accessoryBLService.getSaAccessory(id);
     }
 
     @RequestMapping("/deleteEssayAccessory")
     @ResponseBody
-    public String deleteEssayAccessory(int accessoryId){
+    public String deleteEssayAccessory(Integer accessoryId){
 
         AccessoryBLService accessoryBLService=new AccessoryBL();
         UniversalState result=accessoryBLService.deleteEssayAccessory(accessoryId);
@@ -114,7 +116,7 @@ public class AccessoryManagerController {
 
     @RequestMapping("/deleteSaAccessory")
     @ResponseBody
-    public String deleteSaAccessory(int accessoryId){
+    public String deleteSaAccessory(Integer accessoryId){
         AccessoryBLService accessoryBLService=new AccessoryBL();
         UniversalState result=accessoryBLService.deleteSaAccessory(accessoryId);
         return result.toString();

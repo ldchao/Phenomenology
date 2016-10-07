@@ -39,7 +39,7 @@ public class AcademicController {
 
     @RequestMapping(value = "/cathedra/update", method = RequestMethod.POST)
     @ResponseBody
-    public String updateLecture(int id,String title,String author,
+    public String updateLecture(Integer id,String title,String author,
                                 String location,String language) {
 
         AcademicVO academicVO=new AcademicVO();
@@ -54,7 +54,7 @@ public class AcademicController {
     }
     @RequestMapping(value = "/cathedra/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteLecture(int id) {
+    public String deleteLecture(Integer id) {
         CathedraBLService cathedraBLService=new CathedraBL();
         UniversalState universalState=cathedraBLService.deleteItem(id);
         return universalState.toString();
@@ -62,7 +62,7 @@ public class AcademicController {
 
     @RequestMapping(value = "/cathedra/getOne", method = RequestMethod.GET)
     @ResponseBody
-    public AcademicVO getOneCathedra(int id) {
+    public AcademicVO getOneCathedra(Integer id) {
         CathedraBLService cathedraBLService=new CathedraBL();
         return cathedraBLService.getItem(id);
     }
@@ -83,7 +83,7 @@ public class AcademicController {
 
     @RequestMapping(value = "/circleNews/update", method = RequestMethod.POST)
     @ResponseBody
-    public String updateCommunicate(int id,String title,String author,
+    public String updateCommunicate(Integer id,String title,String author,
                                     String location,String language) {
 
         AcademicVO academicVO=new AcademicVO();
@@ -98,7 +98,7 @@ public class AcademicController {
     }
     @RequestMapping(value = "/circleNews/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteCommunicate(int id) {
+    public String deleteCommunicate(Integer id) {
         CircleNewsBLService circleNewsBLService=new CircleNewsBL();
         UniversalState universalState=circleNewsBLService.deleteItem(id);
         return universalState.toString();
@@ -106,7 +106,7 @@ public class AcademicController {
 
     @RequestMapping(value = "/circleNews/getOne", method = RequestMethod.GET)
     @ResponseBody
-    public AcademicVO getOneCircleNews(int id) {
+    public AcademicVO getOneCircleNews(Integer id) {
         CircleNewsBLService circleNewsBLService=new CircleNewsBL();
         return circleNewsBLService.getItem(id);
     }
@@ -127,7 +127,7 @@ public class AcademicController {
 
     @RequestMapping(value = "/course/update", method = RequestMethod.POST)
     @ResponseBody
-    public String updateVisit(int id,String title,String author,
+    public String updateVisit(Integer id,String title,String author,
                               String location,String language) {
 
         AcademicVO academicVO=new AcademicVO();
@@ -142,7 +142,7 @@ public class AcademicController {
     }
     @RequestMapping(value = "/course/delete", method = RequestMethod.POST)
     @ResponseBody
-    public String deleteVisit(int id) {
+    public String deleteVisit(Integer id) {
         CourseBLService courseLService=new CourseBL();
         UniversalState universalState=courseLService.deleteItem(id);
         return universalState.toString();
@@ -150,7 +150,7 @@ public class AcademicController {
 
     @RequestMapping(value = "/course/getOne", method = RequestMethod.GET)
     @ResponseBody
-    public AcademicVO getOneCourse(int id) {
+    public AcademicVO getOneCourse(Integer id) {
         CourseBLService courseLService=new CourseBL();
         return courseLService.getItem(id);
     }

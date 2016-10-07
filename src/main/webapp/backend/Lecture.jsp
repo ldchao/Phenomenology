@@ -49,36 +49,6 @@
                 <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
-            <tr>
-                <td class="td1">1</td>
-                <td class="td2">xxx项目</td>
-                <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-            </tr>
         </table>
 
         <button class="new blueButton" onclick="showForm()">新建
@@ -91,10 +61,17 @@
         <a class="closeButton" href="javascript:closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
-
             <div class="firstline">
                 <input id="name" type="text" class="textfield" placeholder="标题">
-                <input id="publisher" type="text" class="textfield" placeholder="发布人">
+                <div class="buttons">
+                    <input id="publisher" type="text" class="textfield left div-7" placeholder="发布人">
+                    <div class="textfield right div-3">
+                        <select id="language div-3" class="mycombox">
+                            <option>ch</option>
+                            <option>eng</option>
+                        </select>
+                    </div>
+                </div>
 
             </div>
 
@@ -102,20 +79,19 @@
                 <p>在此输入文章正文......</p>
             </div>
 
-
             <div class="buttons">
-                <a class="chooseFile">
-                    <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传附件(可选)
-                </a>
-
                 <%--<button id="chooseImage" class="formButton blueButton">选取缩略图</button>--%>
-                <button class="submitButton">提交</button>
+                <form action="/uploadEssayAccessory.action" method="post" enctype="multipart/form-data">
+                    <a class="chooseFile left div-5">
+                        <input style="opacity: 0;" type="file" name="accessory" id="accessory"/>点击这里上传附件(可选)
+                    </a>
+                    <button class="submitButton right div-5" onclick="publish()">提交</button>
 
-                <div class="none">
-                    <input type="submit" name="submitFile" value="提交"/>
-                </div>
+                    <div class="none">
+                        <input type="submit" name="submitFile" value="提交"/>
+                    </div>
+                </form>
             </div>
-
         </div>
     </div>
 </div>
@@ -124,6 +100,8 @@
 <script type="text/javascript" src="../dist/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>
 <script>
+    var id;
+
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
 
     var editor = new wangEditor('editDiv');
@@ -143,6 +121,104 @@
         }
         return item;
     });
+
+
+    function publish() {
+
+        var html = editor.$txt.html();
+
+        var accessory = $("#accessory").val();
+
+        var title = $("input[id='name']").val();
+
+        var author = $("input[id='publisher']").val();
+
+        var filePath;
+
+        var language = document.getElementById("language").value;
+
+        if (accessory != "") {
+            $('form').ajaxSubmit({
+                type: "post",
+                async: false,
+                data: {
+                    "accessory": accessory,
+                    "id": id
+                },
+                url: "/uploadEssayAccessory",
+                success: function (result) {
+                    filePath = result;
+
+                },
+                error: function () {
+                    alert("出故障了请稍候再试1");
+                }
+            });
+        }
+
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/uploadHtml",
+            data: {
+                "html": html,
+            },
+            success: function (result) {
+                filePath = result;
+
+            },
+            error: function () {
+                alert("出故障了请稍候再试2");
+            }
+        });
+
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/academicCommunicate/lecture/update",
+            data: {
+                "id": id,
+                "title": title,
+                "author": author,
+                "location": filePath,
+                "language": "ch",
+            },
+            success: function (result) {
+                if (result == "SUCCEED") {
+                    window.location.reload();
+                } else {
+                    alert("抱歉提交失败啦");
+                }
+            },
+            error: function () {
+                alert("出故障了请稍候再试3");
+            }
+        });
+    }
+
+
+    function showForm() {
+        $(".submitButton").html("提交");
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/academicCommunicate/lecture/getID",
+            success: function (result) {
+                id = result;
+            },
+            error: function () {
+                alert("出故障了请稍候再试4");
+            }
+        });
+        $(".editBody").fadeIn(300);
+    }
+
+    function closeForm() {
+        $(".editBody").fadeOut(300);
+    }
 
 
     editor.create();

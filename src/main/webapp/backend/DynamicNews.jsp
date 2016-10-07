@@ -83,7 +83,6 @@
         <button class="new blueButton" onclick="showForm()">新建
         </button>
     </div>
-    ®
 </div>
 
 <div class="editBody">
@@ -132,9 +131,7 @@
 
     jQuery(function () {
         $(".submitButton").click(function () {
-            alert("hhhhhhhhhhhhhhh");
             $('#form1').on('submit', function () {
-                alert("zhixing");
                 var file = $("#coverImg").val();
                 var name = $("#name").val();
                 $(this).ajaxSubmit({
@@ -142,6 +139,7 @@
                     url: '/coverImg.action', // 需要提交的 url
                     data: {
                         'coverImg': file,
+
                     },
                     success: function (data) { // data 保存提交后返回的数据，一般为 json 数据
                         alert('提交成功！');
