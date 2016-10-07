@@ -46,7 +46,8 @@ function changeVersion_content() {
 
 function getMore(link) {
 
-    document.getElementById("more_content").getElementsByClassName("sub_title")[0].innerHTML = link;
+    var subtitle = link.parentNode.getElementsByClassName("sub_title")[0].innerHTML;
+    document.getElementById("more_content").getElementsByClassName("sub_title")[0].innerHTML = subtitle;
     
     var parent = document.getElementById("eachpage");
     var copy = document.getElementById("more_copy");

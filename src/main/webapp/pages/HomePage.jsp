@@ -82,7 +82,7 @@
 
                 <div class="article_index sub_title">动态新闻</div>
 
-                <div class="article_index more" onclick="getMore('动态新闻')">
+                <div class="article_index more" onclick="getMore(this)">
                     <span>更多</span>&nbsp;<i class="fa fa-angle-right"></i>
                 </div>
             </div>
@@ -120,7 +120,7 @@
 
                 <div class="article_index sub_title">源头活水</div>
 
-                <div class="article_index more" onclick="getMore('源头活水')">
+                <div class="article_index more" onclick="getMore(this)">
                     <span>更多</span>&nbsp;<i class="fa fa-angle-right"></i>
                 </div>
             </div>
