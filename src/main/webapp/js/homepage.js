@@ -43,3 +43,25 @@ function changeVersion_content() {
         more[i].getElementsByTagName("span")[0].innerHTML = "More";
     }
 }
+
+function getMore(link) {
+
+    var subtitle = link.parentNode.getElementsByClassName("sub_title")[0].innerHTML;
+    document.getElementById("more_content").getElementsByClassName("sub_title")[0].innerHTML = subtitle;
+    
+    var parent = document.getElementById("eachpage");
+    var copy = document.getElementById("more_copy");
+
+    parent.innerHTML = "";
+    
+    for(var i=0; i<6; i++) {
+        var div = document.createElement("div");
+        div.innerHTML = copy.innerHTML;
+        parent.appendChild(div);
+    }
+
+    $("#simple_content").hide();
+    $("#more_content").show();
+    
+    document.getElementsByClassName("active")[0].setAttribute("class", "nav_bar");
+}

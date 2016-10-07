@@ -77,7 +77,7 @@
         <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
             学术讲座
         </div>
-        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">学术交流</div>
+        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">学术会议</div>
         <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(2)">师生出访</div>
 
         <div id="lecture" class="achieves_div">
