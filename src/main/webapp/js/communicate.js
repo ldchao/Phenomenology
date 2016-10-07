@@ -106,6 +106,11 @@ function changeTab(index) {
 function showArticle(link) {
 
     var tabs = ["学术讲座", "学术交流", "师生出访"];
+    
+    if(language == "eng") {
+        tabs = ["AcademicForum", "AcademicExchange", "Visitings"];
+    }
+    
     var Ids = ["lecture", "communicate", "visit"];
 
     var content = document.getElementById("news_content");
@@ -151,6 +156,14 @@ function showArticle(link) {
 
     var backbtn = content.getElementsByClassName("back_lbl")[0];
     backbtn.getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
+    
+    if(language == "eng") {
+        backbtn.style.width = "240px";
+        document.getElementById("writer_lbl").innerHTML = "Author";
+        document.getElementById("time_lbl").innerHTML = "Time";
+        document.getElementById("viewer_lbl").innerHTML = "PageView";
+    }
+    
     backbtn.onclick = function () {
         $("#news_content").hide();
         $("#news_list").show();

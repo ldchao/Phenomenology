@@ -99,9 +99,11 @@
         <div class="news_title article_title">2016年南京大学超级现象学大会召开</div>
 
         <div class="info article_list_title" style="color: #9d9d9d;">
-            <div style="display: inline-block">发布人: <span id="writer">张三</span></div>
-            <div style="margin-left: 20px; display: inline-block">发布时间: <span id="time">2016/6/30</span></div>
-            <div style="margin-left: 20px; display: inline-block">浏览量: <span id="viewer">10000</span></div>
+            <div style="display: inline-block"><span id="writer_lbl">发布人</span>: <span id="writer">张三</span></div>
+            <div style="margin-left: 20px; display: inline-block"><span id="time_lbl">发布时间</span>: <span id="time">2016/6/30</span>
+            </div>
+            <div style="margin-left: 20px; display: inline-block"><span id="viewer_lbl">浏览量</span>: <span id="viewer">10000</span>
+            </div>
         </div>
 
         <div class="text_content article_text">
@@ -179,6 +181,6 @@
 
 <script src="../js/jquery.js"></script>
 <script src="../js/communicate.js"></script>
-<script src="../js/roll_pic.js"></script>
+<script src="../js/common.js"></script>
 </body>
 </html>

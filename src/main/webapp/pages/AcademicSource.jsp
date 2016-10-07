@@ -63,89 +63,91 @@
 
     </div>
 
-        <%--右侧内容块--%>
-        <div id="news_list" class="right_content">
+    <%--右侧内容块--%>
+    <div id="news_list" class="right_content">
 
-            <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
-                讲座实录
-            </div>
-            <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">课程资源</div>
-            <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(2)">学界动态</div>
+        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
+            讲座实录
+        </div>
+        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">课程资源</div>
+        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(2)">学界动态</div>
 
-            <div id="lecture" class="achieves_div">
+        <div id="lecture" class="achieves_div">
 
-                <div id="lecture_copy" class="each_lecture" style="display: none;">
-                    <span class="lecture_title article_list_title">2016年南京大学超级现象学大会召开并且标题非常非常非常非常的长</span>
+            <div id="lecture_copy" class="each_lecture" style="display: none;">
+                <span class="lecture_title article_list_title">2016年南京大学超级现象学大会召开并且标题非常非常非常非常的长</span>
                 <span class="article_list_title"
                       style="float: right; margin-right: 17px; color: #b8b9b9;">2016/9/30</span>
-                    <a style="display: none;">1</a>
-                </div>
-
-            </div>
-
-            <div id="meeting" class="achieves_div"></div>
-
-            <div id="visiting" class="achieves_div"></div>
-
-        </div>
-
-        <%-- 文章 --%>
-        <div id="news_content" class="right_content" style="height: 956px; display: none;">
-
-            <div class="article_index back_lbl">
-                <span>学术讲座</span> <i class="fa fa-angle-right"></i>
-            </div>
-
-            <div class="news_title article_title">2016年南京大学超级现象学大会召开</div>
-
-            <div class="info article_list_title" style="color: #9d9d9d;">
-                <div style="display: inline-block">发布人: <span id="writer">张三</span></div>
-                <div style="margin-left: 20px; display: inline-block">发布时间: <span id="time">2016/6/30</span></div>
-                <div style="margin-left: 20px; display: inline-block">浏览量: <span id="viewer">10000</span></div>
-            </div>
-
-            <div class="text_content article_text">
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，
+                <a style="display: none;">1</a>
             </div>
 
         </div>
 
+        <div id="meeting" class="achieves_div"></div>
+
+        <div id="visiting" class="achieves_div"></div>
 
     </div>
 
-    <%--滚动图片--%>
-    <div class="roll_pic">
+    <%-- 文章 --%>
+    <div id="news_content" class="right_content" style="height: 956px; display: none;">
 
-        <div id="rollpic" style="width: 2133px; position: absolute;">
-
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-
+        <div class="article_index back_lbl">
+            <span>学术讲座</span> <i class="fa fa-angle-right"></i>
         </div>
 
-        <div class="next_pic" style="left: 20px;"><i class="fa fa-arrow-circle-o-left"></i></div>
-        <div class="next_pic"><i class="fa fa-arrow-circle-o-right"></i></div>
+        <div class="news_title article_title">2016年南京大学超级现象学大会召开</div>
+
+        <div class="info article_list_title" style="color: #9d9d9d;">
+            <div style="display: inline-block"><span id="writer_lbl">发布人</span>: <span id="writer">张三</span></div>
+            <div style="margin-left: 20px; display: inline-block"><span id="time_lbl">发布时间</span>: <span id="time">2016/6/30</span>
+            </div>
+            <div style="margin-left: 20px; display: inline-block"><span id="viewer_lbl">浏览量</span>: <span id="viewer">10000</span>
+            </div>
+        </div>
+
+        <div class="text_content article_text">
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
+            李四是一个好人，
+        </div>
 
     </div>
+
+
+</div>
+
+<%--滚动图片--%>
+<div class="roll_pic">
+
+    <div id="rollpic" style="width: 2133px; position: absolute;">
+
+        <div class="each_pic"></div>
+        <div class="each_pic"></div>
+        <div class="each_pic"></div>
+        <div class="each_pic"></div>
+        <div class="each_pic"></div>
+        <div class="each_pic"></div>
+
+    </div>
+
+    <div class="next_pic" style="left: 20px;"><i class="fa fa-arrow-circle-o-left"></i></div>
+    <div class="next_pic"><i class="fa fa-arrow-circle-o-right"></i></div>
+
+</div>
 
 </div>
 
@@ -180,7 +182,7 @@
 
 </div>
 
-<script src="../js/roll_pic.js"></script>
+<script src="../js/common.js"></script>
 <script src="../js/source.js"></script>
 <script src="../js/jquery.js"></script>
 </body>

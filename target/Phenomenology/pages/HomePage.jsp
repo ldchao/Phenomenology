@@ -178,7 +178,7 @@
 
 
 <script src="../js/homepage.js"></script>
-<script src="../js/roll_pic.js"></script>
+<script src="../js/common.js"></script>
 <script src="../js/jquery.js"></script>
 </body>
 </html>

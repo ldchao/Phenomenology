@@ -142,7 +142,7 @@
 
 </div>
 
-<script src="../js/roll_pic.js"></script>
+<script src="../js/common.js"></script>
 <script src="../js/situation.js"></script>
 <script src="../js/jquery.js"></script>
 </body>
