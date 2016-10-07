@@ -2,6 +2,8 @@ package DaoImpl;
 
 import Dao.BaseDao;
 import Dao.ScientificachievementDao;
+import ENUM.Language;
+import ENUM.Type;
 import POJO.Scientificachievement;
 
 import java.util.List;
@@ -41,7 +43,7 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
         return (List<Scientificachievement>) baseDao.findAll("Scientificachievement");
     }
 
-    public List<Scientificachievement> find(String type, String language) {
+    public List<Scientificachievement> find(Type type, Language language) {
         baseDao=new BaseDaoImpl();
         String[] properties={TYPE,LANGUAGE};
         Object[] values={type,language};

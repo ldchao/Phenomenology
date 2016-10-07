@@ -1,5 +1,7 @@
 package Dao;
 
+import ENUM.Language;
+import ENUM.Type;
 import POJO.Scientificachievement;
 
 import java.util.List;
@@ -17,7 +19,7 @@ public interface ScientificachievementDao {
     public List<Scientificachievement> findAll();
 
 
-    public List<Scientificachievement> find(String type, String language);
+    public List<Scientificachievement> find(Type type, Language language);
 
     public Scientificachievement getById(int id);
 
