@@ -1,17 +1,27 @@
 package bl.achievementBL;
 
+import Dao.ScientificachievementDao;
+import DaoImpl.ScientificachievementDaoImpl;
+import ENUM.Language;
+import ENUM.Type;
 import ENUM.UniversalState;
+import POJO.Scientificachievement;
 import blservice.achievementBLService.BookBLService;
 import vo.AchievementVO;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by lvdechao on 2016/10/6.
  */
 public class BookBL implements BookBLService{
     public int getID() {
-        return 0;
+        ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
+        Scientificachievement scientificachievement=new Scientificachievement();
+        return scientificachievementDao.pesist(scientificachievement);
     }
 
     public String addItem(AchievementVO achievementVO) {
@@ -19,40 +29,53 @@ public class BookBL implements BookBLService{
     }
 
     public UniversalState deleteItem(int id) {
-        return null;
+        ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
+        scientificachievementDao.delete(id);
+        return UniversalState.SUCCEED;
     }
 
     public UniversalState updateItem(AchievementVO achievementVO) {
-        return null;
+        ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
+        Scientificachievement scientificachievement=new Scientificachievement();
+        scientificachievement.setId(achievementVO.getId());
+        scientificachievement.setTitle(achievementVO.getTitle());
+        scientificachievement.setTime(new Date());
+        scientificachievement.setType(Type.Book);
+        scientificachievement.setLanguage(Language.valueOf(achievementVO.getLanguage()));
+        scientificachievement.setDescriptionLocation(achievementVO.getDescriptionLocation());
+        scientificachievement.setThumbnailLocation(achievementVO.getThumbnailLocation());
+        scientificachievementDao.update(scientificachievement);
+        return UniversalState.SUCCEED;
     }
 
     public AchievementVO getItem(int id) {
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
+        Scientificachievement scientificachievement=scientificachievementDao.getById(id);
         AchievementVO achievementVO=new AchievementVO();
-        achievementVO.setId(0);
-        achievementVO.setTitle("ceshi");
-        achievementVO.setThumbnailLocation("/test/test.jpg");
-        achievementVO.setDescriptionLocation("/test/a.html");
-        achievementVO.setTime("2001-1-1");
+        achievementVO.setId(id);
+        achievementVO.setTitle(scientificachievement.getTitle());
+        achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
+        achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
+        achievementVO.setTime(sdf.format(scientificachievement.getTime()));
         return achievementVO;
     }
 
     public ArrayList<AchievementVO> getAllItems(String language) {
         ArrayList<AchievementVO> result=new ArrayList<AchievementVO>();
-        AchievementVO achievementVO=new AchievementVO();
-        achievementVO.setId(0);
-        achievementVO.setTitle("ceshi");
-        achievementVO.setThumbnailLocation("/test/test.jpg");
-        achievementVO.setDescriptionLocation("/test/a.html");
-        achievementVO.setTime("2001-1-1");
-        result.add(achievementVO);
 
-        AchievementVO achievementVO2=new AchievementVO();
-        achievementVO2.setId(1);
-        achievementVO2.setTitle("ceshi");
-        achievementVO2.setThumbnailLocation("/test/test.jpg");
-        achievementVO2.setDescriptionLocation("/test/a.html");
-        achievementVO2.setTime("2001-1-1");
-        result.add(achievementVO2);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
+        List<Scientificachievement> scientificachievements=scientificachievementDao.find(Type.Book,Language.valueOf(language));
+        for (Scientificachievement scientificachievement:scientificachievements) {
+            AchievementVO achievementVO=new AchievementVO();
+            achievementVO.setId(scientificachievement.getId());
+            achievementVO.setTitle(scientificachievement.getTitle());
+            achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
+            achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
+            achievementVO.setTime(sdf.format(scientificachievement.getTime()));
+            result.add(achievementVO);
+        }
         return result;
     }
 }

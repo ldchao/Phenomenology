@@ -17,7 +17,7 @@ public interface AccessoryBLService {
     public UniversalState deleteEssayAccessory(int accessoryID);
 
     //根据学术id得到所有附件列表
-    public ArrayList<AccessoryVO> getEssayAccessory(int id);
+    public AccessoryVO getEssayAccessory(int id);
 
     //增加一条科研成果附件表记录
     public int addSaAccessory(AccessoryVO accessoryVO);
@@ -26,7 +26,7 @@ public interface AccessoryBLService {
     public UniversalState deleteSaAccessory(int accessoryID);
 
     //根据科研成果id得到所有附件列表
-    public ArrayList<AccessoryVO> getSaAccessory(int id);
+    public AccessoryVO getSaAccessory(int id);
 
 
 }

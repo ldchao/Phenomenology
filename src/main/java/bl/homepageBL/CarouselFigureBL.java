@@ -19,7 +19,7 @@ public class CarouselFigureBL implements CarouselFigureBLService{
         SlideDao slideDao=new SlideDaoImpl();
         Slide slide=new Slide();
         slide.setLocation(pictureVO.getLocation());
-        // TODO: 2016/10/6
+//        slide.set
         return slideDao.pesist(slide);
     }
 

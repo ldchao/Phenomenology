@@ -12,13 +12,16 @@ import java.util.ArrayList;
 public interface FountainheadBLService {
 
     //增加一条源头活水记录
-    public String addNews(NewsVO newsVO);
-
-    //增加一条源头活水附件添加记录
-    public String addAccessory(AccessoryVO accessoryVO);
+    public int addNews(NewsVO newsVO);
 
     //删除一条源头活水记录
     public UniversalState deleteNews(int id);
+
+    //更新一条源头活水记录
+    public UniversalState updateNews(NewsVO newsVO);
+
+    //将源头活水记录排序
+    public UniversalState sortNews(ArrayList<Integer> list);
 
     //按日期排序取前五条源头活水记录
     public ArrayList<NewsVO> getFiveNews(String language);

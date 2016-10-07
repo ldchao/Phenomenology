@@ -12,15 +12,10 @@ public class NewsVO {
 
 
     private Integer id;
-    private String title;
-    private Date time;
-    private String author;
-    private String location;
-    private String language;
-    private int pageView;
-    private String type;
     private int sequenceNumber;
     private String thumbnailLocation;
+    private String language;
+    private String url;
 
     public NewsVO() {
     }
@@ -31,62 +26,6 @@ public class NewsVO {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Date getTime() {
-        return time;
-    }
-
-    public void setTime(Date time) {
-        this.time = time;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public int getPageView() {
-        return pageView;
-    }
-
-    public void setPageView(int pageView) {
-        this.pageView = pageView;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public int getSequenceNumber() {
@@ -103,5 +42,21 @@ public class NewsVO {
 
     public void setThumbnailLocation(String thumbnailLocation) {
         this.thumbnailLocation = thumbnailLocation;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

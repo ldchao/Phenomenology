@@ -4,8 +4,12 @@ import ENUM.UniversalState;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import vo.AcademicVO;
+import vo.AchievementVO;
+import vo.OrganizationVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 /**
  * Created by lvdechao on 2016/10/6.
@@ -33,6 +37,35 @@ public class GlobalManagerController {
         return version;
     }
 
-    //全局搜索
+    //全局搜索文章
+    @RequestMapping(value = "/searchEssay")
+    @ResponseBody
+    public ArrayList<AcademicVO> searchEssay(HttpServletRequest request){
+        String version=(String)request.getSession().getAttribute("Version");
+        if(version.equals("null")){
+            version="ch";
+        }
+        return null;
+    }
+    //全局搜索科研成果
+    @RequestMapping(value = "/searchArticle")
+    @ResponseBody
+    public ArrayList<AchievementVO> searchArticle(HttpServletRequest request){
+        String version=(String)request.getSession().getAttribute("Version");
+        if(version.equals("null")){
+            version="ch";
+        }
+        return null;
+    }
+    //全局搜索人员
+    @RequestMapping(value = "/searchPerson")
+    @ResponseBody
+    public ArrayList<OrganizationVO> searchPerson(HttpServletRequest request){
+        String version=(String)request.getSession().getAttribute("Version");
+        if(version.equals("null")){
+            version="ch";
+        }
+        return null;
+    }
 
 }

@@ -31,10 +31,11 @@ public class AccessoryManagerController {
     @ResponseBody
     public String uploadEssayAccessory(@RequestParam("accessory") MultipartFile accessory,Integer id,HttpServletRequest request){
 
-        System.out.println("吃吃吃吃吃吃吃吃吃吃吃吃吃吃吃吃"+id);
         String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "accessory/";
         String originalFilename = accessory.getOriginalFilename();
-        String filename = UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
+        String filename = UUID.randomUUID()+"";
+        if(originalFilename.lastIndexOf(".")!=-1)
+            filename+=originalFilename.substring(originalFilename.lastIndexOf("."));
 
         FileManager.ensureFileExists(uploadUrl,filename);
 
@@ -92,7 +93,7 @@ public class AccessoryManagerController {
 
     @RequestMapping("/getEssayAccessory")
     @ResponseBody
-    public ArrayList<AccessoryVO> getEssayAccessory(Integer id){
+    public AccessoryVO getEssayAccessory(Integer id){
 
         AccessoryBLService accessoryBLService=new AccessoryBL();
         return accessoryBLService.getEssayAccessory(id);
@@ -100,7 +101,7 @@ public class AccessoryManagerController {
 
     @RequestMapping("/getSaAccessory")
     @ResponseBody
-    public ArrayList<AccessoryVO> getSaAccessory(Integer id){
+    public AccessoryVO getSaAccessory(Integer id){
         AccessoryBLService accessoryBLService=new AccessoryBL();
         return accessoryBLService.getSaAccessory(id);
     }
