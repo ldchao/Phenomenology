@@ -1,6 +1,8 @@
 package controller;
 
 import ENUM.UniversalState;
+import bl.searchBL.SearchBL;
+import blservice.searchBLService.SearchBLService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,32 +42,23 @@ public class GlobalManagerController {
     //全局搜索文章
     @RequestMapping(value = "/searchEssay")
     @ResponseBody
-    public ArrayList<AcademicVO> searchEssay(HttpServletRequest request){
-        String version=(String)request.getSession().getAttribute("Version");
-        if(version.equals("null")){
-            version="ch";
-        }
-        return null;
+    public ArrayList<AcademicVO> searchEssay(String key){
+        SearchBLService searchBLService=new SearchBL();
+        return searchBLService.searchEssay(key);
     }
     //全局搜索科研成果
     @RequestMapping(value = "/searchArticle")
     @ResponseBody
-    public ArrayList<AchievementVO> searchArticle(HttpServletRequest request){
-        String version=(String)request.getSession().getAttribute("Version");
-        if(version.equals("null")){
-            version="ch";
-        }
-        return null;
+    public ArrayList<AchievementVO> searchArticle(String key){
+        SearchBLService searchBLService=new SearchBL();
+        return searchBLService.searchArticle(key);
     }
     //全局搜索人员
     @RequestMapping(value = "/searchPerson")
     @ResponseBody
-    public ArrayList<OrganizationVO> searchPerson(HttpServletRequest request){
-        String version=(String)request.getSession().getAttribute("Version");
-        if(version.equals("null")){
-            version="ch";
-        }
-        return null;
+    public ArrayList<OrganizationVO> searchPerson(String key){
+        SearchBLService searchBLService=new SearchBL();
+        return searchBLService.searchPerson(key);
     }
 
 }

@@ -64,22 +64,16 @@ public class OfficeBearerBL implements OfficeBearerBLService{
     public ArrayList<OrganizationVO> getAllItem(String language) {
         ArrayList<OrganizationVO> result=new ArrayList<OrganizationVO>();
         PersonDao personDao=new PersonDaoImpl();
-//        List<Person> persons=personDao.
+        List<Person> persons=personDao.getByTypeAndLanguage(Type.OfficeBearer,Language.valueOf(language));
 
-//        OrganizationVO organizationVO=new OrganizationVO();
-//        organizationVO.setId(0);
-//        organizationVO.setName("zhangsan");
-//        organizationVO.setDescriptionLocation("/test/a.html");
-//        organizationVO.setImageLocation("/test/test.jpg");
-//        organizationVO.setSequenceNumber(0);
-//        result.add(organizationVO);
-//        OrganizationVO organizationVO2=new OrganizationVO();
-//        organizationVO2.setId(1);
-//        organizationVO2.setName("zhangsan");
-//        organizationVO2.setDescriptionLocation("/test/a.html");
-//        organizationVO2.setImageLocation("/test/test.jpg");
-//        organizationVO2.setSequenceNumber(1);
-//        result.add(organizationVO2);
+        for (Person person:persons) {
+            OrganizationVO organizationVO=new OrganizationVO();
+            organizationVO.setId(person.getId());
+            organizationVO.setName(person.getName());
+            organizationVO.setDescriptionLocation(person.getDescriptionLocation());
+            organizationVO.setImageLocation(person.getImageLocation());
+            result.add(organizationVO);
+        }
         return result;
     }
 }
