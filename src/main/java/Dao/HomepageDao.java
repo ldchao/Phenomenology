@@ -1,5 +1,7 @@
 package Dao;
 
+import ENUM.Language;
+import ENUM.Type;
 import POJO.Essay;
 import POJO.Homepage;
 
@@ -22,4 +24,6 @@ public interface HomepageDao {
     public List<Essay> find(String type, String language);
 
     public Homepage getById(int id);
+
+    public Homepage getByTypeAndLanguage(Type type, Language language);
 }

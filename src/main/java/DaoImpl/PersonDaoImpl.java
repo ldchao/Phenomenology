@@ -2,8 +2,11 @@ package DaoImpl;
 
 import Dao.BaseDao;
 import Dao.PersonDao;
+import ENUM.Language;
+import ENUM.Type;
 import POJO.Person;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -45,5 +48,13 @@ public class PersonDaoImpl implements PersonDao{
         String[] properties={NAME};
         Object[] values={name};
         return (List<Person>) baseDao.findByProperties("Person",properties,values);
+    }
+
+    public void rank(ArrayList<Person> arrayList) {
+
+    }
+
+    public List<Person> getByTypeAndLanguage(Type type, Language language) {
+        return null;
     }
 }
