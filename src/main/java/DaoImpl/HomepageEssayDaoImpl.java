@@ -7,6 +7,7 @@ import POJO.Essay;
 import POJO.Homepage;
 import POJO.HomepageEssay;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,7 +33,7 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
         baseDao.update(homepageEssay);
     }
 
-    public List<HomepageEssay> findAll() {
+    public List<HomepageEssay> findAll(int i) {
         baseDao=new BaseDaoImpl();
         return baseDao.findAll("HomepageEssay");
     }
@@ -41,5 +42,9 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
     public HomepageEssay getById(int id) {
         baseDao=new BaseDaoImpl();
         return (HomepageEssay) baseDao.findById(id,HomepageEssay.class);
+    }
+
+    public void rank(ArrayList<HomepageEssay> homepageEssays) {
+
     }
 }

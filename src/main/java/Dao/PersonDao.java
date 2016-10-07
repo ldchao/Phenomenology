@@ -1,7 +1,10 @@
 package Dao;
 
+import ENUM.Language;
+import ENUM.Type;
 import POJO.Person;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,4 +22,8 @@ public interface PersonDao {
     public Person getById(int id);
 
     public List<Person> getByPersonName(String name);
+
+    public void rank(ArrayList<Person> arrayList);
+
+    public List<Person> getByTypeAndLanguage(Type type, Language language);
 }

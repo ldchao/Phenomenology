@@ -2,6 +2,7 @@ package Dao;
 
 import POJO.HomepageEssay;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,9 @@ public interface HomepageEssayDao {
 
     public void update(HomepageEssay homepageEssay);
 
-    public List<HomepageEssay> findAll();
+    public List<HomepageEssay> findAll(int i);
 
     public HomepageEssay getById(int id);
+
+    public void rank(ArrayList<HomepageEssay> homepageEssays);
 }

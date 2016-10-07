@@ -3,6 +3,7 @@ package DaoImpl;
 import Dao.BaseDao;
 import Dao.HomepageDao;
 import ENUM.Language;
+import ENUM.Type;
 import POJO.Essay;
 import POJO.Homepage;
 
@@ -56,5 +57,9 @@ public class HomepageDaoImpl implements HomepageDao {
     public Homepage getById(int id) {
         baseDao=new BaseDaoImpl();
         return (Homepage) baseDao.findById(id,Homepage.class);
+    }
+
+    public Homepage getByTypeAndLanguage(Type type, Language language) {
+        return null;
     }
 }

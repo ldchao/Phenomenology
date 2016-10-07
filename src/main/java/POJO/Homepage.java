@@ -2,6 +2,7 @@ package POJO;// default package
 // Generated 2016-10-3 17:54:38 by Hibernate Tools 4.0.0
 
 import ENUM.Language;
+import ENUM.Type;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,19 +18,19 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Homepage implements java.io.Serializable {
 
 	private Integer id;
-	private String type;
+	private Type type;
 	private Language language;
 	private Set<HomepageEssay> homepageEssays = new HashSet<HomepageEssay>(0);
 
 	public Homepage() {
 	}
 
-	public Homepage(String type, Language language) {
+	public Homepage(Type type, Language language) {
 		this.type = type;
 		this.language = language;
 	}
 
-	public Homepage(String type, Language language, Set<HomepageEssay> homepageEssays) {
+	public Homepage(Type type, Language language, Set<HomepageEssay> homepageEssays) {
 		this.type = type;
 		this.language = language;
 		this.homepageEssays = homepageEssays;
@@ -47,12 +48,13 @@ public class Homepage implements java.io.Serializable {
 		this.id = id;
 	}
 
+	@Enumerated(EnumType.STRING)
 	@Column(name = "type", nullable = false)
-	public String getType() {
+	public Type getType() {
 		return this.type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
