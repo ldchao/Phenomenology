@@ -157,8 +157,8 @@
         <div style="float: right; text-align: right;">
 
             <span style="color: #a0a0a0; font-size: 12px;">通讯地址</span><br>
-            南京市仙林大道163号<br>
-            南京大学仙林校区薛光林楼<br>
+            <span>南京市仙林大道163号</span><br>
+            <span>南京大学仙林校区薛光林楼</span><br>
             <br>
             <span style="color: #a0a0a0; font-size: 12px;">邮编</span><br>
             210023

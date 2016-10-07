@@ -65,7 +65,7 @@
     <%--右侧内容块--%>
     <div class="right_content">
 
-        <div class="article_index" style="margin-left: 40px; margin-top: 30px;">
+        <div id="situation_name" class="article_index" style="margin-left: 40px; margin-top: 30px;">
             南京大学现象研究所
         </div>
 
@@ -119,8 +119,8 @@
         <div style="float: right; text-align: right;">
 
             <span style="color: #a0a0a0; font-size: 12px;">通讯地址</span><br>
-            南京市仙林大道163号<br>
-            南京大学仙林校区薛光林楼<br>
+            <span>南京市仙林大道163号</span><br>
+            <span>南京大学仙林校区薛光林楼</span><br>
             <br>
             <span style="color: #a0a0a0; font-size: 12px;">邮编</span><br>
             210023

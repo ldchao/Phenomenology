@@ -114,6 +114,36 @@ function changeVersion(index) {
     }
 }
 
+function judgeVersion() {
+
+    var language = "ch";
+    //  切换语言
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "../getVersion",
+        dataType: "json",
+        success: function (result) {
+            if (result == "eng") {
+                language = "eng";
+
+                var btns = document.getElementsByClassName("ch_eng");
+                btns[0].setAttribute("class", "ch_eng ch_eng_not");
+                btns[1].setAttribute("class", "ch_eng");
+
+                changeVersion_title();
+                changeVersion_content();
+                changeVersion_bottom();
+            }
+        },
+        error: function () {
+            // alert("语言版本获取失败");
+        }
+    });
+
+    return language;
+}
+
 function changeVersion_title() {
     var titles = document.getElementsByClassName("left_nav")[0].getElementsByTagName("span");
     var divs = document.getElementsByClassName("left_nav")[0].getElementsByClassName("nav_bar");
@@ -126,5 +156,24 @@ function changeVersion_title() {
         divs[i].style.paddingLeft = "20px";
         divs[i].style.width = "210px";
         titles[i].style.fontSize = "16px";
+    }
+}
+
+function changeVersion_bottom() {
+    var bottom = document.getElementsByClassName("bottom_nav")[0];
+    var spans = bottom.getElementsByTagName("span");
+    var links = bottom.getElementsByTagName("a");
+
+    var eng_title = ["Forwarding Address", "No.163,Xianlin Avenue,Nanjing",
+        "Xianlin Campus of Nanjing University Xue Guanglin building", "Postcodes", "Friendship link"];
+    var eng_a = ["Husserl archives of Freiburg University", "Husserl archives of University of Cologne",
+        "Leuven Husserl University Archives", "Husserl archives of Université de Paris I", "Chinese phenomena network"];
+
+    for (var i = 0; i < eng_title.length; i++) {
+        spans[i].innerHTML = eng_title[i];
+    }
+
+    for (var j = 0; j < eng_a.length; j++) {
+        links[j].innerHTML = eng_a[j];
     }
 }

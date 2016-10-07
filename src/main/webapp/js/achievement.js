@@ -2,30 +2,14 @@
  * Created by L.H.S on 2016/9/25.
  */
 
+var language = "ch";
+
 window.onload = function () {
     showBooks();
     showArticles();
 
-    //  切换语言
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "../getVersion",
-        dataType: "json",
-        success: function (result) {
-            if(result == "eng") {
-                var btns = document.getElementsByClassName("ch_eng");
-                btns[0].setAttribute("class", "ch_eng ch_eng_not");
-                btns[1].setAttribute("class", "ch_eng");
-
-                changeVersion_title();
-            }
-        },
-        error: function () {
-            alert("语言版本获取失败");
-        }
-    });
-}
+    language = judgeVersion();
+};
 
 function changeTab(index) {
 
@@ -246,4 +230,16 @@ function showArticleDetail(link) {
     $("#achieve_list").hide();
     $("#article_content").show();
     
+}
+
+// 标题汉译英
+function changeVersion_content() {
+    var tabs = document.getElementsByClassName("tab_achieve");
+    var eng_title = ["BookPublishing", "ArticlePublishing"];
+    for (var i=0; i<2; i++) {
+        tabs[i].innerHTML = eng_title[i];
+        tabs[i].style.fontSize = "16px";
+    }
+    tabs[0].style.width = "115px";
+    tabs[1].style.width = "125px";
 }

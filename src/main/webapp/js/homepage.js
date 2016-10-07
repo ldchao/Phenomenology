@@ -2,6 +2,8 @@
  * Created by L.H.S on 2016/9/25.
  */
 
+var language = "ch";
+
 window.onload = function () {
 
     var copy = document.getElementById("title_copy");
@@ -27,23 +29,17 @@ window.onload = function () {
         source.appendChild(div);
     }
 
-    //  切换语言
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "../getVersion",
-        dataType: "json",
-        success: function (result) {
-            if(result == "eng") {
-                var btns = document.getElementsByClassName("ch_eng");
-                btns[0].setAttribute("class", "ch_eng ch_eng_not");
-                btns[1].setAttribute("class", "ch_eng");
-
-                changeVersion_title();
-            }
-        },
-        error: function () {
-            alert("语言版本获取失败");
-        }
-    });
+    language = judgeVersion();
 };
+
+function changeVersion_content() {
+    var subtitles = document.getElementsByClassName("sub_title");
+    var eng_title = ["DynamicNews", "SpringHead"];
+    
+    var more = document.getElementsByClassName("more");
+
+    for (var i=0; i<2; i++) {
+        subtitles[i].innerHTML = eng_title[i];
+        more[i].getElementsByTagName("span")[0].innerHTML = "More";
+    }
+}

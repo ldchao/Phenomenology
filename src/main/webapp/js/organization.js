@@ -3,31 +3,14 @@
  */
 
 var Tab_Selected = 0;   // 记录当前在哪个tab标签下
+var language = "ch";
 
 window.onload = function () {
     getOffice();
     getVisiting();
     getStudent();
 
-    //  切换语言
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "../getVersion",
-        dataType: "json",
-        success: function (result) {
-            if(result == "eng") {
-                var btns = document.getElementsByClassName("ch_eng");
-                btns[0].setAttribute("class", "ch_eng ch_eng_not");
-                btns[1].setAttribute("class", "ch_eng");
-
-                changeVersion_title();
-            }
-        },
-        error: function () {
-            alert("语言版本获取失败");
-        }
-    });
+    language = judgeVersion();
 };
 
 // 在职人员
@@ -212,4 +195,17 @@ function setId(result, parent) {
         
         parent.appendChild(div);
     }
+}
+
+// 标题汉译英
+function changeVersion_content() {
+    var tabs = document.getElementsByClassName("tab_achieve");
+    var eng_title = ["OfficeBearer", "VisitingScholar", "OurStudent"];
+    for (var i=0; i<3; i++) {
+        tabs[i].innerHTML = eng_title[i];
+        tabs[i].style.fontSize = "18px";
+    }
+    tabs[0].style.width = "110px";
+    tabs[1].style.width = "125px";
+    tabs[2].style.width = "100px";
 }

@@ -4,6 +4,8 @@
 
 window.onload = function () {
 
+    var language = judgeVersion();
+    
     $.ajax({
         type: "get",
         async: false,
@@ -21,24 +23,9 @@ window.onload = function () {
             alert("数据获取失败");
         }
     });
-
-    //  切换语言
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "../getVersion",
-        dataType: "json",
-        success: function (result) {
-            if(result == "eng") {
-                var btns = document.getElementsByClassName("ch_eng");
-                btns[0].setAttribute("class", "ch_eng ch_eng_not");
-                btns[1].setAttribute("class", "ch_eng");
-
-                changeVersion_title();
-            }
-        },
-        error: function () {
-            alert("语言版本获取失败");
-        }
-    });
 };
+
+// 标题汉译英
+function changeVersion_content() {
+    document.getElementById("situation_name").innerHTML = "Phenomenon Research Institute of Nanjing University";
+}
