@@ -1,12 +1,17 @@
 package DaoImpl;
 
+import Connection.DBconnection;
 import Dao.BaseDao;
 import Dao.ScientificachievementDao;
 import ENUM.Language;
 import ENUM.Type;
+import POJO.SaAttachment;
 import POJO.Scientificachievement;
+import org.hibernate.Session;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by mm on 2016/10/3.
@@ -60,5 +65,19 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
         String[] properties={TITLE};
         Object[] values={title};
         return (List<Scientificachievement>) baseDao.findByProperties("Scientificachievement",properties,values);
+    }
+
+    public Set<SaAttachment> getSaAttachment(int id) {
+        Session session= DBconnection.getSession();
+        Set<SaAttachment> result=new HashSet<SaAttachment>();
+        try {
+            Scientificachievement scientificachievement=session.get(Scientificachievement.class,id);
+            result.addAll(scientificachievement.getSaAttachments());
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            DBconnection.closeSession(session);
+        }
+        return result;
     }
 }

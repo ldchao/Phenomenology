@@ -5,12 +5,14 @@ import DaoImpl.EssayDaoImpl;
 import ENUM.Language;
 import ENUM.Type;
 import POJO.Essay;
+import POJO.EssayAttachment;
 import org.hibernate.hql.internal.ast.tree.SearchedCaseNode;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
 
 import java.util.Calendar;
+import java.util.Set;
 
 /** 
 * EssayDaoImpl Tester. 
@@ -114,8 +116,8 @@ public void testFind() throws Exception {
 @Test
 public void testGetById() throws Exception { 
 //TODO: Test goes here...
-    Essay po=essayDao.getById(3);
-    System.out.println(po.getLanguage());
+    Set<EssayAttachment> po=essayDao.getByEssayAttachment(2);
+    System.out.println(po.size());
 } 
 
 

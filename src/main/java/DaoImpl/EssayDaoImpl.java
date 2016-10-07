@@ -6,9 +6,12 @@ import Dao.EssayDao;
 import ENUM.Language;
 import ENUM.Type;
 import POJO.Essay;
+import POJO.EssayAttachment;
 import org.hibernate.Session;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by mm on 2016/10/3.
@@ -71,5 +74,19 @@ public class EssayDaoImpl implements EssayDao {
         String[] properties={TITLE};
         Object[] values={title};
         return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
+    }
+
+    public Set<EssayAttachment> getByEssayAttachment(int id) {
+        Session session=DBconnection.getSession();
+        Set<EssayAttachment> result=new HashSet<EssayAttachment>();
+        try {
+            Essay essay=session.get(Essay.class,id);
+            result.addAll(essay.getEssayAttachments());
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            DBconnection.closeSession(session);
+        }
+        return result;
     }
 }
