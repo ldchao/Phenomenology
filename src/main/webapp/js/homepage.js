@@ -43,3 +43,24 @@ function changeVersion_content() {
         more[i].getElementsByTagName("span")[0].innerHTML = "More";
     }
 }
+
+function getMore(link) {
+
+    document.getElementById("more_content").getElementsByClassName("sub_title")[0].innerHTML = link;
+    
+    var parent = document.getElementById("eachpage");
+    var copy = document.getElementById("more_copy");
+
+    parent.innerHTML = "";
+    
+    for(var i=0; i<6; i++) {
+        var div = document.createElement("div");
+        div.innerHTML = copy.innerHTML;
+        parent.appendChild(div);
+    }
+
+    $("#simple_content").hide();
+    $("#more_content").show();
+    
+    document.getElementsByClassName("active")[0].setAttribute("class", "nav_bar");
+}

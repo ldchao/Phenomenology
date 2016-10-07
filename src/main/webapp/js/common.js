@@ -29,7 +29,7 @@ function autoScroll() {
 
     } else {
         clearInterval(auto);
-        setTimeout("initPos()", 3000);
+        setTimeout("initPos()", 1500);
     }
 
 }
@@ -37,7 +37,7 @@ function autoScroll() {
 function initPos() {
     tab.style.left = "";
     tab.offsetLeft = 0;
-    setTimeout("startRoll()", 3000);
+    setTimeout("startRoll()", 1500);
 }
 
 function startRoll() {

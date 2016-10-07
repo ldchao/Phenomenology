@@ -105,10 +105,10 @@ function changeTab(index) {
 
 function showArticle(link) {
 
-    var tabs = ["学术讲座", "学术交流", "师生出访"];
+    var tabs = ["学术讲座", "学术会议", "师生出访"];
     
     if(language == "eng") {
-        tabs = ["AcademicForum", "AcademicExchange", "Visitings"];
+        tabs = ["AcademicForum", "AcademicConference", "Visitings"];
     }
     
     var Ids = ["lecture", "communicate", "visit"];
@@ -199,12 +199,12 @@ function setTitle(result, parent) {
 // 标题汉译英
 function changeVersion_content() {
     var tabs = document.getElementsByClassName("tab_achieve");
-    var eng_title = ["AcademicForum", "AcademicExchange", "Visitings"];
+    var eng_title = ["AcademicForum", "AcademicConference", "Visitings"];
     for (var i=0; i<3; i++) {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "16px";
     }
     tabs[0].style.width = "120px";
-    tabs[1].style.width = "145px";
+    tabs[1].style.width = "160px";
     tabs[2].style.width = "70px";
 }
