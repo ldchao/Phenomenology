@@ -2,15 +2,18 @@ package controller;
 
 import ENUM.UniversalState;
 import bl.academicSourceBL.CathedraBL;
+import bl.academicSourceBL.CourseBL;
 import bl.achievementBL.ArticleBL;
 import bl.achievementBL.BookBL;
 import blservice.academicSourceBLService.CathedraBLService;
+import blservice.academicSourceBLService.CourseBLService;
 import blservice.achievementBLService.ArticleBLService;
 import blservice.achievementBLService.BookBLService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import vo.AcademicVO;
 import vo.AchievementVO;
 
@@ -61,6 +64,25 @@ public class AchievementController {
         return articleBLService.getItem(id);
     }
 
+    @RequestMapping(value = "/article/detail", method = RequestMethod.GET)
+    public ModelAndView getArticleDetail(Integer id) {
+        ArticleBLService articleBLService=new ArticleBL();
+        AchievementVO achievementVO= articleBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/BookDetail");
+
+        modelAndView.addObject("AchievementVO", achievementVO);
+        modelAndView.addObject("Tag1", 5);
+        if(achievementVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "文章发表");
+        }else{
+            modelAndView.addObject("Tag2", "ArticlePublish");
+        }
+        return modelAndView;
+    }
+
+
     @RequestMapping(value = "/article/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<AchievementVO> getArticle(String language) {
@@ -103,6 +125,25 @@ public class AchievementController {
     public AchievementVO getBook(int id) {
         BookBLService bookBLService=new BookBL();
         return bookBLService.getItem(id);
+    }
+
+
+    @RequestMapping(value = "/book/detail", method = RequestMethod.GET)
+    public ModelAndView getBookDetail(Integer id) {
+        BookBLService bookBLService=new BookBL();
+        AchievementVO achievementVO= bookBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/BookDetail");
+
+        modelAndView.addObject("AchievementVO", achievementVO);
+        modelAndView.addObject("Tag1", 5);
+        if(achievementVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "书籍出版");
+        }else{
+            modelAndView.addObject("Tag2", "BookPublishing");
+        }
+        return modelAndView;
     }
 
     @RequestMapping(value = "/book/get", method = RequestMethod.GET)
