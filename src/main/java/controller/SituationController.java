@@ -1,5 +1,6 @@
 package controller;
 
+import ENUM.UniversalState;
 import bl.situationBL.SituationBL;
 import blservice.situationBLService.SituationBLService;
 import org.springframework.stereotype.Controller;
@@ -20,11 +21,13 @@ public class SituationController {
 
 
     @RequestMapping(value = "/uploadHtml", method = RequestMethod.POST)
-    public void post(String html,String language,HttpServletRequest request) {
+    @ResponseBody
+    public String post(String html,String language,HttpServletRequest request) {
         String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "html/situation/";
         String fileName=language+".html";
         SituationBLService situationBLService=new SituationBL();
         situationBLService.updateSituation(html,uploadUrl,fileName);
+        return UniversalState.SUCCEED.toString();
 
     }
 

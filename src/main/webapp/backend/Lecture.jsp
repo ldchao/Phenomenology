@@ -62,7 +62,7 @@
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
             <div class="firstline">
-                <input id="name" type="text" class="textfield" placeholder="标题">
+                <input id="name" type="text" class="textfield div-10" placeholder="标题">
                 <div class="buttons">
                     <input id="publisher" type="text" class="textfield left div-7" placeholder="发布人">
                     <div class="textfield right div-3">

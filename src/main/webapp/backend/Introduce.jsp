@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/backend.css">
     <link href="../css/cssreset.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../dist/css/wangEditor.min.css">
 </head>
 <body>
 <div class="log">登出</div>
@@ -42,59 +43,117 @@
 <div class="right_block">
     <div class="right_intent">
         <table class="list">
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    <%--<a><i class="fa fa-arrow-up" aria-hidden="true"></i></a>--%>
-                    <%--<a><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>--%>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目xxx项目xxx项目xxx项目xxx项目xxx项目xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-        </table>
 
-        <button class="new blueButton" onclick="showForm()">新建
+        </table>
+        <button class="new blueButton" onclick="editItem()">修改
         </button>
     </div>
 </div>
 
 <div class="editBody">
     <div class="editForm">
-        <a class="closeButton" href="javascript:closeForm
+        <a class="closeButton" onclick="closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
-            <input type="text" class="textfield" placeholder="文章链接">
-            <button class="formButton blueButton">选取缩略图</button>
+            <div class="firstline">
+                <div class="textfield right div-3">
+                    <select id="language" class="mycombox div-10">
+                        <option>ch</option>
+                        <option>eng</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="editDiv">
+                <p>在此输入文章正文......</p>
+            </div>
+
+            <div class="buttons">
+                <button class="submitButton right div-10" onclick="publish()">提交</button>
+            </div>
         </div>
     </div>
 </div>
 
-
-<script src="../js/jquery.js"></script>
+<script src="../js/backend.js"></script>
+<script type="text/javascript" src="../dist/js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../dist/js/wangEditor.min.js"></script>
+<script src="http://malsup.github.io/jquery.form.js"></script>
 <script>
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
+    var language;
+
+    //wangeditor声明
+    var editor = new wangEditor('editDiv');
+    editor.config.menuFixed = false;
+
+    // 上传图片（举例）
+    //    editor.config.uploadImgUrl = '../uploadImgUrl';
+
+    editor.config.menus = $.map(wangEditor.config.menus, function (item, key) {
+        if (item === 'fullscreen') {
+            return null;
+        }
+        return item;
+    });
+
+    editor.create();
+
+    //输入框高度设置
+    if ($(".innerForm").find("#editDiv").length != 0) {
+        $(".editForm").css({height: (h - 100)});
+    }
+    $("#editDiv").css({height: (h - 250)});
+
+    //初始化数据
+    var intro;
+
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "/situation/getHtml",
+        data: {
+            "language": "ch"
+        },
+        success: function (result) {
+            intro = result;
+            document.getElementsByClassName("list")[0].innerHTML = intro;
+        },
+        error: function () {
+            alert("出故障了请稍候再试2");
+        }
+    });
+
+    function editItem() {
+        editor.$txt.html(intro);
+        $(".editBody").fadeIn(300);
+    }
+
+    function publish() {
+        var html = editor.$txt.html();
+        language = $("#language").val();
+        alert(language);
+
+        //提交editor内容
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "/situation/uploadHtml",
+            data: {
+                "html": html,
+                "language": language
+            },
+            success: function (result) {
+                if(result == "SUCCEED"){
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("出故障了请稍候再试啊啊");
+            }
+        });
+    }
+
     function showForm() {
         $(".editBody").fadeIn(300);
     }
@@ -102,6 +161,7 @@
     function closeForm() {
         $(".editBody").fadeOut(300);
     }
+
 </script>
 </body>
 </html>
