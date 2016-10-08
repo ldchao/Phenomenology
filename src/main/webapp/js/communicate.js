@@ -21,7 +21,7 @@ function getLectures() {
     $.ajax({
         type: "get",
         async: false,
-        url: "../academicCommunicate/lecture/get",
+        url: "/academicCommunicate/lecture/get",
         data: {
             "language": "ch"
         },
@@ -44,7 +44,7 @@ function getMeetings() {
     $.ajax({
         type: "get",
         async: false,
-        url: "../academicCommunicate/communicate/get",
+        url: "/academicCommunicate/communicate/get",
         data: {
             "language": "ch"
         },
@@ -69,7 +69,7 @@ function getVisitings() {
     $.ajax({
         type: "get",
         async: false,
-        url: "../academicCommunicate/visit/get",
+        url: "/academicCommunicate/visit/get",
         data: {
             "language": "ch"
         },
@@ -120,7 +120,7 @@ function showArticle(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "../academicCommunicate/" + Ids[Tab_Selected] + "/getOne",
+        url: "/academicCommunicate/" + Ids[Tab_Selected] + "/getOne",
         data: {
             "id": id
         },
@@ -135,7 +135,7 @@ function showArticle(link) {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "../getHtml",
+                url: "/getHtml",
                 data: {
                     "filename": result.location
                 },
@@ -204,7 +204,7 @@ function changeVersion_content() {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "16px";
     }
-    tabs[0].style.width = "120px";
-    tabs[1].style.width = "160px";
-    tabs[2].style.width = "70px";
+    // tabs[0].style.width = "120px";
+    // tabs[1].style.width = "160px";
+    // tabs[2].style.width = "70px";
 }

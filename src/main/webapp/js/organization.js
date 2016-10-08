@@ -20,7 +20,7 @@ function getOffice() {
     $.ajax({
         type: "get",
         async: false,
-        url: "../organization/officeBearer/get",
+        url: "/organization/officeBearer/get",
         data: {
             "language": "ch"
         },
@@ -42,7 +42,7 @@ function getVisiting() {
     $.ajax({
         type: "get",
         async: false,
-        url: "../organization/scholar/get",
+        url: "/organization/scholar/get",
         data: {
             "language": "ch"
         },
@@ -68,7 +68,7 @@ function getStudent() {
     $.ajax({
         type: "get",
         async: false,
-        url: "../organization/student/get",
+        url: "/organization/student/get",
         data: {
             "language": "ch"
         },
@@ -137,7 +137,7 @@ function showDetail(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "../organization/" + Ids[Tab_Selected] + "/getOne",
+        url: "/organization/" + Ids[Tab_Selected] + "/getOne",
         data: {
             "id": id
         },
@@ -155,7 +155,7 @@ function showDetail(link) {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "../getHtml",
+                url: "/getHtml",
                 data: {
                     "filename": result.descriptionLocation,
                 },
@@ -216,7 +216,7 @@ function changeVersion_content() {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "18px";
     }
-    tabs[0].style.width = "110px";
-    tabs[1].style.width = "125px";
-    tabs[2].style.width = "100px";
+    // tabs[0].style.width = "110px";
+    // tabs[1].style.width = "125px";
+    // tabs[2].style.width = "100px";
 }

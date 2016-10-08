@@ -10,9 +10,9 @@
 <head>
     <title>南京大学现象学研究所</title>
 
-    <link href="../css/common.css" rel="stylesheet">
-    <link href="../css/cssreset.css" rel="stylesheet">
-    <link href="../css/achievement.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/cssreset.css" rel="stylesheet">
+    <link href="/css/achievement.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -35,54 +35,22 @@
 
 <div class="main_body">
 
-    <%--左侧导航栏--%>
-    <div class="left_nav">
-
-        <div class="nav_bar" onclick="window.location.href='HomePage'">
-            <i class="fa fa-angle-right"></i>
-            <span>&nbsp;首&nbsp;页</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='Situation'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>本所概况</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='Organization'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>机构人员</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学术交流</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='AcademicSource'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学术资源</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='Achievement'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>科研成果</span>
-        </div>
-
-
-    </div>
-
     <%--右侧内容块--%>
-    <div id="achieve_list" class="right_content">
+    <div id="search_lis"
+         style="width: 1030px; height: 830px; margin: 50px auto; background-color: #fff">
 
-        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
-            网页
+        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f; margin-left: 40px">
+            相关文章
         </div>
-        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">图片</div>
+
+        <div class="tab_achieve article_index">
+            相关人员
+        </div>
 
 
         <div id="books" class="achieves_div">
 
-            <div id="book_copy" class="each_book_div" style="display: none;">
+            <div id="book_copy" class="each_book_div" style="display: block;">
                 <div class="book_pic"></div>
                 <div class="article_text name_link">《现象屠龙》</div>
                 <a style="display: none;">1</a>
@@ -154,25 +122,6 @@
 
     </div>
 
-    <%--滚动图片--%>
-    <div class="roll_pic">
-
-        <div id="rollpic" style="width: 2133px; position: absolute;">
-
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-
-        </div>
-
-        <div class="next_pic" style="left: 20px;"><i class="fa fa-arrow-circle-o-left"></i></div>
-        <div class="next_pic"><i class="fa fa-arrow-circle-o-right"></i></div>
-
-    </div>
-
 </div>
 
 
@@ -206,9 +155,7 @@
 
 </div>
 
-
-<script src="../js/achievement.js"></script>
-<script src="../js/jquery.js"></script>
-<script src="../js/common.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/common.js"></script>
 </body>
 </html>

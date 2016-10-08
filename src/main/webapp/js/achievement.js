@@ -33,7 +33,7 @@ function showBooks() {
     $.ajax({
         type: "get",
         async: false,
-        url: "../achievement/book/get",
+        url: "/achievement/book/get",
         data: {
             "language": "ch"
         },
@@ -82,7 +82,7 @@ function showBookDetail(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "../achievement/book/getOne",
+        url: "/achievement/book/getOne",
         data: {
             "id": id
         },
@@ -103,7 +103,7 @@ function showBookDetail(link) {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "../getHtml",
+                url: "/getHtml",
                 data: {
                     "filename": result.descriptionLocation,
                 },
@@ -151,7 +151,7 @@ function showArticles() {
     $.ajax({
         type: "get",
         async: false,
-        url: "../achievement/article/get",
+        url: "/achievement/article/get",
         data: {
             "language": "ch"
         },
@@ -194,7 +194,7 @@ function showArticleDetail(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "../achievement/article/getOne",
+        url: "/achievement/article/getOne",
         data: {
             "id": id
         },
@@ -206,7 +206,7 @@ function showArticleDetail(link) {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "../getHtml",
+                url: "/getHtml",
                 data: {
                     "filename": result.descriptionLocation,
                 },
@@ -254,6 +254,6 @@ function changeVersion_content() {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "16px";
     }
-    tabs[0].style.width = "115px";
-    tabs[1].style.width = "125px";
+    // tabs[0].style.width = "115px";
+    // tabs[1].style.width = "125px";
 }
