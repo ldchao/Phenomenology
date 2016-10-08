@@ -78,6 +78,7 @@ public class OrganizationController {
     @ResponseBody
     public ArrayList<OrganizationVO> getOfficeBearer(String language) {
         OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
+        System.out.println(language);
         return officeBearerBLService.getAllItem(language);
     }
 

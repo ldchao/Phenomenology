@@ -33,8 +33,9 @@ public class GlobalManagerController {
     @ResponseBody
     public String getVersion(HttpServletRequest request){
         String version=(String)request.getSession().getAttribute("Version");
-        if(version.equals("null")){
+        if(version==null){
             version="ch";
+            request.getSession().setAttribute("Version",version);
         }
         return version;
     }
