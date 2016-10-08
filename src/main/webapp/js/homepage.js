@@ -3,6 +3,7 @@
  */
 
 var language = "ch";
+var currentPage = 1;  // 当前页数
 
 window.onload = function () {
 
