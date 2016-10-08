@@ -55,19 +55,15 @@ public class FountainheadBL implements FountainheadBLService{
 
     public UniversalState sortNews(ArrayList<Integer> list) {
         HomepageEssayDao homepageEssayDao=new HomepageEssayDaoImpl();
-//        homepageEssayDao.rank(list);
-        return null;
+        homepageEssayDao.rank(list);
+        return UniversalState.SUCCEED;
     }
 
     public ArrayList<NewsVO> getFiveNews(String language) {
         ArrayList<NewsVO> list=new ArrayList<NewsVO>();
         HomepageEssayDao homepageEssayDao=new HomepageEssayDaoImpl();
-        HomepageDao homepageDao=new HomepageDaoImpl();
-        Homepage homepageID=homepageDao.getByTypeAndLanguage(Type.SOURCES, Language.valueOf(language));
         List<HomepageEssay> homepageEssays = homepageEssayDao.findTop5(Type.SOURCES, Language.valueOf(language));
 
-
-        // TODO: 2016/10/7  取前五个
         for (HomepageEssay homepageEssay:homepageEssays) {
             NewsVO newsVO=new NewsVO();
             newsVO.setId(homepageEssay.getId());
