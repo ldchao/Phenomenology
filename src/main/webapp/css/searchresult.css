@@ -1,0 +1,14 @@
+.search_text {
+    width: 925px;
+    height: 55px;
+    margin-top: 9px;
+    overflow: hidden;
+}
+
+.search_list {
+    width: 930px;
+    height: 710px;
+    margin-left: 50px;
+    margin-top: 18px;
+    overflow: auto;
+}

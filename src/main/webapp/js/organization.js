@@ -20,9 +20,9 @@ function getOffice() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/organization/officeBearer/get",
+        url: "organization/officeBearer/get",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "json",
         success: function (result) {
@@ -42,9 +42,9 @@ function getVisiting() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/organization/scholar/get",
+        url: "organization/scholar/get",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "json",
         success: function (result) {
@@ -68,9 +68,9 @@ function getStudent() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/organization/student/get",
+        url: "organization/student/get",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "json",
         success: function (result) {
@@ -137,7 +137,7 @@ function showDetail(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "/organization/" + Ids[Tab_Selected] + "/getOne",
+        url: "organization/" + Ids[Tab_Selected] + "/getOne",
         data: {
             "id": id
         },
@@ -155,7 +155,7 @@ function showDetail(link) {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "/getHtml",
+                url: "getHtml",
                 data: {
                     "filename": result.descriptionLocation,
                 },

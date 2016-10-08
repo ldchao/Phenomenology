@@ -21,9 +21,9 @@ function getLectures() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/academic/cathedra/get",
+        url: "academic/cathedra/get",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "json",
         success: function (result) {
@@ -43,9 +43,9 @@ function getMeetings() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/academic/course/get",
+        url: "academic/course/get",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "json",
         success: function (result) {
@@ -67,9 +67,9 @@ function getVisitings() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/academic/circleNews/get",
+        url: "academic/circleNews/get",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "json",
         success: function (result) {
@@ -118,7 +118,7 @@ function showArticle(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "/academic/" + Ids[Tab_Selected] + "/getOne",
+        url: "academic/" + Ids[Tab_Selected] + "/getOne",
         data: {
             "id": id
         },
@@ -133,7 +133,7 @@ function showArticle(link) {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "/getHtml",
+                url: "getHtml",
                 data: {
                     "filename": result.location
                 },

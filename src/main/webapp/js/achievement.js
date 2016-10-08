@@ -33,9 +33,9 @@ function showBooks() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/achievement/book/get",
+        url: "achievement/book/get",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "json",
         success: function (result) {
@@ -82,7 +82,7 @@ function showBookDetail(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "/achievement/book/getOne",
+        url: "achievement/book/getOne",
         data: {
             "id": id
         },
@@ -103,7 +103,7 @@ function showBookDetail(link) {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "/getHtml",
+                url: "getHtml",
                 data: {
                     "filename": result.descriptionLocation,
                 },
@@ -151,9 +151,9 @@ function showArticles() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/achievement/article/get",
+        url: "achievement/article/get",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "json",
         success: function (result) {
@@ -194,7 +194,7 @@ function showArticleDetail(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "/achievement/article/getOne",
+        url: "achievement/article/getOne",
         data: {
             "id": id
         },
@@ -206,7 +206,7 @@ function showArticleDetail(link) {
             $.ajax({
                 type: "get",
                 async: false,
-                url: "/getHtml",
+                url: "getHtml",
                 data: {
                     "filename": result.descriptionLocation,
                 },
@@ -218,7 +218,6 @@ function showArticleDetail(link) {
                     alert("html数据获取失败");
                 }
             });
-
 
         },
         error: function () {

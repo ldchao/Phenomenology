@@ -99,7 +99,7 @@ function changeVersion(index) {
         $.ajax({
             type: "get",
             async: false,
-            url: "/setVersion",
+            url: "setVersion",
             data: {
                 "version": version[index],
             },
@@ -121,7 +121,7 @@ function judgeVersion() {
     $.ajax({
         type: "get",
         async: false,
-        url: "/getVersion",
+        url: "getVersion",
         dataType: "json",
         success: function (result) {
             if (result == "eng") {

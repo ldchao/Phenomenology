@@ -9,9 +9,9 @@ window.onload = function () {
     $.ajax({
         type: "get",
         async: false,
-        url: "/situation/getHtml",
+        url: "situation/getHtml",
         data: {
-            "language": "ch"
+            "language": language
         },
         dataType: "html",
         success: function (result) {
