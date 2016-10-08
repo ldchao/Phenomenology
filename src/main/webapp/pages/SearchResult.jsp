@@ -27,8 +27,9 @@
         <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
 
         <div>
-            <input id="search_key" class="search" type="text" placeholder="搜索您想要的…">
-            <i class="fa fa-search search_btn" style="font-size: 22px;"></i>
+            <input id="search_key" class="search" type="text" placeholder="搜索您想要的…"
+                   onkeydown="if(event.keyCode==13){search(1);}">
+            <i class="fa fa-search search_btn" style="font-size: 22px;" onclick="search(1)"></i>
         </div>
 
     </div>
@@ -54,9 +55,9 @@
         </div>
 
         <%-- 文章 --%>
-        <div id="article_title" class="search_list" style="display: none;">
+        <div id="article_title" class="search_list">
 
-            <div id="article_copy" style="display: none;">
+            <div id="article_copy" style="display: block;">
 
                 <div class="each_more">
                     <div class="article_list_title more_title">现象学研究所接见了世界级现象学大师</div>
@@ -78,11 +79,11 @@
         </div>
 
         <%-- 人员 --%>
-        <div id="staff_title" class="search_list" style="display: block;">
+        <div id="staff_title" class="search_list" style="display: none;">
 
-            <div id="more_copy" style="display: block;">
+            <div id="staff_copy" style="display: block;">
                 <div class="each_more">
-                    <div class="article_list_title more_title">现象学研究所接见了世界级现象学大师</div>
+                    <div class="article_list_title more_title">某某某</div>
 
                     <div style="width: 930px;">
                         <div class="more_img"></div>

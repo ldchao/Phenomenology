@@ -46,6 +46,11 @@ public class MainController {
         return "pages/Situation";
     }
 
+    @RequestMapping(value = "/Search", method = RequestMethod.GET)
+    public String searchResult() {
+        return "pages/SearchResult";
+    }
+
     //后台部分
     @RequestMapping(value = "/Introduce", method = RequestMethod.GET)
     public String introduce() {

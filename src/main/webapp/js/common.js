@@ -154,14 +154,14 @@ function changeVersion_title() {
 
         divs[i].style.paddingLeft = "20px";
         divs[i].style.width = "210px";
-       if(i<titles.length - 1) {
-           titles[i].style.fontSize = "16px";
-       } else {
-           titles[i].style.fontSize = "15px";
-       }
+        if (i < titles.length - 1) {
+            titles[i].style.fontSize = "16px";
+        } else {
+            titles[i].style.fontSize = "15px";
+        }
 
     }
-    
+
     var bottom = document.getElementsByClassName("bottom_nav")[0];
     var spans = bottom.getElementsByTagName("span");
     var links = bottom.getElementsByTagName("a");
@@ -180,4 +180,19 @@ function changeVersion_title() {
     }
 
     document.getElementById("search_key").placeholder = "Search what you want…";
+}
+
+// 搜索 0,新窗口；1
+function search(syb) {
+    var key = document.getElementById("search_key").value;
+
+    if (key != "") {
+
+        if (syb == 0) {
+            window.open("/Search?search=" + key);
+        } else {
+            window.location.href = "/Search?search=" + key;
+        }
+
+    }
 }

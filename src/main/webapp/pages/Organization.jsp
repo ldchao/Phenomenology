@@ -25,8 +25,9 @@
         <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
 
         <div>
-            <input id="search_key" class="search" type="text" placeholder="搜索您想要的…">
-            <i class="fa fa-search search_btn" style="font-size: 22px;"></i>
+            <input id="search_key" class="search" type="text" placeholder="搜索您想要的…"
+                   onkeydown="if(event.keyCode==13){search(0);}">
+            <i class="fa fa-search search_btn" style="font-size: 22px;" onclick="search(0)"></i>
         </div>
 
     </div>
