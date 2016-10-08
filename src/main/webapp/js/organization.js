@@ -216,7 +216,4 @@ function changeVersion_content() {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "18px";
     }
-    // tabs[0].style.width = "110px";
-    // tabs[1].style.width = "125px";
-    // tabs[2].style.width = "100px";
 }

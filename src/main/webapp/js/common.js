@@ -131,8 +131,12 @@ function judgeVersion() {
                 btns[0].setAttribute("class", "ch_eng ch_eng_not");
                 btns[1].setAttribute("class", "ch_eng");
 
-                changeVersion_title();
                 changeVersion_content();
+
+                if (document.getElementsByClassName("left_nav").length > 0) {
+                    changeVersion_title();
+                }
+
             }
         },
         error: function () {
