@@ -5,5 +5,8 @@ package bl.helper;
  */
 public class UrlManager {
 
+    //解析url返回对应文章的标题和内容
+
+
 
 }

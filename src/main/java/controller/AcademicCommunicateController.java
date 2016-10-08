@@ -1,5 +1,6 @@
 package controller;
 
+import ENUM.Language;
 import ENUM.UniversalState;
 import bl.academicCommunicateBL.CommunicateBL;
 import bl.academicCommunicateBL.LectureBL;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import vo.AcademicVO;
 import vo.OrganizationVO;
 
@@ -65,6 +67,24 @@ public class AcademicCommunicateController {
         return lectureBLService.getItem(id);
     }
 
+    @RequestMapping(value = "/lecture/detail", method = RequestMethod.GET)
+    public ModelAndView getLectureDetail(Integer id) {
+        LectureBLService lectureBLService=new LectureBL();
+        AcademicVO academicVO=lectureBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/ArticleDetail");
+
+        modelAndView.addObject("AcademicVO", academicVO);
+        modelAndView.addObject("Tag1", 3);
+        if(academicVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "学术讲座");
+        }else{
+            modelAndView.addObject("Tag2", "AcademicForum");
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/lecture/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<AcademicVO> getLecture(String language) {
@@ -109,6 +129,24 @@ public class AcademicCommunicateController {
         return communicateBLService.getItem(id);
     }
 
+    @RequestMapping(value = "/communicate/detail", method = RequestMethod.GET)
+    public ModelAndView getCommunicateDetail(Integer id) {
+        CommunicateBLService communicateBLService=new CommunicateBL();
+        AcademicVO academicVO=communicateBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/ArticleDetail");
+
+        modelAndView.addObject("AcademicVO", academicVO);
+        modelAndView.addObject("Tag1", 3);
+        if(academicVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "学术会议");
+        }else{
+            modelAndView.addObject("Tag2", "AcademicConference");
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/communicate/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<AcademicVO> getCommunicate(String language) {
@@ -151,6 +189,25 @@ public class AcademicCommunicateController {
     public AcademicVO getOneVisit(Integer id) {
         VisitBLService visitBLService=new VisitBL();
         return visitBLService.getItem(id);
+    }
+
+
+    @RequestMapping(value = "/visit/detail", method = RequestMethod.GET)
+    public ModelAndView getVisitDetail(Integer id) {
+        VisitBLService visitBLService=new VisitBL();
+        AcademicVO academicVO=visitBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/ArticleDetail");
+
+        modelAndView.addObject("AcademicVO", academicVO);
+        modelAndView.addObject("Tag1", 3);
+        if(academicVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "师生出访");
+        }else{
+            modelAndView.addObject("Tag2", "Visitings");
+        }
+        return modelAndView;
     }
 
     @RequestMapping(value = "/visit/get", method = RequestMethod.GET)

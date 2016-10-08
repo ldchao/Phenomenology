@@ -42,7 +42,7 @@ public class CourseBL implements CourseBLService{
         essay.setAuthor(academicVO.getAuthor());
         essay.setLocation(academicVO.getLocation());
         essay.setLanguage(Language.valueOf(academicVO.getLanguage()));
-        essay.setType(Type.Cathedra);
+        essay.setType(Type.Course);
         essayDao.update(essay);
         return UniversalState.SUCCEED;
     }

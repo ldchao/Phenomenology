@@ -1,5 +1,11 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: marioquer
 Created-By: IntelliJ IDEA
 Build-Jdk: 1.8.0_65
+=======
+Built-By: lvdechao
+Created-By: IntelliJ IDEA
+Build-Jdk: 1.8.0_45
+>>>>>>> origin/master
 

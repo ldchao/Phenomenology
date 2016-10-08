@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import vo.AcademicVO;
 
 import java.util.ArrayList;
@@ -67,6 +68,24 @@ public class AcademicController {
         return cathedraBLService.getItem(id);
     }
 
+    @RequestMapping(value = "/cathedra/detail", method = RequestMethod.GET)
+    public ModelAndView getCathedraDetail(Integer id) {
+        CathedraBLService cathedraBLService=new CathedraBL();
+        AcademicVO academicVO=cathedraBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/ArticleDetail");
+
+        modelAndView.addObject("AcademicVO", academicVO);
+        modelAndView.addObject("Tag1", 4);
+        if(academicVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "讲座实录");
+        }else{
+            modelAndView.addObject("Tag2", "LectureRecord");
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/cathedra/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<AcademicVO> getLecture(String language) {
@@ -111,6 +130,24 @@ public class AcademicController {
         return circleNewsBLService.getItem(id);
     }
 
+    @RequestMapping(value = "/circleNews/detail", method = RequestMethod.GET)
+    public ModelAndView getCircleNewsDetail(Integer id) {
+        CircleNewsBLService circleNewsBLService=new CircleNewsBL();
+        AcademicVO academicVO=circleNewsBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/ArticleDetail");
+
+        modelAndView.addObject("AcademicVO", academicVO);
+        modelAndView.addObject("Tag1", 4);
+        if(academicVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "学界动态");
+        }else{
+            modelAndView.addObject("Tag2", "AcademicDynamic");
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/circleNews/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<AcademicVO> getCommunicate(String language) {
@@ -153,6 +190,24 @@ public class AcademicController {
     public AcademicVO getOneCourse(Integer id) {
         CourseBLService courseLService=new CourseBL();
         return courseLService.getItem(id);
+    }
+
+    @RequestMapping(value = "/course/detail", method = RequestMethod.GET)
+    public ModelAndView getCourseDetail(Integer id) {
+        CourseBLService courseLService=new CourseBL();
+        AcademicVO academicVO=courseLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/ArticleDetail");
+
+        modelAndView.addObject("AcademicVO", academicVO);
+        modelAndView.addObject("Tag1", 4);
+        if(academicVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "课程资源");
+        }else{
+            modelAndView.addObject("Tag2", "CourseResources");
+        }
+        return modelAndView;
     }
 
     @RequestMapping(value = "/course/get", method = RequestMethod.GET)

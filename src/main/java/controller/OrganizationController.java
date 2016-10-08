@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import vo.OrganizationVO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -74,6 +75,25 @@ public class OrganizationController {
         OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
         return officeBearerBLService.getItem(id);
     }
+
+    @RequestMapping(value = "/officeBearer/detail", method = RequestMethod.GET)
+    public ModelAndView getOfficeBearerDetail(Integer id) {
+        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
+        OrganizationVO organizationVO = officeBearerBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/BookDetail");
+
+        modelAndView.addObject("OrganizationVO", organizationVO);
+        modelAndView.addObject("Tag1", 2);
+        if(organizationVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "在职人员");
+        }else{
+            modelAndView.addObject("Tag2", "OfficeBearer");
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/officeBearer/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<OrganizationVO> getOfficeBearer(String language) {
@@ -123,6 +143,26 @@ public class OrganizationController {
         ScholarBLService scholarBLService=new ScholarBL();
         return scholarBLService.getItem(id);
     }
+
+    @RequestMapping(value = "/scholar/detail", method = RequestMethod.GET)
+    public ModelAndView getScholarDetail(Integer id) {
+        ScholarBLService scholarBLService=new ScholarBL();
+        OrganizationVO organizationVO = scholarBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/BookDetail");
+
+        modelAndView.addObject("OrganizationVO", organizationVO);
+        modelAndView.addObject("Tag1", 2);
+        if(organizationVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "访问学者");
+        }else{
+            modelAndView.addObject("Tag2", "VisitingScholar");
+        }
+        return modelAndView;
+    }
+
+
     @RequestMapping(value = "/scholar/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<OrganizationVO> getScholar(String language) {
@@ -171,6 +211,26 @@ public class OrganizationController {
         StudentBLService studentBLService=new StudentBL();
         return studentBLService.getItem(id);
     }
+
+
+    @RequestMapping(value = "/student/detail", method = RequestMethod.GET)
+    public ModelAndView getStudentDetail(Integer id) {
+        StudentBLService studentBLService=new StudentBL();
+        OrganizationVO organizationVO = studentBLService.getItem(id);
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.setViewName("pages/BookDetail");
+
+        modelAndView.addObject("OrganizationVO", organizationVO);
+        modelAndView.addObject("Tag1", 2);
+        if(organizationVO.getLanguage().equals("ch")){
+            modelAndView.addObject("Tag2", "本所学生");
+        }else{
+            modelAndView.addObject("Tag2", "OurStudent");
+        }
+        return modelAndView;
+    }
+
     @RequestMapping(value = "/student/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<OrganizationVO> getStudent(String language) {
