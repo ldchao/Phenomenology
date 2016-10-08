@@ -11,6 +11,6 @@ public interface LoginBLService {
     public UniversalState login(String name,String password);
 
     //修改密码
-    public UniversalState changePassword(String name,String password);
+    public UniversalState changePassword(String name,String oldPassword,String newPassword);
 
 }
