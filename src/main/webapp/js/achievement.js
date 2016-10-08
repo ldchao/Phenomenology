@@ -128,7 +128,6 @@ function showBookDetail(link) {
         backbtn.getElementsByTagName("span")[0].innerHTML = "书籍出版";
     } else {
         backbtn.getElementsByTagName("span")[0].innerHTML = "BookPublishing";
-        backbtn.style.width = "180px";
     }
 
     backbtn.onclick = function () {
@@ -231,7 +230,6 @@ function showArticleDetail(link) {
         backbtn.getElementsByTagName("span")[0].innerHTML = "文章发表";
     } else {
         backbtn.getElementsByTagName("span")[0].innerHTML = "ArticlePublishing";
-        backbtn.style.width = "205px";
     }
 
     backbtn.onclick = function () {
@@ -253,6 +251,4 @@ function changeVersion_content() {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "16px";
     }
-    // tabs[0].style.width = "115px";
-    // tabs[1].style.width = "125px";
 }

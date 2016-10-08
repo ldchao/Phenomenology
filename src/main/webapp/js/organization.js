@@ -122,11 +122,6 @@ function showDetail(link) {
     var backbtn = detail.getElementsByClassName("back_lbl")[0];
     backbtn.getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
 
-    if (language == "eng") {
-        var back_width = ["160px", "175px", "140px"];
-        backbtn.style.width = back_width[Tab_Selected];
-    }
-
     backbtn.onclick = function () {
         $("#staff_detail").hide();
         $("#staff_list").show();

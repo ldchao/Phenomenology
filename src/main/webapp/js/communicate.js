@@ -104,74 +104,9 @@ function changeTab(index) {
 }
 
 function showArticle(link) {
-
-    var tabs = ["学术讲座", "学术会议", "师生出访"];
-    
-    if(language == "eng") {
-        tabs = ["AcademicForum", "AcademicConference", "Visitings"];
-    }
-    
     var Ids = ["lecture", "communicate", "visit"];
-
-    var content = document.getElementById("news_content");
-
     var id = link.parentNode.getElementsByTagName("a")[0].innerHTML.trim();
-
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "academicCommunicate/" + Ids[Tab_Selected] + "/getOne",
-        data: {
-            "id": id
-        },
-        dataType: "json",
-        success: function (result) {
-
-            content.getElementsByClassName("article_title")[0].innerHTML = result.title;
-            document.getElementById("writer").innerHTML = result.author;
-            document.getElementById("time").innerHTML = result.time;
-            document.getElementById("viewer").innerHTML = result.pageView;
-
-            $.ajax({
-                type: "get",
-                async: false,
-                url: "getHtml",
-                data: {
-                    "filename": result.location
-                },
-                dataType: "html",
-                success: function (text) {
-                    content.getElementsByClassName("text_content")[0].innerHTML = text;
-                },
-                error: function () {
-                    alert("html数据获取失败");
-                }
-            });
-
-        },
-        error: function () {
-            // alert("出访数据获取失败");
-        }
-    });
-
-    var backbtn = content.getElementsByClassName("back_lbl")[0];
-    backbtn.getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
-    
-    if(language == "eng") {
-        backbtn.style.width = "240px";
-        document.getElementById("writer_lbl").innerHTML = "Author";
-        document.getElementById("time_lbl").innerHTML = "Time";
-        document.getElementById("viewer_lbl").innerHTML = "PageView";
-    }
-    
-    backbtn.onclick = function () {
-        $("#news_content").hide();
-        $("#news_list").show();
-    };
-
-
-    $("#news_list").hide();
-    $("#news_content").show();
+    window.location.href = "academicCommunicate/" + Ids[Tab_Selected] + "/detail?id=" + id;
 }
 
 function setTitle(result, parent) {
@@ -200,11 +135,8 @@ function setTitle(result, parent) {
 function changeVersion_content() {
     var tabs = document.getElementsByClassName("tab_achieve");
     var eng_title = ["AcademicForum", "AcademicConference", "Visitings"];
-    for (var i=0; i<3; i++) {
+    for (var i = 0; i < 3; i++) {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "16px";
     }
-    // tabs[0].style.width = "120px";
-    // tabs[1].style.width = "160px";
-    // tabs[2].style.width = "70px";
 }

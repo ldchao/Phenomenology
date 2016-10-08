@@ -1,11 +1,12 @@
 <%--
   Created by IntelliJ IDEA.
   User: L.H.S
-  Date: 16/9/20
-  Time: 下午3:15
+  Date: 2016/10/8
+  Time: 下午11:59
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>南京大学现象学研究所</title>
@@ -21,8 +22,8 @@
 <div class="top_title">
 
     <div style="width: 1135px; margin: 0 auto; position: relative">
-        <div class="ch_eng" onclick="changeVersion(0)">中文</div>
-        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
+        <div class="ch_eng" onclick="changeVersion_detail(0)">中文</div>
+        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion_detail(1)">English</div>
 
         <div>
             <input id="search_key" class="search" type="text" placeholder="搜索您想要的…"
@@ -54,7 +55,7 @@
             <span>机构人员</span>
         </div>
 
-        <div class="nav_bar active" onclick="window.location.href='AcademicCommunicate'">
+        <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
             <i class="fa fa-angle-right"></i>&nbsp;
             <span>学术交流</span>
         </div>
@@ -72,31 +73,26 @@
 
     </div>
 
-    <%--右侧内容块--%>
-    <div id="news_list" class="right_content">
+    <div id="staff_detail" class="right_content">
 
-        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
-            学术讲座
+        <div class="article_index back_lbl">
+            <span>${Tag2}</span> <i class="fa fa-angle-right"></i>
         </div>
-        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">学术会议</div>
-        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(2)">师生出访</div>
 
-        <div id="lecture" class="achieves_div">
+        <span class="article_index name">${OrganizationVO.name}</span>
 
-            <div id="lecture_copy" class="each_lecture" style="display: none;">
-                <span class="lecture_title article_list_title">2016年南京大学超级现象学大会召开并且标题非常非常非常非常的长</span>
-                <span class="article_list_title"
-                      style="float: right; margin-right: 17px; color: #b8b9b9;">2016/9/30</span>
-                <a style="display: none;">1</a>
+        <div class="achieves_div">
+            <div class="introduction article_text">
+                ${OrganizationVO.descriptionLocation}
             </div>
 
+            <div class="photo">
+                <img style="width: 130px; height: 140px;" src=${OrganizationVO.imageLocation}>
+            </div>
         </div>
 
-        <div id="meeting" class="achieves_div"></div>
-
-        <div id="visiting" class="achieves_div"></div>
-
     </div>
+
 
     <%--滚动图片--%>
     <div class="roll_pic">
@@ -150,8 +146,17 @@
 
 </div>
 
+<a id="storage">${Tag1}</a>
+
 <script src="js/jquery.js"></script>
-<script src="js/communicate.js"></script>
 <script src="js/common.js"></script>
+<script>
+    window.onload = function () {
+        judgeVersion_detail();
+
+        var index = parseInt(document.getElementById("storage").innerHTML);
+        document.getElementsByClassName("nav_bar")[index].setAttribute("class", "nav_bar active");
+    }
+</script>
 </body>
 </html>

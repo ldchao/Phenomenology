@@ -60,6 +60,7 @@ public class LectureBL implements LectureBLService{
         academicVO.setAuthor(essay.getAuthor());
         academicVO.setLocation(essay.getLocation());
         academicVO.setTitle(essay.getTitle());
+        academicVO.setLanguage(essay.getLanguage().toString());
         academicVO.setPageView(pageView);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         academicVO.setTime(sdf.format(essay.getTime()));
@@ -79,6 +80,7 @@ public class LectureBL implements LectureBLService{
             academicVO.setLocation(essay.getLocation());
             academicVO.setTitle(essay.getTitle());
             academicVO.setPageView(essay.getPageView());
+            academicVO.setLanguage(essay.getLanguage().toString());
             academicVO.setTime(sdf.format(essay.getTime()));
             result.add(academicVO);
         }

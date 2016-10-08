@@ -60,6 +60,7 @@ public class CommunicateBL implements CommunicateBLService{
         academicVO.setAuthor(essay.getAuthor());
         academicVO.setLocation(essay.getLocation());
         academicVO.setTitle(essay.getTitle());
+        academicVO.setLanguage(essay.getLanguage().toString());
         academicVO.setPageView(pageView);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         academicVO.setTime(sdf.format(essay.getTime()));
@@ -80,6 +81,7 @@ public class CommunicateBL implements CommunicateBLService{
             academicVO.setTitle(essay.getTitle());
             academicVO.setPageView(essay.getPageView());
             academicVO.setTime(sdf.format(essay.getTime()));
+            academicVO.setLanguage(essay.getLanguage().toString());
             result.add(academicVO);
         }
 

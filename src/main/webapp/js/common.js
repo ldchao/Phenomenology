@@ -93,9 +93,6 @@ function changeVersion(index) {
 
     if (btns[index].getAttribute("class") != "ch_eng") {
 
-        btns[index].setAttribute("class", "ch_eng");
-        btns[(index + 1) % 2].setAttribute("class", "ch_eng ch_eng_not");
-
         $.ajax({
             type: "get",
             async: false,
@@ -105,7 +102,40 @@ function changeVersion(index) {
             },
             dataType: "json",
             success: function () {
+                btns[index].setAttribute("class", "ch_eng");
+                btns[(index + 1) % 2].setAttribute("class", "ch_eng ch_eng_not");
                 window.location.reload();
+            },
+            error: function () {
+                alert("语言切换失败");
+            }
+        });
+    }
+}
+
+function changeVersion_detail(index) {
+
+    var btns = document.getElementsByClassName("ch_eng");
+
+    var version = ["ch", "eng"];
+
+    if (btns[index].getAttribute("class") != "ch_eng") {
+
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "/setVersion",
+            data: {
+                "version": version[index],
+            },
+            dataType: "json",
+            success: function () {
+                btns[index].setAttribute("class", "ch_eng");
+                btns[(index + 1) % 2].setAttribute("class", "ch_eng ch_eng_not");
+
+                var pos = parseInt(document.getElementById("storage").innerHTML);
+                var urls = ["Organization", "AcademicCommunicate", "AcademicSource", "Achievement"];
+                window.location.href = "/" + urls[pos - 2];
             },
             error: function () {
                 alert("语言切换失败");
@@ -131,12 +161,41 @@ function judgeVersion() {
                 btns[0].setAttribute("class", "ch_eng ch_eng_not");
                 btns[1].setAttribute("class", "ch_eng");
 
+                if (document.getElementsByClassName("left_nav").length > 0) {
+                    changeVersion_title();
+                }
                 changeVersion_content();
+            }
+        },
+        error: function () {
+            // alert("语言版本获取失败");
+        }
+    });
+
+    return language;
+}
+
+function judgeVersion_detail() {
+
+    var language = "ch";
+    //  切换语言
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "/getVersion",
+        dataType: "json",
+        success: function (result) {
+            if (result == "eng") {
+                language = "eng";
+
+                var btns = document.getElementsByClassName("ch_eng");
+                btns[0].setAttribute("class", "ch_eng ch_eng_not");
+                btns[1].setAttribute("class", "ch_eng");
 
                 if (document.getElementsByClassName("left_nav").length > 0) {
                     changeVersion_title();
                 }
-
+                changeVersion_content();
             }
         },
         error: function () {
@@ -199,4 +258,11 @@ function search(syb) {
         }
 
     }
+}
+
+// 文章详情界面 返回
+function goBack() {
+    var pos = parseInt(document.getElementById("storage").innerHTML);
+    var urls = ["Organization", "AcademicCommunicate", "AcademicSource", "Achievement"];
+    window.location.href = "/" + urls[pos - 2];
 }

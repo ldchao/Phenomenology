@@ -58,6 +58,7 @@ public class VisitBL implements VisitBLService {
         academicVO.setId(essay.getId());
         academicVO.setAuthor(essay.getAuthor());
         academicVO.setLocation(essay.getLocation());
+        academicVO.setLanguage(essay.getLanguage().toString());
         academicVO.setTitle(essay.getTitle());
         academicVO.setPageView(pageView);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -75,6 +76,7 @@ public class VisitBL implements VisitBLService {
             academicVO.setId(essay.getId());
             academicVO.setAuthor(essay.getAuthor());
             academicVO.setLocation(essay.getLocation());
+            academicVO.setLanguage(essay.getLanguage().toString());
             academicVO.setTitle(essay.getTitle());
             academicVO.setPageView(essay.getPageView());
             academicVO.setTime(sdf.format(essay.getTime()));

@@ -155,7 +155,6 @@ function showArticle(link) {
     backbtn .getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
     
     if(language == "eng") {
-        backbtn.style.width = "240px";
         document.getElementById("writer_lbl").innerHTML = "Author";
         document.getElementById("time_lbl").innerHTML = "Time";
         document.getElementById("viewer_lbl").innerHTML = "PageView";
@@ -201,7 +200,4 @@ function changeVersion_content() {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "16px";
     }
-    // tabs[0].style.width = "110px";
-    // tabs[1].style.width = "135px";
-    // tabs[2].style.width = "145px";
 }
