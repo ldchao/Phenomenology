@@ -16,58 +16,75 @@ import java.util.List;
 public class BaseDaoImpl implements BaseDao {
 
     public Object persist(Object bean) {
-        Session session= DBconnection.getSession();
-        Object result=null;
         try {
-            session.save(bean);
-            Transaction transaction=session.beginTransaction();
-            transaction.commit();
-            result=bean;
+            Object result=null;
+            Session session= DBconnection.getSession();
+            try {
+                session.save(bean);
+                Transaction transaction=session.beginTransaction();
+                transaction.commit();
+                result=bean;
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                DBconnection.closeSession(session);
+            }
+            return result;
         }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            DBconnection.closeSession(session);
+            return null;
         }
-        return result;
     }
 
     public void delete(Object bean) {
-        Session session= DBconnection.getSession();
         try {
-            session.delete(bean);
-            Transaction transaction=session.beginTransaction();
-            transaction.commit();
+            Session session= DBconnection.getSession();
+            try {
+                session.delete(bean);
+                Transaction transaction=session.beginTransaction();
+                transaction.commit();
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                session.close();
+            }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            session.close();
         }
     }
 
     public void update(Object bean) {
-        Session session=DBconnection.getSession();
         try {
-            session.update(bean);
-            Transaction transaction=session.beginTransaction();
-            transaction.commit();
+            Session session=DBconnection.getSession();
+            try {
+                session.update(bean);
+                Transaction transaction=session.beginTransaction();
+                transaction.commit();
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally{
+                session.close();
+            }
         }catch (Exception e){
             e.printStackTrace();
-        }finally{
-            session.close();
         }
     }
 
     public Object findById(int i,Class clazz) {
-        Session session=DBconnection.getSession();
-        Object result=null;
         try {
-            result=session.get(clazz,i);
+            Session session=DBconnection.getSession();
+            Object result=null;
+            try {
+                result=session.get(clazz,i);
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                session.close();
+            }
+            return result;
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            session.close();
+            return null;
         }
-        return result;
     }
 
     public List findByHql(String hql) {
@@ -162,17 +179,21 @@ public class BaseDaoImpl implements BaseDao {
     }
 
     public void clean(String tableName) {
-        String hql="delete from "+tableName+" where 1=1";
-        Session session=DBconnection.getSession();
         try {
-            Transaction transaction=session.beginTransaction();
-            Query query=session.createQuery(hql);
-            query.executeUpdate();
-            transaction.commit();
+            String hql="delete from "+tableName+" where 1=1";
+            Session session=DBconnection.getSession();
+            try {
+                Transaction transaction=session.beginTransaction();
+                Query query=session.createQuery(hql);
+                query.executeUpdate();
+                transaction.commit();
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                session.close();
+            }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            session.close();
         }
     }
 }

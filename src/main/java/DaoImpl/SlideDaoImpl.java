@@ -18,8 +18,13 @@ public class SlideDaoImpl implements SlideDao {
 
 
     public int pesist(Slide slide) {
-        Slide po= (Slide) baseDao.persist(slide);
-        return po.getId();
+        try {
+            Slide po = (Slide) baseDao.persist(slide);
+            return po.getId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public void delete(int id) {
@@ -29,10 +34,20 @@ public class SlideDaoImpl implements SlideDao {
     }
 
     public List<Slide> findAll() {
-        return (List<Slide>) baseDao.findAll("Slide");
+        try {
+            return (List<Slide>) baseDao.findAll("Slide");
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Slide getById(int id) {
-        return (Slide) baseDao.findById(id,Slide.class);
+        try {
+            return (Slide) baseDao.findById(id,Slide.class);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

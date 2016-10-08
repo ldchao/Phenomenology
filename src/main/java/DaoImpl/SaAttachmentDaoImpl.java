@@ -17,8 +17,13 @@ public class SaAttachmentDaoImpl implements SaAttachmentDao {
     }
 
     public int pesist(SaAttachment saAttachment) {
-        SaAttachment po= (SaAttachment) baseDao.persist(saAttachment);
-        return po.getId();
+        try {
+            SaAttachment po= (SaAttachment) baseDao.persist(saAttachment);
+            return po.getId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public void delete(int id) {
@@ -32,10 +37,19 @@ public class SaAttachmentDaoImpl implements SaAttachmentDao {
     }
 
     public List<SaAttachment> findAll() {
-        return (List<SaAttachment>) baseDao.findAll("SaAttachment");
+        try {
+            return (List<SaAttachment>) baseDao.findAll("SaAttachment");
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public SaAttachment getById(int id) {
-        return (SaAttachment) baseDao.findById(id,SaAttachment.class);
+        try {
+            return (SaAttachment) baseDao.findById(id,SaAttachment.class);
+        }catch (Exception e){
+            return null;
+        }
     }
 }

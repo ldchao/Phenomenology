@@ -32,8 +32,13 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
 
 
     public int pesist(Scientificachievement scientificachievement) {
-        Scientificachievement po= (Scientificachievement) baseDao.persist(scientificachievement);
-        return po.getId();
+        try {
+            Scientificachievement po= (Scientificachievement) baseDao.persist(scientificachievement);
+            return po.getId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public void delete(int id) {
@@ -47,27 +52,47 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
     }
 
     public List<Scientificachievement> findAll() {
-        return (List<Scientificachievement>) baseDao.findAll("Scientificachievement");
+        try {
+            return (List<Scientificachievement>) baseDao.findAll("Scientificachievement");
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Scientificachievement> find(Type type, Language language) {
-        String[] properties={TYPE,LANGUAGE};
-        Object[] values={type,language};
-        return (List<Scientificachievement>) baseDao.findByProperties("Scientificachievement",properties,values);
+        try {
+            String[] properties={TYPE,LANGUAGE};
+            Object[] values={type,language};
+            return (List<Scientificachievement>) baseDao.findByProperties("Scientificachievement",properties,values);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Scientificachievement getById(int id) {
-        return (Scientificachievement) baseDao.findById(id,Scientificachievement.class);
+        try {
+            return (Scientificachievement) baseDao.findById(id,Scientificachievement.class);
+        }catch ( Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Scientificachievement> getBySaTitle(String title) {
-        String finalString="%";
-        for (int i=0;i<title.length();i++){
-            finalString+=title.charAt(i);
-            finalString+="%";
+        try {
+            String finalString="%";
+            for (int i=0;i<title.length();i++){
+                finalString+=title.charAt(i);
+                finalString+="%";
+            }
+            String hql="from Scientificachievement s where s.title like '"+finalString+"'";
+            return (List<Scientificachievement>) baseDao.findByHql(hql);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
         }
-        String hql="from Scientificachievement s where s.title like '"+finalString+"'";
-        return (List<Scientificachievement>) baseDao.findByHql(hql);
     }
 
     public Set<SaAttachment> getSaAttachment(int id) {

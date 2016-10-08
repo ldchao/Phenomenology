@@ -32,8 +32,13 @@ public class EssayDaoImpl implements EssayDao {
     }
 
     public int pesist(Essay essay) {
-        Essay po= (Essay) baseDao.persist(essay);
-        return po.getId();
+        try {
+            Essay po= (Essay) baseDao.persist(essay);
+            return po.getId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public void delete(int id) {
@@ -47,23 +52,45 @@ public class EssayDaoImpl implements EssayDao {
     }
 
     public List<Essay> findAll() {
-        return (List<Essay>)baseDao.findAll("Essay");
+        try {
+            return (List<Essay>)baseDao.findAll("Essay");
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Essay> findTop5(Type type, Language language) {
         String[] properties={TYPE,LANGUAGE};
         Object[] values={type,language};
-        return (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
+        List<Essay> result=null;
+        try {
+           result= (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public List<Essay> find(Type type, Language language) {
         String[] properties={TYPE,LANGUAGE};
         Object[] values={type,language};
-        return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
+        List<Essay> result=null;
+        try {
+            result=(List<Essay>) baseDao.findByProperties("Essay",properties,values);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public Essay getById(int id) {
-        return (Essay) baseDao.findById(id,Essay.class);
+        try {
+            return (Essay) baseDao.findById(id,Essay.class);
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public List<Essay> getByEssayTitle(String title) {
@@ -73,7 +100,13 @@ public class EssayDaoImpl implements EssayDao {
             finalString+="%";
         }
         String hql="from Essay e where e.title like '"+finalString+"'";
-        return (List<Essay>) baseDao.findByHql(hql);
+        try {
+            return (List<Essay>) baseDao.findByHql(hql);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 
     public Set<EssayAttachment> getByEssayAttachment(int id) {

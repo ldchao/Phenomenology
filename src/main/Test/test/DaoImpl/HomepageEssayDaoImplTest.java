@@ -87,6 +87,12 @@ public void testGetById() throws Exception {
 public void testRank() throws Exception { 
 //TODO: Test goes here...
 //    homepageEssayDao.rank();
+    ArrayList<Integer> arrayList=new ArrayList<Integer>();
+    arrayList.add(2);
+    arrayList.add(3);
+    arrayList.add(1);
+    homepageEssayDao.rank(arrayList);
+    System.out.print("yes");
 } 
 
 

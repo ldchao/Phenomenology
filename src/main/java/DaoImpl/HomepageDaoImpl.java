@@ -23,8 +23,13 @@ public class HomepageDaoImpl implements HomepageDao {
     }
 
     public int pesist(Homepage homepage) {
-        Homepage po= (Homepage) baseDao.persist(homepage);
-        return po.getId();
+        try {
+            Homepage po= (Homepage) baseDao.persist(homepage);
+            return po.getId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 
     public void delete(int id) {
@@ -38,12 +43,22 @@ public class HomepageDaoImpl implements HomepageDao {
     }
 
     public List<Homepage> findAll() {
-        return (List<Homepage>) baseDao.findAll("Homepage");
+        try {
+            return (List<Homepage>) baseDao.findAll("Homepage");
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
 
     public Homepage getById(int id) {
-        return (Homepage) baseDao.findById(id,Homepage.class);
+        try {
+            return (Homepage) baseDao.findById(id,Homepage.class);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Homepage getByTypeAndLanguage(Type type, Language language) {

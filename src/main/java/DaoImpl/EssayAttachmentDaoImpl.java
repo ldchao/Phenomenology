@@ -16,8 +16,14 @@ public class EssayAttachmentDaoImpl implements EssayAttachmentDao {
     }
 
     public int pesist(EssayAttachment essayAttachment) {
-        EssayAttachment po=(EssayAttachment)baseDao.persist(essayAttachment);
-        return po.getId();
+        try {
+            EssayAttachment po=(EssayAttachment)baseDao.persist(essayAttachment);
+            return po.getId();
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+
     }
 
     public void delete(int id) {
@@ -31,10 +37,21 @@ public class EssayAttachmentDaoImpl implements EssayAttachmentDao {
     }
 
     public EssayAttachment getById(int id){
-        return (EssayAttachment) baseDao.findById(id,EssayAttachmentDao.class);
+        EssayAttachment essayAttachment=null;
+        try {
+            essayAttachment= (EssayAttachment) baseDao.findById(id,EssayAttachmentDao.class);
+        }catch ( Exception e){
+            e.printStackTrace();
+        }
+        return essayAttachment;
     };
 
     public List<EssayAttachment> findAll() {
-        return (List<EssayAttachment>)baseDao.findAll("EssayAttachment");
+        try {
+            return (List<EssayAttachment>)baseDao.findAll("EssayAttachment");
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }
