@@ -128,7 +128,7 @@ public class BaseDaoImpl implements BaseDao {
         try {
             Query query=session.createQuery(hql);
             for (int i=0;i<values.length;i++){
-                query.setParameter(i+1,values[i]);
+                query.setParameter(i,values[i]);
             }
             result=query.list();
         }catch (Exception e){
