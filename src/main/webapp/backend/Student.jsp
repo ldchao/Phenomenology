@@ -47,37 +47,37 @@
                 <td class="td1">1</td>
                 <td class="td2">xxx项目</td>
                 <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <a onclick="editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
                 <td class="td1">1</td>
                 <td class="td2">xxx项目</td>
                 <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <a onclick="editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
                 <td class="td1">1</td>
                 <td class="td2">xxx项目</td>
                 <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <a onclick="editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
                 <td class="td1">1</td>
                 <td class="td2">xxx项目</td>
                 <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <a onclick="editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
                 <td class="td1">1</td>
                 <td class="td2">xxx项目</td>
                 <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <a onclick="editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             <tr>
                 <td class="td1">1</td>
                 <td class="td2">xxx项目</td>
                 <td class="td3"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a href="javascript:editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <a onclick="editForm(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
         </table>
 
@@ -88,7 +88,7 @@
 
 <div class="editBody">
     <div class="editForm">
-        <a class="closeButton" href="javascript:closeForm
+        <a class="closeButton" onclick="closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
 

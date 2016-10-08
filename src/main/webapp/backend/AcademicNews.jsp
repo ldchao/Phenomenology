@@ -14,6 +14,10 @@
 <header>你好，张三！
 </header>
 
+<div style="position:absolute;left: 20px;top:0px;">
+    <div class="ch_eng" onclick="changeVersion(0)" style="left: 0px;">中文</div>
+    <div class="ch_eng ch_eng_not" style="width: 60px; left: 45px;" onclick="changeLan(1)">English</div>
+</div>
 
 <div class="left_block">
     <ul>
@@ -131,7 +135,7 @@
     $.ajax({
         type: "get",
         async: false,
-        url: "/academic/circleNews/get",
+        url: "academic/circleNews/get",
         data: {
             "language": language
         },
@@ -156,7 +160,7 @@
         $.ajax({
             type: "get",
             async: false,
-            url: "/academic/circleNews/getOne",
+            url: "academic/circleNews/getOne",
             data: {
                 "id": id
             },
@@ -185,7 +189,7 @@
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "/uploadEssayAccessory/getEssayAccessory",
+                    url: "uploadEssayAccessory/getEssayAccessory",
                     data: {
                         "id": id
                     },
@@ -223,7 +227,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/uploadHtml",
+            url: "uploadHtml",
             data: {
                 "html": html
             },
@@ -239,7 +243,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/academic/circleNews/update",
+            url: "academic/circleNews/update",
             data: {
                 "id": id,
                 "title": title,
@@ -267,7 +271,7 @@
                     "accessory": accessory,
                     "id": id
                 },
-                url: "/uploadEssayAccessory",
+                url: "uploadEssayAccessory",
                 success: function (result) {
                     window.location.reload();
                 },
@@ -285,7 +289,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/academic/circleNews/getID",
+            url: "academic/circleNews/getID",
             success: function (result) {
                 id = result;
             },
@@ -297,7 +301,7 @@
     }
 
     function closeForm() {
-        if(isEdit == 1){
+        if (isEdit == 1) {
             $("input[id='name']").val("");
             $("input[id='publisher']").val("");
             $("#language").val("ch");

@@ -14,6 +14,11 @@
 <header>你好，张三！
 </header>
 
+<div style="position:absolute;left: 20px;top:0px;">
+    <div class="ch_eng" onclick="changeVersion(0)" style="left: 0px;">中文</div>
+    <div class="ch_eng ch_eng_not" style="width: 60px; left: 45px;" onclick="changeLan(1)">English</div>
+</div>
+
 
 <div class="left_block">
     <ul>
@@ -55,8 +60,8 @@
         <a class="closeButton" onclick="closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
-            <div class="firstline">
-                <div class="textfield right div-3">
+            <div class="buttons">
+                <div class="textfield right" style="width: 98%;">
                     <select id="language" class="mycombox div-10">
                         <option>ch</option>
                         <option>eng</option>
@@ -90,6 +95,10 @@
     // 上传图片（举例）
     //    editor.config.uploadImgUrl = '../uploadImgUrl';
 
+    editor.config.colors = {
+        '#454546':'深灰'
+    };
+
     editor.config.menus = $.map(wangEditor.config.menus, function (item, key) {
         if (item === 'fullscreen') {
             return null;
@@ -111,7 +120,7 @@
     $.ajax({
         type: "get",
         async: false,
-        url: "/situation/getHtml",
+        url: "situation/getHtml",
         data: {
             "language": "ch"
         },
@@ -123,6 +132,12 @@
             alert("出故障了请稍候再试2");
         }
     });
+
+    function changeLan(flag){
+        if (flag)
+        document.getElementsByClassName("list")[0].innerHTML = "";
+
+    }
 
     function editItem() {
         editor.$txt.html(intro);
@@ -138,7 +153,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/situation/uploadHtml",
+            url: "situation/uploadHtml",
             data: {
                 "html": html,
                 "language": language

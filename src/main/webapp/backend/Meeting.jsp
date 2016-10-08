@@ -131,7 +131,7 @@
     $.ajax({
         type: "get",
         async: false,
-        url: "/academicCommunicate/communicate/get",
+        url: "academicCommunicate/communicate/get",
         data: {
             "language": language
         },
@@ -156,7 +156,7 @@
         $.ajax({
             type: "get",
             async: false,
-            url: "/academicCommunicate/communicate/getOne",
+            url: "academicCommunicate/communicate/getOne",
             data: {
                 "id": id
             },
@@ -169,7 +169,7 @@
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "/getHtml",
+                    url: "getHtml",
                     data: {
                         "filename": result.location,
                     },
@@ -185,7 +185,7 @@
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "/uploadEssayAccessory/getEssayAccessory",
+                    url: "uploadEssayAccessory/getEssayAccessory",
                     data: {
                         "id": id
                     },
@@ -223,7 +223,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/uploadHtml",
+            url: "uploadHtml",
             data: {
                 "html": html
             },
@@ -239,7 +239,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/academicCommunicate/communicate/update",
+            url: "academicCommunicate/communicate/update",
             data: {
                 "id": id,
                 "title": title,
@@ -267,7 +267,7 @@
                     "accessory": accessory,
                     "id": id
                 },
-                url: "/uploadEssayAccessory",
+                url: "uploadEssayAccessory",
                 success: function (result) {
                     window.location.reload();
                 },
@@ -285,7 +285,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/academicCommunicate/communicate/getID",
+            url: "academicCommunicate/communicate/getID",
             success: function (result) {
                 id = result;
             },

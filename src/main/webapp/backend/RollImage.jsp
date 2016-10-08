@@ -83,7 +83,7 @@
 
 <div class="editBody">
     <div class="editForm">
-        <a class="closeButton" href="javascript:closeForm
+        <a class="closeButton" onclick="closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
             <input type="text" class="textfield" placeholder="文章链接">

@@ -115,7 +115,7 @@
                 var name = $("#name").val();
                 $(this).ajaxSubmit({
                     type: 'post', // 提交方式 get/post
-                    url: '/coverImg.action', // 需要提交的 url
+                    url: 'coverImg.action', // 需要提交的 url
                     data: {
                         'coverImg': file,
 
@@ -154,7 +154,7 @@
     $.ajax({
         type: "get",
         async: false,
-        url: "/academicCommunicate/lecture/get",
+        url: "academicCommunicate/lecture/get",
         data: {
             "language": language
         },
@@ -179,7 +179,7 @@
         $.ajax({
             type: "get",
             async: false,
-            url: "/academicCommunicate/lecture/getOne",
+            url: "academicCommunicate/lecture/getOne",
             data: {
                 "id": id
             },
@@ -192,7 +192,7 @@
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "/getHtml",
+                    url: "getHtml",
                     data: {
                         "filename": result.location,
                     },
@@ -208,7 +208,7 @@
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "/uploadEssayAccessory/getEssayAccessory",
+                    url: "uploadEssayAccessory/getEssayAccessory",
                     data: {
                         "id": id
                     },
@@ -246,7 +246,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/uploadHtml",
+            url: "uploadHtml",
             data: {
                 "html": html
             },
@@ -262,7 +262,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/academicCommunicate/lecture/update",
+            url: "academicCommunicate/lecture/update",
             data: {
                 "id": id,
                 "title": title,
@@ -290,7 +290,7 @@
                     "coverImg": coverImg,
                     "id": id
                 },
-                url: "/uploadCover",
+                url: "uploadCover",
                 success: function (result) {
                     window.location.reload();
                 },
@@ -308,7 +308,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "/academicCommunicate/lecture/getID",
+            url: "academicCommunicate/lecture/getID",
             success: function (result) {
                 id = result;
             },
