@@ -92,22 +92,22 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
         }
     }
 
-    public List<Essay> findTop5(Type type, Language language) {
+    public List<HomepageEssay> findTop5(Type type, Language language) {
         try {
             String[] properties={TYPE,LANGUAGE};
             Object[] values={type,language};
-            return (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
+            return (List<HomepageEssay>) baseDao.findByPropertiesAndPages("HomepageEssay",properties,values,0,5);
         }catch (Exception e){
             e.printStackTrace();
             return null;
         }
     }
 
-    public List<Essay> find(Type type, Language language) {
+    public List<HomepageEssay> find(Type type, Language language) {
         try {
             String[] properties={TYPE,LANGUAGE};
             Object[] values={type,language};
-            return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
+            return (List<HomepageEssay>) baseDao.findByProperties("HomepageEssay",properties,values);
         }catch (Exception e){
             e.printStackTrace();
             return null;

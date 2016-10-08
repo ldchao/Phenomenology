@@ -127,10 +127,6 @@
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;   /* 超出行数省略号 */
-    -webkit-box-orient: vertical;
 }
 
 .next_page {

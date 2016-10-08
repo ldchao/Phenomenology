@@ -64,7 +64,9 @@ public class FountainheadBL implements FountainheadBLService{
         HomepageEssayDao homepageEssayDao=new HomepageEssayDaoImpl();
         HomepageDao homepageDao=new HomepageDaoImpl();
         Homepage homepageID=homepageDao.getByTypeAndLanguage(Type.SOURCES, Language.valueOf(language));
-        List<HomepageEssay> homepageEssays = homepageEssayDao.findAll(homepageID.getId());
+        List<HomepageEssay> homepageEssays = homepageEssayDao.findTop5(Type.SOURCES, Language.valueOf(language));
+
+
         // TODO: 2016/10/7  取前五个
         for (HomepageEssay homepageEssay:homepageEssays) {
             NewsVO newsVO=new NewsVO();

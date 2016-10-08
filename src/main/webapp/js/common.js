@@ -154,7 +154,12 @@ function changeVersion_title() {
 
         divs[i].style.paddingLeft = "20px";
         divs[i].style.width = "210px";
-        titles[i].style.fontSize = "16px";
+       if(i<titles.length - 1) {
+           titles[i].style.fontSize = "16px";
+       } else {
+           titles[i].style.fontSize = "15px";
+       }
+
     }
     
     var bottom = document.getElementsByClassName("bottom_nav")[0];

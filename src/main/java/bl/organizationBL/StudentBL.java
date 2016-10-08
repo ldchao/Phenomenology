@@ -44,8 +44,11 @@ public class StudentBL implements StudentBLService{
         return UniversalState.SUCCEED;
     }
 
+
     public UniversalState sort(ArrayList<Integer> idList) {
-        return null;
+        PersonDao personDao=new PersonDaoImpl();
+        personDao.rank(idList);
+        return UniversalState.SUCCEED;
     }
 
     public OrganizationVO getItem(int id) {

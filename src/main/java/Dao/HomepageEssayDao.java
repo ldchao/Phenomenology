@@ -24,7 +24,7 @@ public interface HomepageEssayDao {
 
     public void rank(ArrayList<Integer> sequence);
 
-    public List<Essay> findTop5(Type type, Language language);
+    public List<HomepageEssay> findTop5(Type type, Language language);
 
-    public List<Essay> find(Type type, Language language);
+    public List<HomepageEssay> find(Type type, Language language);
 }
