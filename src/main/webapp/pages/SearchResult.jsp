@@ -42,15 +42,16 @@
     <div id="search_lis"
          style="width: 1030px; height: 830px; margin: 50px auto; background-color: #fff">
 
-        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f; margin-left: 50px">
+        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f; margin-left: 50px"
+             onclick="changeTab(0)">
             相关文章
         </div>
 
-        <div class="tab_achieve article_index">
+        <div class="tab_achieve article_index" onclick="changeTab(1)">
             相关人员
         </div>
 
-        <div class="tab_achieve article_index">
+        <div class="tab_achieve article_index" onclick="changeTab(2)">
             相关书籍
         </div>
 
@@ -198,5 +199,6 @@
 
 <script src="js/jquery.js"></script>
 <script src="js/common.js"></script>
+<script src="js/searchresult.js"></script>
 </body>
 </html>
