@@ -11,31 +11,31 @@ import java.util.List;
  */
 public class SaAttachmentDaoImpl implements SaAttachmentDao {
     BaseDao baseDao;
-    public int pesist(SaAttachment saAttachment) {
+
+    public SaAttachmentDaoImpl(){
         baseDao=new BaseDaoImpl();
+    }
+
+    public int pesist(SaAttachment saAttachment) {
         SaAttachment po= (SaAttachment) baseDao.persist(saAttachment);
         return po.getId();
     }
 
     public void delete(int id) {
-        baseDao=new BaseDaoImpl();
         SaAttachment po=new SaAttachment();
         po.setId(id);
         baseDao.delete(po);
     }
 
     public void update(SaAttachment saAttachment) {
-        baseDao=new BaseDaoImpl();
         baseDao.update(saAttachment);
     }
 
     public List<SaAttachment> findAll() {
-        baseDao=new BaseDaoImpl();
         return (List<SaAttachment>) baseDao.findAll("SaAttachment");
     }
 
     public SaAttachment getById(int id) {
-        baseDao=new BaseDaoImpl();
         return (SaAttachment) baseDao.findById(id,SaAttachment.class);
     }
 }

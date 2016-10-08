@@ -24,4 +24,5 @@ public interface BaseDao {
 
     public List findByPropertiesAndPages(String tableName,String[] name,Object[] values,int page,int pageSize);
 
+    public void clean(String tableName);
 }

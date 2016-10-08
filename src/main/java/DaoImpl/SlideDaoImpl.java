@@ -11,26 +11,28 @@ import java.util.List;
  */
 public class SlideDaoImpl implements SlideDao {
     BaseDao baseDao;
-    public int pesist(Slide slide) {
+
+    public SlideDaoImpl(){
         baseDao=new BaseDaoImpl();
+    }
+
+
+    public int pesist(Slide slide) {
         Slide po= (Slide) baseDao.persist(slide);
         return po.getId();
     }
 
     public void delete(int id) {
-        baseDao=new BaseDaoImpl();
         Slide slide=new Slide();
         slide.setId(id);
         baseDao.delete(slide);
     }
 
     public List<Slide> findAll() {
-        baseDao=new BaseDaoImpl();
         return (List<Slide>) baseDao.findAll("Slide");
     }
 
     public Slide getById(int id) {
-        baseDao=new BaseDaoImpl();
         return (Slide) baseDao.findById(id,Slide.class);
     }
 }

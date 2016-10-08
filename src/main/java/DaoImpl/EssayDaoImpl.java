@@ -27,50 +27,46 @@ public class EssayDaoImpl implements EssayDao {
     public static final String  PAGEVIEW="pageView";
     public static final String TYPE="type";
 
-    public int pesist(Essay essay) {
+    public EssayDaoImpl(){
         baseDao=new BaseDaoImpl();
+    }
+
+    public int pesist(Essay essay) {
         Essay po= (Essay) baseDao.persist(essay);
         return po.getId();
     }
 
     public void delete(int id) {
-        baseDao=new BaseDaoImpl();
         Essay essay=new Essay();
         essay.setId(id);
         baseDao.delete(essay);
     }
 
     public void update(Essay essay) {
-        baseDao=new BaseDaoImpl();
         baseDao.update(essay);
     }
 
     public List<Essay> findAll() {
-        baseDao=new BaseDaoImpl();
         return (List<Essay>)baseDao.findAll("Essay");
     }
 
     public List<Essay> findTop5(Type type, Language language) {
-        baseDao=new BaseDaoImpl();
         String[] properties={TYPE,LANGUAGE};
         Object[] values={type,language};
         return (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
     }
 
     public List<Essay> find(Type type, Language language) {
-        baseDao=new BaseDaoImpl();
         String[] properties={TYPE,LANGUAGE};
         Object[] values={type,language};
         return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
     }
 
     public Essay getById(int id) {
-        baseDao=new BaseDaoImpl();
         return (Essay) baseDao.findById(id,Essay.class);
     }
 
     public List<Essay> getByEssayTitle(String title) {
-        baseDao=new BaseDaoImpl();
         String[] properties={TITLE};
         Object[] values={title};
         return (List<Essay>) baseDao.findByProperties("Essay",properties,values);

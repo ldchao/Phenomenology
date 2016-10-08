@@ -160,4 +160,19 @@ public class BaseDaoImpl implements BaseDao {
         }
         return result;
     }
+
+    public void clean(String tableName) {
+        String hql="delete from "+tableName+" where 1=1";
+        Session session=DBconnection.getSession();
+        try {
+            Transaction transaction=session.beginTransaction();
+            Query query=session.createQuery(hql);
+            query.executeUpdate();
+            transaction.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+    }
 }

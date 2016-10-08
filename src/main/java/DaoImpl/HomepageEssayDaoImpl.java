@@ -15,36 +15,36 @@ import java.util.List;
  */
 public class HomepageEssayDaoImpl implements HomepageEssayDao {
     BaseDao baseDao;
-    public int pesist(HomepageEssay homepageEssay) {
+    public HomepageEssayDaoImpl(){
         baseDao=new BaseDaoImpl();
+    }
+
+    public int pesist(HomepageEssay homepageEssay) {
         HomepageEssay po= (HomepageEssay) baseDao.persist(homepageEssay);
         return po.getId();
     }
 
     public void delete(int id) {
-        baseDao=new BaseDaoImpl();
         HomepageEssay homepageEssay=new HomepageEssay();
         homepageEssay.setId(id);
         baseDao.delete(homepageEssay);
     }
 
     public void update(HomepageEssay homepageEssay) {
-        baseDao=new BaseDaoImpl();
         baseDao.update(homepageEssay);
     }
 
     public List<HomepageEssay> findAll(int i) {
-        baseDao=new BaseDaoImpl();
-        return baseDao.findAll("HomepageEssay");
+        String hql="from HomepageEssay h where h.homepage.id="+i;
+        return (List<HomepageEssay>) baseDao.findByHql(hql);
     }
 
 
     public HomepageEssay getById(int id) {
-        baseDao=new BaseDaoImpl();
         return (HomepageEssay) baseDao.findById(id,HomepageEssay.class);
     }
 
     public void rank(ArrayList<HomepageEssay> homepageEssays) {
-
+        baseDao.clean("HomepageEssay");
     }
 }

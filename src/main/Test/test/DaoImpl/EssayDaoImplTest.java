@@ -60,7 +60,7 @@ public void testPesist() throws Exception {
 @Test
 public void testDelete() throws Exception { 
 //TODO: Test goes here...
-    essayDao.delete(3);
+    essayDao.delete(1);
 } 
 
 /** 

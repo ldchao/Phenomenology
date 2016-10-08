@@ -15,46 +15,50 @@ import java.util.List;
 public class PersonDaoImpl implements PersonDao{
     BaseDao baseDao;
     public static final String NAME="name";
-    public int pesist(Person person) {
+    public static final String TYPE="type";
+    public static final String LANGUAGE="language";
+
+    public PersonDaoImpl(){
+
         baseDao=new BaseDaoImpl();
+    }
+
+    public int pesist(Person person) {
         Person po= (Person) baseDao.persist(person);
         return po.getId();
     }
 
     public void delete(int id) {
-        baseDao=new BaseDaoImpl();
         Person person=new Person();
         person.setId(id);
         baseDao.delete(person);
     }
 
     public void update(Person person) {
-        baseDao=new BaseDaoImpl();
         baseDao.update(person);
     }
 
     public List<Person> findAll() {
-        baseDao=new BaseDaoImpl();
         return (List<Person>) baseDao.findAll("Person");
     }
 
     public Person getById(int id) {
-        baseDao=new BaseDaoImpl();
         return (Person) baseDao.findById(id,Person.class);
     }
 
     public List<Person> getByPersonName(String name) {
-        baseDao=new BaseDaoImpl();
         String[] properties={NAME};
         Object[] values={name};
         return (List<Person>) baseDao.findByProperties("Person",properties,values);
     }
 
     public void rank(ArrayList<Person> arrayList) {
-
+        baseDao.clean("Person");
     }
 
     public List<Person> getByTypeAndLanguage(Type type, Language language) {
-        return null;
+        String[] properties={TYPE,LANGUAGE};
+        Object[] values={type,language};
+        return (List<Person>) baseDao.findByProperties("Person",properties,values);
     }
 }
