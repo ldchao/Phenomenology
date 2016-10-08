@@ -23,7 +23,7 @@ public interface PersonDao {
 
     public List<Person> getByPersonName(String name);
 
-    public void rank(ArrayList<Person> arrayList);
+    public void rank(ArrayList<Integer> sequence);
 
     public List<Person> getByTypeAndLanguage(Type type, Language language);
 }

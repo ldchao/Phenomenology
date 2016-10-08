@@ -120,5 +120,8 @@ public void testGetById() throws Exception {
     System.out.println(po.size());
 } 
 
-
+@Test
+    public void findByTitle() throws Exception{
+    System.out.println(essayDao.getByEssayTitle("unknown").size());
+}
 } 

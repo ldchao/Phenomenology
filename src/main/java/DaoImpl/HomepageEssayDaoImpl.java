@@ -1,11 +1,14 @@
 package DaoImpl;
 
+import Connection.DBconnection;
 import Dao.BaseDao;
 import Dao.HomepageDao;
 import Dao.HomepageEssayDao;
 import POJO.Essay;
 import POJO.Homepage;
 import POJO.HomepageEssay;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,9 @@ import java.util.List;
  */
 public class HomepageEssayDaoImpl implements HomepageEssayDao {
     BaseDao baseDao;
+    public static final String LANGUAGE="language";
+    public static final String TYPE="type";
+
     public HomepageEssayDaoImpl(){
         baseDao=new BaseDaoImpl();
     }
@@ -44,7 +50,40 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
         return (HomepageEssay) baseDao.findById(id,HomepageEssay.class);
     }
 
-    public void rank(ArrayList<HomepageEssay> homepageEssays) {
+    public void rank(ArrayList<Integer> sequence) {
         baseDao.clean("HomepageEssay");
+        ArrayList<HomepageEssay> arrayList=(ArrayList<HomepageEssay>)baseDao.findAll("HomepageEssay");
+        for (int i=0;i<sequence.size();i++){
+            for (int j=0;j<arrayList.size();j++){
+                if (arrayList.get(j).getId()==sequence.get(i)){
+                    arrayList.get(j).setSequenceNumber(i+1);
+                    break;
+                }
+            }
+        }
+        Session session= DBconnection.getSession();
+        try {
+            for (HomepageEssay homepageEssay:arrayList){
+                session.save(homepageEssay);
+            }
+            Transaction transaction=session.beginTransaction();
+            transaction.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+    }
+
+    public List<Essay> findTop5(String type, String language) {
+        String[] properties={TYPE,LANGUAGE};
+        Object[] values={type,language};
+        return (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
+    }
+
+    public List<Essay> find(String type, String language) {
+        String[] properties={TYPE,LANGUAGE};
+        Object[] values={type,language};
+        return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
     }
 }

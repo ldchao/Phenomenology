@@ -61,9 +61,13 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
     }
 
     public List<Scientificachievement> getBySaTitle(String title) {
-        String[] properties={TITLE};
-        Object[] values={title};
-        return (List<Scientificachievement>) baseDao.findByProperties("Scientificachievement",properties,values);
+        String finalString="%";
+        for (int i=0;i<title.length();i++){
+            finalString+=title.charAt(i);
+            finalString+="%";
+        }
+        String hql="from Scientificachievement s where s.title like '"+finalString+"'";
+        return (List<Scientificachievement>) baseDao.findByHql(hql);
     }
 
     public Set<SaAttachment> getSaAttachment(int id) {

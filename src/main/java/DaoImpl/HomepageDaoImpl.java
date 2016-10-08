@@ -41,17 +41,6 @@ public class HomepageDaoImpl implements HomepageDao {
         return (List<Homepage>) baseDao.findAll("Homepage");
     }
 
-    public List<Essay> findTop5(String type, String language) {
-        String[] properties={TYPE,LANGUAGE};
-        Object[] values={type,language};
-        return (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
-    }
-
-    public List<Essay> find(String type, String language) {
-        String[] properties={TYPE,LANGUAGE};
-        Object[] values={type,language};
-        return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
-    }
 
     public Homepage getById(int id) {
         return (Homepage) baseDao.findById(id,Homepage.class);

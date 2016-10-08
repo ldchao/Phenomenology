@@ -1,9 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 
-*.xml
-
-*.xml
-
 .idea/artifacts/Phenomenology_war_exploded.xml
 
 .idea/artifacts/Phenomenology_war.xml
@@ -18,14 +14,11 @@
 
 *.MF
 
-*.xml
-
 *.class
 
 target/
 
 *.MF
-*.xml
 
 target/Phenomenology/META-INF/MANIFEST.MF
 

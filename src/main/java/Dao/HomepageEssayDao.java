@@ -1,5 +1,6 @@
 package Dao;
 
+import POJO.Essay;
 import POJO.HomepageEssay;
 
 import java.util.ArrayList;
@@ -19,5 +20,9 @@ public interface HomepageEssayDao {
 
     public HomepageEssay getById(int id);
 
-    public void rank(ArrayList<HomepageEssay> homepageEssays);
+    public void rank(ArrayList<Integer> sequence);
+
+    public List<Essay> findTop5(String type,String language);
+
+    public List<Essay> find(String type, String language);
 }

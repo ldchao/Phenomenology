@@ -47,12 +47,16 @@ public class PersonDaoImpl implements PersonDao{
     }
 
     public List<Person> getByPersonName(String name) {
-        String[] properties={NAME};
-        Object[] values={name};
-        return (List<Person>) baseDao.findByProperties("Person",properties,values);
+        String finalString="%";
+        for (int i=0;i<name.length();i++){
+            finalString+=name.charAt(i);
+            finalString+="%";
+        }
+        String hql="from Person p where p.name like '"+finalString+"'";
+        return (List<Person>) baseDao.findByHql(hql);
     }
 
-    public void rank(ArrayList<Person> arrayList) {
+    public void rank(ArrayList<Integer> sequence) {
         baseDao.clean("Person");
     }
 

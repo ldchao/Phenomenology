@@ -19,10 +19,6 @@ public interface HomepageDao {
 
     public List<Homepage> findAll();
 
-    public List<Essay> findTop5(String type,String language);
-
-    public List<Essay> find(String type, String language);
-
     public Homepage getById(int id);
 
     public Homepage getByTypeAndLanguage(Type type, Language language);

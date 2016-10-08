@@ -86,7 +86,7 @@ public void testGetById() throws Exception {
 @Test
 public void testRank() throws Exception { 
 //TODO: Test goes here...
-    homepageEssayDao.rank(new ArrayList<HomepageEssay>());
+//    homepageEssayDao.rank();
 } 
 
 

@@ -67,9 +67,13 @@ public class EssayDaoImpl implements EssayDao {
     }
 
     public List<Essay> getByEssayTitle(String title) {
-        String[] properties={TITLE};
-        Object[] values={title};
-        return (List<Essay>) baseDao.findByProperties("Essay",properties,values);
+        String finalString="%";
+        for (int i=0;i<title.length();i++){
+            finalString+=title.charAt(i);
+            finalString+="%";
+        }
+        String hql="from Essay e where e.title like '"+finalString+"'";
+        return (List<Essay>) baseDao.findByHql(hql);
     }
 
     public Set<EssayAttachment> getByEssayAttachment(int id) {
