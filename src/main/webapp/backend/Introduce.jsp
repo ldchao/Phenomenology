@@ -14,8 +14,8 @@
 <header>你好，张三！
 </header>
 
-<div style="position:absolute;left: 20px;top:0px;">
-    <div class="ch_eng" onclick="changeVersion(0)" style="left: 0px;">中文</div>
+<div id="transfer" style="position:absolute;left: 20px;top:0px;">
+    <div class="ch_eng" onclick="changeLan(0)" style="left: 0px;">中文</div>
     <div class="ch_eng ch_eng_not" style="width: 60px; left: 45px;" onclick="changeLan(1)">English</div>
 </div>
 
@@ -86,7 +86,7 @@
 <script src="http://malsup.github.io/jquery.form.js"></script>
 <script>
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
-    var language;
+    var language = "ch";
 
     //wangeditor声明
     var editor = new wangEditor('editDiv');
@@ -96,7 +96,7 @@
     //    editor.config.uploadImgUrl = '../uploadImgUrl';
 
     editor.config.colors = {
-        '#454546':'深灰'
+        '#454546': '深灰'
     };
 
     editor.config.menus = $.map(wangEditor.config.menus, function (item, key) {
@@ -133,14 +133,53 @@
         }
     });
 
-    function changeLan(flag){
-        if (flag)
-        document.getElementsByClassName("list")[0].innerHTML = "";
+    function changeLan(flag) {
+        if (flag == 1) {
+            language = "eng";
+            document.getElementById("transfer").children[1].className = "ch_eng";
+            document.getElementById("transfer").children[0].className = "ch_eng ch_eng_not";
+
+            document.getElementsByClassName("list")[0].innerHTML = "";
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "situation/getHtml",
+                data: {
+                    "language": "eng"
+                },
+                success: function (result) {
+                    document.getElementsByClassName("list")[0].innerHTML = result;
+                },
+                error: function () {
+                    alert("出故障了请稍候再试2");
+                }
+            });
+        }else{
+            language = "ch";
+            document.getElementById("transfer").children[0].className = "ch_eng";
+            document.getElementById("transfer").children[1].className = "ch_eng ch_eng_not";
+            document.getElementsByClassName("list")[0].innerHTML = intro;
+        }
 
     }
 
     function editItem() {
-        editor.$txt.html(intro);
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "situation/getHtml",
+            data: {
+                "language": language
+            },
+            success: function (result) {
+                $("#language").val(language);
+                editor.$txt.html(result);
+            },
+            error: function () {
+                alert("出故障了请稍候再试2");
+            }
+        });
+
         $(".editBody").fadeIn(300);
     }
 
@@ -159,7 +198,7 @@
                 "language": language
             },
             success: function (result) {
-                if(result == "SUCCEED"){
+                if (result == "SUCCEED") {
                     window.location.reload();
                 }
             },

@@ -185,12 +185,11 @@
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "uploadEssayAccessory/getEssayAccessory",
+                    url: "getEssayAccessory",
                     data: {
                         "id": id
                     },
                     success: function (loc) {
-                        alert(loc.location);
                         $("#accessory").val(loc.location);
                     },
                     error: function () {
@@ -275,6 +274,8 @@
                     alert("出故障了请稍候再试1");
                 }
             });
+        } else {
+            window.location.reload();
         }
     }
 
@@ -297,7 +298,7 @@
     }
 
     function closeForm() {
-        if(isEdit == 1){
+        if (isEdit == 1) {
             $("input[id='name']").val("");
             $("input[id='publisher']").val("");
             $("#language").val("ch");
