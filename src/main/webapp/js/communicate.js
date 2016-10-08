@@ -31,7 +31,7 @@ function getLectures() {
             setTitle(result, lecture);
         },
         error: function () {
-            alert("讲座数据获取失败");
+            alert("学术交流数据获取失败");
         }
     });
 
@@ -55,7 +55,7 @@ function getMeetings() {
             setTitle(result, meeting);
         },
         error: function () {
-            alert("交流数据获取失败");
+            // alert("交流数据获取失败");
         }
     });
 
@@ -79,7 +79,7 @@ function getVisitings() {
             setTitle(result, visiting);
         },
         error: function () {
-            alert("出访数据获取失败");
+            // alert("出访数据获取失败");
         }
     });
 
@@ -150,7 +150,7 @@ function showArticle(link) {
 
         },
         error: function () {
-            alert("出访数据获取失败");
+            // alert("出访数据获取失败");
         }
     });
 

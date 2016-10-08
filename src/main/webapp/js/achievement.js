@@ -67,7 +67,7 @@ function showBooks() {
 
         },
         error: function () {
-            alert("书籍列表获取失败");
+            alert("科研成果数据获取失败");
         }
     });
 }
@@ -118,7 +118,7 @@ function showBookDetail(link) {
 
         },
         error: function () {
-            alert("书籍内容数据获取失败");
+            // alert("书籍内容数据获取失败");
         }
     });
 

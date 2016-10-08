@@ -161,21 +161,16 @@
         </div>
 
         <%-- 分页标签 --%>
-        <div style="margin-left: 38px; margin-top: 20px;">
+        <div id="paging" style="margin-left: 38px; margin-top: 20px;">
 
-            <i class="fa fa-chevron-left next_page"></i>
+            <i class="fa fa-chevron-left next_page" onclick="nextPage(1)"></i>
 
-            <div id="pages" style="display: inline-block;">
+            <%-- 页码 --%>
+            <div id="pages" style="display: inline-block;"></div>
 
-                <div class="pages_each pages_selected">1</div>
-                <div class="pages_each">2</div>
-                <div class="pages_each">3</div>
-                <div class="pages_each">4</div>
-                <div class="pages_each">5</div>
+            <div class="pages_each pages_selected" style="display: none;">1</div>
 
-            </div>
-
-            <i class="fa fa-chevron-right next_page" style="margin-left: 15px;"></i>
+            <i class="fa fa-chevron-right next_page" style="margin-left: 10px;" onclick="nextPage(0)"></i>
 
         </div>
 

@@ -30,7 +30,7 @@ function getOffice() {
             setId(result, lecture);
         },
         error: function () {
-            alert("在职人员数据获取失败");
+            alert("机构人员数据获取失败");
         }
     });
 }
@@ -54,7 +54,7 @@ function getVisiting() {
 
         },
         error: function () {
-            alert("访问学者数据获取失败");
+            // alert("访问学者数据获取失败");
         }
     });
 
@@ -80,7 +80,7 @@ function getStudent() {
 
         },
         error: function () {
-            alert("访问学者数据获取失败");
+            // alert("访问学者数据获取失败");
         }
     });
 
