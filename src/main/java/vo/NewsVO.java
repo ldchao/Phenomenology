@@ -16,6 +16,8 @@ public class NewsVO {
     private String thumbnailLocation;
     private String language;
     private String url;
+    private String title;
+    private String textLocation;
 
     public NewsVO() {
     }
@@ -58,5 +60,21 @@ public class NewsVO {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTextLocation() {
+        return textLocation;
+    }
+
+    public void setTextLocation(String textLocation) {
+        this.textLocation = textLocation;
     }
 }

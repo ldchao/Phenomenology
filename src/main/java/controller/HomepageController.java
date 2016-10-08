@@ -55,7 +55,7 @@ public class HomepageController {
             e.printStackTrace();
         }
 
-        String carouselFigurePath="../carouselFigure/"+filename;
+        String carouselFigurePath="carouselFigure/"+filename;
 
         PictureVO pictureVO=new PictureVO();
         pictureVO.setLocation(carouselFigurePath);

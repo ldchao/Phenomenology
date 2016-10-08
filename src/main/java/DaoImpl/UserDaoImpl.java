@@ -9,7 +9,7 @@ import POJO.User;
  */
 public class UserDaoImpl implements UserDao {
     BaseDao baseDao;
-
+    public static final String NAME="name";
     public UserDaoImpl(){
         baseDao=new BaseDaoImpl();
     }
@@ -42,5 +42,17 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
         return user;
+    }
+
+    public User findByUserName(String name) {
+        String[] properties={NAME};
+        Object[] values={name};
+        try{
+            return (User) baseDao.findByProperties("User",properties,values);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+
     }
 }
