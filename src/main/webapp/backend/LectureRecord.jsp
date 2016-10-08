@@ -153,6 +153,7 @@
         isEdit = 1;
         var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
 
+        alert(1);
         $.ajax({
             type: "get",
             async: false,
@@ -181,23 +182,22 @@
                     }
                 });
 
+                alert(4)
                 //填充附件地址
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "uploadEssayAccessory/getEssayAccessory",
+                    url: "getEssayAccessory",
                     data: {
                         "id": id
                     },
                     success: function (loc) {
-                        alert(loc.location);
                         $("#accessory").val(loc.location);
                     },
                     error: function () {
                         alert("获取文件失败");
                     }
                 });
-
 
                 $(".submitButton").html("提交修改");
                 $(".editBody").fadeIn(300);
@@ -275,6 +275,8 @@
                     alert("出故障了请稍候再试1");
                 }
             });
+        } else {
+            window.location.reload();
         }
     }
 
@@ -297,7 +299,7 @@
     }
 
     function closeForm() {
-        if(isEdit == 1){
+        if (isEdit == 1) {
             $("input[id='name']").val("");
             $("input[id='publisher']").val("");
             $("#language").val("ch");

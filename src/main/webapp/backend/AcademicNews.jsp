@@ -279,6 +279,8 @@
                     alert("出故障了请稍候再试1");
                 }
             });
+        } else {
+            window.location.reload();
         }
     }
 

@@ -42,11 +42,14 @@
 <div class="right_block">
     <div class="right_intent">
         <table class="list">
-            <tr class="none" id="listRow">
+            <tr class="none" id="listRow" style="height: 100px;">
                 <td class="td1">1</td>
-                <td class="td2"></td>
+                <td class="td5"><img class="headImage" style="width: 80px;height: 80px;"></td>
+                <td class="td4"></td>
                 <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a> <a
+                            onclick="upItem(this)"><i class="fa fa-arrow-up" aria-hidden="true"></i></a> <a
+                            onclick="downItem(this)"><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>
             </tr>
         </table>
 
@@ -89,60 +92,11 @@
 <script src="http://malsup.github.io/jquery.form.js"></script>
 
 <script>
-    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
-    if ($(".innerForm").find("#editDiv").length != 0) {
-        $(".editForm").css({height: (h - 100)});
-    }
-    $("#editDiv").css({height: (h - 250)});
-
-
-    function editItem(ele) {
-        var id = ele.parentNode.firstChild.innerHTML;
-        $("input[id='name']").val("hhh");
-//        $("#coverImg").val() = null;
-        $(".submitButton").html("提交修改");
-        $(".editBody").fadeIn(300);
-    }
-
-    function deleteItem(ele) {
-        var id = ele.parentNode.firstChild;
-    }
-
-    jQuery(function () {
-        $(".submitButton").click(function () {
-            $('#form1').on('submit', function () {
-                var file = $("#coverImg").val();
-                var name = $("#name").val();
-                $(this).ajaxSubmit({
-                    type: 'post', // 提交方式 get/post
-                    url: 'coverImg.action', // 需要提交的 url
-                    data: {
-                        'coverImg': file,
-
-                    },
-                    success: function (data) { // data 保存提交后返回的数据，一般为 json 数据
-                        alert('提交成功！');
-
-                    },
-
-                });
-                $(this).resetForm(); // 提交后重置表单
-//             $("#submitFile").click();
-//            alert("hhh")
-            });
-        });
-    });
-
-
-</script>
-
-
-<script>
     var id;
     var isEdit = 0;
 
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
-    var language = document.getElementById("language").value;
+    var language = "ch";
 
     //输入框高度设置
     if ($(".innerForm").find("#editDiv").length != 0) {
@@ -151,24 +105,28 @@
     $("#editDiv").css({height: (h - 250)});
 
     //初始化数据
+    var list;
+
     $.ajax({
         type: "get",
         async: false,
-        url: "academicCommunicate/lecture/get",
+        url: "homepage/News/get",
         data: {
             "language": language
         },
         success: function (result) {
+            list = result;
             for (var i = 0; i < result.length; i++) {
                 var tr = document.createElement("tr");
                 tr.innerHTML = document.getElementById("listRow").innerHTML;
-                tr.getElementsByClassName("td1")[0].innerHTML = result[i].id;
-                tr.getElementsByClassName("td2")[0].innerHTML = result[i].title;
+                tr.children[0].innerHTML = result[i].id;
+                tr.children[1].children[0].src = result[i].thumbnailLocation;
+                tr.children[2].innerHTML = result[i].title;
                 document.getElementsByClassName("list")[0].appendChild(tr);
             }
         },
         error: function () {
-            alert("出故障了请稍候再试2");
+            alert("出故障了请稍候再试0");
         }
     });
 
@@ -208,7 +166,7 @@
                 $.ajax({
                     type: "get",
                     async: false,
-                    url: "uploadEssayAccessory/getEssayAccessory",
+                    url: "getEssayAccessory",
                     data: {
                         "id": id
                     },
@@ -236,45 +194,23 @@
     }
 
     function publish() {
-        var html = editor.$txt.html();
         var coverImg = $("#coverImg").val();
-        var title = $("input[id='name']").val();
-        var author = $("input[id='publisher']").val();
-        var htmlPath;
+        var url = $("input[id='name']").val();
+        language = $("#language").val();
 
-        //提交editor内容
-        $.ajax({
-            type: "post",
-            async: false,
-            url: "uploadHtml",
-            data: {
-                "html": html
-            },
-            success: function (result) {
-                htmlPath = result;
-            },
-            error: function () {
-                alert("出故障了请稍候再试2");
-            }
-        });
+        alert(coverImg);
 
         //提交表单其余内容
         $.ajax({
             type: "post",
             async: false,
-            url: "academicCommunicate/lecture/update",
+            url: "homepage/News/add",
             data: {
-                "id": id,
-                "title": title,
-                "author": author,
-                "location": htmlPath,
+                "thumbnailLocation": coverImg,
+                "url": url,
                 "language": language
             },
             success: function (result) {
-                if (result == "SUCCEED") {
-                } else {
-                    alert("抱歉提交失败啦");
-                }
             },
             error: function () {
                 alert("出故障了请稍候再试3");
@@ -298,34 +234,22 @@
                     alert("出故障了请稍候再试1");
                 }
             });
+        } else {
+            window.location.reload();
         }
     }
 
 
     function showForm() {
         $(".submitButton").html("提交");
-
-        $.ajax({
-            type: "post",
-            async: false,
-            url: "academicCommunicate/lecture/getID",
-            success: function (result) {
-                id = result;
-            },
-            error: function () {
-                alert("出故障了请稍候再试4");
-            }
-        });
         $(".editBody").fadeIn(300);
     }
 
     function closeForm() {
         if (isEdit == 1) {
             $("input[id='name']").val("");
-            $("input[id='publisher']").val("");
             $("#language").val("ch");
-            editor.$txt.html("");
-            $("#accessory").val("");
+            $("#coverImg").val("");
             isEdit = 0;
         }
         $(".editBody").fadeOut(300);
