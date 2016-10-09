@@ -8,6 +8,7 @@ var language = "ch";
 window.onload = function () {
 
     language = judgeVersion();
+    getPics();
 
     var key = document.getElementById("storage").innerHTML.trim();
     getArticle(key);
@@ -38,7 +39,7 @@ function getArticle(key) {
                 var title = div.getElementsByClassName("more_title")[0];
                 title.innerHTML = result[i].title;
                 title.onclick = function () {
-                    showArticle(this);
+                    showSearch(this, "getEssayURL");
                 };
 
                 div.getElementsByTagName("a")[0].innerHTML = result[i].id;
@@ -56,26 +57,10 @@ function getArticle(key) {
     });
 }
 
-function showArticle(link) {
-    var id = link.parentNode.getElementsByTagName("a")[0].innerHTML.trim();
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "getEssayURL",
-        data: {
-            "id": id,
-        },
-        dataType: "json",
-        success: function (result) {
-            window.location.href = result;
-        },
-        error: function () {
-            // alert("科研成果数据获取失败");
-        }
-    });
-}
-
 function getStaff(key) {
+
+    var staff = document.getElementById("staff_title");
+    var copy = document.getElementById("staff_copy");
 
     $.ajax({
         type: "get",
@@ -87,6 +72,28 @@ function getStaff(key) {
         dataType: "json",
         success: function (result) {
 
+            for (var i = 0; i < result.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML = copy.innerHTML;
+
+                var title = div.getElementsByClassName("more_title")[0].innerHTML.trim();
+                title.innerHTML = result[i].name;
+                title.onclick = function () {
+                    showSearch(this, "getPersonURL");
+                };
+                
+                var img = document.createElement("img");
+                img.style.width = "70px";
+                img.style.height = "75px";
+                img.src = result[i].imageLocation;
+                div.getElementsByClassName("more_img")[0].appendChild(img);
+                
+                setHtml(result[i].descriptionLocation, div.getElementsByClassName("more_text")[0]);
+                
+                div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+
+                staff.appendChild(div);
+            }
         },
         error: function () {
             // alert("科研成果数据获取失败");
@@ -97,6 +104,9 @@ function getStaff(key) {
 }
 
 function getBook(key) {
+    
+    var book = document.getElementById("book_title");
+    var copy = document.getElementById("staff_copy");
 
     $.ajax({
         type: "get",
@@ -108,8 +118,31 @@ function getBook(key) {
         dataType: "json",
         success: function (result) {
 
+            for (var i = 0; i < result.length; i++) {
+                var div = document.createElement("div");
+                div.innerHTML = copy.innerHTML;
+
+                var title = div.getElementsByClassName("more_title")[0].innerHTML.trim();
+                title.innerHTML = result[i].title;
+                title.onclick = function () {
+                    showSearch(this, "getAchievementURL");
+                };
+
+                var img = document.createElement("img");
+                img.style.width = "70px";
+                img.style.height = "75px";
+                img.src = result[i].thumbnailLocation;
+                div.getElementsByClassName("more_img")[0].appendChild(img);
+
+                setHtml(result[i].descriptionLocation, div.getElementsByClassName("more_text")[0]);
+
+                div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+
+                book.appendChild(div);
+            }
+            
         },
-        error: function () {
+        error: function() {
             // alert("科研成果数据获取失败");
         }
     });
@@ -135,6 +168,25 @@ function setHtml(location, textfield) {
         }
     });
 
+}
+
+function showSearch(link, url) {
+    var id = link.parentNode.getElementsByTagName("a")[0].innerHTML.trim();
+    $.ajax({
+        type: "get",
+        async: false,
+        url: url,
+        data: {
+            "id": id,
+        },
+        dataType: "json",
+        success: function (result) {
+            window.location.href = result;
+        },
+        error: function () {
+            // alert("科研成果数据获取失败");
+        }
+    });
 }
 
 function changeTab(index) {

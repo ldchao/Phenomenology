@@ -9,6 +9,7 @@ var allPages;  // 所有新闻
 window.onload = function () {
 
     language = judgeVersion();
+    getPics();
 
     // 动态新闻
     getDynamic();

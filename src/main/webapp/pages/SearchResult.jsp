@@ -86,10 +86,10 @@
         <%-- 人员 --%>
         <div id="staff_title" class="search_list" style="display: none;">
 
-            <div id="staff_copy" style="display: block;">
+            <div id="staff_copy" style="display: none;">
+
                 <div class="each_more">
                     <div class="article_list_title more_title">某某某</div>
-
                     <div style="width: 930px;">
                         <div class="more_img"></div>
                         <div class="more_text article_preview" style="width: 850px;">
@@ -104,7 +104,10 @@
                             啊啊啊啊啊啊啊啊
                         </div>
                     </div>
+
+                    <a style="display: none"></a>
                 </div>
+
             </div>
 
         </div>

@@ -101,16 +101,7 @@
     <%--滚动图片--%>
     <div class="roll_pic">
 
-        <div id="rollpic" style="width: 2133px; position: absolute;">
-
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-
-        </div>
+        <div id="rollpic" style="width: 2133px; position: absolute;"></div>
 
         <div class="next_pic" style="left: 20px;"><i class="fa fa-arrow-circle-o-left"></i></div>
         <div class="next_pic"><i class="fa fa-arrow-circle-o-right"></i></div>

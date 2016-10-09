@@ -6,6 +6,7 @@ var language = "ch";
 
 window.onload = function () {
     language = judgeVersion_detail();
+    getPics_detail();
 
     var index = parseInt(document.getElementById("storage").innerHTML);
     document.getElementsByClassName("nav_bar")[index].setAttribute("class", "nav_bar active");

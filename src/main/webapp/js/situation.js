@@ -5,6 +5,7 @@
 window.onload = function () {
 
     var language = judgeVersion();
+    getPics();
     
     $.ajax({
         type: "get",

@@ -6,6 +6,7 @@ var language = "ch";
 
 window.onload = function () {
     language = judgeVersion();
+    getPics();
     
     showBooks();
     showArticles();

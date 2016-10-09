@@ -6,7 +6,7 @@ var tab = document.getElementById("rollpic");
 var speed = 25;
 var width = tab.getElementsByClassName("each_pic").length * 237;
 tab.style.width = width;
-var auto = setInterval(autoScroll, speed);
+var auto;
 var stop = 0;  // stop=1 在setTimeout 中，不能再次启动roll
 
 tab.onmouseover = function () {
@@ -17,6 +17,53 @@ tab.onmouseout = function () {
         startRoll();
     }
 };
+
+function getPics() {
+    getPics_ajax("homepage/CarouselFigure/getAll");
+}
+
+function getPics_detail() {
+    getPics_ajax("/homepage/CarouselFigure/getAll");
+}
+
+function getPics_ajax(url) {
+
+    tab.innerHTML = "";
+    $.ajax({
+        type: "get",
+        async: false,
+        url: url,
+        dataType: "json",
+        success: function (result) {
+
+            for (var i = 0; i < result.length; i++) {
+                var div = document.createElement("div");
+                div.setAttribute("class", "each_pic");
+
+                var img = document.createElement("img");
+                img.style.width = "221px";
+                img.style.height = "112px";
+                img.src = result[i].location;
+                div.appendChild(div);
+
+                div.onclick = function () {
+                    window.location.href = result[i].url;
+                };
+
+                tab.appendChild(div);
+            }
+
+            if (result.length > 5) {
+                auto = setInterval(autoScroll, speed);
+            }
+
+        },
+        error: function () {
+            alert("滚动新闻获取失败");
+        }
+    });
+
+}
 
 function autoScroll() {
 

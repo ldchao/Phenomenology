@@ -80,7 +80,7 @@
             <span onclick="goBack()">${Tag2}</span> <i class="fa fa-angle-right"></i>
         </div>
 
-        <div class="news_title article_title">2016年南京大学超级现象学大会召开</div>
+        <div class="news_title article_title">${AcademicVO.title}</div>
 
         <div class="info article_list_title" style="color: #9d9d9d;">
             <div style="display: inline-block"><span id="writer_lbl">发布人</span>: <span
@@ -100,16 +100,7 @@
     <%--滚动图片--%>
     <div class="roll_pic">
 
-        <div id="rollpic" style="width: 2133px; position: absolute;">
-
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-            <div class="each_pic"></div>
-
-        </div>
+        <div id="rollpic" style="width: 2133px; position: absolute;"></div>
 
         <div class="next_pic" style="left: 20px;"><i class="fa fa-arrow-circle-o-left"></i></div>
         <div class="next_pic"><i class="fa fa-arrow-circle-o-right"></i></div>
