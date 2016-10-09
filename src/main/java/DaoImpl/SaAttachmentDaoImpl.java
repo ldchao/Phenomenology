@@ -27,9 +27,11 @@ public class SaAttachmentDaoImpl implements SaAttachmentDao {
     }
 
     public void delete(int id) {
-        SaAttachment po=new SaAttachment();
-        po.setId(id);
-        baseDao.delete(po);
+        try {
+            baseDao.delete(baseDao.findById(id,SaAttachment.class));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void update(SaAttachment saAttachment) {

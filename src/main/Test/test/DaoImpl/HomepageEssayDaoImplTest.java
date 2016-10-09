@@ -46,7 +46,8 @@ public void testPesist() throws Exception {
 */ 
 @Test
 public void testDelete() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    homepageEssayDao.delete(65);
 } 
 
 /** 
@@ -90,15 +91,15 @@ public void testRank() throws Exception {
 //TODO: Test goes here...
 //    homepageEssayDao.rank();
     ArrayList<Integer> arrayList=new ArrayList<Integer>();
-    arrayList.add(2);
-    arrayList.add(3);
-    arrayList.add(1);
+    arrayList.add(69);
+    arrayList.add(68);
+    arrayList.add(67);
     homepageEssayDao.rank(arrayList);
     System.out.print("yes");
 } 
 
 @Test
     public void testFindTop5(){
-        System.out.print(homepageEssayDao.findTop5(1).size());
+        System.out.print(homepageEssayDao.findTop5(2).size());
     }
 } 

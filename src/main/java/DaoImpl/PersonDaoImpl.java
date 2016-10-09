@@ -80,19 +80,16 @@ public class PersonDaoImpl implements PersonDao{
 
     public void rank(ArrayList<Integer> sequence) {
         ArrayList<Person> arrayList=(ArrayList<Person>)baseDao.findAll("Person");
-        baseDao.clean("Person");
-        for (int i=0;i<sequence.size();i++){
-            for (int j=0;j<arrayList.size();j++){
-                if (arrayList.get(j).getId()==sequence.get(i)){
-                    arrayList.get(j).setSequence(i+1);
-                    break;
-                }
-            }
-        }
         Session session= DBconnection.getSession();
         try {
-            for (Person person:arrayList){
-                session.save(person);
+            for (int i=0;i<sequence.size();i++){
+                for (Person person:arrayList){
+                    if (sequence.get(i) == person.getId()) {
+                        person.setSequence(i+1);
+                        session.update(person);
+                        break;
+                    }
+                }
             }
             Transaction transaction=session.beginTransaction();
             transaction.commit();

@@ -36,9 +36,11 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
     }
 
     public void delete(int id) {
-        HomepageEssay homepageEssay=new HomepageEssay();
-        homepageEssay.setId(id);
-        baseDao.delete(homepageEssay);
+        try{
+            baseDao.delete(baseDao.findById(id,HomepageEssay.class));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void update(HomepageEssay homepageEssay) {
@@ -66,27 +68,28 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
     }
 
     public void rank(ArrayList<Integer> sequence) {
-        ArrayList<HomepageEssay> arrayList=(ArrayList<HomepageEssay>)baseDao.findAll("HomepageEssay");
-        baseDao.clean("HomepageEssay");
-        for (int i=0;i<sequence.size();i++){
-            for (int j=0;j<arrayList.size();j++){
-                if (arrayList.get(j).getId()==sequence.get(i)){
-                    arrayList.get(j).setSequenceNumber(i+1);
-                    break;
-                }
-            }
-        }
-        Session session= DBconnection.getSession();
         try {
-            for (HomepageEssay homepageEssay:arrayList){
-                session.save(homepageEssay);
+            ArrayList<HomepageEssay> arrayList=(ArrayList<HomepageEssay>)baseDao.findAll("HomepageEssay");
+            Session session= DBconnection.getSession();
+            try {
+                for (int i=0;i<sequence.size();i++){
+                    for (HomepageEssay homepageEssay:arrayList){
+                        if (sequence.get(i) == homepageEssay.getId()) {
+                            homepageEssay.setSequenceNumber(i+1);
+                            session.update(homepageEssay);
+                            break;
+                        }
+                    }
+                }
+                Transaction transaction=session.beginTransaction();
+                transaction.commit();
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                session.close();
             }
-            Transaction transaction=session.beginTransaction();
-            transaction.commit();
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            session.close();
         }
     }
 
