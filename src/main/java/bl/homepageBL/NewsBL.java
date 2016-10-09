@@ -65,7 +65,7 @@ public class NewsBL implements NewsBLService{
         ArrayList<NewsVO> list=new ArrayList<NewsVO>();
         HomepageEssayDao homepageEssayDao=new HomepageEssayDaoImpl();
         HomepageDao homepageDao=new HomepageDaoImpl();
-        Homepage homepageID=homepageDao.getByTypeAndLanguage(Type.SOURCES, Language.valueOf(language));
+        Homepage homepageID=homepageDao.getByTypeAndLanguage(Type.DYNAMIC_NEWS, Language.valueOf(language));
 
         List<HomepageEssay> homepageEssays = homepageEssayDao.findTop5(homepageID.getId());
         for (HomepageEssay homepageEssay:homepageEssays) {
