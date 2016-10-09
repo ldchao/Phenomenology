@@ -1,6 +1,7 @@
 package controller;
 
 import ENUM.UniversalState;
+import bl.helper.UrlManager;
 import bl.searchBL.SearchBL;
 import blservice.searchBLService.SearchBLService;
 import org.springframework.stereotype.Controller;
@@ -47,6 +48,13 @@ public class GlobalManagerController {
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchEssay(key);
     }
+
+    @RequestMapping(value = "/getEssayURL")
+    @ResponseBody
+    public String getEssayURL(Integer id){
+        return UrlManager.getAcademicUrl(id);
+    }
+
     //全局搜索科研成果
     @RequestMapping(value = "/searchArticle")
     @ResponseBody
@@ -54,6 +62,13 @@ public class GlobalManagerController {
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchArticle(key);
     }
+
+    @RequestMapping(value = "/getArticleURL")
+    @ResponseBody
+    public String getArticleURL(Integer id){
+        return UrlManager.getAchievementUrl(id);
+    }
+
     //全局搜索人员
     @RequestMapping(value = "/searchPerson")
     @ResponseBody
@@ -61,5 +76,12 @@ public class GlobalManagerController {
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchPerson(key);
     }
+
+    @RequestMapping(value = "/getPersonURL")
+    @ResponseBody
+    public String getPersonURL(Integer id){
+        return UrlManager.getOrganizationUrl(id);
+    }
+
 
 }

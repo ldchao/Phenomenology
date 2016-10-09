@@ -9,7 +9,9 @@ import ENUM.Type;
 import ENUM.UniversalState;
 import POJO.Homepage;
 import POJO.HomepageEssay;
+import bl.helper.UrlManager;
 import blservice.homepageBLService.FountainheadBLService;
+import vo.FromURLVO;
 import vo.NewsVO;
 
 import java.util.ArrayList;
@@ -70,6 +72,10 @@ public class FountainheadBL implements FountainheadBLService{
             newsVO.setLanguage(language);
             newsVO.setUrl(homepageEssay.getUrl());
             newsVO.setThumbnailLocation(homepageEssay.getThumbnailLocation());
+            FromURLVO fromURLVO= UrlManager.ReadUrl(homepageEssay.getUrl());
+            newsVO.setTitle(fromURLVO.getTitle());
+            newsVO.setTextLocation(fromURLVO.getHtmlLocation());
+
             list.add(newsVO);
         }
         return list;
@@ -87,6 +93,9 @@ public class FountainheadBL implements FountainheadBLService{
             newsVO.setLanguage(language);
             newsVO.setUrl(homepageEssay.getUrl());
             newsVO.setThumbnailLocation(homepageEssay.getThumbnailLocation());
+            FromURLVO fromURLVO= UrlManager.ReadUrl(homepageEssay.getUrl());
+            newsVO.setTitle(fromURLVO.getTitle());
+            newsVO.setTextLocation(fromURLVO.getHtmlLocation());
             list.add(newsVO);
         }
         return list;
