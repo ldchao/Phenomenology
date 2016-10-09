@@ -6,11 +6,11 @@ var Tab_Selected = 0;   // 记录当前在哪个tab标签下
 var language = "ch";
 
 window.onload = function () {
+    language = judgeVersion();
+    
     getOffice();
     getVisiting();
     getStudent();
-
-    language = judgeVersion();
 };
 
 // 在职人员
@@ -105,73 +105,9 @@ function changeTab(index) {
 }
 
 function showDetail(link) {
-
-    var tabs = ["在职人员", "访问学者", "本所学生"];
-
-    if (language == "eng") {
-        tabs = ["OfficeBearer", "VisitingScholar", "OurStudent"];
-    }
-
     var Ids = ["officeBearer", "scholar", "student"];
-
-    var name = link.innerHTML.trim();
     var id = link.parentNode.getElementsByTagName("a")[0].innerHTML.trim();
-
-    var detail = document.getElementById("staff_detail");
-
-    var backbtn = detail.getElementsByClassName("back_lbl")[0];
-    backbtn.getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
-
-    backbtn.onclick = function () {
-        $("#staff_detail").hide();
-        $("#staff_list").show();
-    };
-
-    detail.getElementsByClassName("name")[0].innerHTML = name;
-
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "organization/" + Ids[Tab_Selected] + "/getOne",
-        data: {
-            "id": id
-        },
-        dataType: "json",
-        success: function (result) {
-
-            var img = document.createElement("img");
-            img.style.width = "130px";
-            img.style.height = "140px";
-            img.src = result.imageLocation;
-            detail.getElementsByClassName("photo")[0].innerHTML = "";
-            detail.getElementsByClassName("photo")[0].appendChild(img);
-
-            // 简介
-            $.ajax({
-                type: "get",
-                async: false,
-                url: "getHtml",
-                data: {
-                    "filename": result.descriptionLocation,
-                },
-                dataType: "html",
-                success: function (text) {
-                    detail.getElementsByClassName("introduction")[0].innerHTML = text;
-                },
-                error: function () {
-                    alert("html数据获取失败");
-                }
-            });
-
-        },
-        error: function () {
-            alert("人员数据获取失败");
-        }
-    });
-
-    $("#staff_list").hide();
-    $("#staff_detail").show();
-
+    window.location.href = "organization/" + Ids[Tab_Selected] + "/detail?id=" + id;
 }
 
 function setId(result, parent) {

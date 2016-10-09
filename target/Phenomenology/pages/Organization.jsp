@@ -73,7 +73,7 @@
     </div>
 
     <%--右侧内容块--%>
-    <div id="staff_list" class="right_content">
+    <div class="right_content">
 
         <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
             在职人员
@@ -92,27 +92,6 @@
         <div id="visiting" class="achieves_div"></div>
 
         <div id="student" class="achieves_div"></div>
-
-    </div>
-
-    <div id="staff_detail" class="right_content" style="display: none">
-
-        <div class="article_index back_lbl">
-            <span>在职人员</span> <i class="fa fa-angle-right"></i>
-        </div>
-
-        <span class="article_index name">李四</span>
-
-        <div class="achieves_div">
-            <div class="introduction article_text">
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人
-            </div>
-
-            <div class="photo"></div>
-        </div>
 
     </div>
 

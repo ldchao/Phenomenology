@@ -82,9 +82,7 @@
         <span class="article_index name">${AchievementVO.title}</span>
 
         <div class="achieves_div">
-            <div class="introduction article_text">
-               ${AchievementVO.descriptionLocation}
-            </div>
+            <div id="content" class="introduction article_text"></div>
 
             <div class="photo" style="width: 100px; height: 125px;">
                 <img style="width: 100px; height: 125px;" src=${AchievementVO.thumbnailLocation}>
@@ -147,16 +145,10 @@
 </div>
 
 <a id="storage">${Tag1}</a>
+<a id="storage_location">${AchievementVO.location}</a>
 
 <script src="js/jquery.js"></script>
 <script src="js/common.js"></script>
-<script>
-    window.onload = function () {
-        judgeVersion_detail();
-
-        var index = parseInt(document.getElementById("storage").innerHTML);
-        document.getElementsByClassName("nav_bar")[index].setAttribute("class", "nav_bar active");
-    }
-</script>
+<script src="/js/detail.js"></script>
 </body>
 </html>

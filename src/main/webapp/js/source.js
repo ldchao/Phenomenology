@@ -6,11 +6,11 @@ var Tab_Selected = 0;   // 记录当前在哪个tab标签下
 var language = "ch";
 
 window.onload = function () {
+    language = judgeVersion();
+    
     getLectures();
     getMeetings();
     getVisitings();
-
-    language = judgeVersion();
 };
 
 // 讲座实录
@@ -102,72 +102,9 @@ function changeTab(index) {
 }
 
 function showArticle(link) {
-
-    var tabs = ["讲座实录", "课程资源", "学界动态"];
-    
-    if(language == "eng") {
-        tabs = ["LectureRecord", "CourseResources", "AcademiaDynamics"];
-    }
-    
     var Ids = ["cathedra", "course", "circleNews"];
-
-    var content = document.getElementById("news_content");
-
     var id = link.parentNode.getElementsByTagName("a")[0].innerHTML.trim();
-
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "academic/" + Ids[Tab_Selected] + "/getOne",
-        data: {
-            "id": id
-        },
-        dataType: "json",
-        success: function (result) {
-           
-            content.getElementsByClassName("article_title")[0].innerHTML = result.title;
-            document.getElementById("writer").innerHTML = result.author;
-            document.getElementById("time").innerHTML = result.time;
-            document.getElementById("viewer").innerHTML = result.pageView;
-
-            $.ajax({
-                type: "get",
-                async: false,
-                url: "getHtml",
-                data: {
-                    "filename": result.location
-                },
-                dataType: "html",
-                success: function (text) {
-                    content.getElementsByClassName("text_content")[0].innerHTML = text;
-                },
-                error: function () {
-                    alert("html数据获取失败");
-                }
-            });
-        },
-        error: function () {
-            alert("出访数据获取失败");
-        }
-    });
-
-    var backbtn = content.getElementsByClassName("back_lbl")[0];
-    backbtn .getElementsByTagName("span")[0].innerHTML = tabs[Tab_Selected];
-    
-    if(language == "eng") {
-        document.getElementById("writer_lbl").innerHTML = "Author";
-        document.getElementById("time_lbl").innerHTML = "Time";
-        document.getElementById("viewer_lbl").innerHTML = "PageView";
-    }
-    
-    backbtn.onclick = function () {
-        $("#news_content").hide();
-        $("#news_list").show();
-    };
-
-
-    $("#news_list").hide();
-    $("#news_content").show();
+    window.location.href = "academic/" + Ids[Tab_Selected] + "/detail?id=" + id;
 }
 
 function setTitle(result, parent) {
@@ -195,8 +132,8 @@ function setTitle(result, parent) {
 // 标题汉译英
 function changeVersion_content() {
     var tabs = document.getElementsByClassName("tab_achieve");
-    var eng_title = ["LectureRecord", "CourseResources", "AcademiaDynamics"];
-    for (var i=0; i<3; i++) {
+    var eng_title = ["LectureRecord", "CourseResources", "AcademicDynamics"];
+    for (var i = 0; i < 3; i++) {
         tabs[i].innerHTML = eng_title[i];
         tabs[i].style.fontSize = "16px";
     }

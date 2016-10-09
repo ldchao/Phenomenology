@@ -11,9 +11,9 @@
 <head>
     <title>南京大学现象学研究所</title>
 
-    <link href="css/achievement.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
-    <link href="css/cssreset.css" rel="stylesheet">
+    <link href="/css/achievement.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/cssreset.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -82,9 +82,7 @@
         <span class="article_index name">${OrganizationVO.name}</span>
 
         <div class="achieves_div">
-            <div class="introduction article_text">
-                ${OrganizationVO.descriptionLocation}
-            </div>
+            <div id="content" class="introduction article_text"></div>
 
             <div class="photo">
                 <img style="width: 130px; height: 140px;" src=${OrganizationVO.imageLocation}>
@@ -147,16 +145,10 @@
 </div>
 
 <a id="storage">${Tag1}</a>
+<a id="storage_location">${OrganizationVO.location}</a>
 
-<script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
-<script>
-    window.onload = function () {
-        judgeVersion_detail();
-
-        var index = parseInt(document.getElementById("storage").innerHTML);
-        document.getElementsByClassName("nav_bar")[index].setAttribute("class", "nav_bar active");
-    }
-</script>
+<script src="/js/jquery.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/detail.js"></script>
 </body>
 </html>

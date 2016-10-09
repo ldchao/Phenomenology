@@ -154,6 +154,7 @@ function judgeVersion() {
         url: "getVersion",
         dataType: "json",
         success: function (result) {
+            
             if (result == "eng") {
                 language = "eng";
 

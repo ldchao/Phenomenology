@@ -6,11 +6,11 @@ var Tab_Selected = 0;   // 记录当前在哪个tab标签下
 var language = "ch";
 
 window.onload = function () {
+    language = judgeVersion();
+    
     getLectures();
     getMeetings();
     getVisitings();
-
-    language = judgeVersion();
 };
 
 // 学术讲座

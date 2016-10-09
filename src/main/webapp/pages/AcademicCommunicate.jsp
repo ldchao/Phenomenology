@@ -73,7 +73,7 @@
     </div>
 
     <%--右侧内容块--%>
-    <div id="news_list" class="right_content">
+    <div class="right_content">
 
         <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
             学术讲座

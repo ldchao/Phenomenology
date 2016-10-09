@@ -154,45 +154,6 @@
 
 <script src="/js/jquery.js"></script>
 <script src="/js/common.js"></script>
-<script>
-    var language;
-
-    window.onload = function () {
-        language = judgeVersion_detail();
-
-        var index = parseInt(document.getElementById("storage").innerHTML);
-        document.getElementsByClassName("nav_bar")[index].setAttribute("class", "nav_bar active");
-
-        if (index == 5) {
-            document.getElementsByClassName("info")[0].style.display = "none";
-        }
-
-        var location = document.getElementById("storage_location").innerHTML.trim();
-        $.ajax({
-            type: "get",
-            async: false,
-            url: "/getHtml",
-            data: {
-                "filename": location
-            },
-            dataType: "html",
-            success: function (text) {
-                document.getElementById("content").innerHTML = text;
-            },
-            error: function () {
-                alert("html数据获取失败");
-            }
-        });
-    };
-
-    function changeVersion_content() {
-        if (language == "eng") {
-            document.getElementById("writer_lbl").innerHTML = "Author";
-            document.getElementById("time_lbl").innerHTML = "Time";
-            document.getElementById("viewer_lbl").innerHTML = "PageView";
-        }
-    }
-
-</script>
+<script src="/js/detail.js"></script>
 </body>
 </html>
