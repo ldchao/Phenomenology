@@ -66,6 +66,7 @@ function setTitle(result, parent) {
 
     var copy = document.getElementById("title_copy");
     for (var i = 0; i < result.length; i++) {
+
         var div = document.createElement("div");
         div.innerHTML = copy.innerHTML;
         div.setAttribute("class", "each_title");
@@ -98,7 +99,6 @@ function setTitle(result, parent) {
             }
         });
 
-
         parent.appendChild(div);
     }
 
@@ -114,9 +114,7 @@ function getMore(link) {
         titleId = "Fountainhead";
     }
 
-    var parent = document.getElementById("eachpage");
     var pagelbl = document.getElementById("pages");
-    var copy = document.getElementById("more_copy");
 
     parent.innerHTML = "";
 
@@ -130,35 +128,39 @@ function getMore(link) {
         dataType: "json",
         success: function (result) {
 
-            allPages = result;
+            if (result > 0) {
+                allPages = result;
 
-            for (var i = 0; i < result.length; i++) {
-                var div = document.createElement("div");
-                div.innerHTML = copy.innerHTML;
-                parent.appendChild(div);
-            }
+                // 分页
+                if (result.length > 6) {
+                    $("#paging").show();
 
-            // 分页
-            if (result.length > 6) {
-                var pages = Math.ceil(result.length / 6);
-                for (var j = 0; j < pages; j++) {
-                    var div = document.createElement("div");
-                    div.innerHTML = j + 1;
+                    var pages = Math.ceil(result.length / 6);
+                    for (var j = 0; j < pages; j++) {
+                        var div = document.createElement("div");
+                        div.innerHTML = j + 1;
 
-                    if (j == 0) {
-                        div.setAttribute("class", "pages_each pages_selected");
-                    } else {
-                        div.setAttribute("class", "pages_each");
+                        if (j == 0) {
+                            div.setAttribute("class", "pages_each pages_selected");
+                        } else {
+                            div.setAttribute("class", "pages_each");
+                        }
+
+                        div.onclick = function () {
+                            gotoPage_node(this);
+                        };
+
+                        pagelbl.appendChild(div);
                     }
 
-                    div.onclick = function () {
-                        gotoPage_node(this);
-                    };
+                    gotoPage(1);
 
-                    pagelbl.appendChild(div);
+                } else {
+                    for (var i=0; i < result.length; i++) {
+                        setMore(result[i]);
+                    }
                 }
-            } else {
-                $("#paging").hide();
+
             }
 
             $("#simple_content").hide();
@@ -171,6 +173,44 @@ function getMore(link) {
             alert("更多数据获取失败");
         }
     });
+}
+
+function setMore(result) {
+    var parent = document.getElementById("eachpage");
+    var copy = document.getElementById("more_copy");
+
+    var div = document.createElement("div");
+    div.innerHTML = copy.innerHTML;
+
+    var title = div.getElementsByClassName("more_title")[0];
+    title.innerHTML = result.title;
+    title.onclick = function () {
+        window.location.href = result.url;
+    };
+
+    var img = document.createElement("img");
+    img.style.width = "70px";
+    img.style.height = "75px";
+    img.src = result.thumbnailLocation;
+    div.getElementsByClassName("more_img")[0].appendChild(img);
+
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "getHtml",
+        data: {
+            "filename": result.textLocation,
+        },
+        dataType: "html",
+        success: function (text) {
+            div.getElementsByClassName("more_text")[0].innerHTML = text;
+        },
+        error: function () {
+            alert("文本获取失败")
+        }
+    });
+
+    parent.appendChild(div);
 }
 
 function changeVersion_content() {
@@ -214,24 +254,17 @@ function gotoPage(index) {
 
     currentPage = parseInt(index);
 
-    var parent = document.getElementById("eachpage");
-    var copy = document.getElementById("more_copy");
-
-    parent.innerHTML = "";
+    document.getElementById("eachpage").innerHTML = "";
 
     // (index-1) * 6 , index * 6 <= result.length
     if (index * 6 <= allPages.length) {
-
         for (var i = (index - 1) * 6; i < index * 6; i++) {
-
+            setMore(allPages[i]);
         }
-
     } else {
-
-        for (var i = (index - 1) * 6; i < allPages.length; i++) {
-            
+        for (var j = (index - 1) * 6; j < allPages.length; j++) {
+            setMore(allPages[j]);
         }
-
     }
 
 }
