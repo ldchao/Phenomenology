@@ -8,7 +8,6 @@ var language = "ch";
 window.onload = function () {
 
     language = judgeVersion();
-    getPics();
 
     var key = document.getElementById("storage").innerHTML.trim();
     getArticle(key);
