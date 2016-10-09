@@ -72,7 +72,10 @@ public class UploadController {
 
         String uploadUrl = request.getSession().getServletContext().getRealPath("/") + "coverImg/";
         String originalFilename = coverImg.getOriginalFilename();
-        String filename = UUID.randomUUID()+originalFilename.substring(originalFilename.lastIndexOf("."));
+        String filename = UUID.randomUUID()+"";
+        if(originalFilename.lastIndexOf(".")>0){
+            filename+=originalFilename.substring(originalFilename.lastIndexOf("."));
+        }
 
         FileManager.ensureFileExists(uploadUrl,filename);
 
