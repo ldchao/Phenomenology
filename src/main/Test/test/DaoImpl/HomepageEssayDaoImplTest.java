@@ -2,6 +2,8 @@ package test.DaoImpl;
 
 import Dao.HomepageEssayDao;
 import DaoImpl.HomepageEssayDaoImpl;
+import ENUM.Language;
+import ENUM.Type;
 import POJO.HomepageEssay;
 import org.junit.Test;
 import org.junit.Before; 
@@ -95,5 +97,8 @@ public void testRank() throws Exception {
     System.out.print("yes");
 } 
 
-
+@Test
+    public void testFindTop5(){
+        System.out.print(homepageEssayDao.findTop5(1).size());
+    }
 } 

@@ -20,9 +20,7 @@ import java.util.List;
  */
 public class HomepageEssayDaoImpl implements HomepageEssayDao {
     BaseDao baseDao;
-    public static final String LANGUAGE="language";
-    public static final String TYPE="type";
-
+    public static final String HOMEPAGE_ID="homepage.id";
     public HomepageEssayDaoImpl(){
         baseDao=new BaseDaoImpl();
     }
@@ -92,10 +90,10 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
         }
     }
 
-    public List<HomepageEssay> findTop5(Type type, Language language) {
+    public List<HomepageEssay> findTop5(int homepageId) {
         try {
-            String[] properties={TYPE,LANGUAGE};
-            Object[] values={type,language};
+            String[] properties={HOMEPAGE_ID};
+            Object[] values={homepageId};
             return (List<HomepageEssay>) baseDao.findByPropertiesAndPages("HomepageEssay",properties,values,0,5);
         }catch (Exception e){
             e.printStackTrace();
@@ -103,10 +101,10 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
         }
     }
 
-    public List<HomepageEssay> find(Type type, Language language) {
+    public List<HomepageEssay> find(int homepageId) {
         try {
-            String[] properties={TYPE,LANGUAGE};
-            Object[] values={type,language};
+            String[] properties={HOMEPAGE_ID};
+            Object[] values={homepageId};
             return (List<HomepageEssay>) baseDao.findByProperties("HomepageEssay",properties,values);
         }catch (Exception e){
             e.printStackTrace();
