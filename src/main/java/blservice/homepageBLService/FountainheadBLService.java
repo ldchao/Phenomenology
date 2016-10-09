@@ -23,6 +23,9 @@ public interface FountainheadBLService {
     //将源头活水记录排序
     public UniversalState sortNews(ArrayList<Integer> list);
 
+    //根据id获取一条源头活水记录
+    public NewsVO getNews(int id);
+
     //按日期排序取前五条源头活水记录
     public ArrayList<NewsVO> getFiveNews(String language);
 

@@ -20,5 +20,8 @@ public interface CarouselFigureBLService {
     //根据id删除一条轮播图存储记录
     public UniversalState deleteAPicture(int id);
 
+    //根据id获取一条轮播图对象
+    public PictureVO getPicture(int id);
+
 
 }

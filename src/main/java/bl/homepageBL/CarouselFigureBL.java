@@ -30,6 +30,7 @@ public class CarouselFigureBL implements CarouselFigureBLService{
         for (Slide slide:list) {
             PictureVO pictureVO=new PictureVO();
             pictureVO.setId(slide.getId());
+            pictureVO.setUrl(slide.getUrl());
             pictureVO.setLocation(slide.getLocation());
             result.add(pictureVO);
         }
@@ -40,5 +41,17 @@ public class CarouselFigureBL implements CarouselFigureBLService{
         SlideDao slideDao=new SlideDaoImpl();
         slideDao.delete(id);
         return UniversalState.SUCCEED;
+    }
+
+    public PictureVO getPicture(int id) {
+        SlideDao slideDao=new SlideDaoImpl();
+        Slide slide=slideDao.getById(id);
+
+        PictureVO pictureVO=new PictureVO();
+        pictureVO.setId(slide.getId());
+        pictureVO.setUrl(slide.getUrl());
+        pictureVO.setLocation(slide.getLocation());
+
+        return pictureVO;
     }
 }

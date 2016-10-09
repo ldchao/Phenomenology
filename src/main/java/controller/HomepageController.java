@@ -73,6 +73,13 @@ public class HomepageController {
         return result.toString();
     }
 
+    @RequestMapping("/CarouselFigure/getOne")
+    @ResponseBody
+    public PictureVO getOneCarouselFigure(Integer id){
+        CarouselFigureBLService carouselFigureBLService=new CarouselFigureBL();
+        return carouselFigureBLService.getPicture(id);
+    }
+
     @RequestMapping("/CarouselFigure/getAll")
     @ResponseBody
     public ArrayList<PictureVO> getAllCarouselFigure(){
@@ -124,6 +131,14 @@ public class HomepageController {
         NewsBLService newsBLService=new NewsBL();
         return newsBLService.getFiveNews(language);
     }
+
+    @RequestMapping(value = "/News/getOne", method = RequestMethod.GET)
+    @ResponseBody
+    public NewsVO getOneNews(Integer id) {
+        NewsBLService newsBLService=new NewsBL();
+        return newsBLService.getNews(id);
+    }
+
     @RequestMapping(value = "/News/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<NewsVO> getNews(String language) {
@@ -175,6 +190,14 @@ public class HomepageController {
         FountainheadBLService fountainheadBLService=new FountainheadBL();
         return fountainheadBLService.getFiveNews(language);
     }
+
+    @RequestMapping(value = "/Fountainhead/getOne", method = RequestMethod.GET)
+    @ResponseBody
+    public NewsVO getOneFountainhead(Integer id) {
+        FountainheadBLService fountainheadBLService=new FountainheadBL();
+        return fountainheadBLService.getNews(id);
+    }
+
     @RequestMapping(value = "/Fountainhead/get", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<NewsVO> getFountainhead(String language) {

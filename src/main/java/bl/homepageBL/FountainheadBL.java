@@ -100,4 +100,15 @@ public class FountainheadBL implements FountainheadBLService{
         }
         return list;
     }
+
+    public NewsVO getNews(int id) {
+        HomepageEssayDao homepageEssayDao=new HomepageEssayDaoImpl();
+        HomepageEssay homepageEssay=homepageEssayDao.getById(id);
+
+        NewsVO newsVO=new NewsVO();
+        newsVO.setId(homepageEssay.getId());
+        newsVO.setUrl(homepageEssay.getUrl());
+        newsVO.setThumbnailLocation(homepageEssay.getThumbnailLocation());
+        return newsVO;
+    }
 }

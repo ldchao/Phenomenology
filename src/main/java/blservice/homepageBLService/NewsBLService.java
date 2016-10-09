@@ -23,6 +23,9 @@ public interface NewsBLService {
     //将新闻记录排序
     public UniversalState sortNews(ArrayList<Integer> list);
 
+    //根据id获取一条动态新闻记录
+    public NewsVO getNews(int id);
+
     //按日期排序取前五条新闻
     public ArrayList<NewsVO> getFiveNews(String language);
 
