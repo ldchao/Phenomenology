@@ -62,6 +62,7 @@ public class CircleNewsBL implements CircleNewsBLService{
         academicVO.setPageView(pageView);
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         academicVO.setTime(sdf.format(essay.getTime()));
+        academicVO.setLanguage(essay.getLanguage().toString());
         return academicVO;
     }
 
@@ -78,6 +79,7 @@ public class CircleNewsBL implements CircleNewsBLService{
             academicVO.setTitle(essay.getTitle());
             academicVO.setPageView(essay.getPageView());
             academicVO.setTime(sdf.format(essay.getTime()));
+            academicVO.setLanguage(essay.getLanguage().toString());
             result.add(academicVO);
         }
 

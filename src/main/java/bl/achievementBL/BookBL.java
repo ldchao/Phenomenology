@@ -58,6 +58,7 @@ public class BookBL implements BookBLService{
         achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
         achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
         achievementVO.setTime(sdf.format(scientificachievement.getTime()));
+        achievementVO.setLanguage(scientificachievement.getLanguage().toString());
         return achievementVO;
     }
 
@@ -74,6 +75,7 @@ public class BookBL implements BookBLService{
             achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
             achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
             achievementVO.setTime(sdf.format(scientificachievement.getTime()));
+            achievementVO.setLanguage(scientificachievement.getLanguage().toString());
             result.add(achievementVO);
         }
         return result;

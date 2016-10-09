@@ -74,6 +74,7 @@ public class OfficeBearerBL implements OfficeBearerBLService{
             organizationVO.setName(person.getName());
             organizationVO.setDescriptionLocation(person.getDescriptionLocation());
             organizationVO.setImageLocation(person.getImageLocation());
+            organizationVO.setLanguage(person.getLanguage().toString());
             result.add(organizationVO);
         }
         return result;

@@ -73,6 +73,7 @@ public class ScholarBL implements ScholarBLService{
             OrganizationVO organizationVO=new OrganizationVO();
             organizationVO.setId(person.getId());
             organizationVO.setName(person.getName());
+            organizationVO.setLanguage(person.getLanguage().toString());
             organizationVO.setDescriptionLocation(person.getDescriptionLocation());
             organizationVO.setImageLocation(person.getImageLocation());
             result.add(organizationVO);

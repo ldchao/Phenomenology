@@ -56,6 +56,7 @@ public class ArticleBL implements ArticleBLService{
         achievementVO.setId(id);
         achievementVO.setTitle(scientificachievement.getTitle());
         achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
+        achievementVO.setLanguage(scientificachievement.getLanguage().toString());
         achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
         achievementVO.setTime(sdf.format(scientificachievement.getTime()));
         return achievementVO;
@@ -74,6 +75,7 @@ public class ArticleBL implements ArticleBLService{
             achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
             achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
             achievementVO.setTime(sdf.format(scientificachievement.getTime()));
+            achievementVO.setLanguage(scientificachievement.getLanguage().toString());
             result.add(achievementVO);
         }
         return result;
