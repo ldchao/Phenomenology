@@ -1,8 +1,12 @@
 package controller;
 
+import bl.academicCommunicateBL.LectureBL;
+import blservice.academicCommunicateBLService.LectureBLService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import vo.AcademicVO;
 
 /**
  * Created by lvdechao on 2016/7/7.
@@ -47,8 +51,11 @@ public class MainController {
     }
 
     @RequestMapping(value = "/Search", method = RequestMethod.GET)
-    public String searchResult() {
-        return "pages/SearchResult";
+    public ModelAndView searchResult(String key) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("pages/SearchResult");
+        modelAndView.addObject("key", key);
+        return modelAndView;
     }
 
     //后台部分
