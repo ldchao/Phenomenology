@@ -154,7 +154,7 @@
                     alert("出故障了请稍候再试2");
                 }
             });
-        }else{
+        } else {
             language = "ch";
             document.getElementById("transfer").children[0].className = "ch_eng";
             document.getElementById("transfer").children[1].className = "ch_eng ch_eng_not";
@@ -186,7 +186,6 @@
     function publish() {
         var html = editor.$txt.html();
         language = $("#language").val();
-        alert(language);
 
         //提交editor内容
         $.ajax({
@@ -206,10 +205,6 @@
                 alert("出故障了请稍候再试啊啊");
             }
         });
-    }
-
-    function showForm() {
-        $(".editBody").fadeIn(300);
     }
 
     function closeForm() {

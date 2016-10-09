@@ -107,10 +107,12 @@ public class FountainheadBL implements FountainheadBLService{
     public NewsVO getNews(int id) {
         HomepageEssayDao homepageEssayDao=new HomepageEssayDaoImpl();
         HomepageEssay homepageEssay=homepageEssayDao.getById(id);
-
         NewsVO newsVO=new NewsVO();
         newsVO.setId(homepageEssay.getId());
         newsVO.setUrl(homepageEssay.getUrl());
+        HomepageDao homepageDao=new HomepageDaoImpl();
+        Homepage homepage=homepageDao.getById(homepageEssay.getHomepage().getId());
+        newsVO.setLanguage(homepage.getLanguage().toString());
         newsVO.setThumbnailLocation(homepageEssay.getThumbnailLocation());
         return newsVO;
     }

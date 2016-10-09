@@ -13,6 +13,11 @@
 <header>你好，张三！
 </header>
 
+<div id="transfer" style="position:absolute;left: 20px;top:0px;">
+    <div class="ch_eng" onclick="changeLan(0)" style="left: 0px;">中文</div>
+    <div class="ch_eng ch_eng_not" style="width: 60px; left: 45px;" onclick="changeLan(1)">English</div>
+</div>
+
 
 <div class="left_block">
     <ul>
@@ -48,8 +53,10 @@
                 <td class="td4"></td>
                 <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a> <a
-                            onclick="upItem(this)"><i class="fa fa-arrow-up" aria-hidden="true"></i></a> <a
-                            onclick="downItem(this)"><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>
+                            onclick="sortItem(this,0)" class="up"><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+                    <a onclick="sortItem(this,1)" class="down"><i class="fa fa-arrow-down"
+                                                                  aria-hidden="true"></i></a>
+                </td>
             </tr>
         </table>
 
@@ -106,6 +113,7 @@
 
     //初始化数据
     var list;
+    var tableHtml = document.getElementById("listRow").innerHTML;
 
     $.ajax({
         type: "get",
@@ -115,20 +123,70 @@
             "language": language
         },
         success: function (result) {
-            list = result;
             for (var i = 0; i < result.length; i++) {
                 var tr = document.createElement("tr");
-                tr.innerHTML = document.getElementById("listRow").innerHTML;
+                tr.innerHTML = tableHtml;
                 tr.children[0].innerHTML = result[i].id;
                 tr.children[1].children[0].src = result[i].thumbnailLocation;
-                tr.children[2].innerHTML = result[i].title;
+                tr.children[2].innerHTML = result[i].url;
+                if (i == 0) {
+                    tr.getElementsByClassName("up")[0].style.display = "none";
+                } else if (i == (result.length - 1)) {
+                    tr.getElementsByClassName("down")[0].style.display = "none";
+                }
                 document.getElementsByClassName("list")[0].appendChild(tr);
             }
+            list = document.getElementsByClassName("list")[0].innerHTML;
         },
         error: function () {
             alert("出故障了请稍候再试0");
         }
     });
+
+
+    function changeLan(flag) {
+        if (flag == 1) {
+            language = "eng";
+            document.getElementById("transfer").children[1].className = "ch_eng";
+            document.getElementById("transfer").children[0].className = "ch_eng ch_eng_not";
+            document.getElementsByClassName("list")[0].innerHTML = "";
+
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "homepage/News/get",
+                data: {
+                    "language": language
+                },
+                success: function (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        var tr = document.createElement("tr");
+                        tr.innerHTML = tableHtml;
+                        tr.children[0].innerHTML = result[i].id;
+                        tr.children[1].children[0].src = result[i].thumbnailLocation;
+                        tr.children[2].innerHTML = result[i].url;
+                        if (i == 0) {
+                            tr.getElementsByClassName("up")[0].style.display = "none";
+                        } else if (i == (result.length - 1)) {
+                            tr.getElementsByClassName("down")[0].style.display = "none";
+                        }
+                        document.getElementsByClassName("list")[0].appendChild(tr);
+                    }
+                },
+                error: function () {
+                    alert("出故障了请稍候再试0");
+                }
+            });
+
+
+        } else {
+            language = "ch";
+            document.getElementById("transfer").children[0].className = "ch_eng";
+            document.getElementById("transfer").children[1].className = "ch_eng ch_eng_not";
+            document.getElementsByClassName("list")[0].innerHTML = list;
+        }
+
+    }
 
     function editItem(ele) {
         isEdit = 1;
@@ -137,48 +195,14 @@
         $.ajax({
             type: "get",
             async: false,
-            url: "academicCommunicate/lecture/getOne",
+            url: "homepage/News/getOne",
             data: {
                 "id": id
             },
             success: function (result) {
-                $("input[id='name']").val(result.title);
+                $("input[id='name']").val(result.url);
                 $("input[id='publisher']").val(result.author);
                 $("#language").val(result.language);
-
-                //填充editor
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "getHtml",
-                    data: {
-                        "filename": result.location,
-                    },
-                    success: function (html) {
-                        editor.$txt.html(html);
-                    },
-                    error: function () {
-                        alert("获取正文失败");
-                    }
-                });
-
-                //填充附件地址
-                $.ajax({
-                    type: "get",
-                    async: false,
-                    url: "getEssayAccessory",
-                    data: {
-                        "id": id
-                    },
-                    success: function (loc) {
-                        alert(loc.location);
-                        $("#accessory").val(loc.location);
-                    },
-                    error: function () {
-                        alert("获取文件失败");
-                    }
-                });
-
 
                 $(".submitButton").html("提交修改");
                 $(".editBody").fadeIn(300);
@@ -190,32 +214,117 @@
     }
 
     function deleteItem(ele) {
-        var id = ele.parentNode.firstChild;
+        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "homepage/News/delete",
+            data: {
+                "id": id
+            },
+            success: function (result) {
+                if (result == "SUCCEED") {
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("服务器出问题了，删除失败");
+            }
+        });
     }
+
+    //排序相关参数及函数
+    var idList = new Array();
+    var idNode = document.getElementsByClassName("td1");
+    for (var i = 0; i < (idNode.length - 1); i++) {
+        idList[i] = idNode[i + 1].innerHTML;
+    }
+    alert(idList);
+
+    function upItem(ele) {
+        var tempList = idList;
+        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        var index = 0;
+        var temp = 0;
+        for (var i = 0; i < tempList.length; i++) {
+            if (tempList[i] == id) {
+                index = i;
+            }
+        }
+        temp = tempList[index];
+        tempList[index] = tempList[index - 1];
+        tempList[index - 1] = temp;
+        alert(tempList);
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "homepage/News/sort",
+            data: {
+                "list[]": tempList
+            },
+            success: function (result) {
+                if (result == "SUCCEED") {
+                    window.location.reload();
+                } else {
+                    alert("服务器排序出错啦");
+                }
+            },
+            error: function () {
+                alert("排序失败啦");
+            }
+        });
+    }
+
+    function sortItem(ele, dir) {
+        var tempList = idList;
+        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        var index = 0;
+        var temp = 0;
+        for (var i = 0; i < tempList.length; i++) {
+            if (tempList[i] == id) {
+                index = i;
+            }
+        }
+
+        if (dir == 0) {
+            temp = tempList[index];
+            tempList[index] = tempList[index - 1];
+            tempList[index - 1] = temp;
+            alert(tempList);
+        } else {
+            temp = tempList[index];
+            tempList[index] = tempList[index + 1];
+            tempList[index + 1] = temp;
+            alert(tempList);
+        }
+
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "homepage/News/sort",
+            data: {
+                "list[]": tempList
+            },
+            success: function (result) {
+                if (result == "SUCCEED") {
+                    window.location.reload();
+                } else {
+                    alert("服务器排序出错啦");
+                }
+            },
+            error: function () {
+                alert("排序失败啦");
+            }
+        });
+    }
+
 
     function publish() {
         var coverImg = $("#coverImg").val();
         var url = $("input[id='name']").val();
         language = $("#language").val();
 
-        alert(coverImg);
-
-        //提交表单其余内容
-        $.ajax({
-            type: "post",
-            async: false,
-            url: "homepage/News/add",
-            data: {
-                "thumbnailLocation": coverImg,
-                "url": url,
-                "language": language
-            },
-            success: function (result) {
-            },
-            error: function () {
-                alert("出故障了请稍候再试3");
-            }
-        });
 
         //提交附件
         if (coverImg != "") {
@@ -228,20 +337,39 @@
                 },
                 url: "uploadCover",
                 success: function (result) {
-                    window.location.reload();
+
+                    //提交表单其余内容
+                    $.ajax({
+                        type: "post",
+                        async: false,
+                        url: "homepage/News/add",
+                        data: {
+                            "thumbnailLocation": result,
+                            "url": url,
+                            "language": language
+                        },
+                        success: function (para) {
+                            window.location.reload();
+                        },
+                        error: function () {
+                            alert("出故障了请稍候再试3");
+                        }
+                    });
                 },
                 error: function () {
                     alert("出故障了请稍候再试1");
                 }
             });
         } else {
-            window.location.reload();
+            alert("请选择缩略图再提交");
         }
+
     }
 
 
     function showForm() {
         $(".submitButton").html("提交");
+        $("#language").val(language);
         $(".editBody").fadeIn(300);
     }
 
