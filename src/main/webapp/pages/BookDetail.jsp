@@ -11,9 +11,9 @@
 <head>
     <title>南京大学现象学研究所</title>
 
-    <link href="css/achievement.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
-    <link href="css/cssreset.css" rel="stylesheet">
+    <link href="/css/achievement.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+    <link href="/css/cssreset.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -147,8 +147,9 @@
 <a id="storage">${Tag1}</a>
 <a id="storage_location">${AchievementVO.location}</a>
 
-<script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/version.js"></script>
 <script src="/js/detail.js"></script>
 </body>
 </html>

@@ -150,5 +150,6 @@
 <script src="js/organization.js"></script>
 <script src="js/jquery.js"></script>
 <script src="js/common.js"></script>
+<script src="js/version.js"></script>
 </body>
 </html>

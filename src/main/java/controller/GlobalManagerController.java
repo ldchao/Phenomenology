@@ -56,14 +56,14 @@ public class GlobalManagerController {
     }
 
     //全局搜索科研成果
-    @RequestMapping(value = "/searchArticle")
+    @RequestMapping(value = "/searchAchievement")
     @ResponseBody
     public ArrayList<AchievementVO> searchArticle(String key){
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchArticle(key);
     }
 
-    @RequestMapping(value = "/getArticleURL")
+    @RequestMapping(value = "/getAchievementURL")
     @ResponseBody
     public String getArticleURL(Integer id){
         return UrlManager.getAchievementUrl(id);

@@ -154,6 +154,7 @@
 
 <script src="/js/jquery.js"></script>
 <script src="/js/common.js"></script>
+<script src="/js/version.js"></script>
 <script src="/js/detail.js"></script>
 </body>
 </html>

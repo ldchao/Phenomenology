@@ -5,7 +5,8 @@
   Time: 下午3:15
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>南京大学现象学研究所</title>
@@ -58,9 +59,9 @@
         <%-- 文章 --%>
         <div id="article_title" class="search_list">
 
-            <div id="article_copy" style="display: block;">
+            <div id="article_copy" style="display: none;">
 
-                <div class="each_more">
+                <div class="each_more" style="margin-bottom: 0;">
                     <div class="article_list_title more_title">现象学研究所接见了世界级现象学大师</div>
 
                     <div class="search_text article_preview">
@@ -74,7 +75,10 @@
                         啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
                         啊啊啊啊啊啊啊啊
                     </div>
+
+                    <a style="display: none;"></a>
                 </div>
+
             </div>
 
         </div>
@@ -112,58 +116,6 @@
 
     </div>
 
-    <%-- 出版书籍的详情 --%>
-    <div id="book_detail" class="right_content" style="display: none">
-
-        <div class="article_index back_lbl">
-            <span>书籍出版</span> <i class="fa fa-angle-right"></i>
-        </div>
-
-        <span class="article_index name">《现象屠龙》</span>
-
-        <div class="achieves_div">
-            <div class="introduction article_text">
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-                李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人
-            </div>
-
-            <div class="photo"></div>
-        </div>
-
-    </div>
-
-    <%-- 文章详情 --%>
-    <div id="article_content" class="right_content" style="height: 956px; display: none;">
-
-        <div class="article_index back_lbl">
-            <span>文章发表</span> <i class="fa fa-angle-right"></i>
-        </div>
-
-        <div class="news_title article_title">2016年南京大学超级现象学大会召开</div>
-
-        <div class="text_content article_text">
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，李四是一个好人，
-            李四是一个好人，
-        </div>
-
-    </div>
-
 </div>
 
 
@@ -197,8 +149,11 @@
 
 </div>
 
+<a id="storage" style="display: none">${key}</a>
+
 <script src="js/jquery.js"></script>
 <script src="js/common.js"></script>
+<script src="js/version.js"></script>
 <script src="js/searchresult.js"></script>
 </body>
 </html>
