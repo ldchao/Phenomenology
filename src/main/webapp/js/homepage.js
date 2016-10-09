@@ -121,14 +121,14 @@ function getMore(link) {
     $.ajax({
         type: "get",
         async: false,
-        url: "homepage/" + titleId + "/getFive",
+        url: "homepage/" + titleId + "/get",
         data: {
             "language": language
         },
         dataType: "json",
         success: function (result) {
 
-            if (result > 0) {
+            if (result.length > 0) {
                 allPages = result;
 
                 // 分页
