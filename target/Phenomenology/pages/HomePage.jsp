@@ -162,7 +162,7 @@
         </div>
 
         <%-- 分页标签 --%>
-        <div id="paging" style="margin-left: 38px; margin-top: 20px;">
+        <div id="paging" style="margin-left: 38px; margin-top: 20px; display: none;">
 
             <i class="fa fa-chevron-left next_page" onclick="nextPage(1)"></i>
 
