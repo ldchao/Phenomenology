@@ -13,7 +13,6 @@
 <header>你好，张三！
 </header>
 
-
 <div class="left_block">
     <ul>
         <li class="intent" onclick="window.location.href='Introduce'">本所概况</li>
@@ -42,37 +41,13 @@
 <div class="right_block">
     <div class="right_intent">
         <table class="list">
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    <%--<a><i class="fa fa-arrow-up" aria-hidden="true"></i></a>--%>
-                    <%--<a><i class="fa fa-arrow-down" aria-hidden="true"></i></a></td>--%>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </tr>
-            <tr>
-                <td class="td1">xxx项目xxx项目xxx项目xxx项目xxx项目xxx项目xxx项目</td>
-                <td class="td2"><a><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    <a><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <tr class="none" id="listRow" style="height: 100px;">
+                <td class="td1">1</td>
+                <td class="td5"><img class="headImage" style="width: 80px;height: 80px;"></td>
+                <td class="td4"></td>
+                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </td>
             </tr>
         </table>
 
@@ -86,22 +61,153 @@
         <a class="closeButton" onclick="closeForm
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
-            <input type="text" class="textfield" placeholder="文章链接">
-            <button class="formButton blueButton">选取缩略图</button>
+            <div class="buttons">
+                <input id="name" type="text" class="textfield left div-10" placeholder="引用链接">
+            </div>
+
+            <div class="buttons">
+                <form action="/CarouselFigure/upload.action" method="post" enctype="multipart/form-data"
+                      onsubmit="return false;">
+                    <a class="chooseFile left div-5">
+                        <input style="opacity: 0;" type="file" name="carouselFigure" id="carouselFigure"/>点击这里上传缩略图
+                    </a>
+                    <button class="submitButton right div-5" onclick="publish()">提交</button>
+
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
+<script src="js/backend.js"></script>
+<script type="text/javascript" src="dist/js/lib/jquery-1.10.2.min.js"></script>
+<script src="http://malsup.github.io/jquery.form.js"></script>
 
-<script src="js/jquery.js"></script>
 <script>
+    var id;
+    var isEdit = 0;
+
+    var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
+
+    //输入框高度设置
+    if ($(".innerForm").find("#editDiv").length != 0) {
+        $(".editForm").css({height: (h - 100)});
+    }
+    $("#editDiv").css({height: (h - 250)});
+
+    //初始化数据
+    var list;
+    var tableHtml = document.getElementById("listRow").innerHTML;
+
+    $.ajax({
+        type: "get",
+        async: false,
+        url: "homepage/CarouselFigure/getAll",
+        success: function (result) {
+            for (var i = 0; i < result.length; i++) {
+                var tr = document.createElement("tr");
+                tr.innerHTML = tableHtml;
+                tr.children[0].innerHTML = result[i].id;
+                tr.children[1].children[0].src = result[i].location;
+                tr.children[2].innerHTML = result[i].url;
+                document.getElementsByClassName("list")[0].appendChild(tr);
+            }
+            list = document.getElementsByClassName("list")[0].innerHTML;
+        },
+        error: function () {
+            alert("出故障了请稍候再试0");
+        }
+    });
+
+    function editItem(ele) {
+        isEdit = 1;
+        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "homepage/CarouselFigure/getOne",
+            data: {
+                "id": id
+            },
+            success: function (result) {
+                $("input[id='name']").val(result.url);
+                $(".submitButton").html("提交修改");
+                $(".editBody").fadeIn(300);
+            },
+            error: function () {
+                alert("出故障了请稍候再试2");
+            }
+        });
+    }
+
+    function deleteItem(ele) {
+        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "homepage/CarouselFigure/delete",
+            data: {
+                "id": id
+            },
+            success: function (result) {
+                if (result == "SUCCEED") {
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("服务器出问题了，删除失败");
+            }
+        });
+    }
+
+
+
+    function publish() {
+        var carouselFigure = $("#carouselFigure").val();
+        var url = $("input[id='name']").val();
+
+
+        //提交附件
+        if (carouselFigure != "") {
+            $('form').ajaxSubmit({
+                type: "post",
+                async: false,
+                data: {
+                    "carouselFigure": carouselFigure,
+                    "url": url
+                },
+                url: "homepage/CarouselFigure/upload",
+                success: function (result) {
+
+                },
+                error: function () {
+                    alert("出故障了请稍候再试1");
+                }
+            });
+        } else {
+            alert("请选择缩略图再提交");
+        }
+
+    }
+
+
     function showForm() {
+        $(".submitButton").html("提交");
+        $("#language").val(language);
         $(".editBody").fadeIn(300);
     }
 
     function closeForm() {
+        if (isEdit == 1) {
+            $("input[id='name']").val("");
+            $("#language").val("ch");
+            $("#coverImg").val("");
+            isEdit = 0;
+        }
         $(".editBody").fadeOut(300);
     }
+
 </script>
 </body>
 </html>

@@ -49,7 +49,7 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
 
     public List<HomepageEssay> findAll(int i) {
         try {
-            String hql="from HomepageEssay h where h.homepage.id="+i;
+            String hql="from HomepageEssay h where h.homepage.id="+i+" order by h.sequenceNumber";
             return (List<HomepageEssay>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();

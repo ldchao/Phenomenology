@@ -128,11 +128,16 @@
                 tr.innerHTML = tableHtml;
                 tr.children[0].innerHTML = result[i].id;
                 tr.children[1].children[0].src = result[i].thumbnailLocation;
-                tr.children[2].innerHTML = result[i].url;
-                if (i == 0) {
+                tr.children[2].innerHTML = result[i].title;
+                if (result.length == 1) {
                     tr.getElementsByClassName("up")[0].style.display = "none";
-                } else if (i == (result.length - 1)) {
                     tr.getElementsByClassName("down")[0].style.display = "none";
+                } else {
+                    if (i == 0) {
+                        tr.getElementsByClassName("up")[0].style.display = "none";
+                    } else if (i == (result.length - 1)) {
+                        tr.getElementsByClassName("down")[0].style.display = "none";
+                    }
                 }
                 document.getElementsByClassName("list")[0].appendChild(tr);
             }
@@ -164,11 +169,16 @@
                         tr.innerHTML = tableHtml;
                         tr.children[0].innerHTML = result[i].id;
                         tr.children[1].children[0].src = result[i].thumbnailLocation;
-                        tr.children[2].innerHTML = result[i].url;
-                        if (i == 0) {
+                        tr.children[2].innerHTML = result[i].title;
+                        if (result.length == 1) {
                             tr.getElementsByClassName("up")[0].style.display = "none";
-                        } else if (i == (result.length - 1)) {
                             tr.getElementsByClassName("down")[0].style.display = "none";
+                        } else {
+                            if (i == 0) {
+                                tr.getElementsByClassName("up")[0].style.display = "none";
+                            } else if (i == (result.length - 1)) {
+                                tr.getElementsByClassName("down")[0].style.display = "none";
+                            }
                         }
                         document.getElementsByClassName("list")[0].appendChild(tr);
                     }
@@ -240,41 +250,6 @@
         idList[i] = idNode[i + 1].innerHTML;
     }
     alert(idList);
-
-    function upItem(ele) {
-        var tempList = idList;
-        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
-        var index = 0;
-        var temp = 0;
-        for (var i = 0; i < tempList.length; i++) {
-            if (tempList[i] == id) {
-                index = i;
-            }
-        }
-        temp = tempList[index];
-        tempList[index] = tempList[index - 1];
-        tempList[index - 1] = temp;
-        alert(tempList);
-
-        $.ajax({
-            type: "post",
-            async: false,
-            url: "homepage/News/sort",
-            data: {
-                "list[]": tempList
-            },
-            success: function (result) {
-                if (result == "SUCCEED") {
-                    window.location.reload();
-                } else {
-                    alert("服务器排序出错啦");
-                }
-            },
-            error: function () {
-                alert("排序失败啦");
-            }
-        });
-    }
 
     function sortItem(ele, dir) {
         var tempList = idList;
