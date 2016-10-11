@@ -14,6 +14,11 @@
 <header>你好，张三！
 </header>
 
+<div id="transfer" style="position:absolute;left: 20px;top:0px;">
+    <div class="ch_eng" onclick="changeLan(0)" style="left: 0px;">中文</div>
+    <div class="ch_eng ch_eng_not" style="width: 60px; left: 45px;" onclick="changeLan(1)">English</div>
+</div>
+
 
 <div class="left_block">
     <ul>
@@ -128,6 +133,9 @@
     $("#editDiv").css({height: (h - 286)});
 
     //初始化数据
+    var list;
+    var tableHtml = document.getElementById("listRow").innerHTML;
+
     $.ajax({
         type: "get",
         async: false,
@@ -143,11 +151,51 @@
                 tr.getElementsByClassName("td2")[0].innerHTML = result[i].title;
                 document.getElementsByClassName("list")[0].appendChild(tr);
             }
+            list = document.getElementsByClassName("list")[0].innerHTML;
+
         },
         error: function () {
             alert("出故障了请稍候再试2");
         }
     });
+
+    function changeLan(flag) {
+        if (flag == 1) {
+            language = "eng";
+            document.getElementById("transfer").children[1].className = "ch_eng";
+            document.getElementById("transfer").children[0].className = "ch_eng ch_eng_not";
+            document.getElementsByClassName("list")[0].innerHTML = "";
+
+            $.ajax({
+                type: "get",
+                async: false,
+                url: "academicCommunicate/visit/get",
+                data: {
+                    "language": language
+                },
+                success: function (result) {
+                    for (var i = 0; i < result.length; i++) {
+                        var tr = document.createElement("tr");
+                        tr.innerHTML = tableHtml;
+                        tr.getElementsByClassName("td1")[0].innerHTML = result[i].id;
+                        tr.getElementsByClassName("td2")[0].innerHTML = result[i].title;
+                        document.getElementsByClassName("list")[0].appendChild(tr);
+                    }
+                },
+                error: function () {
+                    alert("出故障了请稍候再试0");
+                }
+            });
+
+
+        } else {
+            language = "ch";
+            document.getElementById("transfer").children[0].className = "ch_eng";
+            document.getElementById("transfer").children[1].className = "ch_eng ch_eng_not";
+            document.getElementsByClassName("list")[0].innerHTML = list;
+        }
+
+    }
 
     function editItem(ele) {
         isEdit = 1;
@@ -209,7 +257,23 @@
     }
 
     function deleteItem(ele) {
-        var id = ele.parentNode.firstChild;
+        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "academicCommunicate/visit/delete",
+            data: {
+                "id": id
+            },
+            success: function (result) {
+                if (result == "SUCCEED") {
+                    window.location.reload();
+                }
+            },
+            error: function () {
+                alert("服务器出问题了，删除失败");
+            }
+        });
     }
 
     function publish() {
@@ -295,6 +359,7 @@
                 alert("出故障了请稍候再试4");
             }
         });
+        $("#language").val(language);
         $(".editBody").fadeIn(300);
     }
 

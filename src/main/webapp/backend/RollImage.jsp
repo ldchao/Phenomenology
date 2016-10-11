@@ -45,7 +45,8 @@
                 <td class="td1">1</td>
                 <td class="td5"><img class="headImage" style="width: 80px;height: 80px;"></td>
                 <td class="td4"></td>
-                <td class="td3"><a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <td class="td3">
+                    <%--<a onclick="editItem(this)"><i class="fa fa-pencil" aria-hidden="true"></i></a>--%>
                     <a onclick="deleteItem(this)"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
             </tr>
@@ -179,7 +180,7 @@
                 },
                 url: "homepage/CarouselFigure/upload",
                 success: function (result) {
-
+                    window.location.reload();
                 },
                 error: function () {
                     alert("出故障了请稍候再试1");
@@ -194,14 +195,12 @@
 
     function showForm() {
         $(".submitButton").html("提交");
-        $("#language").val(language);
         $(".editBody").fadeIn(300);
     }
 
     function closeForm() {
         if (isEdit == 1) {
             $("input[id='name']").val("");
-            $("#language").val("ch");
             $("#coverImg").val("");
             isEdit = 0;
         }
