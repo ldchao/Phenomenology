@@ -74,7 +74,7 @@
     </div>
 
     <%-- 文章 --%>
-    <div id="news_content" class="right_content" style="height: 956px;">
+    <div id="news_content" class="right_content_detail">
 
         <div class="article_index back_lbl">
             <span onclick="goBack()">${Tag2}</span> <i class="fa fa-angle-right"></i>
@@ -94,6 +94,11 @@
         </div>
 
         <div id="content" class="text_content article_text"></div>
+
+        <div id="attach" class="download_icon" style="display: none">
+            <i class="fa fa-download"></i>
+            附件：<span>《现象屠龙》</span>
+        </div>
 
     </div>
 
@@ -140,8 +145,9 @@
 
 </div>
 
-<a id="storage">${Tag1}</a>
-<a id="storage_location">${AcademicVO.location}</a>
+<a id="storage" style="display: none">${Tag1}</a>
+<a id="storage_location" style="display: none">${AcademicVO.location}</a>
+<a id="storage_id" style="display: none">${AcademicVO.id}</a>
 
 <script src="/js/jquery.js"></script>
 <script src="/js/common.js"></script>

@@ -135,7 +135,7 @@
 
 </div>
 
-<a id="storage">${Tag1}</a>
+<a id="storage">${Tag1} style="display: none"</a>
 <a id="storage_location">${OrganizationVO.location}</a>
 
 <script src="/js/jquery.js"></script>

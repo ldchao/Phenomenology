@@ -31,6 +31,14 @@ window.onload = function () {
             alert("html数据获取失败");
         }
     });
+
+    var tag = document.getElementById("storage").innerHTML.trim();
+    if(tag == 3 || tag == 4) {
+        getAttach("/getEssayAccessory");
+    } else{
+        getAttach("/getSaAccessory");
+    }
+
 };
 
 function changeVersion_content() {
@@ -42,4 +50,54 @@ function changeVersion_content() {
         document.getElementById("time_lbl").innerHTML = "Time";
         document.getElementById("viewer_lbl").innerHTML = "PageView";
     }
+}
+
+function getAttach(url) {
+
+    var id = document.getElementById("storage_id").innerHTML.trim();
+    var attach = document.getElementById("attach");
+
+    $.ajax({
+        type: "get",
+        async: false,
+        url: url,
+        data: {
+            "id": id
+        },
+        dataType: "json",
+        success: function (result) {
+
+            if (result != null) {
+
+                attach.getElementsByTagName("span")[0].innerHTML = result.name;
+
+                $("#attach").show();
+                attach.onclick = function () {
+                    submit(result.location);
+                }
+
+            }
+        },
+        error: function () {
+            alert("html数据获取失败");
+        }
+    });
+
+}
+
+function submit(location) {
+    var form = $("<form>");//定义一个form表单
+    form.attr("style", "display:none");
+    form.attr("target", "");
+    form.attr("method", "post");
+    form.attr("action", "/download");
+
+    var input1 = $("<input>");
+    input1.attr("type", "hidden");
+    input1.attr("name", "fileName");
+    input1.attr("value", location);//路径名
+    $("body").append(form);//将表单放置在web中
+    form.append(input1);
+
+    form.submit();//表单提交
 }

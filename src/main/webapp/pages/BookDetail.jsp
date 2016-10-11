@@ -89,6 +89,11 @@
             </div>
         </div>
 
+        <div id="attach" class="download_icon" style="display: none">
+            <i class="fa fa-download"></i>
+            附件：<span>《现象屠龙》</span>
+        </div>
+
     </div>
 
 
@@ -135,8 +140,9 @@
 
 </div>
 
-<a id="storage">${Tag1}</a>
-<a id="storage_location">${AchievementVO.location}</a>
+<a id="storage" style="display: none">${Tag1}</a>
+<a id="storage_location" style="display: none">${AchievementVO.location}</a>
+<a id="storage_id" style="display: none;">${AchievementVO.id}</a>
 
 <script src="/js/jquery.js"></script>
 <script src="/js/common.js"></script>

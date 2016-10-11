@@ -126,8 +126,9 @@
 
 .text_content {
     width: 770px;
-    height: 726px;
+    min-height: 400px;
     margin-top: 28px;
     margin-left: 60px;
+    margin-bottom: 40px;
     overflow: auto;
 }

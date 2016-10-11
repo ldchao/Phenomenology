@@ -146,6 +146,16 @@ a:hover {
     vertical-align: top;
 }
 
+.right_content_detail {
+    width: 890px;
+    min-height: 700px;
+    background-color: #fff;
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: top;
+    padding-bottom: 30px;
+}
+
 .roll_pic {
     width: 1140px;
     height: 129px;
@@ -198,6 +208,21 @@ a:hover {
     border: 1px solid #979797;
     margin: 0 22px;
     display: inline-block;
+}
+
+/* 附件下载 */
+.download_icon {
+    font-size: 16px;
+    color: #959799;
+    width: 770px;
+    margin-top: 50px;
+    margin-left: 60px;
+    display: inline;
+    cursor: pointer;
+}
+
+.download_icon:hover {
+    color: #1b7aa1;
 }
 
 /* 标题、索引 */
