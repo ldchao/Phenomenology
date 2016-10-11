@@ -76,11 +76,17 @@ function setTitle(result, parent) {
         img.style.height = "70px";
         img.src = result[i].thumbnailLocation;
         div.getElementsByClassName("each_img")[0].appendChild(img);
-
-        var title = div.getElementsByClassName("big_div")[0]
+        
+        var title = div.getElementsByClassName("big_div")[0];
         title.innerHTML = result[i].title;
+
+        var a = document.createElement("a");
+        a.style.display = "none";
+        a.innerHTML = result[i].url;
+        title.appendChild(a);
+
         title.onclick = function () {
-            window.location.href = result[i].url;
+            gotoUrl(this);
         };
 
         $.ajax({
@@ -101,7 +107,11 @@ function setTitle(result, parent) {
 
         parent.appendChild(div);
     }
+}
 
+function gotoUrl(node) {
+    var url = node.getElementsByTagName("a")[0].innerHTML;
+    window.location.href = url;
 }
 
 function getMore(link) {
