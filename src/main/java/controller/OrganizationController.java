@@ -34,12 +34,17 @@ public class OrganizationController {
         return officeBearerBLService.getID();
     }
 
-//    @RequestMapping(value = "/officeBearer/addText", method = RequestMethod.POST)
-//    @ResponseBody
-//    public String addOfficeBearer() {
-//
-//        return null;
-//    }
+    @RequestMapping(value = "/officeBearer/addText", method = RequestMethod.POST)
+    @ResponseBody
+    public Integer addOfficeBearer(String name,String imageLocation,String descriptionLocation,String language) {
+        OrganizationVO organizationVO=new OrganizationVO();
+        organizationVO.setName(name);
+        organizationVO.setDescriptionLocation(descriptionLocation);
+        organizationVO.setImageLocation(imageLocation);
+        organizationVO.setLanguage(language);
+        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
+        return officeBearerBLService.addItem(organizationVO);
+    }
 
     @RequestMapping(value = "/officeBearer/update", method = RequestMethod.POST)
     @ResponseBody
@@ -102,12 +107,27 @@ public class OrganizationController {
         return officeBearerBLService.getAllItem(language);
     }
 
+
     @RequestMapping(value = "/scholar/getID", method = RequestMethod.POST)
     @ResponseBody
     public int getScholarID() {
         ScholarBLService scholarBLService=new ScholarBL();
         return scholarBLService.getID();
     }
+
+
+    @RequestMapping(value = "/scholar/addText", method = RequestMethod.POST)
+    @ResponseBody
+    public Integer addScholar(String name,String imageLocation,String descriptionLocation,String language) {
+        OrganizationVO organizationVO=new OrganizationVO();
+        organizationVO.setName(name);
+        organizationVO.setDescriptionLocation(descriptionLocation);
+        organizationVO.setImageLocation(imageLocation);
+        organizationVO.setLanguage(language);
+        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
+        return officeBearerBLService.addItem(organizationVO);
+    }
+
 
     @RequestMapping(value = "/scholar/update", method = RequestMethod.POST)
     @ResponseBody
@@ -175,6 +195,18 @@ public class OrganizationController {
     public int getStudentID() {
         StudentBLService studentBLService=new StudentBL();
         return studentBLService.getID();
+    }
+
+    @RequestMapping(value = "/student/addText", method = RequestMethod.POST)
+    @ResponseBody
+    public Integer addStudent(String name,String imageLocation,String descriptionLocation,String language) {
+        OrganizationVO organizationVO=new OrganizationVO();
+        organizationVO.setName(name);
+        organizationVO.setDescriptionLocation(descriptionLocation);
+        organizationVO.setImageLocation(imageLocation);
+        organizationVO.setLanguage(language);
+        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
+        return officeBearerBLService.addItem(organizationVO);
     }
 
     @RequestMapping(value = "/student/update", method = RequestMethod.POST)

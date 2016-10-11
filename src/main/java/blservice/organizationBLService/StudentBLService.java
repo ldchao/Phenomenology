@@ -14,7 +14,7 @@ public interface StudentBLService {
     public int getID();
 
     //增加一条本所学生记录
-    public String addItem(OrganizationVO organizationVO);
+    public int addItem(OrganizationVO organizationVO);
 
     //删除一条本所学生记录
     public UniversalState deleteItem(int id);

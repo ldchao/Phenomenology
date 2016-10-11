@@ -22,8 +22,16 @@ public class ScholarBL implements ScholarBLService{
         return personDao.pesist(person);
     }
 
-    public String addItem(OrganizationVO organizationVO) {
-        return null;
+    public int addItem(OrganizationVO organizationVO) {
+        PersonDao personDao=new PersonDaoImpl();
+        Person person=new Person();
+        person.setName(organizationVO.getName());
+        person.setDescriptionLocation(organizationVO.getDescriptionLocation());
+        person.setImageLocation(organizationVO.getImageLocation());
+        person.setLanguage(Language.valueOf(organizationVO.getLanguage()));
+        person.setType(Type.Scholar);
+        return personDao.pesist(person);
+
     }
 
     public UniversalState deleteItem(int id) {
@@ -40,7 +48,7 @@ public class ScholarBL implements ScholarBLService{
         person.setImageLocation(organizationVO.getImageLocation());
         person.setLanguage(Language.valueOf(organizationVO.getLanguage()));
         person.setType(Type.Scholar);
-        personDao.pesist(person);
+        personDao.update(person);
         return UniversalState.SUCCEED;
     }
 

@@ -14,7 +14,7 @@ public interface OfficeBearerBLService {
     public int getID();
 
     //增加一条在职人员记录
-    public String addItem(OrganizationVO organizationVO);
+    public int addItem(OrganizationVO organizationVO);
 
     //删除一条在职人员记录
     public UniversalState deleteItem(int id);
