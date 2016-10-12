@@ -124,8 +124,8 @@ public class OrganizationController {
         organizationVO.setDescriptionLocation(descriptionLocation);
         organizationVO.setImageLocation(imageLocation);
         organizationVO.setLanguage(language);
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        return officeBearerBLService.addItem(organizationVO);
+        ScholarBLService scholarBLService=new ScholarBL();
+        return scholarBLService.addItem(organizationVO);
     }
 
 
@@ -205,8 +205,8 @@ public class OrganizationController {
         organizationVO.setDescriptionLocation(descriptionLocation);
         organizationVO.setImageLocation(imageLocation);
         organizationVO.setLanguage(language);
-        OfficeBearerBLService officeBearerBLService=new OfficeBearerBL();
-        return officeBearerBLService.addItem(organizationVO);
+        StudentBLService studentBLService=new StudentBL();
+        return studentBLService.addItem(organizationVO);
     }
 
     @RequestMapping(value = "/student/update", method = RequestMethod.POST)
