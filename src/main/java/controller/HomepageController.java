@@ -59,6 +59,8 @@ public class HomepageController {
 
         PictureVO pictureVO=new PictureVO();
         pictureVO.setLocation(carouselFigurePath);
+        if(!url.startsWith("http"))
+            url="http://"+url;
         pictureVO.setUrl(url);
 
         CarouselFigureBLService carouselFigureBLService=new CarouselFigureBL();

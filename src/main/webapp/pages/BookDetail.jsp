@@ -141,7 +141,7 @@
 </div>
 
 <a id="storage" style="display: none">${Tag1}</a>
-<a id="storage_location" style="display: none">${AchievementVO.location}</a>
+<a id="storage_location" style="display: none">${AchievementVO.descriptionLocation}</a>
 <a id="storage_id" style="display: none;">${AchievementVO.id}</a>
 
 <script src="/js/jquery.js"></script>

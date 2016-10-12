@@ -87,7 +87,7 @@ public class OrganizationController {
         OrganizationVO organizationVO = officeBearerBLService.getItem(id);
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("pages/BookDetail");
+        modelAndView.setViewName("pages/StaffDetail");
 
         modelAndView.addObject("OrganizationVO", organizationVO);
         modelAndView.addObject("Tag1", 2);
@@ -170,7 +170,7 @@ public class OrganizationController {
         OrganizationVO organizationVO = scholarBLService.getItem(id);
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("pages/BookDetail");
+        modelAndView.setViewName("pages/StaffDetail");
 
         modelAndView.addObject("OrganizationVO", organizationVO);
         modelAndView.addObject("Tag1", 2);
@@ -251,7 +251,7 @@ public class OrganizationController {
         OrganizationVO organizationVO = studentBLService.getItem(id);
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.setViewName("pages/BookDetail");
+        modelAndView.setViewName("pages/StaffDetail");
 
         modelAndView.addObject("OrganizationVO", organizationVO);
         modelAndView.addObject("Tag1", 2);

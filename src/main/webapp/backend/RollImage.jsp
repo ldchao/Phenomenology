@@ -180,6 +180,7 @@
                 },
                 url: "homepage/CarouselFigure/upload",
                 success: function (result) {
+                    alert(result);
                     window.location.reload();
                 },
                 error: function () {

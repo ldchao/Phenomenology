@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
         String[] properties={NAME};
         Object[] values={name};
         try{
-            return (User) baseDao.findByProperties("User",properties,values);
+            return (User) baseDao.findByProperties("User",properties,values).get(0);
         }catch (Exception e){
             e.printStackTrace();
             return null;

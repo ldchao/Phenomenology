@@ -163,6 +163,7 @@ public class BaseDaoImpl implements BaseDao {
         }
         List result=null;
 
+        System.out.println(hql);
         Session session=DBconnection.getSession();
         try {
             Query query=session.createQuery(hql);

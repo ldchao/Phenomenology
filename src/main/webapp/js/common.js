@@ -44,10 +44,15 @@ function getPics_ajax(url) {
                 img.style.width = "221px";
                 img.style.height = "112px";
                 img.src = result[i].location;
-                div.appendChild(div);
+                div.appendChild(img);
+
+                var a = document.createElement("a");
+                a.innerHTML = result[i].url;
+                a.style.display = "none";
+                div.appendChild(a);
 
                 div.onclick = function () {
-                    window.location.href = result[i].url;
+                    window.open(this.getElementsByTagName("a")[0].innerHTML);
                 };
 
                 tab.appendChild(div);

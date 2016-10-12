@@ -19,14 +19,19 @@
 <div class="outerBlock">
     <div class="innerBlock">
         <p>后台登录</p>
-        <input type="text" class="userName" placeholder="用户名">
-        <input type="password" class="key" placeholder="密码">
-        <button>登录</button>
-        <button>注册</button>
+        <input type="text" id="userName" placeholder="用户名">
+        <input type="password" id="key" placeholder="密码">
+        <div class="buttons">
+            <div class="loginButton" onclick="login()">登录</div>
+            <div class="logupButton" onclick="logup()">注册</div>
+        </div>
         <a href="javascript:alert('请联系开发人员');">忘记密码？</a>
     </div>
 </div>
 
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 
 </body>
 </html>
