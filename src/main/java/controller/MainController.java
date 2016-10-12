@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import vo.AcademicVO;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * Created by lvdechao on 2016/7/7.
  */
@@ -60,77 +62,107 @@ public class MainController {
 
     //后台部分
     @RequestMapping(value = "/Introduce", method = RequestMethod.GET)
-    public String introduce() {
+    public String introduce(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Introduce";
     }
 
     @RequestMapping(value = "/DynamicNews", method = RequestMethod.GET)
-    public String dynamicNews() {
+    public String dynamicNews(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/DynamicNews";
     }
 
     @RequestMapping(value = "/WaterSource", method = RequestMethod.GET)
-    public String waterSource() {
+    public String waterSource(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/WaterSource";
     }
 
     @RequestMapping(value = "/RollImage", method = RequestMethod.GET)
-    public String rollImage() {
+    public String rollImage(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/RollImage";
     }
 
     @RequestMapping(value = "/Worker", method = RequestMethod.GET)
-    public String worker() {
+    public String worker(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Worker";
     }
 
     @RequestMapping(value = "/Visitor", method = RequestMethod.GET)
-    public String visitor() {
+    public String visitor(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Visitor";
     }
 
     @RequestMapping(value = "/Student", method = RequestMethod.GET)
-    public String student() {
+    public String student(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Student";
     }
 
     @RequestMapping(value = "/Lecture", method = RequestMethod.GET)
-    public String lecture() {
+    public String lecture(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Lecture";
     }
 
     @RequestMapping(value = "/Meeting", method = RequestMethod.GET)
-    public String meeting() {
+    public String meeting(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Meeting";
     }
 
     @RequestMapping(value = "/Visiting", method = RequestMethod.GET)
-    public String visiting() {
+    public String visiting(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Visiting";
     }
 
     @RequestMapping(value = "/LectureRecord", method = RequestMethod.GET)
-    public String lectureRecord() {
+    public String lectureRecord(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/LectureRecord";
     }
 
     @RequestMapping(value = "/Course", method = RequestMethod.GET)
-    public String course() {
+    public String course(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Course";
     }
 
     @RequestMapping(value = "/AcademicNews", method = RequestMethod.GET)
-    public String academicNews() {
+    public String academicNews(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/AcademicNews";
     }
 
     @RequestMapping(value = "/Book", method = RequestMethod.GET)
-    public String book() {
+    public String book(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Book";
     }
 
     @RequestMapping(value = "/Article", method = RequestMethod.GET)
-    public String article() {
+    public String article(HttpServletRequest request) {
+        if(request.getSession().getAttribute("User")==null)
+            return "backend/Login";
         return "backend/Article";
     }
 
