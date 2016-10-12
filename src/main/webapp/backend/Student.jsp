@@ -370,24 +370,20 @@
                 },
                 url: "uploadCover",
                 success: function (result) {
-                    alert(result);
-                    alert(id);
-
 
                     //提交表单其余内容
                     $.ajax({
                         type: "post",
                         async: false,
-                        url: "organization/student/update",
+                        url: "organization/student/addText",
                         data: {
-                            "id": id,
                             "name": name,
                             "imageLocation": result,
                             "descriptionLocation": htmlPath,
                             "language": language
                         },
                         success: function (result) {
-                            if (result == "SUCCEED") {
+                            if (result != -1) {
                                 window.location.reload();
                             } else {
                                 alert("抱歉提交失败啦");
@@ -410,18 +406,6 @@
 
 
     function showForm() {
-        $.ajax({
-            type: "post",
-            async: false,
-            url: "organization/student/getID",
-            success: function (result) {
-                id = result;
-            },
-            error: function () {
-                alert("出故障了请稍候再试4");
-            }
-        });
-
         $(".submitButton").html("提交");
         $("#language").val(language);
         $(".editBody").fadeIn(300);

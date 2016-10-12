@@ -30,7 +30,7 @@ public class Essay implements java.io.Serializable {
 	private Set<EssayAttachment> essayAttachments = new HashSet<EssayAttachment>(0);
 
 	public Essay() {
-		title="unknown";
+//		title="unknown";
 		time= Calendar.getInstance().getTime();
 		author="unknown";
 		location="unknown";
@@ -72,7 +72,7 @@ public class Essay implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "title", nullable = false)
+	@Column(name = "title", nullable = false ,columnDefinition = "varchar(255)")
 	public String getTitle() {
 		return this.title;
 	}

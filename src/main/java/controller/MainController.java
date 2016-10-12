@@ -134,4 +134,9 @@ public class MainController {
         return "backend/Article";
     }
 
+    @RequestMapping(value = "/Login", method = RequestMethod.GET)
+    public String login() {
+        return "backend/Login";
+    }
+
 }
