@@ -85,7 +85,7 @@
             <div id="content" class="introduction article_text"></div>
 
             <div class="photo" style="width: 100px; height: 125px;">
-                <img style="width: 100px; height: 125px;" src=${AchievementVO.thumbnailLocation}>
+                <img id="img" style="width: 100px; height: 125px;">
             </div>
         </div>
 
@@ -143,10 +143,14 @@
 <a id="storage" style="display: none">${Tag1}</a>
 <a id="storage_location" style="display: none">${AchievementVO.descriptionLocation}</a>
 <a id="storage_id" style="display: none;">${AchievementVO.id}</a>
+<a id="storage_img" style="display: none">${AchievementVO.thumbnailLocation}</a>
 
 <script src="/js/jquery.js"></script>
 <script src="/js/common.js"></script>
 <script src="/js/version.js"></script>
 <script src="/js/detail.js"></script>
+<script>
+    setImage();
+</script>
 </body>
 </html>

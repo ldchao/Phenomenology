@@ -163,3 +163,7 @@ function changeVersion_title() {
 
     document.getElementById("search_key").placeholder = "Search what you want…";
 }
+
+function setImage() {
+    document.getElementById("img").src = "/" + document.getElementById("storage_img").innerHTML;
+}

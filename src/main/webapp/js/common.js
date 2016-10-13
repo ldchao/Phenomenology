@@ -19,14 +19,14 @@ tab.onmouseout = function () {
 };
 
 function getPics() {
-    getPics_ajax("homepage/CarouselFigure/getAll");
+    getPics_ajax("homepage/CarouselFigure/getAll", 0);
 }
 
 function getPics_detail() {
-    getPics_ajax("/homepage/CarouselFigure/getAll");
+    getPics_ajax("/homepage/CarouselFigure/getAll", 1);
 }
 
-function getPics_ajax(url) {
+function getPics_ajax(url, syb) {
 
     tab.innerHTML = "";
     $.ajax({
@@ -43,7 +43,13 @@ function getPics_ajax(url) {
                 var img = document.createElement("img");
                 img.style.width = "221px";
                 img.style.height = "112px";
-                img.src = result[i].location;
+
+                if (syb == 1) {
+                    img.src = "/" + result[i].location;
+                } else {
+                    img.src = result[i].location;
+                }
+
                 div.appendChild(img);
 
                 var a = document.createElement("a");
