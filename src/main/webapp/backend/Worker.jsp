@@ -10,8 +10,8 @@
     <link rel="stylesheet" type="text/css" href="dist/css/wangEditor.min.css">
 </head>
 <body>
-<div class="log">登出</div>
-<header>你好，张三！
+<div class="log" onclick="logout()">登出</div>
+<header>你好！
 </header>
 
 <div id="transfer" style="position:absolute;left: 20px;top:0px;">
@@ -72,7 +72,7 @@
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
             <div class="buttons">
-                <input id="name" type="text" class="textfield left div-7" placeholder="引用链接">
+                <input id="name" type="text" class="textfield left div-7" placeholder="姓名">
                 <div class="textfield right div-3">
                     <select id="language" class="mycombox div-10">
                         <option>ch</option>
@@ -89,7 +89,7 @@
                 <form action="/uploadCover.action" method="post" enctype="multipart/form-data"
                       onsubmit="return false;">
                     <a class="chooseFile left div-5">
-                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传缩略图
+                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传头像
                     </a>
                     <button class="submitButton right div-5" onclick="publish()">提交</button>
 
@@ -149,8 +149,8 @@
                 var tr = document.createElement("tr");
                 tr.innerHTML = tableHtml;
                 tr.children[0].innerHTML = result[i].id;
-                tr.children[1].children[0].src = result[i].thumbnailLocation;
-                tr.children[2].innerHTML = result[i].title;
+                tr.children[1].children[0].src = result[i].imageLocation;
+                tr.children[2].innerHTML = result[i].name;
                 if (result.length == 1) {
                     tr.getElementsByClassName("up")[0].style.display = "none";
                     tr.getElementsByClassName("down")[0].style.display = "none";
@@ -181,7 +181,7 @@
             $.ajax({
                 type: "get",
                 async: false,
-                url: "homepage/News/get",
+                url: "organization/officeBearer/get",
                 data: {
                     "language": language
                 },
@@ -190,8 +190,8 @@
                         var tr = document.createElement("tr");
                         tr.innerHTML = tableHtml;
                         tr.children[0].innerHTML = result[i].id;
-                        tr.children[1].children[0].src = result[i].thumbnailLocation;
-                        tr.children[2].innerHTML = result[i].title;
+                        tr.children[1].children[0].src = result[i].imageLocation;
+                        tr.children[2].innerHTML = result[i].name;
                         if (result.length == 1) {
                             tr.getElementsByClassName("up")[0].style.display = "none";
                             tr.getElementsByClassName("down")[0].style.display = "none";
@@ -227,14 +227,29 @@
         $.ajax({
             type: "get",
             async: false,
-            url: "homepage/News/getOne",
+            url: "organization/officeBearer/getOne",
             data: {
                 "id": id
             },
             success: function (result) {
-                $("input[id='name']").val(result.url);
-                $("input[id='publisher']").val(result.author);
+                $("input[id='name']").val(result.name);
                 $("#language").val(result.language);
+
+                //填充editor
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "getHtml",
+                    data: {
+                        "filename": result.descriptionLocation,
+                    },
+                    success: function (html) {
+                        editor.$txt.html(html);
+                    },
+                    error: function () {
+                        alert("获取正文失败");
+                    }
+                });
 
                 $(".submitButton").html("提交修改");
                 $(".editBody").fadeIn(300);
@@ -250,7 +265,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "homepage/News/delete",
+            url: "organization/officeBearer/delete",
             data: {
                 "id": id
             },
@@ -299,7 +314,7 @@
         $.ajax({
             type: "post",
             async: false,
-            url: "homepage/News/sort",
+            url: "organization/officeBearer/sort",
             data: {
                 "list[]": tempList
             },
@@ -318,9 +333,30 @@
 
 
     function publish() {
+        var html = editor.$txt.html();
         var coverImg = $("#coverImg").val();
-        var url = $("input[id='name']").val();
+        var name = $("input[id='name']").val();
         language = $("#language").val();
+        var htmlPath;
+
+        //提交editor内容
+        $.ajax({
+            type: "post",
+            async: false,
+            url: "uploadHtml",
+            data: {
+                "html": html
+            },
+            success: function (result) {
+                htmlPath = result;
+
+            },
+            error: function () {
+                alert("出故障了请稍候再试2");
+            }
+        });
+
+
 
 
         //提交附件
@@ -339,14 +375,19 @@
                     $.ajax({
                         type: "post",
                         async: false,
-                        url: "homepage/News/add",
+                        url: "organization/officeBearer/addText",
                         data: {
-                            "thumbnailLocation": result,
-                            "url": url,
+                            "name": name,
+                            "imageLocation": result,
+                            "descriptionLocation": htmlPath,
                             "language": language
                         },
-                        success: function (para) {
-                            window.location.reload();
+                        success: function (result) {
+                            if (result != -1) {
+                                window.location.reload();
+                            } else {
+                                alert("抱歉提交失败啦");
+                            }
                         },
                         error: function () {
                             alert("出故障了请稍候再试3");
@@ -374,6 +415,7 @@
         if (isEdit == 1) {
             $("input[id='name']").val("");
             $("#language").val("ch");
+            editor.$txt.html("");
             $("#coverImg").val("");
             isEdit = 0;
         }

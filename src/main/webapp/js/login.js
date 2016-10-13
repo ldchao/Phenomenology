@@ -7,6 +7,9 @@ function login() {
     if (name == "" || password == "") {
         alert("用户名或密码未填写完成");
     }
+
+    
+
     $.ajax({
         type: "post",
         async: "false",
@@ -17,9 +20,7 @@ function login() {
         url: "Login",
         success: function (result) {
             if (result == "SUCCEED") {
-                alert(result);
-                window.location.href('Introduce');
-                alert(0)
+                window.location.href = 'Introduce';
             }
         },
         error: function () {

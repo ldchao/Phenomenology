@@ -9,8 +9,8 @@
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="log">登出</div>
-<header>你好，张三！
+<div class="log" onclick="logout()">登出</div>
+<header>你好！
 </header>
 
 <div id="transfer" style="position:absolute;left: 20px;top:0px;">
