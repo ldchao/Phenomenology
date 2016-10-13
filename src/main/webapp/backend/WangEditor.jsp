@@ -33,7 +33,7 @@
     var editor = new wangEditor('div1');
 
     // 上传图片（举例）
-    editor.config.uploadImgUrl = '../uploadImgUrl';
+    editor.config.uploadImgUrl = 'uploadImgUrl';
 
     editor.create();
 //*********************************************************************************

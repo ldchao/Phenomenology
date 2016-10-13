@@ -53,7 +53,7 @@ public class UploadController {
 
                 try {
                     file.transferTo(targetFile);
-                    return  "upload/" + file.getOriginalFilename();
+                    return  "/upload/" + file.getOriginalFilename();
                 } catch (IllegalStateException e) {
                     e.printStackTrace();
                 } catch (IOException e) {

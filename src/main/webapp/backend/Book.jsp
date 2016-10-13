@@ -122,7 +122,7 @@
     editor.config.menuFixed = false;
 
     // 上传图片（举例）
-    //    editor.config.uploadImgUrl = '../uploadImgUrl';
+    editor.config.uploadImgUrl = 'uploadImgUrl';
 
     editor.config.menus = $.map(wangEditor.config.menus, function (item, key) {
         if (item === 'fullscreen') {

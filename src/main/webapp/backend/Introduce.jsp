@@ -93,7 +93,7 @@
     editor.config.menuFixed = false;
 
     // 上传图片（举例）
-    //    editor.config.uploadImgUrl = '../uploadImgUrl';
+    editor.config.uploadImgUrl = 'uploadImgUrl';
 
     editor.config.colors = {
         '#454546': '深灰'
