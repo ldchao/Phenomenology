@@ -1,3 +1,9 @@
+.each_search {
+    width: 814px;
+    max-height: 105px;
+    margin-bottom: 5px;
+}
+
 .search_text {
     width: 925px;
     max-height: 55px;

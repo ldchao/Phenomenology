@@ -75,7 +75,7 @@ function getStaff(key) {
                 var div = document.createElement("div");
                 div.innerHTML = copy.innerHTML;
 
-                var title = div.getElementsByClassName("more_title")[0].innerHTML.trim();
+                var title = div.getElementsByClassName("more_title")[0];
                 title.innerHTML = result[i].name;
                 title.onclick = function () {
                     showSearch(this, "getPersonURL");

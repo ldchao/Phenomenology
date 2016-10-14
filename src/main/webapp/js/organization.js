@@ -132,9 +132,14 @@ function setId(result, parent) {
         var img = document.createElement("img");
         img.style.width = "130px";
         img.style.height = "140px";
+        img.style.cursor = "pointer";
         img.src = result[i].imageLocation;
         div.getElementsByClassName("book_pic")[0].innerHTML = "";
         div.getElementsByClassName("book_pic")[0].appendChild(img);
+        
+        img.onclick = function () {
+            showDetail(this.parentNode);
+        };
 
         parent.appendChild(div);
     }
