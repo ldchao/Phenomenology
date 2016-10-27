@@ -4,8 +4,7 @@
 
 var tab = document.getElementById("rollpic");
 var speed = 25;
-var width = tab.getElementsByClassName("each_pic").length * 237;
-tab.style.width = width;
+var width;
 var auto;
 var stop = 0;  // stop=1 在setTimeout 中，不能再次启动roll
 
@@ -36,13 +35,17 @@ function getPics_ajax(url, syb) {
         dataType: "json",
         success: function (result) {
 
+            width = result.length * 237;
+            tab.style.width = width;
+
             for (var i = 0; i < result.length; i++) {
                 var div = document.createElement("div");
-                div.setAttribute("class", "each_pic");
+                div.className = "each_pic";
+                tab.appendChild(div);
 
                 var img = document.createElement("img");
-                img.style.width = "221px";
-                img.style.height = "112px";
+                img.style.width = "220px";
+                img.style.height = "111px";
 
                 if (syb == 1) {
                     img.src = "/" + result[i].location;
@@ -61,7 +64,6 @@ function getPics_ajax(url, syb) {
                     window.open(this.getElementsByTagName("a")[0].innerHTML);
                 };
 
-                tab.appendChild(div);
             }
 
             if (result.length > 5) {
