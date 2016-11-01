@@ -101,9 +101,8 @@ public class PersonDaoImpl implements PersonDao{
 
     public List<Person> getByTypeAndLanguage(Type type, Language language) {
         try {
-            String[] properties={TYPE,LANGUAGE};
-            Object[] values={type,language};
-            return (List<Person>) baseDao.findByProperties("Person",properties,values);
+            String hql="from Person p where p.type='"+type+"' and p.language='"+language+"'  order by p.sequence";
+            return (List<Person>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
             return null;

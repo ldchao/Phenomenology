@@ -103,7 +103,19 @@ public void testGetByPersonName() throws Exception {
 */ 
 @Test
 public void testRank() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    ArrayList<Integer> arrayList=new ArrayList<Integer>();
+    arrayList.add(14);
+    arrayList.add(1);
+    arrayList.add(3);
+    arrayList.add(4);
+    arrayList.add(6);
+    arrayList.add(9);
+    arrayList.add(8);
+    arrayList.add(12);
+    arrayList.add(13);
+    arrayList.add(2);
+    personDao.rank(arrayList);
 } 
 
 /** 
@@ -114,10 +126,14 @@ public void testRank() throws Exception {
 @Test
 public void testGetByTypeAndLanguage() throws Exception { 
 //TODO: Test goes here...
-    Type type=Type.Article;
+    Type type=Type.OfficeBearer;
     Language language=Language.ch;
-    System.out.println(personDao.getByTypeAndLanguage(type,language).size());
-} 
+    List<Person> persons=personDao.getByTypeAndLanguage(type,language);
+    for (Person person :
+            persons) {
+        System.out.println(person.getId());
+    }
+}
 
 
 } 
