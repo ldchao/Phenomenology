@@ -1,23 +1,23 @@
 package test.DaoImpl; 
 
-import Dao.UserDao;
-import DaoImpl.UserDaoImpl;
+import Dao.SlideDao;
+import DaoImpl.SlideDaoImpl;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After; 
 
 /** 
-* UserDaoImpl Tester. 
+* SlideDaoImpl Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>ʮ�� 8, 2016</pre> 
+* @since <pre>ʮһ�� 1, 2016</pre> 
 * @version 1.0 
 */ 
-public class UserDaoImplTest { 
-UserDao userDao;
+public class SlideDaoImplTest { 
+SlideDao slideDao;
 @Before
 public void before() throws Exception {
-    userDao=new UserDaoImpl();
+    slideDao=new SlideDaoImpl();
 } 
 
 @After
@@ -26,11 +26,11 @@ public void after() throws Exception {
 
 /** 
 * 
-* Method: persist(User user) 
+* Method: pesist(Slide slide) 
 * 
 */ 
 @Test
-public void testPersist() throws Exception { 
+public void testPesist() throws Exception { 
 //TODO: Test goes here... 
 } 
 
@@ -42,26 +42,26 @@ public void testPersist() throws Exception {
 @Test
 public void testDelete() throws Exception { 
 //TODO: Test goes here...
-    userDao.delete(2);
+    slideDao.delete(4);
 } 
 
 /** 
 * 
-* Method: update(User user) 
+* Method: findAll() 
 * 
 */ 
 @Test
-public void testUpdate() throws Exception { 
+public void testFindAll() throws Exception { 
 //TODO: Test goes here... 
 } 
 
 /** 
 * 
-* Method: findById(int id) 
+* Method: getById(int id) 
 * 
 */ 
 @Test
-public void testFindById() throws Exception { 
+public void testGetById() throws Exception { 
 //TODO: Test goes here... 
 } 
 

@@ -27,9 +27,8 @@ public class EssayAttachmentDaoImpl implements EssayAttachmentDao {
     }
 
     public void delete(int id) {
-        EssayAttachment essayAttachment=new EssayAttachment();
-        essayAttachment.setId(id);
-        baseDao.delete(essayAttachment);
+
+        baseDao.delete(getById(id));
     }
 
     public void update(EssayAttachment essayAttachment) {
@@ -39,7 +38,7 @@ public class EssayAttachmentDaoImpl implements EssayAttachmentDao {
     public EssayAttachment getById(int id){
         EssayAttachment essayAttachment=null;
         try {
-            essayAttachment= (EssayAttachment) baseDao.findById(id,EssayAttachmentDao.class);
+            essayAttachment= (EssayAttachment) baseDao.findById(id,EssayAttachment.class);
         }catch ( Exception e){
             e.printStackTrace();
         }

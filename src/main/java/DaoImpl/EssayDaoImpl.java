@@ -42,9 +42,7 @@ public class EssayDaoImpl implements EssayDao {
     }
 
     public void delete(int id) {
-        Essay essay=new Essay();
-        essay.setId(id);
-        baseDao.delete(essay);
+        baseDao.delete(getById(id));
     }
 
     public void update(Essay essay) {

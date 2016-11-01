@@ -28,9 +28,7 @@ public class SlideDaoImpl implements SlideDao {
     }
 
     public void delete(int id) {
-        Slide slide=new Slide();
-        slide.setId(id);
-        baseDao.delete(slide);
+        baseDao.delete(getById(id));
     }
 
     public List<Slide> findAll() {

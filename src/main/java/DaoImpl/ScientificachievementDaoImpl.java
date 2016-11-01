@@ -42,9 +42,7 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
     }
 
     public void delete(int id) {
-        Scientificachievement scientificachievement=new Scientificachievement();
-        scientificachievement.setId(id);
-        baseDao.delete(scientificachievement);
+        baseDao.delete(getById(id));
     }
 
     public void update(Scientificachievement scientificachievement) {

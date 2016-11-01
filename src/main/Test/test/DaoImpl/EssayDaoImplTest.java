@@ -60,7 +60,7 @@ public void testPesist() throws Exception {
 @Test
 public void testDelete() throws Exception { 
 //TODO: Test goes here...
-    essayDao.delete(1);
+    essayDao.delete(2);
 } 
 
 /** 
@@ -117,8 +117,11 @@ public void testFind() throws Exception {
 public void testGetById() throws Exception { 
 //TODO: Test goes here...
     Set<EssayAttachment> po=essayDao.getByEssayAttachment(2);
-    System.out.println(po.size());
-} 
+    for (EssayAttachment essayAttachment:po){
+        System.out.println(essayAttachment.getTitle());
+
+    }
+}
 
 @Test
     public void findByTitle() throws Exception{

@@ -25,9 +25,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     public void delete(int id) {
-        User user=new User();
-        user.setId(id);
-        baseDao.delete(user);
+        baseDao.delete(findById(id));
     }
 
     public void update(User user) {

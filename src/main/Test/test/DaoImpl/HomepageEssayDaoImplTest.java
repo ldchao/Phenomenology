@@ -47,7 +47,7 @@ public void testPesist() throws Exception {
 @Test
 public void testDelete() throws Exception { 
 //TODO: Test goes here...
-    homepageEssayDao.delete(65);
+    homepageEssayDao.delete(69);
 } 
 
 /** 
@@ -91,7 +91,6 @@ public void testRank() throws Exception {
 //TODO: Test goes here...
 //    homepageEssayDao.rank();
     ArrayList<Integer> arrayList=new ArrayList<Integer>();
-    arrayList.add(69);
     arrayList.add(68);
     arrayList.add(67);
     homepageEssayDao.rank(arrayList);

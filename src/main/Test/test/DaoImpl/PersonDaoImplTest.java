@@ -4,9 +4,13 @@ import Dao.PersonDao;
 import DaoImpl.PersonDaoImpl;
 import ENUM.Language;
 import ENUM.Type;
+import POJO.Person;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /** 
 * PersonDaoImpl Tester. 
@@ -43,7 +47,8 @@ public void testPesist() throws Exception {
 */ 
 @Test
 public void testDelete() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    personDao.delete(10);
 } 
 
 /** 
@@ -63,7 +68,12 @@ public void testUpdate() throws Exception {
 */ 
 @Test
 public void testFindAll() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    List<Person> list=personDao.findAll();
+    for (Person p :
+            list) {
+        System.out.println(p.getId());
+    }
 } 
 
 /** 

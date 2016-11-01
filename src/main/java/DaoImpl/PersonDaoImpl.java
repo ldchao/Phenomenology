@@ -36,9 +36,7 @@ public class PersonDaoImpl implements PersonDao{
     }
 
     public void delete(int id) {
-        Person person=new Person();
-        person.setId(id);
-        baseDao.delete(person);
+        baseDao.delete(getById(id));
     }
 
     public void update(Person person) {
@@ -47,7 +45,8 @@ public class PersonDaoImpl implements PersonDao{
 
     public List<Person> findAll() {
         try {
-            return (List<Person>) baseDao.findAll("Person");
+            String hql="from Person p "+" order by p.sequence";
+            return (List<Person>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
             return null;
