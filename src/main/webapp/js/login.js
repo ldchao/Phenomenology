@@ -8,8 +8,6 @@ function login() {
         alert("用户名或密码未填写完成");
     }
 
-
-
     $.ajax({
         type: "post",
         async: "false",

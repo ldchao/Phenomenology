@@ -257,6 +257,7 @@
             },
             success: function (result) {
                 if (result == "SUCCEED") {
+                    alert("删除成功！");
                     window.location.reload();
                 }
             },
@@ -298,8 +299,7 @@
                 type: "post",
                 async: false,
                 data: {
-                    "coverImg": coverImg,
-                    "id": id
+                    "coverImg": coverImg
                 },
                 url: "uploadCover",
                 success: function (result) {

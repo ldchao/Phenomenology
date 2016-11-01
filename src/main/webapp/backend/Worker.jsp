@@ -212,10 +212,7 @@
 
 
         } else {
-            language = "ch";
-            document.getElementById("transfer").children[0].className = "ch_eng";
-            document.getElementById("transfer").children[1].className = "ch_eng ch_eng_not";
-            document.getElementsByClassName("list")[0].innerHTML = list;
+            window.location.reload();
         }
 
     }
@@ -271,6 +268,7 @@
             },
             success: function (result) {
                 if (result == "SUCCEED") {
+                    alert("删除成功！");
                     window.location.reload();
                 }
             },
@@ -281,14 +279,25 @@
     }
 
     //排序相关参数及函数
-    var idList = new Array();
-    var idNode = document.getElementsByClassName("td1");
-    for (var i = 0; i < (idNode.length - 1); i++) {
-        idList[i] = idNode[i + 1].innerHTML;
-    }
-    alert(idList);
-
     function sortItem(ele, dir) {
+
+        var idList = new Array();
+        var idNode = document.getElementsByClassName("td1");
+
+        if(language == "eng"){
+            for (var i = 0; i < idNode.length; i++) {
+                idList[i] = idNode[i].innerHTML;
+            }
+        }else{
+            for (var i = 0; i < (idNode.length - 1); i++) {
+                idList[i] = idNode[i + 1].innerHTML;
+            }
+        }
+
+
+        alert(idList);
+
+
         var tempList = idList;
         var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
         var index = 0;
@@ -365,8 +374,7 @@
                 type: "post",
                 async: false,
                 data: {
-                    "coverImg": coverImg,
-                    "id": id
+                    "coverImg": coverImg
                 },
                 url: "uploadCover",
                 success: function (result) {
