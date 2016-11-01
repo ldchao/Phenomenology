@@ -34,4 +34,12 @@ Phenomenology.iml
 
 target/Phenomenology/META-INF/MANIFEST.MF
 
+<<<<<<< HEAD
 Phenomenology.iml
+=======
+.idea/dataSources/c977eb92-ff6d-4477-84fb-19dc375d363c.xml
+
+.idea/dataSources.xml
+
+.idea/dataSources.local.xml
+>>>>>>> origin/master
