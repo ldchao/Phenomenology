@@ -53,6 +53,8 @@
 .each_img {
     width: 70px;
     height: 70px;
+    border: 1px solid #979797;
+    background-color: #d8d8d8;
     display: inline-block;
 }
 
@@ -110,6 +112,8 @@
 .more_img {
     width: 70px;
     height: 75px;
+    border: 1px solid #979797;
+    background-color: #d8d8d8;
     margin-top: 9px;
     display: inline-block;
     vertical-align: top;
