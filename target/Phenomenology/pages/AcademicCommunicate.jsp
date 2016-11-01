@@ -21,6 +21,8 @@
 <div class="top_title">
 
     <div style="width: 1135px; margin: 0 auto; position: relative">
+        <img src="css/NJUPh.svg">
+
         <div class="ch_eng" onclick="changeVersion(0)">中文</div>
         <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
 
