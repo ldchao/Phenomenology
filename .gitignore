@@ -33,3 +33,9 @@ Phenomenology.iml
 *.MF
 
 target/Phenomenology/META-INF/MANIFEST.MF
+
+.idea/dataSources/c977eb92-ff6d-4477-84fb-19dc375d363c.xml
+
+.idea/dataSources.xml
+
+.idea/dataSources.local.xml

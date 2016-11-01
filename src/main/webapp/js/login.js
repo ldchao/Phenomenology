@@ -1,6 +1,15 @@
 /**
  * Created by marioquer on 2016/10/13.
  */
+
+
+$('#key').bind('keyup', function(event) {
+    if (event.keyCode == "13") {
+        //回车执行查询
+        $('.loginButton').click();
+    }
+});
+
 function login() {
     var name = $("input[id='userName']").val();
     var password = $("input[id='key']").val();
@@ -28,3 +37,4 @@ function login() {
         }
     });
 }
+

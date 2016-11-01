@@ -97,11 +97,11 @@ td {
     width: 20%;
 }
 
-.td4{
+.td4 {
     width: 60%;
 }
 
-.td5{
+.td5 {
     width: 15%;
 }
 
@@ -160,8 +160,8 @@ td {
     font-size: 18px;
     position: absolute;
     right: 30px;
-    cursor:pointer;
-    color:#262626;
+    cursor: pointer;
+    color: #262626;
     -webkit-transition: .3s;
     -moz-transition: .3s;
     -ms-transition: .3s;
@@ -169,8 +169,8 @@ td {
     transition: .3s;
 }
 
-.log:hover{
-    color:white;
+.log:hover {
+    color: white;
 }
 
 .editBody {
@@ -319,3 +319,64 @@ td {
     background: #535353;
     color: #90949b;
 }
+
+.check_body{
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    text-align: center;
+}
+
+#check {
+    padding: 30px 20px;
+    width: 350px;
+    height: 160px;
+    background: #fff;
+    border-radius: 4px;
+    margin:100px auto;
+    box-shadow: 0 0 9px 4px rgba(0,0,0,0.3);
+}
+
+
+
+#check p{
+    margin-top: 20px;
+    text-align: center;
+    color: #4a4a4b;
+    font-size: 1.4em;
+    margin-bottom: 40px;
+}
+
+#check button{
+    cursor: pointer;
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 80px;
+    height:30px;
+    font-size:14px;
+    border: none;
+    border-radius: 2px;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -ms-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+}
+
+#check .sure{
+    color: #fff;
+    background-color: #1e88e5;
+}
+
+#check button:hover{
+    opacity: 0.7;
+}
+
+#check .cancel{
+    color: #fff;
+    background-color: #9d9d9d;
+}
+
