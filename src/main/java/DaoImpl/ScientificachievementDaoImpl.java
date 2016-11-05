@@ -51,7 +51,8 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
 
     public List<Scientificachievement> findAll() {
         try {
-            return (List<Scientificachievement>) baseDao.findAll("Scientificachievement");
+            String hql="from Scientificachievement s order by s.time desc";
+            return (List<Scientificachievement>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -60,9 +61,8 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
 
     public List<Scientificachievement> find(Type type, Language language) {
         try {
-            String[] properties={TYPE,LANGUAGE};
-            Object[] values={type,language};
-            return (List<Scientificachievement>) baseDao.findByProperties("Scientificachievement",properties,values);
+            String hql="from Scientificachievement s where s.type='"+type+"' and s.language='"+language+"'  order by s.time desc";
+            return (List<Scientificachievement>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
             return null;

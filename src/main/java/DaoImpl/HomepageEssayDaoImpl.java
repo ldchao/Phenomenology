@@ -9,6 +9,7 @@ import ENUM.Type;
 import POJO.Essay;
 import POJO.Homepage;
 import POJO.HomepageEssay;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -49,7 +50,7 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
 
     public List<HomepageEssay> findAll(int i) {
         try {
-            String hql="from HomepageEssay h where h.homepage.id="+i+" order by h.sequenceNumber";
+            String hql="from HomepageEssay h where h.homepage.id="+i+" order by h.sequenceNumber desc";
             return (List<HomepageEssay>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
@@ -89,15 +90,27 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
                 session.close();
             }
         }catch (Exception e){
-            e.printStackTrace();
+            e.printStackTrace() ;
         }
     }
 
     public List<HomepageEssay> findTop5(int homepageId) {
+        String hql="from HomepageEssay h where h.homepage.id="+homepageId+" order by h.sequenceNumber desc ";
         try {
-            String[] properties={HOMEPAGE_ID};
-            Object[] values={homepageId};
-            return (List<HomepageEssay>) baseDao.findByPropertiesAndPages("HomepageEssay",properties,values,0,5);
+            Session session=DBconnection.getSession();
+            try {
+                Query query=session.createQuery(hql);
+                query.setFirstResult(0);
+                query.setMaxResults(5);
+                List<HomepageEssay> result=query.list();
+                return result;
+            }catch (Exception e){
+                e.printStackTrace();
+                return null;
+            }finally {
+                session.close();
+            }
+
         }catch (Exception e){
             e.printStackTrace();
             return null;

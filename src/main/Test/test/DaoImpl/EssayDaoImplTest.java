@@ -12,6 +12,7 @@ import org.junit.Before;
 import org.junit.After;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Set;
 
 /** 
@@ -84,7 +85,13 @@ public void testUpdate() throws Exception {
 @Test
 public void testFindAll() throws Exception { 
 //TODO: Test goes here...
-    System.out.println(essayDao.findAll().size());
+    List<Essay> list=essayDao.findAll();
+    for (Essay essay:
+            list
+         ) {
+        System.out.println(essay.getId());
+    }
+
 } 
 
 /** 
@@ -95,7 +102,12 @@ public void testFindAll() throws Exception {
 @Test
 public void testFindTop5() throws Exception { 
 //TODO: Test goes here...
-    System.out.println(essayDao.findTop5(Type.UNKNOWN,Language.eng).size());
+    List<Essay> list=essayDao.findTop5(Type.UNKNOWN,Language.ch);
+    for (Essay essay:
+            list
+            ) {
+        System.out.println(essay.getId());
+    }
 } 
 
 /** 
@@ -105,7 +117,13 @@ public void testFindTop5() throws Exception {
 */ 
 @Test
 public void testFind() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    List<Essay> list=essayDao.find(Type.UNKNOWN,Language.ch);
+    for (Essay essay:
+            list
+            ) {
+        System.out.println(essay.getId());
+    }
 } 
 
 /** 

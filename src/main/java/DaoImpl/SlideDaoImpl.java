@@ -33,7 +33,8 @@ public class SlideDaoImpl implements SlideDao {
 
     public List<Slide> findAll() {
         try {
-            return (List<Slide>) baseDao.findAll("Slide");
+            String hql="from Slide s order by s.id desc";
+            return (List<Slide>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
             return null;

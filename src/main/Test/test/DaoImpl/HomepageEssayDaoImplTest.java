@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.After;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /** 
 * HomepageEssayDaoImpl Tester. 
@@ -99,6 +100,10 @@ public void testRank() throws Exception {
 
 @Test
     public void testFindTop5(){
-        System.out.print(homepageEssayDao.findTop5(2).size());
+    List<HomepageEssay> list=homepageEssayDao.findTop5(2);
+    for (HomepageEssay homepageEssay:list
+         ) {
+        System.out.println(homepageEssay.getId());
+    }
     }
 } 

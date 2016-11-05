@@ -2,9 +2,12 @@ package test.DaoImpl;
 
 import Dao.SlideDao;
 import DaoImpl.SlideDaoImpl;
+import POJO.Slide;
 import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import java.util.List;
 
 /** 
 * SlideDaoImpl Tester. 
@@ -52,7 +55,12 @@ public void testDelete() throws Exception {
 */ 
 @Test
 public void testFindAll() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    List<Slide> list=slideDao.findAll();
+    for (Slide s:list
+         ) {
+        System.out.println(s.getId());
+    }
 } 
 
 /** 

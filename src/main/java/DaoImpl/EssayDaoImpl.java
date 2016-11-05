@@ -7,6 +7,7 @@ import ENUM.Language;
 import ENUM.Type;
 import POJO.Essay;
 import POJO.EssayAttachment;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.util.HashSet;
@@ -50,8 +51,9 @@ public class EssayDaoImpl implements EssayDao {
     }
 
     public List<Essay> findAll() {
+        String hql="from Essay e"+" order by e.time desc";
         try {
-            return (List<Essay>)baseDao.findAll("Essay");
+            return (List<Essay>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
             return null;
@@ -59,27 +61,36 @@ public class EssayDaoImpl implements EssayDao {
     }
 
     public List<Essay> findTop5(Type type, Language language) {
-        String[] properties={TYPE,LANGUAGE};
-        Object[] values={type,language};
-        List<Essay> result=null;
+        String hql="from Essay e where e.type='"+type+"' and e.language='"+language+"' order by e.time desc ";
         try {
-           result= (List<Essay>) baseDao.findByPropertiesAndPages("Essay",properties,values,0,5);
+            Session session=DBconnection.getSession();
+            try {
+                Query query=session.createQuery(hql);
+                query.setFirstResult(0);
+                query.setMaxResults(5);
+                List<Essay> result=query.list();
+                return result;
+            }catch (Exception e){
+                e.printStackTrace();
+                return null;
+            }finally {
+                session.close();
+            }
+
         }catch (Exception e){
             e.printStackTrace();
+            return null;
         }
-        return result;
     }
 
     public List<Essay> find(Type type, Language language) {
-        String[] properties={TYPE,LANGUAGE};
-        Object[] values={type,language};
-        List<Essay> result=null;
+        String hql="from Essay e where e.type='"+type+"' and e.language='"+language+"' order by e.time desc";
         try {
-            result=(List<Essay>) baseDao.findByProperties("Essay",properties,values);
+            return (List<Essay>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
+            return null;
         }
-        return result;
     }
 
     public Essay getById(int id) {
@@ -97,7 +108,7 @@ public class EssayDaoImpl implements EssayDao {
             finalString+=title.charAt(i);
             finalString+="%";
         }
-        String hql="from Essay e where e.title like '"+finalString+"'";
+        String hql="from Essay e where e.title like '"+finalString+"' order by e.time desc";
         try {
             return (List<Essay>) baseDao.findByHql(hql);
         }catch (Exception e){

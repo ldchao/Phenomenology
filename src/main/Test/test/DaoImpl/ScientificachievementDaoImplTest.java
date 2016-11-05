@@ -2,9 +2,14 @@ package test.DaoImpl;
 
 import Dao.ScientificachievementDao;
 import DaoImpl.ScientificachievementDaoImpl;
+import ENUM.Language;
+import ENUM.Type;
+import POJO.Scientificachievement;
 import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import java.util.List;
 
 /** 
 * ScientificachievementDaoImpl Tester. 
@@ -62,7 +67,12 @@ public void testUpdate() throws Exception {
 */ 
 @Test
 public void testFindAll() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    List<Scientificachievement> list=scientificachievementDao.findAll();
+    for (Scientificachievement s:list
+         ) {
+        System.out.println(s.getId());
+    }
 } 
 
 /** 
@@ -72,7 +82,12 @@ public void testFindAll() throws Exception {
 */ 
 @Test
 public void testFind() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    List<Scientificachievement> list=scientificachievementDao.find(Type.UNKNOWN, Language.ch);
+    for (Scientificachievement s:list
+            ) {
+        System.out.println(s.getId());
+    }
 } 
 
 /** 
