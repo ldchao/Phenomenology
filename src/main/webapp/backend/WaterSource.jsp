@@ -94,6 +94,15 @@
     </div>
 </div>
 
+<div class="check_body">
+    <div class="" id="check">
+        <p>你确定要进行此操作吗？</p>
+        <button class="sure" onclick="sure()">确认</button>
+        <button class="cancel" onclick="cancel()">取消</button>
+    </div>
+</div>
+
+
 <script src="js/backend.js"></script>
 <script type="text/javascript" src="dist/js/lib/jquery-1.10.2.min.js"></script>
 <script src="http://malsup.github.io/jquery.form.js"></script>
@@ -190,17 +199,14 @@
 
 
         } else {
-            language = "ch";
-            document.getElementById("transfer").children[0].className = "ch_eng";
-            document.getElementById("transfer").children[1].className = "ch_eng ch_eng_not";
-            document.getElementsByClassName("list")[0].innerHTML = list;
+            window.location.reload();
         }
 
     }
 
     function editItem(ele) {
         isEdit = 1;
-        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
 
         $.ajax({
             type: "get",
@@ -223,8 +229,16 @@
         });
     }
 
+    //    function check(flag) {
+    //
+    //    }
+
+
     function deleteItem(ele) {
         var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+
+//        $(".check_body").fadeIn();
+
         $.ajax({
             type: "post",
             async: false,
@@ -234,6 +248,7 @@
             },
             success: function (result) {
                 if (result == "SUCCEED") {
+                    alert("删除成功！");
                     window.location.reload();
                 }
             },
@@ -241,17 +256,26 @@
                 alert("服务器出问题了，删除失败");
             }
         });
+
     }
+
 
     //排序相关参数及函数
-    var idList = new Array();
-    var idNode = document.getElementsByClassName("td1");
-    for (var i = 0; i < (idNode.length - 1); i++) {
-        idList[i] = idNode[i + 1].innerHTML;
-    }
-    alert(idList);
-
     function sortItem(ele, dir) {
+
+        var idList = new Array();
+        var idNode = document.getElementsByClassName("td1");
+
+        if(language == "eng"){
+            for (var i = 0; i < idNode.length; i++) {
+                idList[i] = idNode[i].innerHTML;
+            }
+        }else{
+            for (var i = 0; i < (idNode.length - 1); i++) {
+                idList[i] = idNode[i + 1].innerHTML;
+            }
+        }
+
         var tempList = idList;
         var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
         var index = 0;
@@ -307,8 +331,7 @@
                 type: "post",
                 async: false,
                 data: {
-                    "coverImg": coverImg,
-                    "id": id
+                    "coverImg": coverImg
                 },
                 url: "uploadCover",
                 success: function (result) {
