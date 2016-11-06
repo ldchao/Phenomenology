@@ -89,7 +89,8 @@
                 <form action="/uploadEssayAccessory.action" method="post" enctype="multipart/form-data"
                       onsubmit="return false;">
                     <a class="chooseFile left div-5">
-                        <input style="opacity: 0;" type="file" name="accessory" id="accessory"/>点击这里上传附件(可选)
+                        <input style="opacity: 0;" type="file" name="accessory" id="accessory"/>
+                        <p id="accButton">点击这里上传附件(可选)</p>
                     </a>
                     <button class="submitButton right div-5" onclick="publish()">提交</button>
 
@@ -198,7 +199,7 @@
 
     function editItem(ele) {
         isEdit = 1;
-        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
 
         $.ajax({
             type: "get",
@@ -237,7 +238,9 @@
                         "id": id
                     },
                     success: function (loc) {
-                        $("#accessory").val(loc.location);
+                        if (loc.name != undefined) {
+                            document.getElementById("accButton").innerHTML = loc.name;
+                        }
                     },
                     error: function () {
                         alert("获取文件失败");
@@ -364,6 +367,7 @@
 
     function closeForm() {
         if (isEdit == 1) {
+            document.getElementById("accButton").innerHTML = "点击这里上传附件(可选)";
             $("input[id='name']").val("");
             $("input[id='publisher']").val("");
             $("#language").val("ch");

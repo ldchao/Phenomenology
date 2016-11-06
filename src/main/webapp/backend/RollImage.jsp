@@ -70,7 +70,7 @@
                 <form action="/CarouselFigure/upload.action" method="post" enctype="multipart/form-data"
                       onsubmit="return false;">
                     <a class="chooseFile left div-5">
-                        <input style="opacity: 0;" type="file" name="carouselFigure" id="carouselFigure"/>点击这里上传缩略图
+                        <input style="opacity: 0;" type="file" name="carouselFigure" id="carouselFigure"/><p id="imgButton">点击这里上传缩略图</p>
                     </a>
                     <button class="submitButton right div-5" onclick="publish()">提交</button>
 
@@ -87,7 +87,7 @@
 <script>
     var id;
     var isEdit = 0;
-
+    var coverPath;
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
 
     //输入框高度设置
@@ -122,7 +122,7 @@
 
     function editItem(ele) {
         isEdit = 1;
-        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
 
         $.ajax({
             type: "get",
@@ -133,6 +133,9 @@
             },
             success: function (result) {
                 $("input[id='name']").val(result.url);
+                if(result.thumbnailLocation!=undefined){
+                    document.getElementById("imgButton").innerHTML = "更换图片";
+                }
                 $(".submitButton").html("提交修改");
                 $(".editBody").fadeIn(300);
             },
@@ -181,7 +184,6 @@
                 },
                 url: "homepage/CarouselFigure/upload",
                 success: function (result) {
-                    alert(result);
                     window.location.reload();
                 },
                 error: function () {
@@ -202,6 +204,7 @@
 
     function closeForm() {
         if (isEdit == 1) {
+            document.getElementById("imgButton").innerHTML = "点击这里上传缩略图";
             $("input[id='name']").val("");
             $("#coverImg").val("");
             isEdit = 0;

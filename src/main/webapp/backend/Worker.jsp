@@ -89,7 +89,7 @@
                 <form action="/uploadCover.action" method="post" enctype="multipart/form-data"
                       onsubmit="return false;">
                     <a class="chooseFile left div-5">
-                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传头像
+                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/><p id="imgButton">点击这里上传头像</p>
                     </a>
                     <button class="submitButton right div-5" onclick="publish()">提交</button>
 
@@ -107,7 +107,7 @@
 <script>
     var id;
     var isEdit = 0;
-
+    var coverPath;
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
     var language = "ch";
 
@@ -219,7 +219,7 @@
 
     function editItem(ele) {
         isEdit = 1;
-        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
 
         $.ajax({
             type: "get",
@@ -231,6 +231,10 @@
             success: function (result) {
                 $("input[id='name']").val(result.name);
                 $("#language").val(result.language);
+                coverPath = result.imageLocation;
+                if(coverPath!=undefined){
+                    document.getElementById("imgButton").innerHTML = "更改头像";
+                }
 
                 //填充editor
                 $.ajax({
@@ -294,10 +298,6 @@
             }
         }
 
-
-        alert(idList);
-
-
         var tempList = idList;
         var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
         var index = 0;
@@ -312,12 +312,10 @@
             temp = tempList[index];
             tempList[index] = tempList[index - 1];
             tempList[index - 1] = temp;
-            alert(tempList);
         } else {
             temp = tempList[index];
             tempList[index] = tempList[index + 1];
             tempList[index + 1] = temp;
-            alert(tempList);
         }
 
         $.ajax({
@@ -367,47 +365,89 @@
 
 
 
+        if (isEdit == 0) {
+            if (coverImg != "") {
+                $('form').ajaxSubmit({
+                    type: "post",
+                    async: false,
+                    data: {
+                        "coverImg": coverImg
+                    },
+                    url: "uploadCover",
+                    success: function (result) {
+                        coverPath = result;
+                    },
+                    error: function () {
+                        alert("出故障了请稍候再试1");
+                    }
+                });
 
-        //提交附件
-        if (coverImg != "") {
-            $('form').ajaxSubmit({
+                //提交表单其余内容
+                $.ajax({
+                    type: "post",
+                    async: false,
+                    url: "organization/officeBearer/addText",
+                    data: {
+                        "name": name,
+                        "imageLocation": coverPath,
+                        "descriptionLocation": htmlPath,
+                        "language": language
+                    },
+                    success: function (result) {
+                        if (result != -1) {
+                            window.location.reload();
+                        } else {
+                            alert("抱歉提交失败啦");
+                        }
+                    },
+                    error: function () {
+                        alert("出故障了请稍候再试3");
+                    }
+                });
+            } else {
+                alert("请选择缩略图再提交");
+            }
+        } else {
+            if (coverImg != "") {
+                $('form').ajaxSubmit({
+                    type: "post",
+                    async: false,
+                    data: {
+                        "coverImg": coverImg
+                    },
+                    url: "uploadCover",
+                    success: function (result) {
+                        coverPath = result;
+                    },
+                    error: function () {
+                        alert("出故障了请稍候再试1");
+                    }
+                });
+            }
+            //提交表单其余内容
+            $.ajax({
                 type: "post",
                 async: false,
+                url: "organization/officeBearer/update",
                 data: {
-                    "coverImg": coverImg
+                    "id": id,
+                    "name": name,
+                    "imageLocation": coverPath,
+                    "descriptionLocation": htmlPath,
+                    "language": language
                 },
-                url: "uploadCover",
                 success: function (result) {
-
-                    //提交表单其余内容
-                    $.ajax({
-                        type: "post",
-                        async: false,
-                        url: "organization/officeBearer/addText",
-                        data: {
-                            "name": name,
-                            "imageLocation": result,
-                            "descriptionLocation": htmlPath,
-                            "language": language
-                        },
-                        success: function (result) {
-                            if (result != -1) {
-                                window.location.reload();
-                            } else {
-                                alert("抱歉提交失败啦");
-                            }
-                        },
-                        error: function () {
-                            alert("出故障了请稍候再试3");
-                        }
-                    });
+                    if (result != -1) {
+                        window.location.reload();
+                    } else {
+                        alert("抱歉提交失败啦");
+                    }
                 },
                 error: function () {
-                    alert("出故障了请稍候再试1");
+                    alert("出故障了请稍候再试3");
                 }
             });
-        } else {
-            alert("请选择缩略图再提交");
+
         }
 
     }
@@ -421,6 +461,7 @@
 
     function closeForm() {
         if (isEdit == 1) {
+            document.getElementById("imgButton").innerHTML = "点击这里上传头像";
             $("input[id='name']").val("");
             $("#language").val("ch");
             editor.$txt.html("");

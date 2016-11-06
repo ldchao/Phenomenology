@@ -87,7 +87,8 @@
                 <form id="image" action="/uploadCover.action" method="post" enctype="multipart/form-data"
                       onsubmit="return false;">
                     <a class="chooseFile left div-10">
-                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传头像
+                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>
+                        <p id="imgButton">点击这里上传头像</p>
                     </a>
                 </form>
             </div>
@@ -96,7 +97,8 @@
                 <form id="acce" action="/uploadSaAccessory.action" method="post" enctype="multipart/form-data"
                       onsubmit="return false;">
                     <a class="chooseFile left div-5">
-                        <input style="opacity: 0;" type="file" name="accessory" id="accessory"/>点击这里上传附件(可选)
+                        <input style="opacity: 0;" type="file" name="accessory" id="accessory"/>
+                        <p id="accButton">点击这里上传附件(可选)</p>
                     </a>
                     <button class="submitButton right div-5" onclick="publish()">提交</button>
                 </form>
@@ -112,6 +114,7 @@
 
 <script>
     var id;
+    var coverPath;
     var isEdit = 0;
 
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
@@ -208,7 +211,7 @@
 
     function editItem(ele) {
         isEdit = 1;
-        var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
 
         $.ajax({
             type: "get",
@@ -220,6 +223,11 @@
             success: function (result) {
                 $("input[id='name']").val(result.title);
                 $("#language").val(result.language);
+                coverPath = result.thumbnailLocation;
+
+                if (result.thumbnailLocation != "") {
+                    document.getElementById("imgButton").innerHTML = "更改缩略图";
+                }
 
                 //填充editor
                 $.ajax({
@@ -234,6 +242,24 @@
                     },
                     error: function () {
                         alert("获取正文失败");
+                    }
+                });
+
+                //填充附件地址
+                $.ajax({
+                    type: "get",
+                    async: false,
+                    url: "getSaAccessory",
+                    data: {
+                        "id": id
+                    },
+                    success: function (loc) {
+                        if (loc.name != undefined) {
+                            document.getElementById("accButton").innerHTML = loc.name;
+                        }
+                    },
+                    error: function () {
+                        alert("获取文件失败");
                     }
                 });
 
@@ -270,91 +296,169 @@
     function publish() {
         var html = editor.$txt.html();
         var accessory = $("#accessory").val();
-        var coverImg = $("#coverImg").val();
         var name = $("input[id='name']").val();
+        var coverImg = $("#coverImg").val();
         language = $("#language").val();
         var htmlPath;
 
-        //提交editor内容
-        $.ajax({
-            type: "post",
-            async: false,
-            url: "uploadHtml",
-            data: {
-                "html": html
-            },
-            success: function (result) {
-                htmlPath = result;
+        if (isEdit == 0) {
+            //提交图片
+            if (coverImg != "") {
+                //提交editor内容
+                $.ajax({
+                    type: "post",
+                    async: false,
+                    url: "uploadHtml",
+                    data: {
+                        "html": html
+                    },
+                    success: function (result) {
+                        htmlPath = result;
 
-            },
-            error: function () {
-                alert("出故障了请稍候再试2");
+                    },
+                    error: function () {
+                        alert("出故障了请稍候再试2");
+                    }
+                });
+
+                $('#image').ajaxSubmit({
+                    type: "post",
+                    async: false,
+                    data: {
+                        "coverImg": coverImg
+                    },
+                    url: "uploadCover",
+                    success: function (result) {
+                        coverPath = result;
+                    },
+                    error: function () {
+                        alert("图片上传失败");
+                    }
+                });
+
+                //提交附件
+                if (accessory != "") {
+                    $('#accessory').ajaxSubmit({
+                        type: "post",
+                        async: false,
+                        data: {
+                            "accessory": accessory,
+                            "id": id
+                        },
+                        url: "uploadSaAccessory",
+                        success: function (para) {
+                        },
+                        error: function () {
+                            alert("提交附件失败");
+                        }
+                    });
+                }
+
+                //提交其余内容
+                $.ajax({
+                    type: "post",
+                    async: false,
+                    url: "achievement/article/update",
+                    data: {
+                        "id": id,
+                        "title": name,
+                        "thumbnailLocation": coverPath,
+                        "descriptionLocation": htmlPath,
+                        "language": language
+                    },
+                    success: function (flag) {
+                        if (flag == "SUCCEED") {
+                            window.location.reload();
+                        } else {
+                            alert("抱歉提交失败啦");
+                        }
+                    },
+                    error: function () {
+                        alert("表单提交失败");
+                    }
+                });
+
+
+            } else {
+                alert("请选择缩略图再提交");
             }
-        });
+        } else {
+            if (coverImg != "") {
+                $('#image').ajaxSubmit({
+                    type: "post",
+                    async: false,
+                    data: {
+                        "coverImg": coverImg
+                    },
+                    url: "uploadCover",
+                    success: function (result) {
+                        coverPath = result;
+                    },
+                    error: function () {
+                        alert("图片上传失败");
+                    }
+                });
+            }
 
-
-        //提交附件
-        if (coverImg != "") {
-            $('#image').ajaxSubmit({
+            //提交editor内容
+            $.ajax({
                 type: "post",
                 async: false,
+                url: "uploadHtml",
                 data: {
-                    "coverImg": coverImg
+                    "html": html
                 },
-                url: "uploadCover",
                 success: function (result) {
+                    htmlPath = result;
 
-                    //提交附件
-                    if (accessory != "") {
-                        $('#acce').ajaxSubmit({
-                            type: "post",
-                            async: false,
-                            data: {
-                                "accessory": accessory,
-                                "id": id
-                            },
-                            url: "uploadSaAccessory",
-                            success: function (para) {
-                                //提交表单其余内容
-                                $.ajax({
-                                    type: "post",
-                                    async: false,
-                                    url: "achievement/article/update",
-                                    data: {
-                                        "id": id,
-                                        "title": name,
-                                        "thumbnailLocation": result,
-                                        "descriptionLocation": htmlPath,
-                                        "language": language
-                                    },
-                                    success: function (flag) {
-                                        if (flag == "SUCCEED") {
-                                            window.location.reload();
-                                        } else {
-                                            alert("抱歉提交失败啦");
-                                        }
-                                    },
-                                    error: function () {
-                                        alert("表单提交失败");
-                                    }
-                                });
-                            },
-                            error: function () {
-                                alert("提交附件失败");
-                            }
-                        });
-                    } else {
+                },
+                error: function () {
+                    alert("出故障了请稍候再试2");
+                }
+            });
+
+            //提交附件
+            if (accessory != "") {
+                $('#accessory').ajaxSubmit({
+                    type: "post",
+                    async: false,
+                    data: {
+                        "accessory": accessory,
+                        "id": id
+                    },
+                    url: "uploadSaAccessory",
+                    success: function (para) {
+                    },
+                    error: function () {
+                        alert("提交附件失败");
+                    }
+                });
+            }
+
+            //提交其余内容
+            $.ajax({
+                type: "post",
+                async: false,
+                url: "achievement/article/update",
+                data: {
+                    "id": id,
+                    "title": name,
+                    "thumbnailLocation": coverPath,
+                    "descriptionLocation": htmlPath,
+                    "language": language
+                },
+                success: function (flag) {
+                    if (flag == "SUCCEED") {
                         window.location.reload();
+                    } else {
+                        alert("抱歉提交失败啦");
                     }
                 },
                 error: function () {
-                    alert("图片上传失败");
+                    alert("表单提交失败");
                 }
             });
-        } else {
-            alert("请选择缩略图再提交");
         }
-
     }
 
 
@@ -381,6 +485,8 @@
 
     function closeForm() {
         if (isEdit == 1) {
+            document.getElementById("imgButton").innerHTML = "点击这里上传缩略图";
+            document.getElementById("accButton").innerHTML = "点击这里上传附件(可选)";
             $("input[id='name']").val("");
             $("#language").val("ch");
             editor.$txt.html("");

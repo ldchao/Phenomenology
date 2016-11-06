@@ -84,7 +84,8 @@
                 <form action="/uploadCover.action" method="post" enctype="multipart/form-data"
                       onsubmit="return false;">
                     <a class="chooseFile left div-5">
-                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>点击这里上传缩略图
+                        <input style="opacity: 0;" type="file" name="coverImg" id="coverImg"/>
+                        <p id="imgButton">点击这里上传缩略图</p>
                     </a>
                     <button class="submitButton right div-5" onclick="publish()">提交</button>
 
@@ -110,7 +111,7 @@
 <script>
     var id;
     var isEdit = 0;
-
+    var coverPath;
     var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;   //height
     var language = "ch";
 
@@ -219,7 +220,10 @@
                 $("input[id='name']").val(result.url);
                 $("input[id='publisher']").val(result.author);
                 $("#language").val(result.language);
-
+                if (result.thumbnailLocation != "") {
+                    document.getElementById("imgButton").innerHTML = "更改缩略图";
+                }
+                coverPath = result.thumbnailLocation;
                 $(".submitButton").html("提交修改");
                 $(".editBody").fadeIn(300);
             },
@@ -262,20 +266,20 @@
 
     //排序相关参数及函数
     function sortItem(ele, dir) {
-
         var idList = new Array();
         var idNode = document.getElementsByClassName("td1");
 
-        if(language == "eng"){
+        if (language == "eng") {
             for (var i = 0; i < idNode.length; i++) {
                 idList[i] = idNode[i].innerHTML;
             }
-        }else{
+        } else {
             for (var i = 0; i < (idNode.length - 1); i++) {
                 idList[i] = idNode[i + 1].innerHTML;
             }
         }
 
+        alert(idList);
         var tempList = idList;
         var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
         var index = 0;
@@ -325,41 +329,79 @@
         language = $("#language").val();
 
 
-        //提交附件
-        if (coverImg != "") {
-            $('form').ajaxSubmit({
+        if (isEdit == 0) {
+            if (coverImg != "") {
+                $('form').ajaxSubmit({
+                    type: "post",
+                    async: false,
+                    data: {
+                        "coverImg": coverImg
+                    },
+                    url: "uploadCover",
+                    success: function (result) {
+                        coverPath = result;
+                    },
+                    error: function () {
+                        alert("出故障了请稍候再试1");
+                    }
+                });
+
+                //提交表单其余内容
+                $.ajax({
+                    type: "post",
+                    async: false,
+                    url: "homepage/Fountainhead/add",
+                    data: {
+                        "thumbnailLocation": coverPath,
+                        "url": url,
+                        "language": language
+                    },
+                    success: function (para) {
+                        window.location.reload();
+                    },
+                    error: function () {
+                        alert("出故障了请稍候再试3");
+                    }
+                });
+            } else {
+                alert("请选择缩略图再提交");
+            }
+        } else {
+            if (coverImg != "") {
+                $('form').ajaxSubmit({
+                    type: "post",
+                    async: false,
+                    data: {
+                        "coverImg": coverImg
+                    },
+                    url: "uploadCover",
+                    success: function (result) {
+                        coverPath = result;
+                    },
+                    error: function () {
+                        alert("出故障了请稍候再试1");
+                    }
+                });
+            }
+
+            //提交表单其余内容
+            $.ajax({
                 type: "post",
                 async: false,
+                url: "homepage/Fountainhead/update",
                 data: {
-                    "coverImg": coverImg
+                    "id": id,
+                    "thumbnailLocation": coverPath,
+                    "url": url,
+                    "language": language
                 },
-                url: "uploadCover",
-                success: function (result) {
-
-                    //提交表单其余内容
-                    $.ajax({
-                        type: "post",
-                        async: false,
-                        url: "homepage/Fountainhead/add",
-                        data: {
-                            "thumbnailLocation": result,
-                            "url": url,
-                            "language": language
-                        },
-                        success: function (para) {
-                            window.location.reload();
-                        },
-                        error: function () {
-                            alert("出故障了请稍候再试3");
-                        }
-                    });
+                success: function (para) {
+                    window.location.reload();
                 },
                 error: function () {
-                    alert("出故障了请稍候再试1");
+                    alert("出故障了请稍候再试3");
                 }
             });
-        } else {
-            alert("请选择缩略图再提交");
         }
 
     }
@@ -372,13 +414,14 @@
     }
 
     function closeForm() {
+        $(".editBody").fadeOut(300);
         if (isEdit == 1) {
+            document.getElementById("imgButton").innerHTML = "点击这里上传缩略图";
             $("input[id='name']").val("");
             $("#language").val("ch");
             $("#coverImg").val("");
             isEdit = 0;
         }
-        $(".editBody").fadeOut(300);
     }
 
 </script>
