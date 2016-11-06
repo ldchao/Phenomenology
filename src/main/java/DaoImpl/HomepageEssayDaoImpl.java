@@ -119,9 +119,8 @@ public class HomepageEssayDaoImpl implements HomepageEssayDao {
 
     public List<HomepageEssay> find(int homepageId) {
         try {
-            String[] properties={HOMEPAGE_ID};
-            Object[] values={homepageId};
-            return (List<HomepageEssay>) baseDao.findByProperties("HomepageEssay",properties,values);
+            String hql="from HomepageEssay h where h.homepage.id="+homepageId+" order by h.sequenceNumber desc";
+            return (List<HomepageEssay>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
             return null;
