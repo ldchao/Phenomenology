@@ -151,9 +151,9 @@ function search(syb) {
     if (key != "") {
 
         if (syb == 0) {
-            window.open("/Search?key=" + key);
+            window.open("/Phenomenology/Search?key=" + key);
         } else {
-            window.location.href = "/Search?key=" + key;
+            window.location.href = "/Phenomenology/Search?key=" + key;
         }
 
     }
