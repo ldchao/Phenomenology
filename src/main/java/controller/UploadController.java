@@ -88,7 +88,7 @@ public class UploadController {
             e.printStackTrace();
         }
 
-        String coverImgPath="coverImg/"+filename;
+        String coverImgPath="http://localhost:8080/Phenomenology/coverImg/"+filename;
 
         return  coverImgPath;
     }
