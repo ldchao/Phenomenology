@@ -42,32 +42,32 @@
     <%--左侧导航栏--%>
     <div class="left_nav">
 
-        <div class="nav_bar" onclick="window.location.href='/HomePage'">
+        <div class="nav_bar" onclick="window.location.href='/Phenomenology/HomePage'">
             <i class="fa fa-angle-right"></i>
             <span>&nbsp;首&nbsp;页</span>
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='/Situation'">
+        <div class="nav_bar" onclick="window.location.href='/Phenomenology/Situation'">
             <i class="fa fa-angle-right"></i>&nbsp;
             <span>本所概况</span>
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='/Organization'">
+        <div class="nav_bar" onclick="window.location.href='/Phenomenology/Organization'">
             <i class="fa fa-angle-right"></i>&nbsp;
             <span>机构人员</span>
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='/AcademicCommunicate'">
+        <div class="nav_bar" onclick="window.location.href='/Phenomenology/AcademicCommunicate'">
             <i class="fa fa-angle-right"></i>&nbsp;
             <span>学术交流</span>
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='/AcademicSource'">
+        <div class="nav_bar" onclick="window.location.href='/Phenomenology/AcademicSource'">
             <i class="fa fa-angle-right"></i>&nbsp;
             <span>学术资源</span>
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='/Achievement'">
+        <div class="nav_bar" onclick="window.location.href='/Phenomenology/Achievement'">
             <i class="fa fa-angle-right"></i>&nbsp;
             <span>科研成果</span>
         </div>
