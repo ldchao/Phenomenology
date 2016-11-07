@@ -178,7 +178,6 @@ a:hover {
 .each_pic {
     width: 221px;
     height: 112px;
-    background-color: #d8d8d8;
     margin-left: 16px;
     float: left;
     cursor: pointer;

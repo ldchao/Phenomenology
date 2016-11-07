@@ -180,7 +180,7 @@ function showSearch(link, url) {
         },
         dataType: "json",
         success: function (result) {
-            window.location.href = result;
+            window.location.href = "/Phenomenology/" + result;
         },
         error: function () {
             // alert("科研成果数据获取失败");

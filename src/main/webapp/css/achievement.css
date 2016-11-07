@@ -42,8 +42,6 @@
 .book_pic {
     width: 100px;
     height: 125px;
-    background-color: #d8d8d8;
-    border: 1px solid #979797;
     margin-bottom: 6px;
 }
 
@@ -95,8 +93,6 @@
 .photo {
     width: 130px;
     height: 140px;
-    border: 1px solid #979797;
-    background-color: #d8d8d8;
     vertical-align: top;
     display: inline-block;
     float: right;

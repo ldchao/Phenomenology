@@ -7,7 +7,7 @@ var language = "ch";
 window.onload = function () {
     language = judgeVersion();
     getPics();
-    
+
     showBooks();
     showArticles();
 };
@@ -59,9 +59,13 @@ function showBooks() {
                 var img = document.createElement("img");
                 img.style.width = "100px";
                 img.style.height = "125px";
+                img.style.cursor = "pointer";
                 img.src = result[i].thumbnailLocation;
                 div.getElementsByClassName("book_pic")[0].innerHTML = "";
                 div.getElementsByClassName("book_pic")[0].appendChild(img);
+                img.onclick = function () {
+                    showBookDetail(this.parentNode);
+                };
 
                 books.appendChild(div);
             }

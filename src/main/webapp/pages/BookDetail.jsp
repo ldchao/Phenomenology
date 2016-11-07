@@ -75,7 +75,7 @@
 
     </div>
 
-    <div id="staff_detail" class="right_content">
+    <div id="staff_detail" class="right_content_detail">
 
         <div class="article_index back_lbl" onclick="goBack()">
             <span>${Tag2}</span> <i class="fa fa-angle-right"></i>
