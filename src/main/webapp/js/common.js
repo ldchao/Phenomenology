@@ -22,7 +22,7 @@ function getPics() {
 }
 
 function getPics_detail() {
-    getPics_ajax("/homepage/CarouselFigure/getAll", 1);
+    getPics_ajax("/Phenomenology/homepage/CarouselFigure/getAll", 1);
 }
 
 function getPics_ajax(url, syb) {
@@ -163,5 +163,5 @@ function search(syb) {
 function goBack() {
     var pos = parseInt(document.getElementById("storage").innerHTML);
     var urls = ["Organization", "AcademicCommunicate", "AcademicSource", "Achievement"];
-    window.location.href = "/" + urls[pos - 2];
+    window.location.href = "/Phenomenology/" + urls[pos - 2];
 }
