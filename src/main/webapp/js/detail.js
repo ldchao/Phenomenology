@@ -7,7 +7,6 @@ var language = "ch";
 window.onload = function () {
     language = judgeVersion_detail();
     getPics_detail();
-    // getPics();
 
     var index = parseInt(document.getElementById("storage").innerHTML);
     document.getElementsByClassName("nav_bar")[index].setAttribute("class", "nav_bar active");
@@ -20,7 +19,7 @@ window.onload = function () {
     $.ajax({
         type: "get",
         async: false,
-        url: "getHtml",
+        url: "../../getHtml",
         data: {
             "filename": location
         },
