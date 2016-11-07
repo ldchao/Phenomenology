@@ -165,5 +165,5 @@ function changeVersion_title() {
 }
 
 function setImage() {
-    document.getElementById("img").src = "/Phenomenology" + document.getElementById("storage_img").innerHTML;
+    document.getElementById("img").src = "/Phenomenology/" + document.getElementById("storage_img").innerHTML;
 }

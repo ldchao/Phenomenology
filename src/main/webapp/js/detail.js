@@ -33,9 +33,9 @@ window.onload = function () {
     });
 
     var tag = document.getElementById("storage").innerHTML.trim();
-    if(tag == 3 || tag == 4) {
+    if (tag == 3 || tag == 4) {
         getAttach("getEssayAccessory");
-    } else{
+    } else {
         getAttach("getSaAccessory");
     }
 
@@ -60,7 +60,7 @@ function getAttach(url) {
     $.ajax({
         type: "get",
         async: false,
-        url: url,
+        url: "../../" + url,
         data: {
             "id": id
         },
