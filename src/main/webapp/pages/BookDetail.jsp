@@ -24,8 +24,8 @@
     <div style="width: 1135px; margin: 0 auto; position: relative">
         <img src="../../css/NJUPh.svg">
 
-        <div class="ch_eng" onclick="changeVersion_detail(0)">中文</div>
-        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion_detail(1)">English</div>
+        <div class="ch_eng" onclick="changeVersion(0)">中文</div>
+        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
 
         <div>
             <input id="search_key" class="search" type="text" placeholder="搜索您想要的…"
