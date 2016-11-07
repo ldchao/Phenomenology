@@ -6,7 +6,7 @@ var language = "ch";
 
 window.onload = function () {
     language = judgeVersion_detail();
-    // getPics_detail();
+    getPics_detail();
     getPics();
 
     var index = parseInt(document.getElementById("storage").innerHTML);

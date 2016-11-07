@@ -22,10 +22,10 @@
 <div class="top_title">
 
     <div style="width: 1135px; margin: 0 auto; position: relative">
-        <img src="css/NJUPh.svg">
+        <img src="../../css/NJUPh.svg">
 
-        <div class="ch_eng" onclick="changeVersion(0)">中文</div>
-        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
+        <div class="ch_eng" onclick="changeVersion_detail(0)">中文</div>
+        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion_detail(1)">English</div>
 
         <div>
             <input id="search_key" class="search" type="text" placeholder="搜索您想要的…"
@@ -141,10 +141,10 @@
 <a id="storage_location" style="display: block">${OrganizationVO.descriptionLocation}</a>
 <a id="storage_img" style="display: none">${OrganizationVO.imageLocation}</a>
 
-<script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
-<script src="js/version.js"></script>
-<script src="js/detail.js"></script>
+<script src="../../js/jquery.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/version.js"></script>
+<script src="../../js/detail.js"></script>
 <script>
     setImage();
 </script>
