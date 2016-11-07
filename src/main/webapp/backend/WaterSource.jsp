@@ -279,7 +279,6 @@
             }
         }
 
-        alert(idList);
         var tempList = idList;
         var id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
         var index = 0;
@@ -294,12 +293,10 @@
             temp = tempList[index];
             tempList[index] = tempList[index - 1];
             tempList[index - 1] = temp;
-            alert(tempList);
         } else {
             temp = tempList[index];
             tempList[index] = tempList[index + 1];
             tempList[index + 1] = temp;
-            alert(tempList);
         }
 
         $.ajax({

@@ -419,7 +419,7 @@
 
             //提交附件
             if (accessory != "") {
-                $('#accessory').ajaxSubmit({
+                $('#acce').ajaxSubmit({
                     type: "post",
                     async: false,
                     data: {

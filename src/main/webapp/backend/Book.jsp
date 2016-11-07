@@ -418,7 +418,7 @@
 
             //提交附件
             if (accessory != "") {
-                $('#accessory').ajaxSubmit({
+                $('#acces').ajaxSubmit({
                     type: "post",
                     async: false,
                     data: {
