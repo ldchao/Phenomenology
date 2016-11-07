@@ -94,6 +94,8 @@ public class HomepageController {
     public Integer addNews(String thumbnailLocation, String url,String language) {
         NewsVO newsVO=new NewsVO();
         newsVO.setThumbnailLocation(thumbnailLocation);
+        if(!url.startsWith("http://"))
+            url="http://"+url;
         newsVO.setUrl(url);
         newsVO.setLanguage(language);
         NewsBLService newsBLService=new NewsBL();
@@ -153,6 +155,8 @@ public class HomepageController {
     public Integer addFountainhead(String thumbnailLocation, String url,String language) {
         NewsVO newsVO=new NewsVO();
         newsVO.setThumbnailLocation(thumbnailLocation);
+        if(!url.startsWith("http://"))
+            url="http://"+url;
         newsVO.setUrl(url);
         newsVO.setLanguage(language);
         FountainheadBLService fountainheadBLService=new FountainheadBL();
