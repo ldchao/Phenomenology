@@ -53,7 +53,7 @@ public class UploadController {
 
                 try {
                     file.transferTo(targetFile);
-                    return  "http://localhost:8080/Phenomenology/upload/" + file.getOriginalFilename();
+                    return  "/Phenomenology/upload/" + file.getOriginalFilename();
                 } catch (IllegalStateException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
