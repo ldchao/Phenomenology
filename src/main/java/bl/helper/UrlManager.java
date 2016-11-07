@@ -29,8 +29,8 @@ public class UrlManager {
         String[] items=url.split("/");
         int length=items.length;
         FromURLVO fromURLVO=new FromURLVO();
-        if(length<=3){
-            fromURLVO.setTitle("无效url");
+        if(length<=5){
+            fromURLVO.setTitle("非本站链接");
             fromURLVO.setHtmlLocation("");
         }else{
             String kind=items[length-3];
@@ -47,11 +47,14 @@ public class UrlManager {
                 Scientificachievement scientificachievement=scientificachievementDao.getById(id);
                 fromURLVO.setTitle(scientificachievement.getTitle());
                 fromURLVO.setHtmlLocation(scientificachievement.getDescriptionLocation());
-            }else {
+            }else if(kind.equals("academic")||kind.equals("academicCommunicate")){
                 EssayDao essayDao=new EssayDaoImpl();
                 Essay essay=essayDao.getById(id);
                 fromURLVO.setTitle(essay.getTitle());
                 fromURLVO.setHtmlLocation(essay.getLocation());
+            }else{
+                fromURLVO.setTitle("非本站链接");
+                fromURLVO.setHtmlLocation("");
             }
         }
         return fromURLVO;
@@ -83,7 +86,10 @@ public class UrlManager {
         String url="/organization/";
         PersonDao personDao=new PersonDaoImpl();
         Person person=personDao.getById(id);
-        url+=person.getType().toString().toLowerCase()+"/detail?id="+id;
+        if(person.getType()==Type.OfficeBearer){
+            url+="officeBearer/detail?id="+id;
+        }else
+           url+=person.getType().toString().toLowerCase()+"/detail?id="+id;
         return url;
     }
 
