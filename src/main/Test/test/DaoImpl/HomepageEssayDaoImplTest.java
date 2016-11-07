@@ -106,4 +106,12 @@ public void testRank() throws Exception {
         System.out.println(homepageEssay.getId());
     }
     }
+    @Test
+    public void Testfind(){
+        List<HomepageEssay> list=homepageEssayDao.find(2);
+        for (HomepageEssay h: list
+             ) {
+            System.out.println(h.getId());
+        }
+    }
 } 

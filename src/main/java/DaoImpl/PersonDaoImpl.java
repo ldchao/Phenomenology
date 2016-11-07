@@ -45,7 +45,7 @@ public class PersonDaoImpl implements PersonDao{
 
     public List<Person> findAll() {
         try {
-            String hql="from Person p "+" order by p.sequence desc";
+            String hql="from Person p "+" order by p.sequence";
             return (List<Person>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
@@ -101,7 +101,7 @@ public class PersonDaoImpl implements PersonDao{
 
     public List<Person> getByTypeAndLanguage(Type type, Language language) {
         try {
-            String hql="from Person p where p.type='"+type+"' and p.language='"+language+"'  order by p.sequence desc";
+            String hql="from Person p where p.type='"+type+"' and p.language='"+language+"'  order by p.sequence";
             return (List<Person>) baseDao.findByHql(hql);
         }catch (Exception e){
             e.printStackTrace();
