@@ -90,7 +90,7 @@ function submit(location) {
     form.attr("style", "display:none");
     form.attr("target", "");
     form.attr("method", "post");
-    form.attr("action", "/download");
+    form.attr("action", "/Phenomenology/download");
 
     var input1 = $("<input>");
     input1.attr("type", "hidden");
