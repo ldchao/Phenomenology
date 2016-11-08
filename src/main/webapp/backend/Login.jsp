@@ -10,6 +10,7 @@
 <head>
     <title>南京大学现象学研究所</title>
     <link href="css/cssreset.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/backLogin.css">
 </head>
 
@@ -20,10 +21,10 @@
     <div class="innerBlock">
         <p>后台登录</p>
         <input type="text" id="userName" placeholder="用户名">
-        <input type="password" id="key" placeholder="密码">
+        <input type="password" id="key" placeholder="密码" onkeydown="enter(event);">
         <div class="buttons">
-            <div class="loginButton" onclick="login()">登录</div>
-            <div class="logupButton" onclick="logup()">注册</div>
+            <div id="login" class="loginButton" onclick="login()">登录</div>
+            <%--<div class="logupButton" onclick="logup()">注册</div>--%>
         </div>
         <a href="javascript:alert('请联系开发人员');">忘记密码？</a>
     </div>

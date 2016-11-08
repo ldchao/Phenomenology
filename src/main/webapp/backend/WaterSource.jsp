@@ -96,7 +96,7 @@
 </div>
 
 <div class="check_body">
-    <div class="" id="check">
+    <div class="none" id="check">
         <p>你确定要进行此操作吗？</p>
         <button class="sure" onclick="sure()">确认</button>
         <button class="cancel" onclick="cancel()">取消</button>

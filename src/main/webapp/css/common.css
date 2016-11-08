@@ -2,7 +2,7 @@ body {
     width: 100%;
     margin: 0;
     background-color: #f2fafd;
-    font-family: Helvetica, Tahoma, Arial, "PingFang SC", Heiti, “黑体”, “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, sans-serif;
+    font-family: Helvetica, Tahoma, Arial, "PingFang SC", “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, Heiti, “黑体”, sans-serif;
 }
 
 a {
