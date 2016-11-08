@@ -12,6 +12,7 @@ import vo.AchievementVO;
 import vo.OrganizationVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 /**
@@ -44,7 +45,13 @@ public class GlobalManagerController {
     //全局搜索文章
     @RequestMapping(value = "/searchEssay")
     @ResponseBody
-    public ArrayList<AcademicVO> searchEssay(String key){
+    public ArrayList<AcademicVO> searchEssay(HttpServletRequest request){
+        String key = null;
+        try {
+            key = new String(request.getParameter("key").getBytes("iso-8859-1"), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchEssay(key);
     }
@@ -58,7 +65,13 @@ public class GlobalManagerController {
     //全局搜索科研成果
     @RequestMapping(value = "/searchAchievement")
     @ResponseBody
-    public ArrayList<AchievementVO> searchArticle(String key){
+    public ArrayList<AchievementVO> searchArticle(HttpServletRequest request){
+        String key = null;
+        try {
+            key = new String(request.getParameter("key").getBytes("iso-8859-1"), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchArticle(key);
     }
@@ -72,7 +85,13 @@ public class GlobalManagerController {
     //全局搜索人员
     @RequestMapping(value = "/searchPerson")
     @ResponseBody
-    public ArrayList<OrganizationVO> searchPerson(String key){
+    public ArrayList<OrganizationVO> searchPerson(HttpServletRequest request){
+        String key = null;
+        try {
+            key = new String(request.getParameter("key").getBytes("iso-8859-1"), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchPerson(key);
     }

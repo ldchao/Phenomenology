@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import vo.AcademicVO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by lvdechao on 2016/7/7.
@@ -53,7 +54,13 @@ public class MainController {
     }
 
     @RequestMapping(value = "/Search", method = RequestMethod.GET)
-    public ModelAndView searchResult(String key) {
+    public ModelAndView searchResult(HttpServletRequest request) {
+        String key = null;
+        try {
+            key = new String(request.getParameter("key").getBytes("iso-8859-1"), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("pages/SearchResult");
         modelAndView.addObject("key", key);
