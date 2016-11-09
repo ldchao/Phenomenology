@@ -2,7 +2,7 @@ body {
     width: 100%;
     margin: 0;
     background-color: #f2fafd;
-    font-family: Helvetica, Tahoma, Arial, "PingFang SC", Heiti, “黑体”, “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, sans-serif;
+    font-family: Helvetica, Tahoma, Arial, "PingFang SC", “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, Heiti, “黑体”, sans-serif;
 }
 
 a {
@@ -218,6 +218,32 @@ a:hover {
     margin: 0 22px;
     display: inline-block;
 }
+
+/* 返回顶部 */
+#back-to-top {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background-color: rgba(120, 148, 212, 70);
+    color: #ffffff;
+    text-align: center;
+    border-radius: 2px;
+    z-index: 1;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    display: none;
+}
+
+#back-to-top:hover {
+    background-color: #5678C4;
+}
+
+#back-to-top i {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+
 
 /* 附件下载 */
 .download_icon {

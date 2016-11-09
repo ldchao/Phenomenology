@@ -83,7 +83,7 @@
 
         <span class="article_index name">${OrganizationVO.name}</span>
 
-        <div class="achieves_div">
+        <div class="staff_detail">
             <div id="content" class="introduction article_text"></div>
 
             <div class="photo">
@@ -136,6 +136,9 @@
     </div>
 
 </div>
+
+<%-- 返回顶部 --%>
+<a href="#" id="back-to-top"><i class="fa fa-angle-up"></i></a>
 
 <a id="storage" style="display: none">${Tag1}</a>
 <a id="storage_location" style="display: none">${OrganizationVO.descriptionLocation}</a>

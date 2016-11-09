@@ -147,6 +147,9 @@
 
 </div>
 
+<%-- 返回顶部 --%>
+<a href="#" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
 <a id="storage" style="display: none">${Tag1}</a>
 <a id="storage_location" style="display: none">${AcademicVO.location}</a>
 <a id="storage_id" style="display: none">${AcademicVO.id}</a>

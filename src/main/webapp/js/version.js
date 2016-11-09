@@ -53,7 +53,7 @@ function changeVersion_detail(index) {
 
                 var pos = parseInt(document.getElementById("storage").innerHTML);
                 var urls = ["Organization", "AcademicCommunicate", "AcademicSource", "Achievement"];
-                window.location.href = "/" + urls[pos - 2];
+                window.location.href = "/Phenomenology/" + urls[pos - 2];
             },
             error: function () {
                 alert("语言切换失败");

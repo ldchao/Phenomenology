@@ -48,7 +48,7 @@ function getPics_ajax(url, syb) {
                 img.style.height = "111px";
 
                 if (syb == 1) {
-                    img.src = "/" + result[i].location;
+                    img.src = "/Phenomenology/" + result[i].location;
                 } else {
                     img.src = result[i].location;
                 }

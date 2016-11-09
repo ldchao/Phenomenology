@@ -21,6 +21,13 @@
     overflow: auto;
 }
 
+.staff_detail {
+    width: 810px;
+    min-height: 400px;
+    margin-left: 28px;
+    margin-top: 18px;
+}
+
 .each_book_div {
     width: 100px;
     height: 151px;
@@ -84,7 +91,7 @@
 
 .introduction {
     width: 639px;
-    height: 350px;
+    min-height: 400px;
     margin-left: 12px;
     vertical-align: top;
     display: inline-block;
@@ -126,5 +133,4 @@
     margin-top: 28px;
     margin-left: 60px;
     margin-bottom: 40px;
-    overflow: auto;
 }

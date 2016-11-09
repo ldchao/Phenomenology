@@ -216,7 +216,7 @@
             <a>科隆大学胡塞尔档案馆</a><br>
             <a>鲁汶大学胡塞尔档案馆</a><br>
             <a>巴黎一大胡塞尔档案馆</a><br>
-            <a>中国现象学网</a><br>
+            <a target="_blank" href="http://www.phaenomenologie.com.cn">中国现象学网</a><br>
         </div>
     </div>
 

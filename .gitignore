@@ -35,3 +35,5 @@ Phenomenology.iml
 target/Phenomenology/META-INF/MANIFEST.MF
 
 .idea/dataSources.local.xml
+
+*.class
