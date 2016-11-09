@@ -165,3 +165,17 @@ function goBack() {
     var urls = ["Organization", "AcademicCommunicate", "AcademicSource", "Achievement"];
     window.location.href = "/Phenomenology/" + urls[pos - 2];
 }
+
+// 返回顶部
+function backToTop() {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 150) {
+            $("#back-to-top").fadeIn(200);
+        } else {
+            $("#back-to-top").fadeOut(200);
+        }
+    });
+    $("#back-to-top").click(function () {
+        $("html, body").animate({scrollTop: 0}, 500);
+    });
+}

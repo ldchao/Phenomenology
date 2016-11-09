@@ -7,7 +7,6 @@ body {
 
 a {
     cursor: pointer;
-    color: #fff;
 }
 
 a:hover {
@@ -210,6 +209,17 @@ a:hover {
     font-family: "PingFang SC", serif;
     font-size: 13px;
     padding-top: 24px;
+}
+
+.bottom_nav a {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.bottom_nav a:hover {
+    text-decoration: underline;
+    color: #4cc1fc;
 }
 
 .bottom_hr {
