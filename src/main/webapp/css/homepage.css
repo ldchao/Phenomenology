@@ -181,3 +181,24 @@
     display: inline-flex;
     background-color: #e0bf64;
 }
+
+.dot {
+    width: 6px;
+    height: 6px;
+    margin: auto 3px;
+    border-radius: 50%;
+    background-color: #d8d8d8;
+    box-shadow: 0 0 7px rgba(42, 91, 111, .14);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.dot:hover {
+    background-color: #1a799f;
+}
+
+.dot_div {
+    position: absolute;
+    right: 3px;
+    bottom: 5px;
+}

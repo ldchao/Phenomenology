@@ -115,32 +115,13 @@
 
 <%--底栏--%>
 <div class="bottom_nav">
-
-    <div style="width: 48%; float: left; display: inline-block">
-        <div style="float: right; text-align: right;">
-
-            <span style="color: #a0a0a0; font-size: 12px;">通讯地址</span><br>
-            <span>南京市仙林大道163号</span><br>
-            <span>南京大学仙林校区薛光林楼</span><br>
-            <br>
-            <span style="color: #a0a0a0; font-size: 12px;">邮编</span><br>
-            210023
-        </div>
-    </div>
-
-    <hr class="bottom_hr">
-
-    <div style="width: 48%; float: right; display: inline-block;position: relative; left: -5px;">
-        <div style="float: left; text-align: left;">
-            <span style="color: #a0a0a0; font-size: 12px;">友情链接</span><br>
-            <a>弗莱堡大学胡塞尔档案馆</a><br>
-            <a>科隆大学胡塞尔档案馆</a><br>
-            <a>鲁汶大学胡塞尔档案馆</a><br>
-            <a>巴黎一大胡塞尔档案馆</a><br>
-            <a>中国现象学网</a><br>
-        </div>
-    </div>
-
+    <span>通讯地址</span>
+    南京市仙林大道163号&nbsp;
+    南京大学仙林校区薛光林楼
+    <span style="margin-left: 25px;">邮编</span>
+    210023
+    <span style="margin-left: 25px;">邮箱</span>
+    phenomenology@nju.edu.cn
 </div>
 
 <script src="js/jquery.js"></script>

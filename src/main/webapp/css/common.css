@@ -207,31 +207,20 @@ a:hover {
 
 .bottom_nav {
     width: 100%;
-    height: 130px;
+    height: 50px;
     background-color: #4f4f4f;
     color: #f4fcff;
     font-family: "PingFang SC", serif;
     font-size: 13px;
-    padding-top: 24px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 50px;
 }
 
-.bottom_nav a {
-    cursor: pointer;
-    color: #fff;
-    text-decoration: none;
-}
-
-.bottom_nav a:hover {
-    text-decoration: underline;
-    color: #4cc1fc;
-}
-
-.bottom_hr {
-    width: 0;
-    height: 110px;
-    border: 1px solid #979797;
-    margin: 0 22px;
-    display: inline-block;
+.bottom_nav span{
+    color: #a0a0a0;
+    font-size: 12px;
+    margin-right: 5px;
 }
 
 /* 返回顶部 */
@@ -240,7 +229,7 @@ a:hover {
     right: 10px;
     bottom: 10px;
     background-color: rgba(120, 148, 212, 70);
-    color: #ffffff;
+    color: #fff;
     text-align: center;
     border-radius: 2px;
     z-index: 1;
@@ -258,7 +247,6 @@ a:hover {
     height: 30px;
     line-height: 30px;
 }
-
 
 /* 附件下载 */
 .download_icon {

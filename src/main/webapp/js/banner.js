@@ -3,9 +3,20 @@
  */
 
 var banner = document.getElementById("banner");
+var dotpages = document.getElementById('dotpages');
 var banner_width;
 var banner_auto;
 var banner_speed = 2000;
+var currentPage = 1;
+var dots;
+
+banner.onmouseover = function () {
+    clearInterval(banner_auto);
+};
+
+banner.onmouseout = function () {
+    banner_auto = setInterval(switchPic, banner_speed);
+};
 
 function getBanners() {
 
@@ -17,7 +28,7 @@ function getBanners() {
         div.className = "banner_pic";
         banner.appendChild(div);
 
-        if(i%2==0) {
+        if (i % 2 == 0) {
             div.style.backgroundColor = '#76c06e';
         }
 
@@ -37,27 +48,50 @@ function getBanners() {
         //     window.open(this.getElementsByTagName("a")[0].innerHTML);
         // };
 
+        var dot = document.createElement('div');
+        dot.className = 'dot';
+        dotpages.appendChild(dot);
+        if (i == 0) {
+            dot.style.backgroundColor = '#1a799f';
+        }
+        dot.onclick = function () {
+            clearInterval(banner_auto);
+            gotopage(this);
+        };
     }
 
     // if (result.length > 1) {
-        banner_auto = setInterval(switchPic, banner_speed);
+    banner_auto = setInterval(switchPic, banner_speed);
     // }
-    
+    dots = dotpages.getElementsByClassName('dot');
 }
 
 function switchPic() {
-
+    
     if (banner.offsetLeft > (231 - banner_width)) {
         banner.style.left = banner.offsetLeft - 230;
 
-        //    设置页码点
-
+        dots[currentPage - 1].style.backgroundColor = '#d8d8d8';
+        currentPage++;
+        dots[currentPage - 1].style.backgroundColor = '#1a799f';
     } else {
         banner.style.left = "";
         banner.offsetLeft = 0;
+
+        dots[currentPage - 1].style.backgroundColor = '#d8d8d8';
+        currentPage = 1;
+        dots[currentPage - 1].style.backgroundColor = '#1a799f';
     }
 }
 
-function gotopage() {
+function gotopage(node) {
 
+    var index = $(node).parents("#dotpages").find(".dot").index($(node));
+
+    dots[currentPage - 1].style.backgroundColor = '#d8d8d8';
+    currentPage = index + 1;
+    dots[currentPage - 1].style.backgroundColor = '#1a799f';
+
+    banner.style.left = 0 - index * 230;
+    banner_auto = setInterval(switchPic, banner_speed);
 }
