@@ -129,6 +129,9 @@
 
 </div>
 
+<%-- 返回顶部 --%>
+<a href="#" id="back-to-top"><i class="fa fa-angle-up"></i></a>
+
 <script src="js/common.js"></script>
 <script src="js/version.js"></script>
 <script src="js/situation.js"></script>

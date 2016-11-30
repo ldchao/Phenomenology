@@ -50,17 +50,8 @@
     margin-top: 15px;
 }
 
-.each_img {
-    width: 70px;
-    height: 70px;
-    display: inline-block;
-}
-
 .right_title {
-    width: 275px;
-    margin-left: 15px;
-    float: right;
-    display: inline-block;
+    width: 360px;
 }
 
 .big_div {
@@ -159,4 +150,34 @@
 .pages_each:hover {
     color: #1a799f;
     border: 2px solid #1a799f;
+}
+
+/* 轮播图 */
+.banner_div {
+    width: 230px;
+    height: 160px;
+    box-shadow: 0 0 7px rgba(42, 91, 111, .14);
+    overflow: hidden;
+    position: relative;
+}
+
+.pic_title {
+    width: 230px;
+    height: 37px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, .5);
+    text-align: center;
+    padding-top: 3px;
+}
+
+.banner_pic {
+    width: 230px;
+    height: 160px;
+    margin-left: 0;
+    float: left;
+    cursor: pointer;
+    display: inline-flex;
+    background-color: #e0bf64;
 }

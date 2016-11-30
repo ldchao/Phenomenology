@@ -121,6 +121,7 @@ a:hover {
     vertical-align: top;
     padding-top: 20px;
     float: left;
+    box-shadow: 0 0 7px rgba(42, 91, 111, .14);
 }
 
 .nav_bar {
@@ -152,6 +153,7 @@ a:hover {
     margin-left: 15px;
     display: inline-block;
     vertical-align: top;
+    box-shadow: 0 0 7px rgba(42, 91, 111, .14);
 }
 
 .right_content_detail {
@@ -162,6 +164,7 @@ a:hover {
     display: inline-block;
     vertical-align: top;
     padding-bottom: 30px;
+    box-shadow: 0 0 7px rgba(42, 91, 111, .14);
 }
 
 .roll_pic {
@@ -173,6 +176,7 @@ a:hover {
     position: relative;
     left: 0;
     overflow: hidden;
+    box-shadow: 0 0 7px rgba(42, 91, 111, .14);
 }
 
 .each_pic {
@@ -209,6 +213,17 @@ a:hover {
     font-family: "PingFang SC", serif;
     font-size: 13px;
     padding-top: 24px;
+}
+
+.bottom_nav a {
+    cursor: pointer;
+    color: #fff;
+    text-decoration: none;
+}
+
+.bottom_nav a:hover {
+    text-decoration: underline;
+    color: #4cc1fc;
 }
 
 .bottom_hr {

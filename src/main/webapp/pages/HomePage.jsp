@@ -33,45 +33,61 @@
         </div>
 
     </div>
-
-
 </div>
 
 <div class="main_body">
 
-    <%--左侧导航栏--%>
-    <div class="left_nav">
 
-        <div class="nav_bar active" onclick="window.location.href='HomePage'">
-            <i class="fa fa-angle-right"></i>
-            <span>&nbsp;首&nbsp;页</span>
+    <div style="display: inline-block; vertical-align: top;">
+
+        <%-- 轮播图 --%>
+        <div class="banner_div">
+
+            <div id="banner" style="position: absolute;"></div>
+
+            <div class="pic_title article_list_title" style="font-size: 13px;">
+                现象学研究所接见了世界级现象学大师
+            </div>
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='Situation'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>本所概况</span>
-        </div>
+        <%--左侧导航栏--%>
+        <div class="left_nav" style="height: 340px; margin-top: 10px; padding-top: 15px;">
 
-        <div class="nav_bar" onclick="window.location.href='Organization'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>机构人员</span>
-        </div>
+            <div class="nav_bar active" onclick="window.location.href='HomePage'">
+                <i class="fa fa-angle-right"></i>
+                <span>&nbsp;首&nbsp;页</span>
+            </div>
 
-        <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学术交流</span>
-        </div>
+            <div class="nav_bar" onclick="window.location.href='Situation'">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>本所概况</span>
+            </div>
 
-        <div class="nav_bar" onclick="window.location.href='AcademicSource'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学术资源</span>
-        </div>
+            <div class="nav_bar" onclick="window.location.href='Organization'">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>机构人员</span>
+            </div>
 
-        <div class="nav_bar" onclick="window.location.href='Achievement'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>科研成果</span>
-        </div>
+            <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>学术交流</span>
+            </div>
 
+            <div class="nav_bar" onclick="window.location.href='AcademicSource'">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>学术资源</span>
+            </div>
+
+            <div class="nav_bar" onclick="window.location.href='Achievement'">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>科研成果</span>
+            </div>
+
+            <div class="nav_bar" onclick="">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>友情链接</span>
+            </div>
+        </div>
 
     </div>
 
@@ -95,8 +111,6 @@
 
                 <%-- 每个标题 --%>
                 <div id="title_copy" class="each_title" style="display: none;">
-
-                    <div class="each_img"></div>
 
                     <div class="right_title">
                         <div class="big_div article_list_title">
@@ -225,6 +239,7 @@
 
 <script src="js/homepage.js"></script>
 <script src="js/common.js"></script>
+<script src="js/banner.js"></script>
 <script src="js/version.js"></script>
 <script src="js/jquery.js"></script>
 </body>

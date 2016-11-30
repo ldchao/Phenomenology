@@ -10,12 +10,12 @@ window.onload = function () {
 
     language = judgeVersion();
     getPics();
+    getBanners();
 
     // 动态新闻
     getDynamic();
     // 源头活水
     getSource();
-
 };
 
 // 动态新闻
@@ -71,11 +71,11 @@ function setTitle(result, parent) {
         div.innerHTML = copy.innerHTML;
         div.setAttribute("class", "each_title");
 
-        var img = document.createElement("img");
-        img.style.width = "70px";
-        img.style.height = "70px";
-        img.src = result[i].thumbnailLocation;
-        div.getElementsByClassName("each_img")[0].appendChild(img);
+        // var img = document.createElement("img");
+        // img.style.width = "70px";
+        // img.style.height = "70px";
+        // img.src = result[i].thumbnailLocation;
+        // div.getElementsByClassName("each_img")[0].appendChild(img);
         
         var title = div.getElementsByClassName("big_div")[0];
         title.innerHTML = result[i].title;
