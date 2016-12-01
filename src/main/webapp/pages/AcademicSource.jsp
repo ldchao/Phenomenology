@@ -71,7 +71,7 @@
             <span>科研成果</span>
         </div>
 
-        <div class="nav_bar" onclick="">
+        <div class="nav_bar" onclick="window.location.href='Blogroll'">
             <i class="fa fa-angle-right"></i>&nbsp;
             <span>友情链接</span>
         </div>

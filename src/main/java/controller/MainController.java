@@ -53,6 +53,11 @@ public class MainController {
         return "pages/Situation";
     }
 
+    @RequestMapping(value = "/Blogroll", method = RequestMethod.GET)
+    public String blogroll() {
+        return "pages/Blogroll";
+    }
+
     @RequestMapping(value = "/Search", method = RequestMethod.GET)
     public ModelAndView searchResult(HttpServletRequest request) {
         String key = null;

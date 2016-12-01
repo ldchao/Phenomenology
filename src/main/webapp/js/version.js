@@ -129,7 +129,7 @@ function changeVersion_title() {
     var titles = document.getElementsByClassName("left_nav")[0].getElementsByTagName("span");
     var divs = document.getElementsByClassName("left_nav")[0].getElementsByClassName("nav_bar");
     var Engs = ["&nbsp;HomePage", "OurSituation", "AgencyPersonnel",
-        "AcademicExchange", "AcademicResources", "ScientificAchievements"];
+        "AcademicExchange", "AcademicResources", "ScientificAchievements", "Blogroll"];
 
     for (var i = 0; i < titles.length; i++) {
         titles[i].innerHTML = Engs[i];
