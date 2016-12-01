@@ -98,11 +98,11 @@
 
         <div style="margin-left: 5px; margin-top: 5px;">
 
-            <div class="links_div">
+            <div class="links_div" onclick="window.open('http://hiw.kuleuven.be/ned')">
                 鲁汶大学胡塞尔档案馆
             </div>
 
-            <div class="links_div">
+            <div class="links_div" onclick="window.open('http://www.husserlarchiv.de')">
                 弗莱堡大学胡塞尔档案馆
             </div>
 
@@ -110,11 +110,11 @@
 
         <div style="margin-left: 5px;">
 
-            <div class="links_div">
+            <div class="links_div" onclick="window.open('http://www.phaenomenologie.com.cn')">
                 中国现象学网
             </div>
 
-            <div class="links_div">
+            <div class="links_div" onclick="window.open('http://www.husserl.phil-fak.uni-koeln.de/7757.html')">
                 科隆大学胡塞尔档案馆
             </div>
 
