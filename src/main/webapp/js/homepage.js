@@ -10,7 +10,7 @@ window.onload = function () {
 
     language = judgeVersion();
     getPics();
-    getBanners();
+    // getBanners();
 
     // 动态新闻
     getDynamic();
@@ -32,6 +32,17 @@ function getDynamic() {
         dataType: "json",
         success: function (result) {
             setTitle(result, dynamic);
+
+            var imgs = [];
+            var titles = [];
+            var urls = [];
+            for (var i = 0; i < result.length; i++) {
+                imgs[i] = result[i].thumbnailLocation;
+                titles[i] = result[i].title;
+                urls[i] = result[i].url;
+            }
+            getBanners(imgs, titles, urls);
+
         },
         error: function () {
             alert("首页数据获取失败");
@@ -76,7 +87,7 @@ function setTitle(result, parent) {
         // img.style.height = "70px";
         // img.src = result[i].thumbnailLocation;
         // div.getElementsByClassName("each_img")[0].appendChild(img);
-        
+
         var title = div.getElementsByClassName("big_div")[0];
         title.innerHTML = result[i].title;
 
@@ -166,7 +177,7 @@ function getMore(link) {
                     gotoPage(1);
 
                 } else {
-                    for (var i=0; i < result.length; i++) {
+                    for (var i = 0; i < result.length; i++) {
                         setMore(result[i]);
                     }
                 }

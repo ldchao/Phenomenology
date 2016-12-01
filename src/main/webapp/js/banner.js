@@ -18,35 +18,37 @@ banner.onmouseout = function () {
     banner_auto = setInterval(switchPic, banner_speed);
 };
 
-function getBanners() {
+function getBanners(imgs, titles, urls) {
 
-    banner_width = 6 * 230;
+    banner_width = imgs.length * 230;
     banner.style.width = banner_width;
 
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < imgs.length; i++) {
         var div = document.createElement("div");
         div.className = "banner_pic";
         banner.appendChild(div);
 
-        if (i % 2 == 0) {
-            div.style.backgroundColor = '#76c06e';
-        }
+        var img = document.createElement("img");
+        img.style.width = "230px";
+        img.style.height = "160px";
+        img.src = imgs[i];
+        img.style.border = 'none';
+        div.appendChild(img);
 
-        div.innerHTML = i;
-        // var img = document.createElement("img");
-        // img.style.width = "230px";
-        // img.style.height = "160px";
-        // img.src = result[i].location;
-        // div.appendChild(img);
+        var a = document.createElement("a");
+        a.innerHTML = urls[i];
+        a.style.display = "none";
+        div.appendChild(a);
 
-        // var a = document.createElement("a");
-        // a.innerHTML = result[i].url;
-        // a.style.display = "none";
-        // div.appendChild(a);
+        var title_div = document.createElement('div');
+        title_div.className = 'pic_title article_list_title';
+        title_div.style.fontSize = '13px';
+        title_div.innerHTML = titles[i];
+        div.appendChild(title_div);
 
-        // div.onclick = function () {
-        //     window.open(this.getElementsByTagName("a")[0].innerHTML);
-        // };
+        div.onclick = function () {
+            window.open(this.getElementsByTagName("a")[0].innerHTML);
+        };
 
         var dot = document.createElement('div');
         dot.className = 'dot';
@@ -60,14 +62,14 @@ function getBanners() {
         };
     }
 
-    // if (result.length > 1) {
-    banner_auto = setInterval(switchPic, banner_speed);
-    // }
+    if (imgs.length > 1) {
+        banner_auto = setInterval(switchPic, banner_speed);
+    }
     dots = dotpages.getElementsByClassName('dot');
 }
 
 function switchPic() {
-    
+
     if (banner.offsetLeft > (231 - banner_width)) {
         banner.style.left = banner.offsetLeft - 230;
 

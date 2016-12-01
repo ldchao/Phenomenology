@@ -70,6 +70,11 @@
             <i class="fa fa-angle-right"></i>&nbsp;
             <span>科研成果</span>
         </div>
+
+        <div class="nav_bar" onclick="">
+            <i class="fa fa-angle-right"></i>&nbsp;
+            <span>友情链接</span>
+        </div>
     </div>
 
     <%--右侧内容块--%>

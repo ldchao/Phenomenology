@@ -45,9 +45,7 @@
 
             <div id="banner" style="position: absolute;"></div>
 
-            <div class="pic_title article_list_title" style="font-size: 13px;">
-                现象学研究所接见了世界级现象学大师
-            </div>
+
 
             <div id="dotpages" class="dot_div"></div>
         </div>
