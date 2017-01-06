@@ -1,5 +1,5 @@
 .sub_field {
-    width: 363px;
+    width: 303px;
     height: 460px;
     margin-top: 30px;
     margin-left: 40px;
@@ -10,7 +10,7 @@
 
 .sub_hr {
     width: 0;
-    height: 462px;
+    height: 392px;
     border: 1px solid #b1bbbf;
     margin-top: 30px;
     margin-left: 40px;
@@ -19,7 +19,7 @@
 }
 
 .sub_title_div {
-    width: 363px;
+    width: 303px;
     height: 30px;
 }
 
@@ -45,18 +45,21 @@
 }
 
 .each_title {
-    width: 363px;
-    height: 70px;
+    width: 303px;
+    height: 55px;
     margin-top: 15px;
 }
 
 .right_title {
-    width: 360px;
+    width: 300px;
 }
 
 .big_div {
-    height: 44px;
+    height: 23px;
     cursor: pointer;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .big_div:hover {
@@ -64,12 +67,10 @@
 }
 
 .small_div {
-    width: 278px;
-    height: 18px;
-    margin-top: 8px;
+    width: 303px;
+    height: 38px;
+    margin-top: 6px;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 /* 更多点开 */
@@ -179,6 +180,7 @@
     float: left;
     cursor: pointer;
     display: inline-flex;
+    position: relative;
 }
 
 .dot {

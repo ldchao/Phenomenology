@@ -80,10 +80,10 @@ function getPics_ajax(url, syb) {
 
 function autoScroll() {
 
-    if (tab.offsetLeft > (1124 - width)) {
+    if (tab.offsetLeft > (1004 - width)) {
         tab.style.left = tab.offsetLeft - 1;
 
-        if (tab.offsetLeft == (1125 - width)) {
+        if (tab.offsetLeft == (1005 - width)) {
             stop = 1;
         }
 
@@ -117,11 +117,11 @@ next.onmouseout = function () {
 next.onclick = function () {
     clearInterval(auto);
     var shift = (Math.floor(-tab.offsetLeft / 237) + 1) * 237;
-    if ((shift + 1124) >= width) {
+    if ((shift + 1004) >= width) {
         shift = width - 1124;
     }
 
-    if (tab.offsetLeft > (1124 - width)) {
+    if (tab.offsetLeft > (1004 - width)) {
         tab.style.left = -shift;
     }
 };

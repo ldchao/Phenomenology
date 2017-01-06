@@ -50,7 +50,7 @@
         </div>
 
         <%--左侧导航栏--%>
-        <div class="left_nav" style="height: 340px; margin-top: 10px; padding-top: 15px;">
+        <div class="left_nav" style="height: 260px; margin-top: 10px; padding-top: 15px;">
 
             <div class="nav_bar" onclick="window.location.href='HomePage'">
                 <i class="fa fa-angle-right"></i>
@@ -91,7 +91,7 @@
     </div>
 
     <%--右侧内容块--%>
-    <div id="simple_content" class="right_content">
+    <div id="simple_content" class="right_content" style="height: 445px;">
 
         <div class="article_index title_div">友情链接</div>
 

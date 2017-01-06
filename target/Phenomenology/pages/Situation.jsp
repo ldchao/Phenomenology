@@ -83,7 +83,7 @@
             南京大学现象研究所
         </div>
 
-        <div id="introduce" class="article_text" style="width: 810px; margin-left: 40px; margin-top: 22px;"></div>
+        <div id="introduce" class="article_text" style="width: 690px; margin-left: 40px; margin-top: 22px;"></div>
 
     </div>
 

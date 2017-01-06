@@ -110,13 +110,13 @@ a:hover {
 }
 
 .main_body {
-    width: 1140px;
+    width: 1020px;
     margin: 30px auto;
 }
 
 .left_nav {
     width: 230px;
-    height: 505px;
+    height: 435px;
     background-color: #fff;
     display: inline-block;
     vertical-align: top;
@@ -127,12 +127,12 @@ a:hover {
 
 .nav_bar {
     width: 190px;
-    height: 48px;
+    height: 35px;
     color: #4a4a4b;
     font-family: "PingFang SC", serif;
-    font-size: 22px;
+    font-size: 18px;
     padding-left: 40px;
-    line-height: 48px;
+    line-height: 35px;
     cursor: pointer;
 }
 
@@ -148,8 +148,8 @@ a:hover {
 }
 
 .right_content {
-    width: 890px;
-    height: 525px;
+    width: 770px;
+    height: 455px;
     background-color: #fff;
     margin-left: 15px;
     display: inline-block;
@@ -158,7 +158,7 @@ a:hover {
 }
 
 .right_content_detail {
-    width: 890px;
+    width: 770px;
     min-height: 700px;
     background-color: #fff;
     margin-left: 15px;
@@ -169,7 +169,7 @@ a:hover {
 }
 
 .roll_pic {
-    width: 1140px;
+    width: 1020px;
     height: 129px;
     margin: 20px auto;
     background-color: #fff;
@@ -267,14 +267,14 @@ a:hover {
 
 /* 标题、索引 */
 .article_index {
-    font-size: 22px;
+    font-size: 18px;
     color: #4a4a4b;
     font-family: "PingFang SC", serif;
 }
 
 /* 文章列表标题 */
 .article_list_title {
-    font-size: 18px;
+    font-size: 16px;
     color: #60676d;
     font-family: "PingFang SC", serif;
 }
@@ -295,7 +295,7 @@ a:hover {
 
 /* 文章正文 */
 .article_title {
-    font-size: 34px;
+    font-size: 28px;
     color: #4a4a4b;
     font-family: "PingFang SC", serif;
 }
