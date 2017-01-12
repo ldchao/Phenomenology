@@ -83,11 +83,12 @@ function judgeVersion() {
                 if (document.getElementsByClassName("left_nav").length > 0) {
                     changeVersion_title();
                 }
+                
                 changeVersion_content();
             }
         },
         error: function () {
-            // alert("语言版本获取失败");
+            alert("语言版本获取失败");
         }
     });
 
@@ -146,19 +147,12 @@ function changeVersion_title() {
 
     var bottom = document.getElementsByClassName("bottom_nav")[0];
     var spans = bottom.getElementsByTagName("span");
-    var links = bottom.getElementsByTagName("a");
 
-    var eng_title = ["Forwarding Address", "No.163,Xianlin Avenue,Nanjing",
-        "Xianlin Campus of Nanjing University Xue Guanglin building", "Postcodes", "Friendship link"];
-    var eng_a = ["Husserl archives of Freiburg University", "Husserl archives of University of Cologne",
-        "Leuven Husserl University Archives", "Husserl archives of Université de Paris I", "Chinese phenomena network"];
+    var eng_bottom = ["Forwarding Address", "No.163,Xianlin Avenue,Nanjing",
+        "Xianlin Campus of Nanjing University Xue Guanglin building", "Postcodes", "Mailbox"];
 
-    for (var i = 0; i < eng_title.length; i++) {
-        spans[i].innerHTML = eng_title[i];
-    }
-
-    for (var j = 0; j < eng_a.length; j++) {
-        links[j].innerHTML = eng_a[j];
+    for (var i = 0; i < eng_bottom.length; i++) {
+        spans[i].innerHTML = eng_bottom[i];
     }
 
     document.getElementById("search_key").placeholder = "Search what you want…";

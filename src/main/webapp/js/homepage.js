@@ -235,6 +235,7 @@ function setMore(result) {
 }
 
 function changeVersion_content() {
+    
     var subtitles = document.getElementsByClassName("sub_title");
     var eng_title = ["DynamicNews", "SpringHead"];
 

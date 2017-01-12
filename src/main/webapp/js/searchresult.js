@@ -31,24 +31,29 @@ function getArticle(key) {
         dataType: "json",
         success: function (result) {
 
-            for (var i = 0; i < result.length; i++) {
-                var div = document.createElement("div");
-                div.innerHTML = copy.innerHTML;
+            if (result.length > 0) {
+                for (var i = 0; i < result.length; i++) {
+                    var div = document.createElement("div");
+                    div.innerHTML = copy.innerHTML;
 
-                var title = div.getElementsByClassName("more_title")[0];
-                title.innerHTML = result[i].title;
-                title.onclick = function () {
-                    showSearch(this, "getEssayURL");
-                };
+                    var title = div.getElementsByClassName("more_title")[0];
+                    title.innerHTML = result[i].title;
+                    title.onclick = function () {
+                        showSearch(this, "getEssayURL");
+                    };
 
-                div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+                    div.getElementsByTagName("a")[0].innerHTML = result[i].id;
 
-                setHtml(result[i].location, div.getElementsByClassName("search_text")[0]);
+                    setHtml(result[i].location, div.getElementsByClassName("search_text")[0]);
 
-                article.appendChild(div);
+                    article.appendChild(div);
+                }
+            } else {
+                var no_div = document.createElement("div");
+                no_div.className = "no_search";
+                no_div.innerHTML = "没有搜索到相关文章";
+                article.appendChild(no_div);
             }
-
-
         },
         error: function () {
             alert("搜索失败");
@@ -71,27 +76,35 @@ function getStaff(key) {
         dataType: "json",
         success: function (result) {
 
-            for (var i = 0; i < result.length; i++) {
-                var div = document.createElement("div");
-                div.innerHTML = copy.innerHTML;
 
-                var title = div.getElementsByClassName("more_title")[0];
-                title.innerHTML = result[i].name;
-                title.onclick = function () {
-                    showSearch(this, "getPersonURL");
-                };
-                
-                var img = document.createElement("img");
-                img.style.width = "70px";
-                img.style.height = "75px";
-                img.src = result[i].imageLocation;
-                div.getElementsByClassName("more_img")[0].appendChild(img);
-                
-                setHtml(result[i].descriptionLocation, div.getElementsByClassName("more_text")[0]);
-                
-                div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+            if (result.length > 0) {
+                for (var i = 0; i < result.length; i++) {
+                    var div = document.createElement("div");
+                    div.innerHTML = copy.innerHTML;
 
-                staff.appendChild(div);
+                    var title = div.getElementsByClassName("more_title")[0];
+                    title.innerHTML = result[i].name;
+                    title.onclick = function () {
+                        showSearch(this, "getPersonURL");
+                    };
+
+                    var img = document.createElement("img");
+                    img.style.width = "70px";
+                    img.style.height = "75px";
+                    img.src = result[i].imageLocation;
+                    div.getElementsByClassName("more_img")[0].appendChild(img);
+
+                    setHtml(result[i].descriptionLocation, div.getElementsByClassName("more_text")[0]);
+
+                    div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+
+                    staff.appendChild(div);
+                }
+            } else {
+                var no_div = document.createElement("div");
+                no_div.className = "no_search";
+                no_div.innerHTML = "没有搜索到相关人员";
+                staff.appendChild(no_div);
             }
         },
         error: function () {
@@ -117,27 +130,34 @@ function getBook(key) {
         dataType: "json",
         success: function (result) {
 
-            for (var i = 0; i < result.length; i++) {
-                var div = document.createElement("div");
-                div.innerHTML = copy.innerHTML;
+            if (result.length > 0) {
+                for (var i = 0; i < result.length; i++) {
+                    var div = document.createElement("div");
+                    div.innerHTML = copy.innerHTML;
 
-                var title = div.getElementsByClassName("more_title")[0].innerHTML.trim();
-                title.innerHTML = result[i].title;
-                title.onclick = function () {
-                    showSearch(this, "getAchievementURL");
-                };
+                    var title = div.getElementsByClassName("more_title")[0].innerHTML.trim();
+                    title.innerHTML = result[i].title;
+                    title.onclick = function () {
+                        showSearch(this, "getAchievementURL");
+                    };
 
-                var img = document.createElement("img");
-                img.style.width = "70px";
-                img.style.height = "75px";
-                img.src = result[i].thumbnailLocation;
-                div.getElementsByClassName("more_img")[0].appendChild(img);
+                    var img = document.createElement("img");
+                    img.style.width = "70px";
+                    img.style.height = "75px";
+                    img.src = result[i].thumbnailLocation;
+                    div.getElementsByClassName("more_img")[0].appendChild(img);
 
-                setHtml(result[i].descriptionLocation, div.getElementsByClassName("more_text")[0]);
+                    setHtml(result[i].descriptionLocation, div.getElementsByClassName("more_text")[0]);
 
-                div.getElementsByTagName("a")[0].innerHTML = result[i].id;
+                    div.getElementsByTagName("a")[0].innerHTML = result[i].id;
 
-                book.appendChild(div);
+                    book.appendChild(div);
+                }
+            } else {
+                var no_div = document.createElement("div");
+                no_div.className = "no_search";
+                no_div.innerHTML = "没有搜索到相关书籍";
+                book.appendChild(no_div);
             }
             
         },

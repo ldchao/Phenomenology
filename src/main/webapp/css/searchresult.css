@@ -9,6 +9,7 @@
     max-height: 55px;
     margin-top: 9px;
     overflow: hidden;
+    line-height: 19px;
 }
 
 .search_list {
@@ -17,4 +18,12 @@
     margin-left: 50px;
     margin-top: 18px;
     overflow: auto;
+}
+
+.no_search {
+    width: 100%;
+    text-align: center;
+    color: #d8d8d8;
+    font-size: 30px;
+    margin-top: 40px;
 }

@@ -219,7 +219,7 @@ a:hover {
     line-height: 50px;
 }
 
-.bottom_nav span{
+.span_title{
     color: #a0a0a0;
     font-size: 12px;
     margin-right: 5px;
@@ -275,15 +275,16 @@ a:hover {
 /* 文章列表标题 */
 .article_list_title {
     font-size: 16px;
-    color: #60676d;
+    color: #393d41;
     font-family: "PingFang SC", serif;
 }
 
 /* 文章内容预览 */
 .article_preview {
-    font-size: 13px;
+    font-size: 13px !important;
     color: #afafaf;
     font-family: "PingFang SC", serif;
+    font-style: normal !important;
 }
 
 /* 文章正文 */

@@ -8,7 +8,7 @@ var language = "ch";
 window.onload = function () {
     language = judgeVersion();
     getPics();
-    
+
     getLectures();
     getMeetings();
     getVisitings();
@@ -122,7 +122,7 @@ function setTitle(result, parent) {
         title.onclick = function () {
             showArticle(this);
         };
-
+        
         div.getElementsByTagName("span")[1].innerHTML = result[i].time;
         div.getElementsByTagName("a")[0].innerHTML = result[i].id;
 

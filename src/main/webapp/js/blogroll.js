@@ -5,7 +5,7 @@
 window.onload = function () {
 
     var language = judgeVersion();
-    
+
     $.ajax({
         type: "get",
         async: false,
@@ -34,3 +34,17 @@ window.onload = function () {
 
     getPics();
 };
+
+function changeVersion_content() {
+
+    document.getElementsByClassName("title_div")[0].innerHTML = "Friendly Links";
+
+    var masks = document.getElementsByClassName("mask");
+    var eng_mask = ["Leuven Husserl University Archives", "Husserl archives of Freiburg University",
+        "Chinese phenomena network", "Husserl archives of University of Cologne"];
+
+    for (var i = 0; i < masks.length; i++) {
+        masks[i].innerHTML = eng_mask[i];
+    }
+
+}

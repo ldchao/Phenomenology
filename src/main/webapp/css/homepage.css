@@ -72,6 +72,8 @@
     margin-top: 0;
     margin-left: 10px;
     overflow: hidden;
+    padding-right: 3px;
+    line-height: 18px;
 }
 
 /* 更多点开 */
@@ -116,6 +118,7 @@
     display: inline-block;
     vertical-align: top;
     overflow: hidden;
+    line-height: 19px;
 }
 
 .next_page {

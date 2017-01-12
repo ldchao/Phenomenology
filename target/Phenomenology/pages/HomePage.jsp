@@ -206,12 +206,12 @@
 
 <%--底栏--%>
 <div class="bottom_nav">
-    <span>通讯地址</span>
-    南京市仙林大道163号&nbsp;
-    南京大学仙林校区薛光林楼
-    <span style="margin-left: 25px;">邮编</span>
+    <span class="span_title">通讯地址</span>
+    <span>南京市仙林大道163号</span>&nbsp;
+    <span>南京大学仙林校区薛光林楼</span>
+    <span style="margin-left: 25px;" class="span_title">邮编</span>
     210023
-    <span style="margin-left: 25px;">邮箱</span>
+    <span style="margin-left: 25px;" class="span_title">邮箱</span>
     phenomenology@nju.edu.cn
 </div>
 
