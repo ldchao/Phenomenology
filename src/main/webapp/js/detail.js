@@ -8,6 +8,10 @@ window.onload = function () {
     language = judgeVersion_detail();
     getPics_detail();
 
+    backToTop();
+    var back_left = $(".main_body").offset().left + 780 + "px";
+    $("#back-to-top").css("left", back_left);
+
     var index = parseInt(document.getElementById("storage").innerHTML);
     document.getElementsByClassName("nav_bar")[index].setAttribute("class", "nav_bar active");
 

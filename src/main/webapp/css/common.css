@@ -112,6 +112,7 @@ a:hover {
 .main_body {
     width: 1020px;
     margin: 30px auto;
+    position: relative;
 }
 
 @media screen and (max-width: 1280px) {
@@ -234,9 +235,8 @@ a:hover {
 /* 返回顶部 */
 #back-to-top {
     position: fixed;
-    right: 10px;
     bottom: 10px;
-    background-color: rgba(120, 148, 212, 70);
+    background-color: #82d5f7;
     color: #fff;
     text-align: center;
     border-radius: 2px;
@@ -247,7 +247,7 @@ a:hover {
 }
 
 #back-to-top:hover {
-    background-color: #5678C4;
+    background-color: #66c8f1;
 }
 
 #back-to-top i {

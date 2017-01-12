@@ -70,14 +70,16 @@
     width: 290px;
     height: 35px;
     margin-top: 0;
-    margin-left: 10px;
+    margin-left: 0;
     overflow: hidden;
     padding-right: 3px;
     line-height: 18px;
+    color: #afafaf;
 }
 
 .small_div i {
     font-style: normal !important;
+    color: #afafaf;
 }
 
 /* 更多点开 */
