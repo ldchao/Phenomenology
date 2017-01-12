@@ -9,7 +9,7 @@ window.onload = function () {
     getPics_detail();
 
     backToTop();
-    var back_left = $(".main_body").offset().left + 780 + "px";
+    var back_left = $(".main_body").offset().left + 1025 + "px";
     $("#back-to-top").css("left", back_left);
 
     var index = parseInt(document.getElementById("storage").innerHTML);
