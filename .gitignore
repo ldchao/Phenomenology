@@ -37,3 +37,5 @@ target/Phenomenology/META-INF/MANIFEST.MF
 .idea/dataSources.local.xml
 
 *.class
+
+target/Phenomenology/css/common.css

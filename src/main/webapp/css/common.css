@@ -114,6 +114,12 @@ a:hover {
     margin: 30px auto;
 }
 
+@media screen and (max-width: 1280px) {
+    .main_body {
+        margin: 30px 130px;
+    }
+}
+
 .left_nav {
     width: 230px;
     height: 435px;
@@ -219,7 +225,7 @@ a:hover {
     line-height: 50px;
 }
 
-.span_title{
+.span_title {
     color: #a0a0a0;
     font-size: 12px;
     margin-right: 5px;
