@@ -76,6 +76,10 @@
     line-height: 18px;
 }
 
+.small_div i {
+    font-style: normal !important;
+}
+
 /* 更多点开 */
 .each_page {
     width: 700px;
