@@ -293,6 +293,11 @@ a:hover {
     font-style: normal !important;
 }
 
+.article_preview i {
+    font-style: normal;
+    color: #afafaf;
+}
+
 /* 文章正文 */
 .article_text {
     font-size: 14px;
