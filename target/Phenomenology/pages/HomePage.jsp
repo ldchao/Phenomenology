@@ -18,25 +18,9 @@
 
 <body>
 
-<div class="top_title">
-
-    <div style="width: 1135px; margin: 0 auto; position: relative">
-        <img src="css/NJUPh.svg">
-
-        <div class="ch_eng" onclick="changeVersion(0)">中文</div>
-        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
-
-        <div>
-            <input id="search_key" class="search" type="text" placeholder="搜索您想要的…"
-                   onkeydown="if(event.keyCode==13){search(0);}">
-            <i class="fa fa-search search_btn" style="font-size: 22px;" onclick="search(0)"></i>
-        </div>
-
-    </div>
-</div>
+<jsp:include page="common/NavBar.jsp"></jsp:include>
 
 <div class="main_body">
-
 
     <div style="display: inline-block; vertical-align: top;">
 
@@ -48,49 +32,35 @@
             <div id="dotpages" class="dot_div"></div>
         </div>
 
-        <%--左侧导航栏--%>
-        <div class="left_nav" style="height: 270px; margin-top: 10px; padding-top: 15px;">
+        <div class="blogroll_div" onclick="window.open('http://hiw.kuleuven.be/ned')"
+             style="background-image: url('../img/1.png');">
 
-            <div class="nav_bar active" onclick="window.location.href='HomePage'">
-                <i class="fa fa-angle-right"></i>
-                <span>&nbsp;首&nbsp;页</span>
-            </div>
+            <div class="cover_div">鲁汶大学胡塞尔档案馆</div>
+        </div>
 
-            <div class="nav_bar" onclick="window.location.href='Situation'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>本所概况</span>
-            </div>
+        <div class="blogroll_div" onclick="window.open('http://www.husserlarchiv.de')"
+             style="background-image: url('../img/2.png');">
 
-            <div class="nav_bar" onclick="window.location.href='Organization'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>机构人员</span>
-            </div>
+            <div class="cover_div">弗莱堡大学胡塞尔档案馆</div>
 
-            <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>学术交流</span>
-            </div>
+        </div>
 
-            <div class="nav_bar" onclick="window.location.href='AcademicSource'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>学术资源</span>
-            </div>
+        <div class="blogroll_div" onclick="window.open('http://www.phaenomenologie.com.cn')"
+             style="background-image: url('../img/3.png');">
 
-            <div class="nav_bar" onclick="window.location.href='Achievement'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>科研成果</span>
-            </div>
+            <div class="cover_div">中国现象学网</div>
+        </div>
 
-            <div class="nav_bar" onclick="window.location.href='Blogroll'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>友情链接</span>
-            </div>
+        <div class="blogroll_div" onclick="window.open('http://www.husserl.phil-fak.uni-koeln.de/7757.html')"
+             style="background-image: url('../img/4.png');">
+
+            <div class="cover_div">科隆大学胡塞尔档案馆</div>
         </div>
 
     </div>
 
     <%--右侧内容块--%>
-    <div id="simple_content" class="right_content" style="height: 455px;">
+    <div id="simple_content" class="right_content" style="width: 720px; height: 500px;">
 
         <div class="sub_field">
 
@@ -161,15 +131,7 @@
                 <div class="article_list_title more_title">现象学研究所接见了世界级现象学大师</div>
                 <div>
                     <div class="more_img"></div>
-                    <div class="more_text article_preview">啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                        啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                        啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                        啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                        啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                        啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                        啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                        啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
-                        啊啊啊啊啊啊啊啊
+                    <div class="more_text article_preview">preview content
                     </div>
                 </div>
             </div>
@@ -198,7 +160,6 @@
 
         <div class="next_pic" style="left: 20px;"><i class="fa fa-arrow-circle-o-left"></i></div>
         <div class="next_pic"><i class="fa fa-arrow-circle-o-right"></i></div>
-
     </div>
 
 </div>

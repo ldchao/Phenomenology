@@ -10,31 +10,15 @@
 <head>
     <title>南京大学现象学研究所</title>
 
-    <link href="css/achievement.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
-    <link href="css/cssreset.css" rel="stylesheet">
-    <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link href="css/achievement.css" rel="stylesheet">
+<link href="css/common.css" rel="stylesheet">
+<link href="css/cssreset.css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="top_title">
-
-    <div style="width: 1135px; margin: 0 auto; position: relative">
-        <img src="css/NJUPh.svg">
-
-        <div class="ch_eng" onclick="changeVersion(0)">中文</div>
-        <div class="ch_eng ch_eng_not" style="width: 60px; right: 0;" onclick="changeVersion(1)">English</div>
-
-        <div>
-            <input id="search_key" class="search" type="text" placeholder="搜索您想要的…"
-                   onkeydown="if(event.keyCode==13){search(0);}">
-            <i class="fa fa-search search_btn" style="font-size: 22px;" onclick="search(0)"></i>
-        </div>
-
-    </div>
-
-</div>
+<jsp:include page="common/NavBar.jsp"></jsp:include>
 
 <div class="main_body">
 

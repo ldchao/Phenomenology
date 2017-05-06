@@ -20,7 +20,7 @@ banner.onmouseout = function () {
 
 function getBanners(imgs, titles, urls) {
 
-    banner_width = imgs.length * 230;
+    banner_width = imgs.length * 390;
     banner.style.width = banner_width;
 
     for (var i = 0; i < imgs.length; i++) {
@@ -29,8 +29,8 @@ function getBanners(imgs, titles, urls) {
         banner.appendChild(div);
 
         var img = document.createElement("img");
-        img.style.width = "230px";
-        img.style.height = "160px";
+        img.style.width = "390px";
+        img.style.height = "260px";
         img.src = imgs[i];
         img.style.border = 'none';
         div.appendChild(img);
@@ -70,8 +70,8 @@ function getBanners(imgs, titles, urls) {
 
 function switchPic() {
 
-    if (banner.offsetLeft > (231 - banner_width)) {
-        banner.style.left = banner.offsetLeft - 230;
+    if (banner.offsetLeft > (391 - banner_width)) {
+        banner.style.left = banner.offsetLeft - 390;
 
         dots[currentPage - 1].style.backgroundColor = '#d8d8d8';
         currentPage++;
@@ -94,6 +94,6 @@ function gotopage(node) {
     currentPage = index + 1;
     dots[currentPage - 1].style.backgroundColor = '#1a799f';
 
-    banner.style.left = 0 - index * 230;
+    banner.style.left = 0 - index * 390;
     banner_auto = setInterval(switchPic, banner_speed);
 }

@@ -1,5 +1,5 @@
 .sub_field {
-    width: 303px;
+    width: 278px;
     height: 460px;
     margin-top: 30px;
     margin-left: 40px;
@@ -10,7 +10,7 @@
 
 .sub_hr {
     width: 0;
-    height: 392px;
+    height: 437px;
     border: 1px solid #b1bbbf;
     margin-top: 30px;
     margin-left: 40px;
@@ -19,14 +19,14 @@
 }
 
 .sub_title_div {
-    width: 303px;
+    width: 278px;
     height: 30px;
 }
 
 .div_decorate {
     width: 16px;
     height: 16px;
-    background-color: #1a799f;
+    background-color: #9D2933;
     display: inline-block;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .each_title {
-    width: 303px;
+    width: 278px;
     height: 55px;
     margin-top: 15px;
 }
@@ -67,7 +67,7 @@
 }
 
 .small_div {
-    width: 290px;
+    width: 278px;
     height: 35px;
     margin-top: 0;
     margin-left: 0;
@@ -165,15 +165,15 @@
 
 /* 轮播图 */
 .banner_div {
-    width: 230px;
-    height: 160px;
+    width: 390px;
+    height: 260px;
     box-shadow: 0 0 7px rgba(42, 91, 111, .14);
     overflow: hidden;
     position: relative;
 }
 
 .pic_title {
-    width: 230px;
+    width: 390px;
     height: 37px;
     position: absolute;
     left: 0;
@@ -184,8 +184,8 @@
 }
 
 .banner_pic {
-    width: 230px;
-    height: 160px;
+    width: 390px;
+    height: 260px;
     margin-left: 0;
     float: left;
     cursor: pointer;

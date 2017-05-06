@@ -1,7 +1,7 @@
 body {
     width: 100%;
     margin: 0;
-    background-color: #f2fafd;
+    background-color: #f8fffc;
     font-family: Helvetica, Tahoma, Arial, "PingFang SC", “Microsoft YaHei”, “微软雅黑”, SimSun, “宋体”, Heiti, “黑体”, sans-serif;
 }
 
@@ -17,8 +17,8 @@ a:hover {
 .top_title {
     width: 100%;
     min-width: 1280px;
-    height: 209px;
-    background-color: #19769c;
+    height: 170px;
+    background-color: #015834;
 }
 
 .top_title img {
@@ -31,7 +31,7 @@ a:hover {
 .ch_eng {
     width: 45px;
     height: 22px;
-    background-color: #83d1f0;
+    background-color: #ed737d;
     color: #fff;
     line-height: 22px;
     text-align: center;
@@ -46,11 +46,10 @@ a:hover {
 
 .ch_eng_not {
     background-color: #fff;
-    color: #19789e;
+    color: #64706c;
     cursor: pointer;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
     z-index: 100;
@@ -58,13 +57,17 @@ a:hover {
 
 .ch_eng_not:hover {
     color: #4C6E7C;
-    background-color: #CEF0FA;
+    background-color: #F9DCDF;
 }
 
 .search {
     width: 242px;
     height: 37px;
+    background-color: transparent;
+    color: #fff;
+    outline: none;
     border: none;
+    border-bottom: 1px solid #fff;
     position: absolute;
     top: 80px;
     right: 0;
@@ -73,22 +76,21 @@ a:hover {
     line-height: 1.5;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
     z-index: 100;
 }
 
 .search::-webkit-input-placeholder {
-    color: #b9ccd4;
+    color: #fff;
 }
 
 .search:focus,
 .search:hover {
     border-color: #536e9e;
     outline: 0;
-    -webkit-box-shadow: 0 0 6px #82ddea;
-    box-shadow: 0 0 8px #82ddea;
+    /*-webkit-box-shadow: 0 0 6px #82ddea;*/
+    box-shadow: 0 2px 2px #fff;
 }
 
 .search_btn {
@@ -97,29 +99,83 @@ a:hover {
     top: 87px;
     z-index: 110;
     cursor: pointer;
-    color: #4f4f4f;
+    color: #fff;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
 }
 
-.search_btn:hover {
-    color: #121212;
-}
-
 .main_body {
-    width: 1020px;
+    width: 1140px;
     margin: 30px auto;
     position: relative;
 }
 
-@media screen and (max-width: 1280px) {
-    .main_body {
-        margin: 30px 130px;
-    }
+/**** 新导航栏  ***/
+.nav_bar_2 {
+    width: 100%;
+    min-width: 1280px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #057748;
+    font-family: "PingFang SC", serif;
+    font-size: 18px;
+    color: #fff;
 }
+
+.nav_2 {
+    width: 140px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-right: -6px;
+}
+
+.active_2, .nav_2:hover {
+    background-color: #015834;
+}
+
+.sub_nav_bar_2 {
+    width: 100%;
+    min-width: 1280px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #e1fff3;
+    color: #352d2d;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 220px;
+    z-index: 100;
+}
+
+.sub_nav_2 {
+    width: 140px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    margin-right: -6px;
+}
+
+.nav_2:hover > .sub_nav_bar_2 {
+    display: block;
+}
+
+.sub_nav_2:hover {
+    background-color: #B7D5C9;
+}
+/*******************************/
 
 .left_nav {
     width: 230px;
@@ -176,7 +232,7 @@ a:hover {
 }
 
 .roll_pic {
-    width: 1020px;
+    width: 1140px;
     height: 129px;
     margin: 20px auto;
     background-color: #fff;
@@ -217,7 +273,7 @@ a:hover {
     width: 100%;
     min-width: 1280px;
     height: 50px;
-    background-color: #4f4f4f;
+    background-color: #015834;
     color: #f4fcff;
     font-family: "PingFang SC", serif;
     font-size: 13px;
@@ -227,7 +283,7 @@ a:hover {
 }
 
 .span_title {
-    color: #a0a0a0;
+    color: #fff;
     font-size: 12px;
     margin-right: 5px;
 }
@@ -310,4 +366,34 @@ a:hover {
     font-size: 28px;
     color: #4a4a4b;
     font-family: "PingFang SC", serif;
+}
+
+/* 友情链接 */
+.blogroll_div {
+    width: 390px;
+    height: 50px;
+    margin-top: 10px;
+    position: relative;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    color: #fff;
+}
+
+.cover_div {
+    width: 390px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.cover_div:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
