@@ -60,7 +60,7 @@
     </div>
 
     <%--右侧内容块--%>
-    <div id="simple_content" class="right_content" style="width: 720px; height: 500px;">
+    <div id="simple_content" class="right_content" style="width: 728px; height: 500px;">
 
         <div class="sub_field">
 
@@ -182,5 +182,8 @@
 <script src="js/banner.js"></script>
 <script src="js/version.js"></script>
 <script src="js/jquery.js"></script>
+<script>
+    $(".nav_2").eq(0).addClass("active_2");
+</script>
 </body>
 </html>

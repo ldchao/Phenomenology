@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <div class="nav" onclick="window.location.href='Achievement'">
+    <div class="nav_2" onclick="window.location.href='Achievement'">
         科研成果
         <div class="sub_nav_bar_2">
             <div class="sub_nav_2" style="margin-left: 594px;">书籍出版</div>

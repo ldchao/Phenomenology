@@ -115,5 +115,8 @@
 <script src="js/communicate.js"></script>
 <script src="js/common.js"></script>
 <script src="js/version.js"></script>
+<script>
+    $(".nav_2").eq(3).addClass("active_2");
+</script>
 </body>
 </html>

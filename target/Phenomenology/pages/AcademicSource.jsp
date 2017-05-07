@@ -116,5 +116,8 @@
 <script src="js/version.js"></script>
 <script src="js/source.js"></script>
 <script src="js/jquery.js"></script>
+<script>
+    $(".nav_2").eq(4).addClass("active_2");
+</script>
 </body>
 </html>
