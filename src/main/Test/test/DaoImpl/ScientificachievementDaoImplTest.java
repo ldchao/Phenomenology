@@ -118,7 +118,11 @@ public void testGetBySaTitle() throws Exception {
 @Test
 public void testGetSaAttachment() throws Exception { 
 //TODO: Test goes here... 
-} 
+}
 
-
+    @Test
+    public void getScientificAchievementBySaTag() throws Exception {
+//TODO: Test goes here...
+        System.out.println(scientificachievementDao.getScientificAchievementBySaTag("123").size());
+    }
 } 

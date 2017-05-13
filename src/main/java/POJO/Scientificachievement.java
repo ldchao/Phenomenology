@@ -27,6 +27,7 @@ public class Scientificachievement implements java.io.Serializable {
 	private String descriptionLocation;
 	private Date time;
 	private Set<SaAttachment> saAttachments = new HashSet<SaAttachment>(0);
+	private Set<SaTag> saTags=new HashSet<SaTag>();
 
 	public Scientificachievement() {
 		title="unknown";
@@ -136,4 +137,12 @@ public class Scientificachievement implements java.io.Serializable {
 		this.saAttachments = saAttachments;
 	}
 
+	@ManyToMany(mappedBy = "scientificachievements")
+	public Set<SaTag> getSaTags() {
+		return saTags;
+	}
+
+	public void setSaTags(Set<SaTag> saTags) {
+		this.saTags = saTags;
+	}
 }

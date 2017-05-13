@@ -28,6 +28,7 @@ public class Essay implements java.io.Serializable {
 	private int pageView;
 	private Type type;
 	private Set<EssayAttachment> essayAttachments = new HashSet<EssayAttachment>(0);
+	private Set<EssayTag> essayTags=new HashSet<EssayTag>();
 
 	public Essay() {
 		title="unknown";
@@ -138,7 +139,7 @@ public class Essay implements java.io.Serializable {
 		this.type = type;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "essay")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "essay",cascade = {CascadeType.ALL})
 	public Set<EssayAttachment> getEssayAttachments() {
 		return this.essayAttachments;
 	}
@@ -147,5 +148,12 @@ public class Essay implements java.io.Serializable {
 		this.essayAttachments = essayAttachments;
 	}
 
+	@ManyToMany(mappedBy = "essays")
+	public Set<EssayTag> getEssayTags() {
+		return essayTags;
+	}
 
+	public void setEssayTags(Set<EssayTag> essayTags) {
+		this.essayTags = essayTags;
+	}
 }

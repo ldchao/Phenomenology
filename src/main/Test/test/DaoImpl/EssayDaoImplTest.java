@@ -145,4 +145,9 @@ public void testGetById() throws Exception {
     public void findByTitle() throws Exception{
     System.out.println(essayDao.getByEssayTitle("unknown").size());
 }
+
+    @Test
+    public void getEssaysByEssayTag() throws Exception{
+        System.out.println(essayDao.getEssaysByEssayTag("adc").size());
+    }
 } 

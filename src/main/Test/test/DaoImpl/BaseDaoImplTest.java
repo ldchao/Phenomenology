@@ -1,14 +1,24 @@
 package test.DaoImpl; 
 
+import Connection.DBconnection;
 import Dao.BaseDao;
 import DaoImpl.BaseDaoImpl;
-import POJO.Essay;
-import POJO.EssayAttachment;
-import POJO.Homepage;
-import POJO.HomepageEssay;
+import DaoImpl.EssayDaoImpl;
+import ENUM.Language;
+import ENUM.Type;
+
+import POJO.*;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.Test;
 import org.junit.Before; 
-import org.junit.After; 
+import org.junit.After;
+
+import javax.swing.text.html.HTML;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /** 
 * BaseDaoImpl Tester. 
@@ -135,4 +145,26 @@ public void testClean() throws Exception {
 } 
 
 
+@Test
+    public void test1() {
+        EssayDaoImpl essayDao=new EssayDaoImpl();
+        Essay essay=essayDao.getById(102);
+        Session session=DBconnection.getSession();
+//        String hql="from EssayTag";
+//        List<EssayTag> list=session.createQuery(hql).list();
+//        list.get(0).getEssays().add(essay);
+//        list.get(1).getEssays().add(essay);
+//        session.update(list.get(0));
+//        session.update(list.get(1));
+    Scientificachievement sc=session.get(Scientificachievement.class,2);
+    String hql="from SaTag";
+    List<SaTag> saTags=session.createQuery(hql).list();
+    saTags.get(0).getScientificachievements().add(sc);
+    saTags.get(1).getScientificachievements().add(sc);
+    session.save(saTags.get(0));
+    session.save(saTags.get(1));
+        Transaction ts=session.beginTransaction();
+        ts.commit();
+        session.close();
+    }
 } 

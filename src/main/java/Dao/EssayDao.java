@@ -30,4 +30,8 @@ public interface EssayDao {
     public List<Essay> getByEssayTitle(String title);
 
     public Set<EssayAttachment> getByEssayAttachment(int id);
+
+    public List<Essay> getEssaysByEssayTag(String tagName);
+
+
 }

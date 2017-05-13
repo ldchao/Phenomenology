@@ -7,9 +7,11 @@ import ENUM.Language;
 import ENUM.Type;
 import POJO.Essay;
 import POJO.EssayAttachment;
+import POJO.EssayTag;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -130,5 +132,22 @@ public class EssayDaoImpl implements EssayDao {
             DBconnection.closeSession(session);
         }
         return result;
+    }
+
+    public List<Essay> getEssaysByEssayTag(String tagName) {
+        List<Essay> list=new ArrayList<Essay>();
+        Session session=DBconnection.getSession();
+        try{
+            String hql="from EssayTag e where e.tagName='"+tagName+"'";
+            List<EssayTag> essays=session.createQuery(hql).list();
+            if (essays.size()!=0){
+                list.addAll(essays.get(0).getEssays());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return list;
     }
 }

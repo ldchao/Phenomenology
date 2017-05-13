@@ -6,9 +6,13 @@ import Dao.ScientificachievementDao;
 import ENUM.Language;
 import ENUM.Type;
 import POJO.SaAttachment;
+import POJO.SaTag;
 import POJO.Scientificachievement;
 import org.hibernate.Session;
+import org.springframework.web.context.request.SessionScope;
+import sun.security.pkcs11.Secmod;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -105,5 +109,22 @@ public class ScientificachievementDaoImpl implements ScientificachievementDao {
             DBconnection.closeSession(session);
         }
         return result;
+    }
+
+    public List<Scientificachievement> getScientificAchievementBySaTag(String tagName) {
+        List<Scientificachievement> list=new ArrayList<Scientificachievement>();
+        Session session=DBconnection.getSession();
+        try{
+            String hql="from SaTag s where s.tagName='"+tagName+"'";
+            List<SaTag> saTags=session.createQuery(hql).list();
+            if (saTags.size()!=0){
+                list.addAll(saTags.get(0).getScientificachievements());
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return list;
     }
 }

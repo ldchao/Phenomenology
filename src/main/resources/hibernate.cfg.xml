@@ -9,14 +9,16 @@
         <property name="hibernate.connection.url">jdbc:mysql://115.159.122.196:3306/phenomenology</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <!--<property name="hibernate.show_sql">true</property>-->
+        <property name="hibernate.show_sql">true</property>
 
         <mapping class="POJO.Essay"/>
+        <mapping class="POJO.EssayTag"/>
         <mapping class="POJO.EssayAttachment"/>
         <mapping class="POJO.Homepage"/>
         <mapping class="POJO.HomepageEssay"/>
         <mapping class="POJO.Person"/>
         <mapping class="POJO.SaAttachment"/>
+        <mapping class="POJO.SaTag"/>
         <mapping class="POJO.Scientificachievement"/>
         <mapping class="POJO.Slide"/>
         <mapping class="POJO.User"/>

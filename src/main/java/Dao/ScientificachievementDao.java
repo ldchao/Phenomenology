@@ -28,4 +28,6 @@ public interface ScientificachievementDao {
     public List<Scientificachievement> getBySaTitle(String title);
 
     public Set<SaAttachment> getSaAttachment(int id);
+
+    public List<Scientificachievement> getScientificAchievementBySaTag(String tagName);
 }
