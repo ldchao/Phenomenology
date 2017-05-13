@@ -16,11 +16,13 @@ import blservice.academicSourceBLService.CourseBLService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import vo.AcademicVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lvdechao on 2016/10/3.
@@ -41,7 +43,7 @@ public class AcademicController {
     @RequestMapping(value = "/cathedra/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateLecture(Integer id,String title,String author,
-                                String location,String language) {
+                                String location,String language,@RequestParam("tags[]")List<String> tags) {
 
         AcademicVO academicVO=new AcademicVO();
         academicVO.setId(id);
@@ -49,6 +51,7 @@ public class AcademicController {
         academicVO.setAuthor(author);
         academicVO.setLocation(location);
         academicVO.setLanguage(language);
+        academicVO.setTags(tags);
         CathedraBLService cathedraBLService=new CathedraBL();
         UniversalState universalState=cathedraBLService.updateItem(academicVO);
         return universalState.toString();
@@ -103,7 +106,7 @@ public class AcademicController {
     @RequestMapping(value = "/circleNews/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateCommunicate(Integer id,String title,String author,
-                                    String location,String language) {
+                                    String location,String language,@RequestParam("tags[]")List<String> tags) {
 
         AcademicVO academicVO=new AcademicVO();
         academicVO.setId(id);
@@ -111,6 +114,7 @@ public class AcademicController {
         academicVO.setAuthor(author);
         academicVO.setLocation(location);
         academicVO.setLanguage(language);
+        academicVO.setTags(tags);
         CircleNewsBLService circleNewsBLService=new CircleNewsBL();
         UniversalState universalState=circleNewsBLService.updateItem(academicVO);
         return universalState.toString();
@@ -165,7 +169,7 @@ public class AcademicController {
     @RequestMapping(value = "/course/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateVisit(Integer id,String title,String author,
-                              String location,String language) {
+                              String location,String language,@RequestParam("tags[]")List<String> tags) {
 
         AcademicVO academicVO=new AcademicVO();
         academicVO.setId(id);
@@ -173,6 +177,7 @@ public class AcademicController {
         academicVO.setAuthor(author);
         academicVO.setLocation(location);
         academicVO.setLanguage(language);
+        academicVO.setTags(tags);
         CourseBLService courseLService=new CourseBL();
         UniversalState universalState=courseLService.updateItem(academicVO);
         return universalState.toString();

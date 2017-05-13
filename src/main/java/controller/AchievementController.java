@@ -12,12 +12,14 @@ import blservice.achievementBLService.BookBLService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import vo.AcademicVO;
 import vo.AchievementVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lvdechao on 2016/10/3.
@@ -37,7 +39,7 @@ public class AchievementController {
     @RequestMapping(value = "/article/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateArticle(int id,String title,String thumbnailLocation,
-                                String descriptionLocation,String language) {
+                                String descriptionLocation,String language,@RequestParam("tags[]")List<String> tags) {
 
         AchievementVO achievementVO=new AchievementVO();
         achievementVO.setId(id);
@@ -45,6 +47,7 @@ public class AchievementController {
         achievementVO.setThumbnailLocation(thumbnailLocation);
         achievementVO.setDescriptionLocation(descriptionLocation);
         achievementVO.setLanguage(language);
+        achievementVO.setTags(tags);
         ArticleBLService articleBLService=new ArticleBL();
         UniversalState universalState=articleBLService.updateItem(achievementVO);
         return universalState.toString();
@@ -100,7 +103,7 @@ public class AchievementController {
     @RequestMapping(value = "/book/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateBook(int id,String title,String thumbnailLocation,
-                                String descriptionLocation,String language) {
+                                String descriptionLocation,String language,@RequestParam("tags[]")List<String> tags) {
 
         AchievementVO achievementVO=new AchievementVO();
         achievementVO.setId(id);
@@ -108,6 +111,7 @@ public class AchievementController {
         achievementVO.setThumbnailLocation(thumbnailLocation);
         achievementVO.setDescriptionLocation(descriptionLocation);
         achievementVO.setLanguage(language);
+        achievementVO.setTags(tags);
         BookBLService bookBLService=new BookBL();
         UniversalState universalState=bookBLService.updateItem(achievementVO);
         return universalState.toString();

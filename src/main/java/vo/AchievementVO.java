@@ -1,6 +1,7 @@
 package vo;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by lvdechao on 2016/10/3.
@@ -14,6 +15,7 @@ public class AchievementVO {
     private String thumbnailLocation;
     private String descriptionLocation;
     private String time;
+    private List<String> tags;
 
     public AchievementVO() {
     }
@@ -73,5 +75,13 @@ public class AchievementVO {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }

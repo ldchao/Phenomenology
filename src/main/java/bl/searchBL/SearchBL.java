@@ -73,4 +73,16 @@ public class SearchBL implements SearchBLService{
         }
         return result;
     }
+
+    public ArrayList<AcademicVO> searchEssayByTag(String tag) {
+        return null;
+    }
+
+    public ArrayList<AchievementVO> searchArticleByTag(String tag) {
+        return null;
+    }
+
+    public List<String> getHotTags() {
+        return null;
+    }
 }

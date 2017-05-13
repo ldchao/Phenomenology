@@ -19,7 +19,9 @@ import org.springframework.web.servlet.ModelAndView;
 import vo.AcademicVO;
 import vo.OrganizationVO;
 
+import javax.persistence.metamodel.ListAttribute;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lvdechao on 2016/10/3.
@@ -40,7 +42,7 @@ public class AcademicCommunicateController {
     @RequestMapping(value = "/lecture/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateLecture(Integer id,String title,String author,
-                                String location,String language) {
+                                String location,String language,@RequestParam("tags[]")List<String> tags) {
 
         AcademicVO academicVO=new AcademicVO();
         academicVO.setId(id);
@@ -48,6 +50,7 @@ public class AcademicCommunicateController {
         academicVO.setAuthor(author);
         academicVO.setLocation(location);
         academicVO.setLanguage(language);
+        academicVO.setTags(tags);
         LectureBLService lectureBLService=new LectureBL();
         UniversalState universalState=lectureBLService.updateItem(academicVO);
         return universalState.toString();
@@ -102,7 +105,7 @@ public class AcademicCommunicateController {
     @RequestMapping(value = "/communicate/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateCommunicate(Integer id,String title,String author,
-                                String location,String language) {
+                                String location,String language,@RequestParam("tags[]")List<String> tags) {
 
         AcademicVO academicVO=new AcademicVO();
         academicVO.setId(id);
@@ -110,6 +113,7 @@ public class AcademicCommunicateController {
         academicVO.setAuthor(author);
         academicVO.setLocation(location);
         academicVO.setLanguage(language);
+        academicVO.setTags(tags);
         CommunicateBLService communicateBLService=new CommunicateBL();
         UniversalState universalState=communicateBLService.updateItem(academicVO);
         return universalState.toString();
@@ -164,7 +168,7 @@ public class AcademicCommunicateController {
     @RequestMapping(value = "/visit/update", method = RequestMethod.POST)
     @ResponseBody
     public String updateVisit(Integer id,String title,String author,
-                                String location,String language) {
+                                String location,String language,@RequestParam("tags[]")List<String> tags) {
 
         AcademicVO academicVO=new AcademicVO();
         academicVO.setId(id);
@@ -172,6 +176,7 @@ public class AcademicCommunicateController {
         academicVO.setAuthor(author);
         academicVO.setLocation(location);
         academicVO.setLanguage(language);
+        academicVO.setTags(tags);
         VisitBLService visitBLService=new VisitBL();
         UniversalState universalState=visitBLService.updateItem(academicVO);
         return universalState.toString();

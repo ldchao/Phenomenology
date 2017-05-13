@@ -14,6 +14,7 @@ import vo.OrganizationVO;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lvdechao on 2016/10/6.
@@ -42,7 +43,7 @@ public class GlobalManagerController {
         return version;
     }
 
-    //全局搜索文章
+    //根据输入的关键字全局搜索文章
     @RequestMapping(value = "/searchEssay")
     @ResponseBody
     public ArrayList<AcademicVO> searchEssay(HttpServletRequest request){
@@ -54,6 +55,14 @@ public class GlobalManagerController {
         }
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchEssay(key);
+    }
+
+    //根据热门标签全局搜索文章
+    @RequestMapping(value = "/searchEssayByTag")
+    @ResponseBody
+    public ArrayList<AcademicVO> searchEssayByTag(String tag){
+        SearchBLService searchBLService=new SearchBL();
+        return searchBLService.searchEssayByTag(tag);
     }
 
     @RequestMapping(value = "/getEssayURL")
@@ -74,6 +83,14 @@ public class GlobalManagerController {
         }
         SearchBLService searchBLService=new SearchBL();
         return searchBLService.searchArticle(key);
+    }
+
+    //根据热门标签全局搜索科研成果
+    @RequestMapping(value = "/searchAchievementByTag")
+    @ResponseBody
+    public ArrayList<AchievementVO> searchArticleByTag(String tag){
+        SearchBLService searchBLService=new SearchBL();
+        return searchBLService.searchArticleByTag(tag);
     }
 
     @RequestMapping(value = "/getAchievementURL")
@@ -102,5 +119,12 @@ public class GlobalManagerController {
         return UrlManager.getOrganizationUrl(id);
     }
 
+
+    @RequestMapping(value = "/getHotTags")
+    @ResponseBody
+    public List<String> getPersonURL(){
+        SearchBLService searchBLService=new SearchBL();
+        return searchBLService.getHotTags();
+    }
 
 }

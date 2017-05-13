@@ -1,6 +1,7 @@
 package vo;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by lvdechao on 2016/9/30.
@@ -16,6 +17,7 @@ public class AcademicVO {
     private String language;
     private int pageView;
     private String type;
+    private List<String> tags;
 
     public AcademicVO() {
     }
@@ -82,5 +84,13 @@ public class AcademicVO {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
     }
 }
