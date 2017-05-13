@@ -179,3 +179,16 @@ function backToTop() {
         $("html, body").animate({scrollTop: 0}, 500);
     });
 }
+
+// 调到子目录
+function enterSubNav() {
+
+    var url = location.href;
+    if (url.indexOf("#") > -1) {
+        var temp = url.split("#");
+        var sub = temp[1];
+        if (sub != null) {
+            changeTab(parseInt(sub));
+        }
+    }
+}

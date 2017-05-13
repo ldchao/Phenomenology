@@ -7,6 +7,9 @@ var language = "ch";
 
 window.onload = function () {
     language = judgeVersion();
+
+    enterSubNav();
+
     getPics();
     
     getLectures();

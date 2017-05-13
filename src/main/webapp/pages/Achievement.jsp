@@ -102,10 +102,10 @@
     phenomenology@nju.edu.cn
 </div>
 
-<script src="js/achievement.js"></script>
 <script src="js/jquery.js"></script>
-<script src="js/common.js"></script>
 <script src="js/version.js"></script>
+<script src="js/achievement.js"></script>
+<script src="js/common.js"></script>
 <script>
     $(".nav_2").eq(5).addClass("active_2");
 </script>

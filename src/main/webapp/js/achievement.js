@@ -6,6 +6,9 @@ var language = "ch";
 
 window.onload = function () {
     language = judgeVersion();
+
+    enterSubNav();
+
     getPics();
 
     showBooks();
@@ -23,8 +26,8 @@ function changeTab(index) {
 
     $(".direction_div").find("span").html(dirs[index]);
 
-    $(document.getElementById(Ids[index])).show();
-    $(document.getElementById(Ids[(index + 1) % 2])).hide();
+    $(Ids[index]).show();
+    $(Ids[(index + 1) % 2]).hide();
 
 }
 
