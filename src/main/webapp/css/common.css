@@ -175,15 +175,15 @@ a:hover {
 .sub_nav_2:hover {
     background-color: #B7D5C9;
 }
+
 /*******************************/
 
 .left_nav {
     width: 230px;
-    height: 435px;
     background-color: #fff;
     display: inline-block;
     vertical-align: top;
-    padding-top: 20px;
+    padding: 20px 0;
     float: left;
     box-shadow: 0 0 7px rgba(42, 91, 111, .14);
 }
@@ -199,12 +199,7 @@ a:hover {
     cursor: pointer;
 }
 
-.nav_bar:hover {
-    background-color: #7d8588;
-    color: #fff;
-    opacity: 0.4;
-}
-
+.nav_bar:hover,
 .active {
     background-color: #7d8588;
     color: #fff;

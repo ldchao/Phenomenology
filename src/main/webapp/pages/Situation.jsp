@@ -13,6 +13,16 @@
     <link href="css/common.css" rel="stylesheet">
     <link href="css/cssreset.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .introduce_div {
+            width: 100%;
+            padding: 0 40px;
+            margin-top: 20px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,53 +31,14 @@
 
 <div class="main_body">
 
-    <%--左侧导航栏--%>
-    <div class="left_nav">
-
-        <div class="nav_bar" onclick="window.location.href='HomePage'">
-            <i class="fa fa-angle-right"></i>
-            <span>&nbsp;首&nbsp;页</span>
-        </div>
-
-        <div class="nav_bar active" onclick="window.location.href='Situation'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>本所概况</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='Organization'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>机构人员</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学术交流</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='AcademicSource'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学术资源</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='Achievement'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>科研成果</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='Blogroll'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>友情链接</span>
-        </div>
-    </div>
-
     <%--右侧内容块--%>
-    <div class="right_content">
+    <div class="right_content" style="width: 100%; margin-left: 0;">
 
         <div id="situation_name" class="article_index" style="margin-left: 40px; margin-top: 30px;">
             南京大学现象研究所
         </div>
 
-        <div id="introduce" class="article_text" style="width: 690px; margin-left: 40px; margin-top: 22px;"></div>
+        <div id="introduce" class="article_text introduce_div"></div>
 
     </div>
 

@@ -93,11 +93,14 @@ function changeTab(index) {
     Tab_Selected = index;
 
     var Ids = ["office", "visiting", "student"];
-    var tabs = document.getElementsByClassName("tab_achieve");
+    var dirs = ["在职人员", "访问学者", "本所学生"];
+    var tabs = document.getElementsByClassName("nav_bar");
 
-    tabs[index].style.borderBottom = "3px solid #1a799f";
-    tabs[(index + 1) % 3].style.borderBottom = "";
-    tabs[(index + 2) % 3].style.borderBottom = "";
+    $(tabs[index]).addClass("active");
+    $(tabs[(index + 1) % 3]).removeClass("active");
+    $(tabs[(index + 2) % 3]).removeClass("active");
+
+    $(".direction_div").find("span").html(dirs[index]);
 
     $(document.getElementById(Ids[index])).show();
     $(document.getElementById(Ids[(index + 1) % 3])).hide();

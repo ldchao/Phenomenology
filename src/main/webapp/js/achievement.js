@@ -14,12 +14,14 @@ window.onload = function () {
 
 function changeTab(index) {
 
-    var tabs = document.getElementsByClassName("tab_achieve");
+    var tabs = document.getElementsByClassName("nav_bar");
     var Ids = ["books", "articles"];
+    var dirs = ["书籍出版", "文章发表"];
 
+    $(tabs[index]).addClass("active");
+    $(tabs[(index + 1) % 2]).removeClass("active");
 
-    tabs[index].style.borderBottom = "3px solid #1a799f";
-    tabs[(index + 1) % 2].style.borderBottom = "";
+    $(".direction_div").find("span").html(dirs[index]);
 
     $(document.getElementById(Ids[index])).show();
     $(document.getElementById(Ids[(index + 1) % 2])).hide();

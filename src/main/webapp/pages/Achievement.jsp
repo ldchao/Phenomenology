@@ -25,50 +25,24 @@
     <%--左侧导航栏--%>
     <div class="left_nav">
 
-        <div class="nav_bar" onclick="window.location.href='HomePage'">
-            <i class="fa fa-angle-right"></i>
-            <span>&nbsp;首&nbsp;页</span>
+        <div class="nav_bar active" onclick="changeTab(0)">
+            <i class="fa fa-angle-right"></i>&nbsp;
+            <span>书籍出版</span>
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='Situation'">
+        <div class="nav_bar" onclick="changeTab(1)">
             <i class="fa fa-angle-right"></i>&nbsp;
-            <span>本所概况</span>
+            <span>文章发表</span>
         </div>
 
-        <div class="nav_bar" onclick="window.location.href='Organization'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>机构人员</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='AcademicCommunicate'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学术交流</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='AcademicSource'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学术资源</span>
-        </div>
-
-        <div class="nav_bar active" onclick="window.location.href='Achievement'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>科研成果</span>
-        </div>
-
-        <div class="nav_bar" onclick="window.location.href='Blogroll'">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>友情链接</span>
-        </div>
     </div>
 
     <%--右侧内容块--%>
     <div class="right_content">
 
-        <div class="tab_achieve article_index" style="border-bottom: 3px solid #1a799f;" onclick="changeTab(0)">
-            书籍出版
+        <div class="direction_div">
+            科研成果 <i class="fa fa-angle-right"></i> <span>书籍出版</span>
         </div>
-        <div class="tab_achieve article_index" style="margin-left: 20px" onclick="changeTab(1)">文章发表</div>
-
 
         <div id="books" class="achieves_div">
 

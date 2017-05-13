@@ -1,16 +1,12 @@
-.tab_achieve {
-    /*width: 88px;*/
+
+.direction_div {
     height: 30px;
     text-align: center;
     line-height: 30px;
-    cursor: pointer;
+    cursor: default;
     margin-left: 28px;
     margin-top: 30px;
     display: inline-block;
-}
-
-.tab_achieve:hover {
-    border-bottom: 3px solid #1a799f;
 }
 
 .achieves_div {
