@@ -23,22 +23,35 @@
 <div class="main_body">
 
     <%--左侧导航栏--%>
-    <div class="left_nav">
+    <div class="left_nav_outer">
 
-        <div class="nav_bar active" onclick="changeTab(0)">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>讲座实录</span>
+        <div class="left_nav">
+
+            <div class="nav_bar active" onclick="changeTab(0)">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>讲座实录</span>
+            </div>
+
+            <div class="nav_bar" onclick="changeTab(1)">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>课程资源</span>
+            </div>
+
+            <div class="nav_bar" onclick="changeTab(2)">
+                <i class="fa fa-angle-right"></i>&nbsp;
+                <span>学界动态</span>
+            </div>
         </div>
 
-        <div class="nav_bar" onclick="changeTab(1)">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>课程资源</span>
+        <%-- 标签 --%>
+        <div class="left_nav label_div">
+            <div class="label_title">热门标签</div>
+
+            <div id="labelDiv">
+                <%--<div class="each_label">讲座</div>--%>
+            </div>
         </div>
 
-        <div class="nav_bar" onclick="changeTab(2)">
-            <i class="fa fa-angle-right"></i>&nbsp;
-            <span>学界动态</span>
-        </div>
     </div>
 
     <%--右侧内容块--%>

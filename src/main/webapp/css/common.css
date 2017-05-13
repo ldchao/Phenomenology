@@ -177,14 +177,17 @@ a:hover {
 }
 
 /*******************************/
+.left_nav_outer {
+    width: 230px;
+    display: inline-block;
+    vertical-align: top;
+    float: left;
+}
 
 .left_nav {
     width: 230px;
     background-color: #fff;
-    display: inline-block;
-    vertical-align: top;
     padding: 20px 0;
-    float: left;
     box-shadow: 0 0 7px rgba(42, 91, 111, .14);
 }
 
@@ -205,6 +208,47 @@ a:hover {
     color: #fff;
 }
 
+/* 标签 */
+.label_div {
+    margin-top: 20px;
+    padding: 15px 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "PingFang SC", serif;
+}
+
+.label_title {
+    color: #4A4A4B;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.each_label {
+    height: 25px;
+    line-height: 25px;
+    color: #057748;
+    font-size: 14px;
+    background-color: #ECF5F3;
+    padding: 0 7px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-top: 7px;
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.each_label:hover {
+    background-color: #B1EADD;
+}
+
 .right_content {
     width: 894px;
     height: 455px;
@@ -216,7 +260,7 @@ a:hover {
 }
 
 .right_content_detail {
-    width: 770px;
+    width: 894px;
     min-height: 700px;
     background-color: #fff;
     margin-left: 15px;
