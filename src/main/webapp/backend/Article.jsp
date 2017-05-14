@@ -69,7 +69,8 @@
         ()"><i class="fa fa-times" aria-hidden="true"></i></a>
         <div class="innerForm">
             <div class="buttons">
-                <input id="name" type="text" class="textfield left div-7" placeholder="书名">
+                <input id="name" type="text" class="textfield left div-3" placeholder="书名">
+                <input id="tags" type="text" class="textfield left div-4" placeholder="标签(以；隔开)">
                 <div class="textfield right div-3">
                     <select id="language" class="mycombox div-10">
                         <option>ch</option>
@@ -221,9 +222,17 @@
                 "id": id
             },
             success: function (result) {
+                var tagText = "";
+                var tags = result.tags;
+                for (var i = 0; i < tags.length - 1; i++) {
+                    tagText = tagText + tags[i] + ";";
+                }
+                tagText += tags[tags.length - 1];
                 $("input[id='name']").val(result.title);
                 $("#language").val(result.language);
                 coverPath = result.thumbnailLocation;
+
+                $("#tags").val(tagText);
 
                 if (result.thumbnailLocation != "") {
                     document.getElementById("imgButton").innerHTML = "更改缩略图";
@@ -300,6 +309,17 @@
         var coverImg = $("#coverImg").val();
         language = $("#language").val();
         var htmlPath;
+        var tagText = document.getElementById("tags").value;
+        tagText = tagText.replace("；", ";");
+        var tags = tagText.split(";");
+
+        //去除空
+        for (var i = 0; i < tags.length; i++) {
+            if (tags[i] == "") {
+                tags.splice(i, 1);
+                i--;
+            }
+        }
 
         if (isEdit == 0) {
             //提交图片
@@ -364,7 +384,8 @@
                         "title": name,
                         "thumbnailLocation": coverPath,
                         "descriptionLocation": htmlPath,
-                        "language": language
+                        "language": language,
+                        "tags": tags
                     },
                     success: function (flag) {
                         if (flag == "SUCCEED") {
@@ -445,7 +466,8 @@
                     "title": name,
                     "thumbnailLocation": coverPath,
                     "descriptionLocation": htmlPath,
-                    "language": language
+                    "language": language,
+                    "tags": tags
                 },
                 success: function (flag) {
                     if (flag == "SUCCEED") {
@@ -489,6 +511,7 @@
             document.getElementById("accButton").innerHTML = "点击这里上传附件(可选)";
             $("input[id='name']").val("");
             $("#language").val("ch");
+            $("#tags").val("");
             editor.$txt.html("");
             $("#coverImg").val("");
             isEdit = 0;

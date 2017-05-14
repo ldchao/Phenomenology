@@ -2,6 +2,7 @@ package POJO;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -12,7 +13,7 @@ import java.util.Set;
 public class EssayTag {
     private String tagName;
     private int views;
-    private Set<Essay> essays;
+    private Set<Essay> essays=new HashSet<Essay>();
 
     @Id
     @Column(name = "tagName")

@@ -44,6 +44,8 @@ public class AcademicCommunicateController {
     public String updateLecture(Integer id,String title,String author,
                                 String location,String language,@RequestParam("tags[]")List<String> tags) {
 
+        System.out.println(tags.toString());
+
         AcademicVO academicVO=new AcademicVO();
         academicVO.setId(id);
         academicVO.setTitle(title);

@@ -9,10 +9,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by mm on 2017/5/14.
@@ -87,6 +84,7 @@ public class EssayTagImpl implements EssayTagDao {
     }
 
     public void addRelations(int essayId, ArrayList<String> tagNames) {
+        System.out.println(tagNames.toString()+1111111);
         Session session = DBconnection.getSession();
         try {
             String tagName = "";
@@ -98,11 +96,31 @@ public class EssayTagImpl implements EssayTagDao {
             }
             String hql = "from EssayTag e where " + tagName + "";
             List<EssayTag> list = session.createQuery(hql).list();
+
+
+            List<EssayTag> newList=new ArrayList<EssayTag>();
+            for (String s:tagNames
+                 ) {
+                boolean contains=false;
+                for (EssayTag e:list){
+                    if (e.getTagName().equals(s)){
+                        contains=true;
+                        break;
+                    }
+                }
+                if (contains==false){
+                    EssayTag temp=new EssayTag();
+                    temp.setTagName(s);
+                    temp.setViews(0);
+                    newList.add(temp);
+                }
+            }
+            list.addAll(newList);
             Essay essay = (Essay) baseDao.findById(essayId, Essay.class);
             for (EssayTag e : list
                     ) {
                 e.getEssays().add(essay);
-                session.update(e);
+                session.save(e);
             }
 
             Transaction transaction = session.beginTransaction();

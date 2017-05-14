@@ -4,6 +4,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -14,7 +15,7 @@ import java.util.Set;
 public class SaTag {
     private int views;
     private String tagName;
-    private Set<Scientificachievement> scientificachievements;
+    private Set<Scientificachievement> scientificachievements=new HashSet<Scientificachievement>();
 
     @Basic
     @Column(name = "views")

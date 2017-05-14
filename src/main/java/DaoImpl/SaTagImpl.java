@@ -98,11 +98,30 @@ public class SaTagImpl implements SaTagDao {
             }
             String hql="from SaTag s where "+tagName+"";
             List<SaTag> list=session.createQuery(hql).list();
+
+            List<SaTag> newList=new ArrayList<SaTag>();
+            for (String s:tagNames
+                 ) {
+                boolean contains=false;
+                for (SaTag saTag:list){
+                    if (saTag.getTagName().equals(s)){
+                        contains=true;
+                        break;
+                    }
+                }
+                if(contains==false){
+                    SaTag temp=new SaTag();
+                    temp.setTagName(s);
+                    temp.setViews(0);
+                    newList.add(temp);
+                }
+            }
+            list.addAll(newList);
             Scientificachievement scientificachievement= (Scientificachievement) baseDao.findById(scientificAchievementId,Scientificachievement.class);
             for (SaTag saTag:list
                  ) {
                 saTag.getScientificachievements().add(scientificachievement);
-                session.update(saTag);
+                session.save(saTag);
             }
 
             Transaction transaction=session.beginTransaction();

@@ -68,7 +68,8 @@
             <div class="firstline">
                 <input id="name" type="text" class="textfield div-10" placeholder="标题">
                 <div class="buttons">
-                    <input id="publisher" type="text" class="textfield left div-7" placeholder="发布人">
+                    <input id="publisher" type="text" class="textfield left div-3" placeholder="发布人">
+                    <input id="tags" type="text" class="textfield left div-4" placeholder="标签(以；隔开)">
                     <div class="textfield right div-3">
                         <select id="language" class="mycombox div-10">
                             <option>ch</option>
@@ -88,7 +89,8 @@
                 <form action="/uploadEssayAccessory.action" method="post" enctype="multipart/form-data"
                       onsubmit="return false;">
                     <a class="chooseFile left div-5">
-                        <input style="opacity: 0;" type="file" name="accessory" id="accessory"/><p id="accButton">点击这里上传附件(可选)</p>
+                        <input style="opacity: 0;" type="file" name="accessory" id="accessory"/>
+                        <p id="accButton">点击这里上传附件(可选)</p>
                     </a>
                     <button class="submitButton right div-5" onclick="publish()">提交</button>
 
@@ -160,6 +162,7 @@
     function editItem(ele) {
         isEdit = 1;
         id = ele.parentNode.parentNode.getElementsByClassName("td1")[0].innerHTML;
+        //TODO edit
 
         $.ajax({
             type: "get",
@@ -169,9 +172,18 @@
                 "id": id
             },
             success: function (result) {
+                //获取tags
+                var tagText = "";
+                var tags = result.tags;
+                for (var i = 0; i < tags.length - 1; i++) {
+                    tagText = tagText + tags[i] + ";";
+                }
+                tagText += tags[tags.length - 1];
+
                 $("input[id='name']").val(result.title);
                 $("input[id='publisher']").val(result.author);
                 $("#language").val(result.language);
+                $("#tags").val(tagText);
 
                 //填充editor
                 $.ajax({
@@ -282,6 +294,18 @@
         var title = $("input[id='name']").val();
         var author = $("input[id='publisher']").val();
         var htmlPath;
+        //TODO publish
+        var tagText = document.getElementById("tags").value;
+        tagText = tagText.replace("；", ";");
+        var tags = tagText.split(";");
+
+        //去除空
+        for (var i = 0; i < tags.length; i++) {
+            if (tags[i] == "") {
+                tags.splice(i, 1);
+                i--;
+            }
+        }
 
         //提交editor内容
         $.ajax({
@@ -309,7 +333,8 @@
                 "title": title,
                 "author": author,
                 "location": htmlPath,
-                "language": language
+                "language": language,
+                "tags": tags
             },
             success: function (result) {
                 if (result == "SUCCEED") {
@@ -364,10 +389,12 @@
     }
 
     function closeForm() {
+        //TODO close
         if (isEdit == 1) {
             document.getElementById("accButton").innerHTML = "点击这里上传附件(可选)";
             $("input[id='name']").val("");
             $("input[id='publisher']").val("");
+            $("#tags").val("");
             $("#language").val("ch");
             editor.$txt.html("");
             $("#accessory").val("");

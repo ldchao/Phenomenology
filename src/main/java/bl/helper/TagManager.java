@@ -38,6 +38,7 @@ public class TagManager {
         EssayTagDao essayTagDao=new EssayTagImpl();
         essayTagDao.deleteByEssayId(id);
         Set<String> set=new HashSet<String>(tags);
+        System.out.println("hhhhhhhhhh"+id+new ArrayList<String>(set));
         essayTagDao.addRelations(id,new ArrayList<String>(set));
     }
 
