@@ -86,6 +86,34 @@ public class SaTagImpl implements SaTagDao {
         }
     }
 
+    public void addRelations(int scientificAchievementId, ArrayList<String> tagNames) {
+        Session session= DBconnection.getSession();
+        try {
+            String tagName="";
+            for (int i = 0; i < tagNames.size(); i++) {
+                tagName += "s.tagName='" + tagNames.get(i) + "'";
+                if (i != tagNames.size() - 1) {
+                    tagName += " or ";
+                }
+            }
+            String hql="from SaTag s where "+tagName+"";
+            List<SaTag> list=session.createQuery(hql).list();
+            Scientificachievement scientificachievement= (Scientificachievement) baseDao.findById(scientificAchievementId,Scientificachievement.class);
+            for (SaTag saTag:list
+                 ) {
+                saTag.getScientificachievements().add(scientificachievement);
+                session.update(saTag);
+            }
+
+            Transaction transaction=session.beginTransaction();
+            transaction.commit();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+    }
+
     public void deleteByScientificAchievementIdAndTagName(int scientificAchievementId, String tagName) {
         Session session= DBconnection.getSession();
         try {
@@ -104,6 +132,26 @@ public class SaTagImpl implements SaTagDao {
         }catch (Exception e){
             e.printStackTrace();
         }finally {
+            session.close();
+        }
+    }
+
+    public void deleteByScientificAchievementId(int scientificAchievementId) {
+        Session session = DBconnection.getSession();
+        try {
+            String hql = "from Scientificachievement s where s.id=" +scientificAchievementId;
+            Scientificachievement scientificachievement = (Scientificachievement) session.createQuery(hql).uniqueResult();
+            Set<SaTag> saTags = scientificachievement.getSaTags();
+            for (SaTag s : saTags) {
+                s.getScientificachievements().remove(scientificachievement);
+                session.update(s);
+            }
+
+            Transaction transaction = session.beginTransaction();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             session.close();
         }
     }

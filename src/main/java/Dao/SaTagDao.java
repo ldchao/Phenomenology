@@ -3,6 +3,7 @@ package Dao;
 import POJO.Essay;
 import POJO.SaTag;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,5 +18,9 @@ public interface SaTagDao {
 
     public void addRelations(int scientificAchievementId,String tagName);
 
+    public void addRelations(int scientificAchievementId,ArrayList<String> tagNames);
+
     public void deleteByScientificAchievementIdAndTagName(int scientificAchievementId,String tagName);
+
+    public void deleteByScientificAchievementId(int scientificAchievementId);
 }

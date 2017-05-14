@@ -5,6 +5,7 @@ import DaoImpl.SaTagImpl;
 import POJO.SaTag;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,8 +37,12 @@ public class SaTagDaoImplTest {
 
     @Test
     public void addRelations(){
-        saTagDao.addRelations(1,"123");
-        saTagDao.addRelations(1,"ddd");
+//        saTagDao.addRelations(1,"123");
+//        saTagDao.addRelations(1,"ddd");
+        ArrayList<String> arrayList=new ArrayList<String>();
+        arrayList.add("123");
+        saTagDao.addRelations(2,arrayList);
+
     }
 
     @Test
@@ -46,5 +51,11 @@ public class SaTagDaoImplTest {
         saTagDao.deleteByScientificAchievementIdAndTagName(1,"ddd");
 
         saTagDao.deleteByScientificAchievementIdAndTagName(1,"4");
+    }
+
+
+    @Test
+    public void deleteByScientificAchievementId(){
+        saTagDao.deleteByScientificAchievementId(1);
     }
 }

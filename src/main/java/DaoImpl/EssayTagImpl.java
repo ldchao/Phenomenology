@@ -18,91 +18,141 @@ import java.util.Set;
  * Created by mm on 2017/5/14.
  */
 public class EssayTagImpl implements EssayTagDao {
-    BaseDao baseDao=new BaseDaoImpl();
+    BaseDao baseDao = new BaseDaoImpl();
+
     public List<EssayTag> getEssayTagsByEssayId(int essayId) {
-        List<EssayTag> list=new ArrayList<EssayTag>();
-        Session session= DBconnection.getSession();
+        List<EssayTag> list = new ArrayList<EssayTag>();
+        Session session = DBconnection.getSession();
         try {
-            Essay essay= null;
-            String hql="from Essay e where e.id="+essayId;
-            essay= (Essay) session.createQuery(hql).uniqueResult();
+            Essay essay = null;
+            String hql = "from Essay e where e.id=" + essayId;
+            essay = (Essay) session.createQuery(hql).uniqueResult();
             list.addAll(essay.getEssayTags());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return list;
     }
 
     public void AddEssayTag_Views(String tagName) {
-        Session session= DBconnection.getSession();
+        Session session = DBconnection.getSession();
         try {
-            String hql="from EssayTag e where e.tagName='"+tagName+"'";
-            EssayTag essayTag= (EssayTag) session.createQuery(hql).uniqueResult();
-            essayTag.setViews(essayTag.getViews()+1);
+            String hql = "from EssayTag e where e.tagName='" + tagName + "'";
+            EssayTag essayTag = (EssayTag) session.createQuery(hql).uniqueResult();
+            essayTag.setViews(essayTag.getViews() + 1);
             session.update(essayTag);
-            Transaction transaction=session.beginTransaction();
+            Transaction transaction = session.beginTransaction();
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }
 
     public List<EssayTag> getEssayTagsOfTop10() {
-        String hql="from EssayTag e order by e.views desc";
-        List<EssayTag> list=new ArrayList<EssayTag>();
-        Session session= DBconnection.getSession();
+        String hql = "from EssayTag e order by e.views desc";
+        List<EssayTag> list = new ArrayList<EssayTag>();
+        Session session = DBconnection.getSession();
         try {
-            Query query=session.createQuery(hql);
+            Query query = session.createQuery(hql);
             query.setFirstResult(0);
             query.setMaxResults(10);
-            list=query.list();
-        }catch (Exception e){
+            list = query.list();
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return list;
     }
 
     public void addRelations(int essayId, String tagName) {
-        Session session= DBconnection.getSession();
+        Session session = DBconnection.getSession();
         try {
-            String hql="from EssayTag e where e.tagName='"+tagName+"'";
-            EssayTag essayTag= (EssayTag) session.createQuery(hql).uniqueResult();
-            Essay essay= (Essay) baseDao.findById(essayId,Essay.class);
+            String hql = "from EssayTag e where e.tagName='" + tagName + "'";
+            EssayTag essayTag = (EssayTag) session.createQuery(hql).uniqueResult();
+            Essay essay = (Essay) baseDao.findById(essayId, Essay.class);
             essayTag.getEssays().add(essay);
             session.update(essayTag);
-            Transaction transaction=session.beginTransaction();
+            Transaction transaction = session.beginTransaction();
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
+            session.close();
+        }
+    }
+
+    public void addRelations(int essayId, ArrayList<String> tagNames) {
+        Session session = DBconnection.getSession();
+        try {
+            String tagName = "";
+            for (int i = 0; i < tagNames.size(); i++) {
+                tagName += "e.tagName='" + tagNames.get(i) + "'";
+                if (i != tagNames.size() - 1) {
+                    tagName += " or ";
+                }
+            }
+            String hql = "from EssayTag e where " + tagName + "";
+            List<EssayTag> list = session.createQuery(hql).list();
+            Essay essay = (Essay) baseDao.findById(essayId, Essay.class);
+            for (EssayTag e : list
+                    ) {
+                e.getEssays().add(essay);
+                session.update(e);
+            }
+
+            Transaction transaction = session.beginTransaction();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             session.close();
         }
     }
 
     public void deleteByEssayIdAndTagName(int essayId, String tagName) {
-        Session session= DBconnection.getSession();
+        Session session = DBconnection.getSession();
         try {
-            String hql="from EssayTag e where e.tagName='"+tagName+"'";
-            EssayTag essayTag= (EssayTag) session.createQuery(hql).uniqueResult();
-            Set<Essay> essays=essayTag.getEssays();
-            for (Essay e:essays){
-                if (e.getId()==essayId){
+            String hql = "from EssayTag e where e.tagName='" + tagName + "'";
+            EssayTag essayTag = (EssayTag) session.createQuery(hql).uniqueResult();
+            Set<Essay> essays = essayTag.getEssays();
+            for (Essay e : essays) {
+                if (e.getId() == essayId) {
                     essays.remove(e);
                     break;
                 }
             }
             session.update(essayTag);
-            Transaction transaction=session.beginTransaction();
+            Transaction transaction = session.beginTransaction();
             transaction.commit();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
+            session.close();
+        }
+    }
+
+    public void deleteByEssayId(int essayId) {
+        Session session = DBconnection.getSession();
+        try {
+            List<EssayTag> list = new ArrayList<EssayTag>();
+
+            Essay essay = (Essay) session.createQuery("from Essay e where e.id=" + essayId).uniqueResult();
+            list.addAll(essay.getEssayTags());
+            for (EssayTag e : list
+                    ) {
+                e.getEssays().remove(essay);
+                session.update(e);
+            }
+            Transaction transaction = session.beginTransaction();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
             session.close();
         }
     }

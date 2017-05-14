@@ -5,6 +5,7 @@ import DaoImpl.EssayTagImpl;
 import POJO.EssayTag;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,11 +36,21 @@ public class EssayTagDaoImplTest {
 
     @Test
     public void addRelations(){
-        essayTagDao.addRelations(103,"cc");
+//        essayTagDao.addRelations(103,"cc");
+        ArrayList<String> arrayList=new ArrayList<String>();
+        arrayList.add("0");
+        arrayList.add("11");
+        arrayList.add("qqq");
+        essayTagDao.addRelations(102,arrayList);
     }
 
     @Test
     public void deleteByEssayIdAndTagName(){
         essayTagDao.deleteByEssayIdAndTagName(102,"cc");
+    }
+
+    @Test
+    public void deleteByEssayId(){
+        essayTagDao.deleteByEssayId(102);
     }
 }
