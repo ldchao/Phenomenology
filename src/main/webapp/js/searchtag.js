@@ -1,5 +1,5 @@
 /**
- * Created by L.H.S on 2016/10/8.
+ * Created by L.H.S on 2017/5/14.
  */
 
 var Tab_Selected = 0;   // 记录当前在哪个tab标签下
@@ -10,8 +10,8 @@ window.onload = function () {
     language = judgeVersion();
 
     var key = document.getElementById("storage").innerHTML.trim();
+
     getArticle(key);
-    getStaff(key);
     getBook(key);
 };
 
@@ -24,9 +24,9 @@ function getArticle(key) {
     $.ajax({
         type: "get",
         async: false,
-        url: "searchEssay",
+        url: "searchEssayByTag",
         data: {
-            "key": key,
+            "tag": key
         },
         dataType: "json",
         success: function (result) {
@@ -61,60 +61,6 @@ function getArticle(key) {
     });
 }
 
-function getStaff(key) {
-
-    var staff = document.getElementById("staff_title");
-    var copy = document.getElementById("staff_copy");
-
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "searchPerson",
-        data: {
-            "key": key,
-        },
-        dataType: "json",
-        success: function (result) {
-
-
-            if (result.length > 0) {
-                for (var i = 0; i < result.length; i++) {
-                    var div = document.createElement("div");
-                    div.innerHTML = copy.innerHTML;
-
-                    var title = div.getElementsByClassName("more_title")[0];
-                    title.innerHTML = result[i].name;
-                    title.onclick = function () {
-                        showSearch(this, "getPersonURL");
-                    };
-
-                    var img = document.createElement("img");
-                    img.style.width = "70px";
-                    img.style.height = "75px";
-                    img.src = result[i].imageLocation;
-                    div.getElementsByClassName("more_img")[0].appendChild(img);
-
-                    setHtml(result[i].descriptionLocation, div.getElementsByClassName("more_text")[0]);
-
-                    div.getElementsByTagName("a")[0].innerHTML = result[i].id;
-
-                    staff.appendChild(div);
-                }
-            } else {
-                var no_div = document.createElement("div");
-                no_div.className = "no_search";
-                no_div.innerHTML = "没有搜索到相关人员";
-                staff.appendChild(no_div);
-            }
-        },
-        error: function () {
-            // alert("科研成果数据获取失败");
-        }
-    });
-
-    $("#staff_title").hide();
-}
-
 function getBook(key) {
 
     var book = document.getElementById("book_title");
@@ -123,9 +69,9 @@ function getBook(key) {
     $.ajax({
         type: "get",
         async: false,
-        url: "searchAchievement",
+        url: "searchAchievementByTag",
         data: {
-            "key": key,
+            "tag": key
         },
         dataType: "json",
         success: function (result) {
@@ -212,17 +158,14 @@ function changeTab(index) {
 
     Tab_Selected = index;
 
-    var Ids = ["article_title", "staff_title", "book_title"];
+    var Ids = ["article_title", "book_title"];
     var tabs = document.getElementsByClassName("tab_achieve");
 
     tabs[index].style.borderBottom = "3px solid #1a799f";
-    tabs[(index + 1) % 3].style.borderBottom = "";
-    tabs[(index + 2) % 3].style.borderBottom = "";
+    tabs[(index + 1) % 2].style.borderBottom = "";
 
     $(document.getElementById(Ids[index])).show();
-    $(document.getElementById(Ids[(index + 1) % 3])).hide();
-    $(document.getElementById(Ids[(index + 2) % 3])).hide();
-
+    $(document.getElementById(Ids[(index + 1) % 2])).hide();
 }
 
 function changeVersion_content() {

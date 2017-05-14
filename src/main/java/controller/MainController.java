@@ -72,6 +72,19 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/SearchByTag", method = RequestMethod.GET)
+    public ModelAndView searchTag(HttpServletRequest request) {
+        String key = null;
+        try {
+            key = new String(request.getParameter("key").getBytes("iso-8859-1"), "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("pages/SearchTag");
+        modelAndView.addObject("key", key);
+        return modelAndView;
+    }
     //后台部分
     @RequestMapping(value = "/Introduce", method = RequestMethod.GET)
     public String introduce(HttpServletRequest request) {

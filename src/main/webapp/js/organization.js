@@ -15,6 +15,8 @@ window.onload = function () {
     getOffice();
     getVisiting();
     getStudent();
+
+    getHotLabel();
 };
 
 // 在职人员

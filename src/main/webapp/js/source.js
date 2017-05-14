@@ -15,6 +15,8 @@ window.onload = function () {
     getLectures();
     getMeetings();
     getVisitings();
+
+    getHotLabel();
 };
 
 // 讲座实录

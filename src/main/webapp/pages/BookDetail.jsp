@@ -26,53 +26,18 @@
     <%--左侧导航栏--%>
     <div class="left_nav_outer">
 
-        <div class="left_nav">
-
-            <div class="nav_bar" onclick="window.location.href='/Phenomenology/HomePage'">
-                <i class="fa fa-angle-right"></i>
-                <span>&nbsp;首&nbsp;页</span>
-            </div>
-
-            <div class="nav_bar" onclick="window.location.href='/Phenomenology/Situation'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>本所概况</span>
-            </div>
-
-            <div class="nav_bar" onclick="window.location.href='/Phenomenology/Organization'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>机构人员</span>
-            </div>
-
-            <div class="nav_bar" onclick="window.location.href='/Phenomenology/AcademicCommunicate'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>学术交流</span>
-            </div>
-
-            <div class="nav_bar" onclick="window.location.href='/Phenomenology/AcademicSource'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>学术资源</span>
-            </div>
-
-            <div class="nav_bar" onclick="window.location.href='/Phenomenology/Achievement'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>科研成果</span>
-            </div>
-
-            <div class="nav_bar" onclick="window.location.href='/Phenomenology/Blogroll'">
-                <i class="fa fa-angle-right"></i>&nbsp;
-                <span>友情链接</span>
-            </div>
-        </div>
-
         <%-- 标签 --%>
-        <div class="left_nav label_div">
-            <div class="label_title">热门标签</div>
+        <div class="left_nav label_div" style="margin-top: 0">
+            <div class="label_title">相关标签</div>
 
             <div id="labelDiv">
+
+                <c:forEach items="${OrganizationVO.tags}" var="tag">
+                    <div class="each_label" onclick="window.open('/Phenomenology/SearchByTag?key=' + this.innerHTML)">${tag}</div>
+                </c:forEach>
                 <%--<div class="each_label">讲座</div>--%>
             </div>
         </div>
-
     </div>
 
     <div id="staff_detail" class="right_content_detail">

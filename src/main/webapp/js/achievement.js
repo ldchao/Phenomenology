@@ -13,6 +13,8 @@ window.onload = function () {
 
     showBooks();
     showArticles();
+
+    getHotLabel();
 };
 
 function changeTab(index) {
