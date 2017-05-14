@@ -33,26 +33,26 @@
         </div>
 
         <div class="blogroll_div" onclick="window.open('http://hiw.kuleuven.be/ned')"
-             style="background-image: url('../img/1.png');">
+             style="background-image: url('/Phenomenology/img/1.png');">
 
             <div class="cover_div">鲁汶大学胡塞尔档案馆</div>
         </div>
 
         <div class="blogroll_div" onclick="window.open('http://www.husserlarchiv.de')"
-             style="background-image: url('../img/2.png');">
+             style="background-image: url('/Phenomenology/img/2.png');">
 
             <div class="cover_div">弗莱堡大学胡塞尔档案馆</div>
 
         </div>
 
         <div class="blogroll_div" onclick="window.open('http://www.phaenomenologie.com.cn')"
-             style="background-image: url('../img/3.png');">
+             style="background-image: url('/Phenomenology/img/3.png');">
 
             <div class="cover_div">中国现象学网</div>
         </div>
 
         <div class="blogroll_div" onclick="window.open('http://www.husserl.phil-fak.uni-koeln.de/7757.html')"
-             style="background-image: url('../img/4.png');">
+             style="background-image: url('/Phenomenology/img/4.png');">
 
             <div class="cover_div">科隆大学胡塞尔档案馆</div>
         </div>

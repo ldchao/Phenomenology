@@ -19,7 +19,7 @@
 
 <body>
 
-<jsp:include page="common/NavBar.jsp"></jsp:include>
+<jsp:include page="common/NavBarDetail.jsp"></jsp:include>
 
 <div class="main_body">
 

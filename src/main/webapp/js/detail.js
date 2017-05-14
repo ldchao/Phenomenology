@@ -13,7 +13,6 @@ window.onload = function () {
     $("#back-to-top").css("left", back_left);
 
     var index = parseInt(document.getElementById("storage").innerHTML);
-    document.getElementsByClassName("nav_bar")[index].setAttribute("class", "nav_bar active");
 
     if (index == 5) {
         document.getElementsByClassName("info")[0].style.display = "none";
