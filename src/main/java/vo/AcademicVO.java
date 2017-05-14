@@ -1,5 +1,8 @@
 package vo;
 
+import POJO.Essay;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -92,5 +95,16 @@ public class AcademicVO {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public void update(Essay essay){
+        this.id=essay.getId();
+        this.author=essay.getAuthor();
+        this.location=essay.getLocation();
+        this.title=essay.getTitle();
+        this.language=essay.getLanguage().toString();
+        this.pageView=essay.getPageView();
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        this.time=sdf.format(essay.getTime());
     }
 }

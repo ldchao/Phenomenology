@@ -1,5 +1,8 @@
 package vo;
 
+import POJO.Scientificachievement;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -83,5 +86,15 @@ public class AchievementVO {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
+    }
+
+    public void update(Scientificachievement scientificachievement){
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+        this.id=scientificachievement.getId();
+        this.title=scientificachievement.getTitle();
+        this.thumbnailLocation=scientificachievement.getThumbnailLocation();
+        this.descriptionLocation=scientificachievement.getDescriptionLocation();
+        this.time=sdf.format(scientificachievement.getTime());
+        this.language=scientificachievement.getLanguage().toString();
     }
 }

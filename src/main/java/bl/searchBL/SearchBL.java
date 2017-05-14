@@ -1,22 +1,16 @@
 package bl.searchBL;
 
-import Dao.EssayDao;
-import Dao.PersonDao;
-import Dao.ScientificachievementDao;
-import DaoImpl.EssayDaoImpl;
-import DaoImpl.PersonDaoImpl;
-import DaoImpl.ScientificachievementDaoImpl;
-import POJO.Essay;
-import POJO.Person;
-import POJO.Scientificachievement;
+import Dao.*;
+import DaoImpl.*;
+import POJO.*;
+import bl.helper.TagManager;
 import blservice.searchBLService.SearchBLService;
 import vo.AcademicVO;
 import vo.AchievementVO;
 import vo.OrganizationVO;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by lvdechao on 2016/10/8.
@@ -26,15 +20,10 @@ public class SearchBL implements SearchBLService{
         EssayDao essayDao=new EssayDaoImpl();
         List<Essay> essays=essayDao.getByEssayTitle(key);
         ArrayList<AcademicVO> result=new ArrayList<AcademicVO>();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         for (Essay essay:essays) {
             AcademicVO academicVO=new AcademicVO();
-            academicVO.setId(essay.getId());
-            academicVO.setAuthor(essay.getAuthor());
-            academicVO.setLocation(essay.getLocation());
-            academicVO.setTitle(essay.getTitle());
-            academicVO.setPageView(essay.getPageView());
-            academicVO.setTime(sdf.format(essay.getTime()));
+            academicVO.update(essay);
+            // TODO: 2017/5/14
             result.add(academicVO);
         }
         return result;
@@ -45,14 +34,10 @@ public class SearchBL implements SearchBLService{
         ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
         List<Scientificachievement> scientificachievements=scientificachievementDao.getBySaTitle(key);
         ArrayList<AchievementVO> result=new ArrayList<AchievementVO>();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         for (Scientificachievement scientificachievement:scientificachievements) {
             AchievementVO achievementVO=new AchievementVO();
-            achievementVO.setId(scientificachievement.getId());
-            achievementVO.setTitle(scientificachievement.getTitle());
-            achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
-            achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
-            achievementVO.setTime(sdf.format(scientificachievement.getTime()));
+            achievementVO.update(scientificachievement);
+            // TODO: 2017/5/14  
             result.add(achievementVO);
         }
         return result;
@@ -75,14 +60,81 @@ public class SearchBL implements SearchBLService{
     }
 
     public ArrayList<AcademicVO> searchEssayByTag(String tag) {
-        return null;
+
+        EssayDao essayDao=new EssayDaoImpl();
+        List<Essay> essays=essayDao.getEssaysByEssayTag(tag);
+        ArrayList<AcademicVO> result=new ArrayList<AcademicVO>();
+        for (Essay essay:essays) {
+            AcademicVO academicVO=new AcademicVO();
+            academicVO.update(essay);
+            // TODO: 2017/5/14 academicVO.setTags(TagManager.getEssayTags(essay.getId()));
+            result.add(academicVO);
+        }
+        EssayTagDao essayTagDao=new EssayTagImpl();
+        essayTagDao.AddEssayTag_Views(tag);
+        return result;
     }
 
     public ArrayList<AchievementVO> searchArticleByTag(String tag) {
-        return null;
+        ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
+        List<Scientificachievement> scientificachievements=scientificachievementDao.getScientificAchievementBySaTag(tag);
+        ArrayList<AchievementVO> result=new ArrayList<AchievementVO>();
+        for (Scientificachievement scientificachievement:scientificachievements) {
+            AchievementVO achievementVO=new AchievementVO();
+            achievementVO.update(scientificachievement);
+            // TODO: 2017/5/14   achievementVO.setTags(TagManager.getSaTags(scientificachievement.getId()));
+            result.add(achievementVO);
+        }
+        SaTagDao saTagDao=new SaTagImpl();
+        saTagDao.addSaTag_Views(tag);
+        return result;
     }
 
+
     public List<String> getHotTags() {
-        return null;
+        EssayTagDao essayTagDao=new EssayTagImpl();
+        SaTagDao saTagDao=new SaTagImpl();
+        List<SaTag> saTags=saTagDao.getSaTagsOfTop10();
+        List<EssayTag> essayTags=essayTagDao.getEssayTagsOfTop10();
+
+       List<String> result=new ArrayList<String>();
+       int saIndex=0;
+       int essayIndex=0;
+       while(result.size()<10&&saIndex<saTags.size()&&essayIndex<essayTags.size()){
+           SaTag saTag=saTags.get(saIndex);
+           EssayTag essayTag=essayTags.get(essayIndex);
+           if(result.contains(saTag.getTagName())){
+               saIndex++;
+           }else if(result.contains(essayTag.getTagName())){
+               essayIndex++;
+           }else{
+              if(saTag.getViews()>=essayTag.getViews()){
+                   result.add(saTag.getTagName());
+                   saIndex++;
+              }else if(saTag.getViews()<essayTag.getViews()){
+                   result.add(essayTag.getTagName());
+                   essayIndex++;
+              }
+           }
+       }
+       if(result.size()<10){
+           if(saIndex<saTags.size()){
+               while (result.size()<10&&saIndex<saTags.size()){
+                   SaTag saTag=saTags.get(saIndex);
+                   result.add(saTag.getTagName());
+                   saIndex++;
+               }
+           }else if(essayIndex<essayTags.size()){
+               while (result.size()<10&&essayIndex<essayTags.size()){
+                   EssayTag essayTag=essayTags.get(saIndex);
+                   result.add(essayTag.getTagName());
+                   essayIndex++;
+               }
+           }
+       }
+        return result;
     }
+
+
 }
+

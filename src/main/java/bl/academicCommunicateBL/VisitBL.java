@@ -6,10 +6,10 @@ import ENUM.Language;
 import ENUM.Type;
 import ENUM.UniversalState;
 import POJO.Essay;
+import bl.helper.TagManager;
 import blservice.academicCommunicateBLService.VisitBLService;
 import vo.AcademicVO;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,6 +45,7 @@ public class VisitBL implements VisitBLService {
         essay.setLanguage(Language.valueOf(academicVO.getLanguage()));
         essay.setType(Type.Visit);
         essayDao.update(essay);
+        TagManager.updateEssayTags(academicVO.getId(),academicVO.getTags());
         return UniversalState.SUCCEED;
     }
     public AcademicVO getItem(int id) {
@@ -55,14 +56,8 @@ public class VisitBL implements VisitBLService {
         essayDao.update(essay);
 
         AcademicVO academicVO=new AcademicVO();
-        academicVO.setId(essay.getId());
-        academicVO.setAuthor(essay.getAuthor());
-        academicVO.setLocation(essay.getLocation());
-        academicVO.setLanguage(essay.getLanguage().toString());
-        academicVO.setTitle(essay.getTitle());
-        academicVO.setPageView(pageView);
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        academicVO.setTime(sdf.format(essay.getTime()));
+        academicVO.update(essay);
+        academicVO.setTags(TagManager.getEssayTags(essay.getId()));
         return academicVO;
     }
 
@@ -70,16 +65,10 @@ public class VisitBL implements VisitBLService {
         ArrayList<AcademicVO> result=new ArrayList<AcademicVO>();
         EssayDao essayDao=new EssayDaoImpl();
         List<Essay> essays=essayDao.find(Type.Visit,Language.valueOf(language));
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         for (Essay essay:essays) {
             AcademicVO academicVO=new AcademicVO();
-            academicVO.setId(essay.getId());
-            academicVO.setAuthor(essay.getAuthor());
-            academicVO.setLocation(essay.getLocation());
-            academicVO.setLanguage(essay.getLanguage().toString());
-            academicVO.setTitle(essay.getTitle());
-            academicVO.setPageView(essay.getPageView());
-            academicVO.setTime(sdf.format(essay.getTime()));
+            academicVO.update(essay);
+            // TODO: 2017/5/14  
             result.add(academicVO);
         }
 

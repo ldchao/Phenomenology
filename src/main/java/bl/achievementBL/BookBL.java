@@ -6,6 +6,7 @@ import ENUM.Language;
 import ENUM.Type;
 import ENUM.UniversalState;
 import POJO.Scientificachievement;
+import bl.helper.TagManager;
 import blservice.achievementBLService.BookBLService;
 import vo.AchievementVO;
 
@@ -45,6 +46,7 @@ public class BookBL implements BookBLService{
         scientificachievement.setDescriptionLocation(achievementVO.getDescriptionLocation());
         scientificachievement.setThumbnailLocation(achievementVO.getThumbnailLocation());
         scientificachievementDao.update(scientificachievement);
+        TagManager.updateSaTags(achievementVO.getId(),achievementVO.getTags());
         return UniversalState.SUCCEED;
     }
 
@@ -53,29 +55,20 @@ public class BookBL implements BookBLService{
         ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
         Scientificachievement scientificachievement=scientificachievementDao.getById(id);
         AchievementVO achievementVO=new AchievementVO();
-        achievementVO.setId(id);
-        achievementVO.setTitle(scientificachievement.getTitle());
-        achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
-        achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
-        achievementVO.setTime(sdf.format(scientificachievement.getTime()));
-        achievementVO.setLanguage(scientificachievement.getLanguage().toString());
+        achievementVO.update(scientificachievement);
+        achievementVO.setTags(TagManager.getSaTags(scientificachievement.getId()));
         return achievementVO;
     }
 
     public ArrayList<AchievementVO> getAllItems(String language) {
         ArrayList<AchievementVO> result=new ArrayList<AchievementVO>();
 
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         ScientificachievementDao scientificachievementDao=new ScientificachievementDaoImpl();
         List<Scientificachievement> scientificachievements=scientificachievementDao.find(Type.Book,Language.valueOf(language));
         for (Scientificachievement scientificachievement:scientificachievements) {
             AchievementVO achievementVO=new AchievementVO();
-            achievementVO.setId(scientificachievement.getId());
-            achievementVO.setTitle(scientificachievement.getTitle());
-            achievementVO.setThumbnailLocation(scientificachievement.getThumbnailLocation());
-            achievementVO.setDescriptionLocation(scientificachievement.getDescriptionLocation());
-            achievementVO.setTime(sdf.format(scientificachievement.getTime()));
-            achievementVO.setLanguage(scientificachievement.getLanguage().toString());
+            achievementVO.update(scientificachievement);
+            // TODO: 2017/5/14
             result.add(achievementVO);
         }
         return result;
