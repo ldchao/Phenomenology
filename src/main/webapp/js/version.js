@@ -14,7 +14,7 @@ function changeVersion(index) {
         $.ajax({
             type: "get",
             async: false,
-            url: "setVersion",
+            url: "/Phenomenology/setVersion",
             data: {
                 "version": version[index],
             },
@@ -69,7 +69,7 @@ function judgeVersion() {
     $.ajax({
         type: "get",
         async: false,
-        url: "getVersion",
+        url: "/Phenomenology/getVersion",
         dataType: "json",
         success: function (result) {
 

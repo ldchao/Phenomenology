@@ -9,13 +9,13 @@ var allPages;  // 所有新闻
 window.onload = function () {
 
     language = judgeVersion();
-    getPics();
-    // getBanners();
 
     // 动态新闻
     getDynamic();
     // 源头活水
     getSource();
+
+    getPics();
 };
 
 // 动态新闻

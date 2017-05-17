@@ -117,7 +117,7 @@
     </div>
 
     <%-- 更多 --%>
-    <div id="more_content" class="right_content" style="height: 860px; width: 720px; display: none;">
+    <div id="more_content" class="right_content" style="height: 860px; width: 728px; display: none;">
 
         <div class="sub_title_div" style="margin-top: 30px; margin-left: 42px;">
             <div class="div_decorate"></div>

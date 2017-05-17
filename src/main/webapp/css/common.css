@@ -166,6 +166,7 @@ a:hover {
     -o-transition: 0.3s;
     transition: 0.3s;
     margin-right: -6px;
+    float: left;
 }
 
 .nav_2:hover > .sub_nav_bar_2 {
